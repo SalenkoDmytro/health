@@ -1,9 +1,8 @@
 import React from 'react';
 
-function UserInfo(props) {
+function UserInfo() {
   return (
     <div>UserInfo</div>
   );
 }
-
 export default UserInfo;

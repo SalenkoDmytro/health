@@ -1,8 +1,9 @@
 import React from 'react';
+import CalculatorCaloriesForm from '../../components/calculatorCaloriesForm/CalculatorCaloriesForm';
 
-function CalculatorPage(props) {
+function CalculatorPage() {
   return (
-    <div>CalculatorPage</div>
+    <CalculatorCaloriesForm/>
   );
 }
 
