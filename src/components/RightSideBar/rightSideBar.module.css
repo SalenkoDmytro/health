@@ -15,11 +15,14 @@
   }
   
   .summary__subtitle {
+    width: 270px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.04em;
     color: #9b9faa;
+    
+    
   }
   
   .summary__list {
@@ -28,6 +31,7 @@
     line-height: 17px;
     letter-spacing: 0.04em;
     width: 288px;
+    color: #9b9faa;
   }
   
   .summary__listItem {

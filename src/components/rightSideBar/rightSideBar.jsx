@@ -28,7 +28,8 @@ function RightSideBar() {
       <div className={s.notRecommended}>
         <p className={s.summary__title}>Нерекомендуемые продукты </p>
         <p className={s.summary__subtitle}>
-          Здесь будет отображаться ваш рацион
+          Все бульоны/отвары, жирная рыба, икра и мясо, грибы, крупы (пшено,
+          перловая, пшеничная)
         </p>
       </div>
     </div>
