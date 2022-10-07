@@ -4,7 +4,7 @@ export const theme = {
     black: '#000000',
 
     accent: '#FC842D',
-    primaryBackground: '',
+    primaryBackground: '#F0F1F3',
     secondaryBackground: '#264061',
 
     text: {
