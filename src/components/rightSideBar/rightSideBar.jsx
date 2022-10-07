@@ -5,24 +5,31 @@ function RightSideBar() {
   return (
     <div className={s.sidebar}>
       <div className={s.summary}>
-        <p className={s.summary__title}> Сводка за 20.06.2020 </p>
+        <p className={s.summary__title}>Сводка за 20.06.2020</p>
         <ul className={s.summary__list}>
           <li className={s.summary__listItem}>
             <span>Осталось</span>
+            <span>000 ккал</span>
           </li>
           <li className={s.summary__listItem}>
             <span>Употреблено</span>
+            <span>000 ккал</span>
           </li>
           <li className={s.summary__listItem}>
             <span>Дневная норма</span>
+            <span>000 ккал</span>
           </li>
           <li className={s.summary__listItem}>
-            <span>% от нормы </span> %
+            <span>n% от нормы</span>
+            <span>000 ккал</span>
           </li>
         </ul>
       </div>
       <div className={s.notRecommended}>
-        <p className={s.summary__title}>Food not recommended</p>
+        <p className={s.summary__title}>Нерекомендуемые продукты </p>
+        <p className={s.summary__subtitle}>
+          Здесь будет отображаться ваш рацион
+        </p>
       </div>
     </div>
   );

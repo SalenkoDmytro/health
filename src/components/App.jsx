@@ -1,10 +1,9 @@
-import React from 'react';
+import RightSideBar from './RightSideBar/RightSideBar';
 
-export default function App(){
+export default function App() {
   return (
-<>
-  hello
-</>
+    <>
+      <RightSideBar />
+    </>
   );
-};
-
+}
