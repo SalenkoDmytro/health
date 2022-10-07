@@ -17,7 +17,7 @@ function MainPage() {
   return (
     <>
       <DailyCaloriesForm />
-
+      {/* open modal */}
       <Button onClick={() => openModal()}>Open Modal</Button>
       {isOpen && (
         <Modal
