@@ -1,8 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-function Logo(props) {
+function Logo() {
   return (
-    <div>Logo</div>
+    <>
+    <NavLink to='/'><p>Slim<span>Mom</span></p></NavLink>
+  </>
   );
 }
 

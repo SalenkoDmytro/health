@@ -1,8 +1,11 @@
 import React from 'react';
+import DailyCaloriesForm from '../../components/dailyCaloriesForm/DailyCaloriesForm';
 
-function MainPage(props) {
+function MainPage() {
   return (
-    <div>MainPage</div>
+   <>
+     <DailyCaloriesForm/>
+   </>
   );
 }
 
