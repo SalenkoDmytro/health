@@ -17,7 +17,7 @@ export default function App() {
         <AppBar />
         <UserInfo/>
       </header>
-      <content>
+      <div>
         <Routes>
           <Route path='/' element={<MainPage />} />
           <Route path='/diary' element={<DiaryPage />} />
@@ -25,8 +25,7 @@ export default function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/registration' element={<RegistrationPage />} />
         </Routes>
-      </content>
-
+      </div>
     </>
   );
 };
