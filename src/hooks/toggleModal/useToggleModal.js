@@ -1,16 +1,12 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function useToggleModal() {
-  const navigate = useNavigate();
-
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
 
-  const closeModal = (path = '/') => {
+  const closeModal = () => {
     setIsOpen(false);
-    navigate(path);
   };
 
   const toggleModal = () => setIsOpen(isOpen => !isOpen);

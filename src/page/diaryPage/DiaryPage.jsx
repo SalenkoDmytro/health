@@ -6,10 +6,10 @@ import DiaryDateСalendar from '../../components/diaryDateСalendar/DiaryDateСa
 function DiaryPage() {
   return (
     <>
-      <DiaryDateСalendar/>
-      <DailyCaloriesForm/>
-      <DiaryProductsList/>
-  </>
+      <DiaryDateСalendar />
+      <DailyCaloriesForm />
+      <DiaryProductsList />
+    </>
   );
 }
 
