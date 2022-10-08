@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
+// -------------------UNAUTHORIZED USER-------------------
 export const dailyRateUnauthorized = createAsyncThunk(
   'dailyRate/calcUnauth',
   async (params, { rejectWithValue }) => {
@@ -16,8 +17,9 @@ export const dailyRateUnauthorized = createAsyncThunk(
   }
 );
 
-// ------------- НЕ УВЕРЕН ПО ПОВОДУ ПЕРЕДАЧИ ПАРАМЕТРОВ
+// ------------- ЕСЛИ БУДУТ ОШИБКИ - ПЕРЕСМОТРЕТЬ ПЕРЕДАЧУ ПАРАМЕТРОВ!
 
+// -------------------AUTHORIZED USER-------------------
 export const dailyRateAuthorized = createAsyncThunk(
   'dailyRate/calcAuth',
   async (userId, params, { rejectWithValue }) => {

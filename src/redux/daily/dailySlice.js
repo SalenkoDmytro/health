@@ -4,8 +4,8 @@ import { dailyRateUnauthorized, dailyRateAuthorized } from './dailyOperations';
 const initialState = {
   userId: null,
   dailyRate: null,
-  // notAllowedProducts -> array of arrays wtf???!!!
   summaries: [],
+  // -------------> notAllowedProducts -> Response = Array of Arrays wtf???!!!  <--------------------
   notAllowedProducts: [],
   isLoggedIn: false,
   isLoading: false,
