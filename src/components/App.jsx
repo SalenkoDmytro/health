@@ -17,15 +17,15 @@ export default function App() {
         <AppBar />
         <UserInfo />
       </header>
-      <content>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/calculator" element={<CalculatorPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
-        </Routes>
-      </content>
+      {/* <content> */}
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/diary" element={<DiaryPage />} />
+        <Route path="/calculator" element={<CalculatorPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
+      </Routes>
+      {/* </content> */}
     </>
   );
 }
