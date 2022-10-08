@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import MainPage from 'page/mainPage';
-import DiaryPage from 'page/diaryPage';
-import CalculatorPage from 'page/calculatorPage';
-import LoginPage from 'page/loginPage';
-import RegistrationPage from 'page/registrationPage';
 import AppBar from 'components/appBar';
 import Logo from 'components/logo';
 import UserInfo from 'components/userInfo/UserInfo';
 import Loader from './Loader';
+
+const MainPage = lazy(() => import('page/mainPage'));
+const DiaryPage = lazy(() => import('page/diaryPage'));
+const CalculatorPage = lazy(() => import('page/calculatorPage'));
+const LoginPage = lazy(() => import('page/loginPage'));
+const RegistrationPage = lazy(() => import('page/registrationPage'));
 
 export default function App() {
   return (
@@ -17,9 +18,8 @@ export default function App() {
         <Logo />
         <AppBar />
         <UserInfo />
-        <Loader />
       </header>
-      <div>
+        <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/diary" element={<DiaryPage />} />
@@ -27,7 +27,7 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
-      </div>
+        </Suspense>
     </>
   );
 }
