@@ -6,12 +6,14 @@ export const theme = {
     accent: '#FC842D',
     primaryBackground: '#F0F1F3',
     burgerBackground: '#264061',
+    border: '#E0E0E0',
 
     text: {
       sectionTitle: '#212121',
-      primaryText: '9B9FAA',
+      primaryText: '#9B9FAA',
       secondaryText: '#212121',
       accent: '#FC842D',
+      caloriesText: '#264061',
     },
 
     button: {
