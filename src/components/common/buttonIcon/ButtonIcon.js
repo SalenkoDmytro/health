@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledSearchButton } from './ButtonIcon.styled';
+import { StyledButtonIcon } from './ButtonIcon.styled';
 
 export default function ButtonIcon({
   children = null,
@@ -8,9 +8,9 @@ export default function ButtonIcon({
   ...allyProps
 }) {
   return (
-    <StyledSearchButton type="button" onClick={onClick} {...allyProps}>
+    <StyledButtonIcon type="button" onClick={onClick} {...allyProps}>
       {children}
-    </StyledSearchButton>
+    </StyledButtonIcon>
   );
 }
 

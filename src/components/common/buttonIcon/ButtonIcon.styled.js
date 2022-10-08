@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledSearchButton = styled.button`
-  position: absolute;
+export const StyledButtonIcon = styled.button`
+  /* position: absolute; */
   top: 20px;
   right: 20px;
   color: ${p => p.theme.colors.black};
