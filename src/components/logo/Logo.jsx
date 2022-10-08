@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper } from './Logo.styled';
-import useMatchMedia from 'hooks/toggleModal/useMatchMedia';
+import useMatchMedia from 'hooks/useMatchMedia';
 import logoMob from '../../images/logo-min-mob.png';
 import logoMobx2 from '../../images/logo-min-mob-x2.png';
 import logoDesk from '../../images/logo-min-desc.png';

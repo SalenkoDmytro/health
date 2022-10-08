@@ -8,6 +8,7 @@ import RegistrationPage from 'page/registrationPage';
 import AppBar from 'components/appBar';
 import Logo from 'components/logo';
 import UserInfo from 'components/userInfo/UserInfo';
+import Loader from './Loader';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Logo />
         <AppBar />
         <UserInfo />
+        <Loader/>
       </header>
       <div>
         <Routes>
