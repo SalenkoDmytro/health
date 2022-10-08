@@ -9,7 +9,7 @@ export const dailyRateUnauthorized = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/daily-rate', params);
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

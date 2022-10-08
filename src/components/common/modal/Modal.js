@@ -5,6 +5,7 @@ import { ModalBackdrop, ModalContent } from './Modal.styled';
 import { IoIosClose } from 'react-icons/io';
 import ButtonIcon from 'components/common/buttonIcon';
 import Box from 'components/common/box';
+
 const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({
@@ -12,6 +13,7 @@ export default function Modal({
   handleKeyDown = () => {},
   handleBackdropClick = () => {},
   closeModal = () => {},
+  hasBtnClose = true,
 }) {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -24,13 +26,15 @@ export default function Modal({
     <ModalBackdrop onClick={handleBackdropClick}>
       <ModalContent>
         <Box position="absolute" top="0" right="0" zIndex="100">
-          <ButtonIcon
-            type="button"
-            onClick={closeModal}
-            aria-label="close modal"
-          >
-            <IoIosClose size="20px" />
-          </ButtonIcon>
+          {hasBtnClose && (
+            <ButtonIcon
+              type="button"
+              onClick={closeModal}
+              aria-label="close modal"
+            >
+              <IoIosClose size="20px" />
+            </ButtonIcon>
+          )}
         </Box>
         {children}
       </ModalContent>
