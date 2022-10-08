@@ -55,7 +55,9 @@ export const logout = createAsyncThunk(
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (sid, { rejectWithValue, getState }) => {
-    const tokenLS = getState().auth.token;
+    // ----------------------КУДА СОХРАНЯЕМ ТОКЕН????
+
+    const tokenLS = getState().auth.refreshToken;
 
     if (!tokenLS) {
       return rejectWithValue();

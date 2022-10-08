@@ -36,9 +36,9 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
     },
-    [register.rejected]: (state, { payload }) => {
+    [register.rejected]: (state, { payload: { message } }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = message;
     },
     // --------------------LOG IN OPERATION--------------------(fulfilled?)
 
@@ -60,9 +60,9 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
     },
-    [login.rejected]: (state, { payload }) => {
+    [login.rejected]: (state, { payload: { message } }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = message;
     },
     // --------------------LOG OUT OPERATION-------------------- (fulfilled?)
 
@@ -77,9 +77,9 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.isLoading = false;
     },
-    [logout.rejected]: (state, { payload }) => {
+    [logout.rejected]: (state, { payload: { message } }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = message;
     },
     // --------------------REFRESH OPERATION--------------------(sid сохранять надо?)
 
@@ -98,9 +98,9 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isFetchingCurrentUser = false;
     },
-    [fetchCurrentUser.rejected]: (state, { payload }) => {
+    [fetchCurrentUser.rejected]: (state, { payload: { message } }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = message;
       state.isFetchingCurrentUser = false;
     },
   },

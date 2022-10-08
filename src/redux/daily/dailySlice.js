@@ -29,9 +29,9 @@ const dailySlice = createSlice({
       state.notAllowedProducts = notAllowedProducts;
       state.isLoading = false;
     },
-    [dailyRateUnauthorized.rejected]: (state, { payload }) => {
+    [dailyRateUnauthorized.rejected]: (state, { payload: { message } }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = message;
     },
     // --------------------LOG IN OPERATION--------------------(fulfilled?)
 
@@ -50,9 +50,9 @@ const dailySlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
     },
-    [dailyRateAuthorized.rejected]: (state, { payload }) => {
+    [dailyRateAuthorized.rejected]: (state, { payload: { message } }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = message;
     },
   },
 });
