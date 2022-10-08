@@ -17,7 +17,7 @@ export default function App() {
         <Logo />
         <AppBar />
         <UserInfo />
-        <Loader/>
+        <Loader />
       </header>
       <div>
         <Routes>
@@ -30,5 +30,4 @@ export default function App() {
       </div>
     </>
   );
-};
-
+}
