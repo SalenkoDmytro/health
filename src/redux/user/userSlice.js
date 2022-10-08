@@ -2,23 +2,21 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getUser } from './userOperations';
 
 const initialState = {
-  user: {
     email: '',
     username: '',
     id: '',
     userData: {
-      weight: 0,
-      height: 0,
-      age: 0,
-      bloodType: 0,
-      desiredWeight: 0,
-      dailyRate: 0,
+      weight: null,
+      height: null,
+      age: null,
+      bloodType: null,
+      desiredWeight: null,
+      dailyRate: null,
       notAllowedProducts: [],
     },
     days: [],
-  },
-  token: null,
-  isLogged: false,
+  isLoading: false,
+  isLoggedIn: false,
   error: null,
 };
 
@@ -27,8 +25,8 @@ const userSlice = createSlice({
     initialState,
     extraReducers: {
       [getUser.pending]: (state) => {
-        state.isLogged = true;
-        state.error = null;
+        state.isLoading = true;
+        state.isLoggedIn = true;
       },
       [getUser.fulfilled]: (state, action) => {
         state.status = 'resolved';

@@ -4,9 +4,10 @@ import { addDay, deleteDay } from './dayOperations';
 const daySlice = createSlice({
   name: 'contacts',
   initialState: {
-    date: null,
+    day: null,
     token: null,
-    isLogged: false,
+    isLoading: false,
+    isLoggedIn: false,
     error: null,
   },
   reducers: {
@@ -17,7 +18,7 @@ const daySlice = createSlice({
   extraReducers: {
     //addNewDay
     [addDay.pending]: (state) => {
-      state.isLogged = true;
+      state.isLoggedIn = true;
       state.error = null;
     },
     [addDay.fulfilled]: (state, action) => {
@@ -28,7 +29,7 @@ const daySlice = createSlice({
     },
     //deleteDay
     [deleteDay.pending]: (state) => {
-      state.isLogged = true;
+      state.isLoggedIn = true;
       state.error = null;
     },
     [deleteDay.fulfilled]: (state, action) => {
@@ -39,7 +40,7 @@ const daySlice = createSlice({
     },
     //addDayInformation
     [addDay.pending]: (state) => {
-      state.isLogged = true;
+      state.isLoggedIn = true;
       state.error = null;
     },
     [addDay.fulfilled]: (state, action) => {
