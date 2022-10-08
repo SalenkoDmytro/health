@@ -1,38 +1,51 @@
-import { configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import {
+//   configureStore,
+//   getDefaultMiddleware,
+//   combineReducers,
+// } from '@reduxjs/toolkit';
+// import {
+//   persistStore,
+//   persistReducer,
+//   FLUSH,
+//   REHYDRATE,
+//   PAUSE,
+//   PERSIST,
+//   PURGE,
+//   REGISTER,
+// } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+// import authReducer from './auth/authSlice';
+// import productReducer from './productSearch/productSearchSlice';
+// import dailyReducer from './daily/dailySlice';
 
-// import authSlice from 'redux/auth/authSlice';
-import userSlice from './user/userSlice';
+// const middleware = [
+//   ...getDefaultMiddleware({
+//     serializableCheck: {
+//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//     },
+//   }),
+// ];
 
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token'],
-};
+// const persistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['accessToken'],
+// };
 
-export const store = configureStore({
-  reducer: {
-    // auth: persistReducer(authPersistConfig, authSlice),
-    user: persistReducer({ key: 'user', storage }, userSlice)
-  },
-  middleware(getDefaultMiddleware) {
-    return getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE,
-          PERSIST, PURGE, REGISTER],
-      },
-    });
-  },
-});
+// const persistedReducer = persistReducer(persistConfig, authReducer);
 
-export const persistor = persistStore(store);
+// const rootReducer = combineReducers({
+//   auth: persistedReducer,
+//   dailyRate: dailyReducer,
+//   product: productReducer,
+// });
+// //
+// // Persisting token field from auth slice to localstorage
+
+// export const store = configureStore({
+//   reducer: rootReducer,
+//   middleware,
+//   devTools: process.env.NODE_ENV === 'development',
+// });
+
+// export const persistor = persistStore(store);
