@@ -1,27 +1,20 @@
 import React from 'react';
 import * as Yup from 'yup';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
-
-// Юзер дата
-const userData = {
-  weight: 100,
-  height: 170,
-  age: 30,
-  bloodType: 1,
-  desiredWeight: 60,
-  dailyRate: 2000,
-  notAllowedProducts: ['Омлет'],
-};
-const isAuthenticatedSelector = {
-  accessToken:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmMyMDg1YmQwOTM2NTI4MTA3Y2UyNzQiLCJzaWQiOiI1ZmMyZDJmY2UxZDIwNTA2NzAyYmRkMjIiLCJpYXQiOjE2MDY2MDM1MTYsImV4cCI6MTYwNjYwNzExNn0.rJ_QjU4KvA76H96RHsvOBChK0Vjbd0NmqjMxdQVJIXA',
-};
+import { selectAccessToken } from 'redux/auth/authSelectors';
+import { getUserData } from 'redux/user/userSelectors';
+import {
+  dailyRateAuthorized,
+  dailyRateUnauthorized,
+} from 'redux/daily/dailyOperations';
 
 function CalculatorCaloriesForm({ openModal }) {
-  // const dispatch = useDispatch();
-  const isAuth = isAuthenticatedSelector.accessToken;
+  const isAuth = useSelector(selectAccessToken);
+  const userData = useSelector(getUserData);
+  console.log(userData);
+  const dispatch = useDispatch();
   const validationSchema = Yup.object().shape({
     height: Yup.number('fdfdfdfdf')
       .min(100, 'Минимальное значение 100 см.')
@@ -64,11 +57,12 @@ function CalculatorCaloriesForm({ openModal }) {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
+      console.log(values);
       if (isAuth) {
-        getNumbers(values);
-        console.log(getNumbers(values));
+        dispatch(dailyRateUnauthorized(values));
+        console.log(values);
       } else {
-        getNumbers(values);
+        dispatch(dailyRateAuthorized(values));
 
         if (openModal) {
           setTimeout(() => {
