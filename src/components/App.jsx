@@ -19,6 +19,8 @@ export default function App() {
         <AppBar />
         <UserInfo />
       </header>
+
+
         <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
