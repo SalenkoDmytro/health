@@ -8,7 +8,6 @@ const initialState = {
     userData: null,
     days: [],
   isLoading: false,
-  isLoggedIn: false,
   error: null,
 };
 
@@ -18,7 +17,6 @@ const userSlice = createSlice({
     extraReducers: {
       [getUser.pending]: (state) => {
         state.isLoading = true;
-        state.isLoggedIn = true;
       },
       [getUser.fulfilled]: (state, action) => {
         const { username, id, email } = action.payload;

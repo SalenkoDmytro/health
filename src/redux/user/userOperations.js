@@ -19,7 +19,7 @@ export const getUser = createAsyncThunk(
       const tokenLS = thunkAPI.getState().auth.accessToken;
 
       token.set(tokenLS)
-      const res = await axios('/user');
+      const res = await axios.get('/user');
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue('Sorry, server Error!');
