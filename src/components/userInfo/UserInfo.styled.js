@@ -1,13 +1,26 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  margin-left: auto;
   display: flex;
+  margin-left: auto;
   @media (max-width: 767px) {
     padding: 4px 20px;
-    justify-content: flex-end;
+
     background-color: ${({ theme }) => theme.colors.primaryBackground};
   } ;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  @media (max-width: 767px) {
+    margin-left: auto;
+  } ;
+`;
+
+export const BackButton = styled(Link)`
+  display: flex;
+  align-items: center;
 `;
 
 export const Text = styled.span`
