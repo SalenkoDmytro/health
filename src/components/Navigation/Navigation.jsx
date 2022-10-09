@@ -1,10 +1,17 @@
 import { NavLinks, List, AccentLink, Button } from './Navigation.styled';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import useMatchMedia from 'hooks/toggleModal/useMatchMedia';
+import useMatchMedia from 'hooks/useMatchMedia';
 
 function Navigation() {
-  const { isMobile, isTablet } = useMatchMedia();
+  const { isDesktop } = useMatchMedia();
   return (
+    <>
+      {!isDesktop && (
+        <Button type="button" aria-label="burger-menu">
+          <GiHamburgerMenu size={24} />
+        </Button>
+      )}
+    </>
     // <List>
     //   <li>
     //     <AccentLink to="diary">Дневник</AccentLink>
@@ -13,14 +20,6 @@ function Navigation() {
     //     <NavLinks to="calculator">Калькулятор</NavLinks>
     //   </li>
     // </List>
-    <>
-      {isTablet ||
-        (isMobile && (
-          <Button type="button" aria-label="burger-menu">
-            <GiHamburgerMenu size={24} />
-          </Button>
-        ))}
-    </>
   );
 }
 

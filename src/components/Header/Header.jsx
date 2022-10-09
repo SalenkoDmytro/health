@@ -1,32 +1,28 @@
+import { useSelector } from 'react-redux';
 import AuthNavigation from 'components/authNavigation';
 import Logo from 'components/logo/Logo';
-import Navigation from 'components/Navigation';
+import Navigation from 'components/navigation';
 import UserInfo from 'components/userInfo/UserInfo';
-import useMatchMedia from 'hooks/toggleModal/useMatchMedia';
 import { HeaderStyled } from './Header.styled';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 
 function Header() {
-  const { isMobile } = useMatchMedia();
+  const isLogin = useSelector(selectIsLoggedIn);
+
   return (
     <HeaderStyled>
-      <Logo />
-      {/* <AuthNavigation /> */}
-      {/* {!isLogin && (
+      {isLogin ? (
         <>
           <Logo />
-          <AuthNavigation />
-        </>
-      )} */}
-      {/* <UserInfo /> */}
-      <Navigation />
-      {/* {isLogin ? (
-        <>
           <UserInfo />
           <Navigation />
         </>
       ) : (
-        <AuthNavigation />
-      )} */}
+        <>
+          <Logo />
+          <AuthNavigation />
+        </>
+      )}
     </HeaderStyled>
   );
 }

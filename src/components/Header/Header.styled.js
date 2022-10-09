@@ -2,17 +2,21 @@ import styled from 'styled-components';
 
 export const HeaderStyled = styled.header`
   display: flex;
-  justify-content: center;
 
-  @media (max-width: 766px) {
-    padding: 20px;
+  @media (max-width: 767px) {
+    padding: 20px 20px 16px;
   }
 
-  @media (min-width: 767px) and (max-width: 1199px) {
-    padding: 32px 20px;
+  @media (min-width: 768px) and (max-width: 1199px) {
+    padding: 20px 32px 16px;
   }
 
   @media (max-width: 1199px) {
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.border};
+  }
+
+  @media (min-width: 1200px) {
+    align-items: baseline;
+    padding: 80px 16px;
   }
 `;
