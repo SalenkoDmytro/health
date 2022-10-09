@@ -8,7 +8,6 @@ import {
 } from 'components/loginForm/LoginForm.styled';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { register } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 

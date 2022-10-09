@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
   max-width: 394px;
 `;
 
-export const LoginFormContent = styled.div`
+export const LoginFormContent = styled.form`
   display: flex;
   flex-direction: column;
   gap: 14px;
