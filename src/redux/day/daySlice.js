@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addDay, deleteDay } from './dayOperations';
+import { addDay, deleteDay, addDayInfo } from './dayOperations';
 
 const daySlice = createSlice({
   name: 'contacts',

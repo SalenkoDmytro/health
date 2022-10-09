@@ -52,22 +52,21 @@ export const logout = createAsyncThunk(
   }
 );
 
-export const fetchCurrentUser = createAsyncThunk(
+export const refresh = createAsyncThunk(
   'auth/refresh',
   async (sid, { rejectWithValue, getState }) => {
     // ----------------------КУДА СОХРАНЯЕМ ТОКЕН????
 
-    const tokenLS = getState().auth.refreshToken;
-
-    if (!tokenLS) {
-      return rejectWithValue();
-    }
-    token.set(tokenLS);
+    // const tokenLS = getState().auth.refreshToken;
+    //
+    // if (!tokenLS) {
+    //   return rejectWithValue();
+    // }
+    // token.set(tokenLS);
 
     try {
-      const { data } = await axios.post('/auth/refresh', sid);
-      console.log(data);
-      //   token.set(data.token);
+      const { data } = await axios.post('/auth/refresh', { sid });
+        token.set(data.token);
 
       return data;
     } catch (error) {

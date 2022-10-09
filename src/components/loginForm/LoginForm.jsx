@@ -27,6 +27,7 @@ function LoginForm() {
     setEmail('');
     setPassword('');
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
