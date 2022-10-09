@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Radio, { RadioProps } from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import TextField from '@mui/material/TextField';
 
 const BpIcon = styled('span')(({ theme }) => ({
   borderRadius: '50%',
@@ -60,4 +61,16 @@ export const RadioStyled = styled(FormControlLabel)`
   color: ${p => p.theme.colors.form.checkboxText};
   font-family: ${p => p.theme.fonts.main};
   margin: 0;
+`;
+
+export const InputStyled = styled(TextField)`
+  label {
+    font-family: 'Verdana';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: ${x => x.theme.colors.form.formText};
+  }
 `;
