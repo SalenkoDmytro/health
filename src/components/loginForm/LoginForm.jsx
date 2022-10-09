@@ -1,7 +1,15 @@
+import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { login } from 'redux/auth/authOperations';
+import Button from 'components/common/button/Button';
+import {
+  FormContainer,
+  FormTitle,
+  LoginBtnWrapper,
+  LoginFormContent,
+  RegisterBtn,
+} from './LoginForm.styled';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -29,28 +37,34 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <input
+    <FormContainer>
+      <FormTitle>Вход</FormTitle>
+      <LoginFormContent onSubmit={handleSubmit}>
+        <InputStyled
+          required
           type="email"
           name="email"
+          label="Почта"
           value={email}
           onChange={handleChange}
+          variant="standard"
         />
-      </label>
-      <label>
-        Password
-        <input
+
+        <InputStyled
+          required
           type="password"
           name="password"
+          label="Пароль"
           value={password}
           onChange={handleChange}
+          variant="standard"
         />
-      </label>
-      <button type="submit">Вход</button>
-      <Link to="/registration">Регистрация</Link>
-    </form>
+        <LoginBtnWrapper>
+          <Button type="submit">Вход</Button>
+          <RegisterBtn to="/registration">Регистрация</RegisterBtn>
+        </LoginBtnWrapper>
+      </LoginFormContent>
+    </FormContainer>
   );
 }
 

@@ -1,12 +1,29 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import useMatchMedia from 'hooks/useMatchMedia';
+import { useSelector, useDispatch } from 'react-redux';
+import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { selectUserName } from 'redux/auth/authSelectors';
-import { selectUser } from 'redux/user/userSelectors';
+import { logout } from '../../redux/auth/authOperations';
+import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
 
 function UserInfo() {
-  const isLogin = useSelector(selectUser);
+  const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-  console.log(userName);
-  return <>{isLogin ? <p>{userName}</p> : <p>Noot logined</p>}</>;
+  const { isMobile } = useMatchMedia();
+
+  return (
+    <Wrapper>
+      {isMobile && (
+        <BackButton to="/diary">
+          <IoReturnDownBackSharp size={25} />
+        </BackButton>
+      )}
+      <Box>
+        <Text>{userName}</Text>
+        <Button type="button" onClick={() => dispatch(logout())}>
+          Выйти
+        </Button>
+      </Box>
+    </Wrapper>
+  );
 }
 export default UserInfo;

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './rightSideBar.module.css';
+import s from './RightSideBar.module.css';
 
 function RightSideBar() {
   return (

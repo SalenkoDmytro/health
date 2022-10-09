@@ -1,7 +1,15 @@
+import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+import {
+  FormContainer,
+  FormTitle,
+  LoginBtnWrapper,
+  LoginFormContent,
+  RegisterBtn,
+} from 'components/loginForm/LoginForm.styled';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { register } from 'redux/auth/authOperations';
+import Button from 'components/common/button/Button';
 
 function RegistrationForm() {
   const [username, setName] = useState('');
@@ -35,39 +43,44 @@ function RegistrationForm() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={username}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">SingUP</button>
-        <Link to="/login">Вход</Link>
-      </form>
-    </>
+    <FormContainer>
+      <FormTitle>регистрация</FormTitle>
+      <LoginFormContent onSubmit={handleSubmit}>
+        <InputStyled
+          required
+          type="text"
+          name="name"
+          label="Имя"
+          value={username}
+          onChange={handleChange}
+          variant="standard"
+        />
+
+        <InputStyled
+          required
+          type="email"
+          name="email"
+          label="Почта"
+          value={email}
+          onChange={handleChange}
+          variant="standard"
+        />
+
+        <InputStyled
+          required
+          type="password"
+          name="password"
+          label="Пароль"
+          value={password}
+          onChange={handleChange}
+          variant="standard"
+        />
+        <LoginBtnWrapper>
+          <Button type="submit">Регистрация</Button>
+          <RegisterBtn to="/login">Вход</RegisterBtn>
+        </LoginBtnWrapper>
+      </LoginFormContent>
+    </FormContainer>
   );
 }
 

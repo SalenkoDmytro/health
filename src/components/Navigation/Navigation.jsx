@@ -1,27 +1,36 @@
-import { NavLinks, List, AccentLink, Button } from './Navigation.styled';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import useMatchMedia from 'hooks/toggleModal/useMatchMedia';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { NavLinks, List, AccentLink } from './Navigation.styled';
 
-function Navigation() {
-  const { isMobile, isTablet } = useMatchMedia();
+function Navigation({ closeMobMenu }) {
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        closeMobMenu();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeMobMenu]);
+
   return (
-    // <List>
-    //   <li>
-    //     <AccentLink to="diary">Дневник</AccentLink>
-    //   </li>
-    //   <li>
-    //     <NavLinks to="calculator">Калькулятор</NavLinks>
-    //   </li>
-    // </List>
-    <>
-      {isTablet ||
-        (isMobile && (
-          <Button type="button" aria-label="burger-menu">
-            <GiHamburgerMenu size={24} />
-          </Button>
-        ))}
-    </>
+    <List>
+      <li>
+        <AccentLink to="diary" onClick={closeMobMenu}>
+          Дневник
+        </AccentLink>
+      </li>
+      <li>
+        <NavLinks to="calculator" onClick={closeMobMenu}>
+          Калькулятор
+        </NavLinks>
+      </li>
+    </List>
   );
 }
 
 export default Navigation;
+
+Navigation.propTypes = { closeMobMenu: PropTypes.func };

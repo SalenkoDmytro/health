@@ -6,9 +6,9 @@ axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 // -------------------UNAUTHORIZED USER-------------------
 export const dailyRateUnauthorized = createAsyncThunk(
   'dailyRate/calcUnauth',
-  async (params, { rejectWithValue }) => {
+  async (requestData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/daily-rate', params);
+      const { data } = await axios.post('/daily-rate', requestData);
       // console.log(data);
       return data;
     } catch (error) {
@@ -22,9 +22,9 @@ export const dailyRateUnauthorized = createAsyncThunk(
 // -------------------AUTHORIZED USER-------------------
 export const dailyRateAuthorized = createAsyncThunk(
   'dailyRate/calcAuth',
-  async ( {userId, ...params} , { rejectWithValue }) => {
+  async ( {userId, ...requestData} , { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`/daily-rate/${userId}`, params);
+      const { data } = await axios.post(`/daily-rate/${userId}`, requestData);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
