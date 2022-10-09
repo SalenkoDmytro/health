@@ -40,6 +40,8 @@ export const RegisterBtn = styled(Link)`
   font-size: ${p => p.theme.fontSizes.m};
   font-family: ${p => p.theme.fonts.main};
   color: ${p => p.theme.colors.button.primaryText};
+  line-height: ${x => x.theme.lineHeights.body};
+  font-weight: ${x => x.theme.fontWeights.bold};
   width: 182px;
   height: 43px;
   text-align: center;
