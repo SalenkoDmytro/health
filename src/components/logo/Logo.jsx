@@ -11,7 +11,6 @@ import fullLogoTab from '../../assets/images/logo/logo-full-tab.png';
 import fullLogoTabx2 from '../../assets/images/logo/logo-full-tab-x2.png';
 import fullLogoDesk from '../../assets/images/logo/logo-full-desk.png';
 import fullLogoDeskx2 from '../../assets/images/logo/logo-full-desc-x2.png';
-
 function Logo() {
   const { isDesktop, isMobile, isTablet } = useMatchMedia();
   const isLogin = useSelector(selectIsLoggedIn);
@@ -37,7 +36,6 @@ function Logo() {
           />
         )
       ) : null}
-
       {isTablet ? (
         <img
           src={fullLogoTab}
@@ -47,7 +45,6 @@ function Logo() {
           height={44}
         />
       ) : null}
-
       {isDesktop ? (
         <img
           src={fullLogoDesk}

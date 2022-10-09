@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import AuthNavigation from 'components/authNavigation';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import Logo from 'components/logo/Logo';
 import Navigation from 'components/navigation';
 import UserInfo from 'components/userInfo/UserInfo';
-import { HeaderStyled, MobMenu, MobMenuButton } from './Header.styled';
-import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import useMatchMedia from 'hooks/useMatchMedia';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { HeaderStyled, MobMenuButton, MobMenu } from './Header.styled';
 
 function Header() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
