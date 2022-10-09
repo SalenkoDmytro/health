@@ -17,7 +17,7 @@ function Logo() {
   const isLogin = useSelector(selectIsLoggedIn);
 
   return (
-    <Link to="diary">
+    <Link to={isLogin ? '/diary' : '/'}>
       {isMobile ? (
         isLogin ? (
           <img
