@@ -20,3 +20,23 @@ export const HeaderStyled = styled.header`
     padding: 80px 16px;
   }
 `;
+
+export const MobMenu = styled.div`
+  position: fixed;
+  padding: 60px 20px;
+  height: 100vh;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.burgerBackground};
+  @media (min-width: 768px) {
+    padding: 100px 216px;
+  }
+`;
+
+export const MobMenuButton = styled.button`
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  @media (min-width: 768px) {
+    margin-left: 0;
+  }
+`;
