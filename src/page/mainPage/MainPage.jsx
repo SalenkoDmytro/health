@@ -14,15 +14,12 @@ function MainPage() {
     handleBackdropClick,
   } = useToggleModal();
 
-function MainPage(props) {
-  return (
-    <>
+   return ( <>
       <DailyCaloriesForm />
       {/* open modal */}
       <Button onClick={() => openModal()}>Open Modal</Button>
       {isOpen && (
         <Modal
-          // hasBtnClose={false}
           closeModal={closeModal}
           handleKeyDown={handleKeyDown}
           handleBackdropClick={handleBackdropClick}
@@ -32,7 +29,6 @@ function MainPage(props) {
       )}
     </>
   );
-
 }
 
 export default MainPage;
