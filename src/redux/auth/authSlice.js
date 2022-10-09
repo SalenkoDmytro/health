@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, fetchCurrentUser } from './authOperations';
+import { register, login, logout, refresh } from './authOperations';
 
 const initialState = {
   user: { username: '', email: '', id: '' },
   refreshToken: null,
   accessToken: null,
+  sid: '',
   userData: {
     weight: null,
     height: null,
@@ -36,9 +37,9 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
     },
-    [register.rejected]: (state, { payload: { message } }) => {
+    [register.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.error = message;
+      state.error = payload;
     },
     // --------------------LOG IN OPERATION--------------------(fulfilled?)
 
@@ -47,12 +48,13 @@ const authSlice = createSlice({
     },
     [login.fulfilled]: (
       state,
-      { payload: { user, accessToken, refreshToken, id } }
+      { payload: { user, accessToken, refreshToken, id, sid } }
     ) => {
       state.user = user;
 
       state.accessToken = accessToken;
       state.refreshToken = refreshToken;
+      state.sid = sid;
 
       state.userData = user.userData;
       state.user.id = id;
@@ -60,9 +62,9 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
     },
-    [login.rejected]: (state, { payload: { message } }) => {
+    [login.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.error = message;
+      state.error = payload;
     },
     // --------------------LOG OUT OPERATION-------------------- (fulfilled?)
 
@@ -77,17 +79,17 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.isLoading = false;
     },
-    [logout.rejected]: (state, { payload: { message } }) => {
+    [logout.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.error = message;
+      state.error = payload;
     },
     // --------------------REFRESH OPERATION--------------------(sid сохранять надо?)
 
-    [fetchCurrentUser.pending]: state => {
+    [refresh.pending]: state => {
       state.isLoading = true;
       state.isFetchingCurrentUser = true;
     },
-    [fetchCurrentUser.fulfilled]: (
+    [refresh.fulfilled]: (
       state,
       { payload: { newRefreshToken, newAccessToken } }
     ) => {
@@ -98,9 +100,9 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isFetchingCurrentUser = false;
     },
-    [fetchCurrentUser.rejected]: (state, { payload: { message } }) => {
+    [refresh.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.error = message;
+      state.error = payload;
       state.isFetchingCurrentUser = false;
     },
   },

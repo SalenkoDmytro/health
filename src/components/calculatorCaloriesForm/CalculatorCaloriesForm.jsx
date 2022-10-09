@@ -9,28 +9,36 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import { grey, orange, pink } from '@mui/material/colors';
 
-import { selectAccessToken } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/user/userSelectors';
+import { selectAccessToken, selectSID } from 'redux/auth/authSelectors';
+import { getUserData, selectUser } from 'redux/user/userSelectors';
 import {
   dailyRateAuthorized,
   dailyRateUnauthorized,
 } from 'redux/daily/dailyOperations';
-import { fetchCurrentUser } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 import BpRadio, { RadioStyled } from './CalculatorCaloriesForm.styled';
+import { getUser } from '../../redux/user/userOperations';
 
 function CalculatorCaloriesForm({ openModal }) {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
   const userData = useSelector(getUserData);
+  const user = useSelector(selectUser);
+  // console.log('isAuth',isAuth);
+  // console.log('userData',userData);
 
-  useEffect(() => {
-    if (isAuth) {
-      dispatch(fetchCurrentUser());
-    }
-  }, [dispatch, isAuth]);
+  // useEffect(() => {
+  //   if (isAuth && !userData) {
+  //     dispatch(getUser());
+  //   }
+  //   // if (!isAuth) {
+  //   //   console.log('isAuth', isAuth);
+  //   //   dispatch(refresh(sid));
+  //   // }
+  // }, [dispatch, isAuth, userData]);
 
-  console.log(userData);
+  console.log('userData', userData);
+  // console.log(userData);
 
   // ------- Валідація для форми -------
 
@@ -73,14 +81,13 @@ function CalculatorCaloriesForm({ openModal }) {
         userData && userData.bloodType ? userData.bloodType.toString() : '',
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      console.log(values);
+    onSubmit: (values) => {
+      console.log('values',values);
       if (isAuth) {
-        dispatch(dailyRateUnauthorized(values));
-        console.log(values);
+        dispatch(dailyRateAuthorized({ userId: user.id, ...values }));
+        console.log('values1',values);
       } else {
-        dispatch(dailyRateAuthorized(values));
-
+        dispatch(dailyRateUnauthorized(values));
         if (openModal) {
           setTimeout(() => {
             openModal();

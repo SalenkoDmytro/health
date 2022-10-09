@@ -5,15 +5,7 @@ const initialState = {
     email: '',
     username: '',
     id: '',
-    userData: {
-      weight: null,
-      height: null,
-      age: null,
-      bloodType: null,
-      desiredWeight: null,
-      dailyRate: null,
-      notAllowedProducts: [],
-    },
+    userData: null,
     days: [],
   isLoading: false,
   isLoggedIn: false,
@@ -29,8 +21,11 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
       },
       [getUser.fulfilled]: (state, action) => {
-        state.status = 'resolved';
-        state.item = action.payload;
+        const { username, id, email } = action.payload;
+        state.userData = action.payload.userData;
+        state.id = id;
+        state.email = email;
+        state.username = username;
       },
       [getUser.rejected]: (state, action) => {
         state.error = action.payload;

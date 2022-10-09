@@ -22,9 +22,9 @@ export const dailyRateUnauthorized = createAsyncThunk(
 // -------------------AUTHORIZED USER-------------------
 export const dailyRateAuthorized = createAsyncThunk(
   'dailyRate/calcAuth',
-  async (userId, params, { rejectWithValue }) => {
+  async ( {userId, ...params} , { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/daily-rate/${userId}`, params);
+      const { data } = await axios.post(`/daily-rate/${userId}`, params);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
