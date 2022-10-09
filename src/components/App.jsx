@@ -1,7 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AppBar from 'components/appBar';
+import Logo from 'components/logo';
+import UserInfo from 'components/userInfo/UserInfo';
 import Loader from './Loader';
-import Header from './header';
 
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
@@ -12,9 +14,13 @@ const RegistrationPage = lazy(() => import('page/registrationPage'));
 export default function App() {
   return (
     <>
-      <Header />
+      <header>
+        <Logo />
+        <AppBar />
+        <UserInfo />
+      </header>
 
-      <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/diary" element={<DiaryPage />} />
@@ -22,7 +28,7 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
-      </Suspense>
+        </Suspense>
     </>
   );
 }

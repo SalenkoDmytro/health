@@ -1,20 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectUserName } from 'redux/auth/authSelectors';
-import { logout } from '../../redux/auth/authOperations';
-import { Wrapper, Text, Button } from './UserInfo.styled';
+import { selectUser } from 'redux/user/userSelectors';
 
 function UserInfo() {
-  const dispatch = useDispatch();
+  const isLogin = useSelector(selectUser);
   const userName = useSelector(selectUserName);
-
-  return (
-    <Wrapper>
-      <Text>{userName}</Text>
-      <Button type="button" onClick={() => dispatch(logout())}>
-        Выйти
-      </Button>
-    </Wrapper>
-  );
+  console.log(userName);
+  return <>{isLogin ? <p>{userName}</p> : <p>Noot logined</p>}</>;
 }
 export default UserInfo;
