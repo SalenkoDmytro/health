@@ -13,7 +13,7 @@ function UserInfo() {
   return (
     <Wrapper>
       {isMobile && (
-        <BackButton to="/diary">
+        <BackButton to="diary">
           <IoReturnDownBackSharp size={25} />
         </BackButton>
       )}
