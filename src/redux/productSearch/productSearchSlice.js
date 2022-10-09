@@ -21,9 +21,9 @@ const productSlice = createSlice({
       state.product = payload;
       state.isLoading = false;
     },
-    [productSearch.rejected]: (state, { payload: { message } }) => {
+    [productSearch.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.error = message;
+      state.error = payload;
     },
   },
 });

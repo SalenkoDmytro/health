@@ -35,6 +35,7 @@ function LoginForm() {
     setEmail('');
     setPassword('');
   };
+
   return (
     <FormContainer>
       <FormTitle>Вход</FormTitle>

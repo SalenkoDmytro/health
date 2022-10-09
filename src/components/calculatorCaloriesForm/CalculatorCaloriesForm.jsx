@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 // import TextField from '@mui/material/TextField';
 
-import { selectAccessToken } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/user/userSelectors';
+import { selectAccessToken, selectSID } from 'redux/auth/authSelectors';
+import { getUserData, selectUser } from 'redux/user/userSelectors';
 import {
   dailyRateAuthorized,
   dailyRateUnauthorized,
 } from 'redux/daily/dailyOperations';
+
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 import BpRadio, { RadioStyled } from './CalculatorCaloriesForm.styled';
@@ -31,12 +32,22 @@ function CalculatorCaloriesForm({ openModal }) {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
   const userData = useSelector(getUserData);
+  const user = useSelector(selectUser);
+  // console.log('isAuth',isAuth);
+  // console.log('userData',userData);
 
   // useEffect(() => {
-  //   if (isAuth) {
-  //     dispatch(fetchCurrentUser());
+
+  //   if (isAuth && !userData) {
+  //     dispatch(getUser());
   //   }
-  // }, [dispatch, isAuth]);
+  //   // if (!isAuth) {
+  //   //   console.log('isAuth', isAuth);
+  //   //   dispatch(refresh(sid));
+  //   // }
+  // }, [dispatch, isAuth, userData]);
+
+  console.log('userData', userData);
 
   // console.log(userData);
 
@@ -81,15 +92,14 @@ function CalculatorCaloriesForm({ openModal }) {
         userData && userData.bloodType ? userData.bloodType.toString() : '',
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      // console.log(values);
-      if (isAuth) {
-        dispatch(dailyRateAuthorized(values));
 
-        console.log(dispatch(dailyRateAuthorized(values)));
+    onSubmit: values => {
+      console.log('values', values);
+      if (isAuth) {
+        dispatch(dailyRateAuthorized({ userId: user.id, ...values }));
+        console.log('values1', values);
       } else {
         dispatch(dailyRateUnauthorized(values));
-
         if (openModal) {
           setTimeout(() => {
             openModal();
