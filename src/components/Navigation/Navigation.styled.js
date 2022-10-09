@@ -15,6 +15,8 @@ export const List = styled.ul`
 `;
 
 export const NavLinks = styled(NavLink)`
+  display: block;
+  padding: 20px;
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 18px;
   line-height: ${({ theme }) => theme.lineHeights.title};
@@ -32,6 +34,7 @@ export const NavLinks = styled(NavLink)`
     display: flex;
     align-items: flex-end;
     height: 32px;
+    padding: 0;
     font-family: ${({ theme }) => theme.fonts.heading};
     font-size: ${({ theme }) => theme.fontSizes.s};
     line-height: ${({ theme }) => theme.lineHeights.nav};

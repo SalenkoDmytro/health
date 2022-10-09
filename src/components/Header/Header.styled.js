@@ -23,6 +23,7 @@ export const HeaderStyled = styled.header`
 
 export const MobMenu = styled.div`
   position: fixed;
+  z-index: 1;
   padding: 60px 20px;
   height: 100vh;
   width: 100%;

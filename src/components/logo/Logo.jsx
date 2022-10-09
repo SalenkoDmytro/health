@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import useMatchMedia from 'hooks/useMatchMedia';
@@ -16,7 +17,7 @@ function Logo() {
   const isLogin = useSelector(selectIsLoggedIn);
 
   return (
-    <>
+    <Link to="diary">
       {isMobile ? (
         isLogin ? (
           <img
@@ -56,7 +57,7 @@ function Logo() {
           height={66}
         />
       ) : null}
-    </>
+    </Link>
   );
 }
 

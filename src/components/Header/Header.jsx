@@ -12,7 +12,7 @@ import useMatchMedia from 'hooks/useMatchMedia';
 function Header() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const isLogin = useSelector(selectIsLoggedIn);
-  const { isDesktop, isTablet } = useMatchMedia();
+  const { isDesktop, isTablet, isMobile } = useMatchMedia();
 
   const toggleMenu = () => {
     setMobileMenuIsOpen(mobileMenuIsOpen => !mobileMenuIsOpen);
@@ -51,7 +51,7 @@ function Header() {
           </>
         )}
       </HeaderStyled>
-
+      {isMobile && isLogin && !mobileMenuIsOpen && <UserInfo />}
       {!isDesktop && isLogin && mobileMenuIsOpen && (
         <MobMenu>
           <Navigation closeMobMenu={closeMobMenu} />

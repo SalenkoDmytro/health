@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   margin-left: auto;
   display: flex;
+  @media (max-width: 767px) {
+    padding: 4px 20px;
+    justify-content: flex-end;
+    background-color: ${({ theme }) => theme.colors.primaryBackground};
+  } ;
 `;
 
 export const Text = styled.span`
