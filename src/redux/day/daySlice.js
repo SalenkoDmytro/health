@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addDay, deleteDay } from './dayOperations';
+import { addDay, deleteDay, addDayInfo } from './dayOperations';
 
 const daySlice = createSlice({
   name: 'contacts',
   initialState: {
     day: null,
-    token: null,
     isLoading: false,
-    isLoggedIn: false,
     error: null,
   },
   reducers: {
@@ -18,35 +16,35 @@ const daySlice = createSlice({
   extraReducers: {
     //addNewDay
     [addDay.pending]: (state) => {
-      state.isLoggedIn = true;
+      state.isLoading = true;
       state.error = null;
     },
     [addDay.fulfilled]: (state, action) => {
-      state.item.push(action.payload);
+      state.day = action.payload
     },
     [addDay.rejected]: (state, action) => {
       state.error = action.payload;
     },
     //deleteDay
     [deleteDay.pending]: (state) => {
-      state.isLoggedIn = true;
+      state.isLoading = true;
       state.error = null;
     },
     [deleteDay.fulfilled]: (state, action) => {
-      state.item = state.item.filter(contact => contact.id !== action.payload.id);
+      state.day = null;
     },
     [deleteDay.rejected]: (state, action) => {
       state.error = action.payload;
     },
     //addDayInformation
-    [addDay.pending]: (state) => {
-      state.isLoggedIn = true;
+    [addDayInfo.pending]: (state) => {
+      state.isLoading = true;
       state.error = null;
     },
-    [addDay.fulfilled]: (state, action) => {
-      state.item.push(action.payload);
+    [addDayInfo.fulfilled]: (state, action) => {
+      state.day = action.payload;
     },
-    [addDay.rejected]: (state, action) => {
+    [addDayInfo.rejected]: (state, action) => {
       state.error = action.payload;
     },
   },

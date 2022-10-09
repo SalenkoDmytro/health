@@ -21,7 +21,7 @@ export const theme = {
       secondaryBackground: '#FFFFFF',
       accent: '#FC842D',
       border: '#FC842D',
-      primaryText: 'FC842D',
+      primaryText: '#FC842D',
       secondaryText: '#FFFFFF',
     },
 

@@ -1,13 +1,25 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASIC_URL = 'https://slimmom-backend.goit.global';
+axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 export const addDay = createAsyncThunk(
   'add/addDay',
   async ( date , thunkAPI) => {
     try {
-      const res = await axios.post(`${BASIC_URL}/day`,  date );
+      const tokenLS = thunkAPI.getState().auth.accessToken;
+
+      token.set(tokenLS)
+      const res = await axios.post('/day',  date );
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue('Sorry, can\'t add new day, server Error!');
@@ -17,10 +29,15 @@ export const addDay = createAsyncThunk(
 
 export const deleteDay = createAsyncThunk(
   'delete/deleteDay',
-  async (id, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      await axios.delete(`${BASIC_URL}/day/${id}`);
-      return { id };
+      const tokenLS = thunkAPI.getState().auth.accessToken;
+
+      token.set(tokenLS)
+      await axios.delete(`/day`, {
+        data
+      });
+      return data;
     } catch (err) {
       return thunkAPI.rejectWithValue('Sorry, can\'t delete day, server Error!');
     }
@@ -31,7 +48,10 @@ export const addDayInfo = createAsyncThunk(
   'addInfo/addDayInfo',
   async ( date , thunkAPI) => {
     try {
-      const res = await axios.post(`${BASIC_URL}/day/info`,  date );
+      const tokenLS = thunkAPI.getState().auth.accessToken;
+
+      token.set(tokenLS)
+      const res = await axios.post('/day/info',  date );
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue('Sorry, can\'t add new information, server Error!');
