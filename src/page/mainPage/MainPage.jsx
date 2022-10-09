@@ -14,6 +14,7 @@ function MainPage() {
     handleBackdropClick,
   } = useToggleModal();
 
+function MainPage(props) {
   return (
     <>
       <DailyCaloriesForm />
@@ -31,6 +32,7 @@ function MainPage() {
       )}
     </>
   );
+
 }
 
 export default MainPage;

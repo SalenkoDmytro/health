@@ -5,6 +5,8 @@ import Logo from 'components/logo';
 import UserInfo from 'components/userInfo/UserInfo';
 import Loader from './Loader';
 
+export default function App() {
+
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
 const CalculatorPage = lazy(() => import('page/calculatorPage'));
@@ -19,7 +21,6 @@ export default function App() {
         <AppBar />
         <UserInfo />
       </header>
-
 
         <Suspense fallback={<Loader />}>
         <Routes>
