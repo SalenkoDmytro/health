@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useFormik } from 'formik';
 // import TextField from '@mui/material/TextField';
 
-import { selectAccessToken, selectSID } from 'redux/auth/authSelectors';
+import { selectAccessToken } from 'redux/auth/authSelectors';
 import { getUserData, selectUser } from 'redux/user/userSelectors';
 import {
   dailyRateAuthorized,
