@@ -1,8 +1,12 @@
 import React from 'react';
+import RegistrationForm from '../../components/registrationForm/RegistrationForm';
 
-function RegistrationPage(props) {
+function RegistrationPage() {
   return (
-    <div>RegistrationPage</div>
+    <>
+      <RegistrationForm/>
+    </>
+
   );
 }
 
