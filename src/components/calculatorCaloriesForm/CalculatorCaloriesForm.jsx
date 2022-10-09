@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useFormik } from 'formik';
 // import TextField from '@mui/material/TextField';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { selectAccessToken } from 'redux/auth/authSelectors';
 import { getUserData } from 'redux/user/userSelectors';
@@ -17,6 +15,17 @@ import {
 import Button from 'components/common/button/Button';
 import BpRadio, { RadioStyled } from './CalculatorCaloriesForm.styled';
 import { InputStyled } from './CalculatorCaloriesForm.styled';
+import { CalcFormWrapper } from './CalculatorCaloriesForm.styled';
+import { UserMainDataWrapper } from './CalculatorCaloriesForm.styled';
+import { BtnGroup } from './CalculatorCaloriesForm.styled';
+import { MainForm } from './CalculatorCaloriesForm.styled';
+import { FormContent } from './CalculatorCaloriesForm.styled';
+import { FormTitle } from './CalculatorCaloriesForm.styled';
+import { BloodText } from './CalculatorCaloriesForm.styled';
+import { BloodGroup } from './CalculatorCaloriesForm.styled';
+import { StyledRadioGroup } from './CalculatorCaloriesForm.styled';
+import { BloodTextRed } from './CalculatorCaloriesForm.styled';
+import { ControlLabel } from './CalculatorCaloriesForm.styled';
 
 function CalculatorCaloriesForm({ openModal }) {
   const dispatch = useDispatch();
@@ -56,7 +65,7 @@ function CalculatorCaloriesForm({ openModal }) {
           message: 'Желаемый вес должен быть меньше текущего',
         });
       }),
-    bloodType: Yup.number().required('Обязательно'),
+    bloodType: Yup.number().required('Обязательно *'),
   });
 
   // ------- формік для матеріал UI -------
@@ -91,108 +100,124 @@ function CalculatorCaloriesForm({ openModal }) {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <MainForm onSubmit={formik.handleSubmit}>
       {isAuth ? (
-        <h2>Узнай свою суточную норму калорий</h2>
+        <FormTitle>Узнай свою суточную норму калорий</FormTitle>
       ) : (
-        <h2>Просчитай свою суточную норму калорий прямо сейчас</h2>
+        <FormTitle>
+          Просчитай свою суточную норму калорий прямо сейчас
+        </FormTitle>
       )}
-      <div>
-        <InputStyled
-          required
-          id="height"
-          name="height"
-          label="Рост"
-          type="number"
-          value={formik.values.height}
-          onChange={formik.handleChange}
-          error={formik.touched.height && Boolean(formik.errors.height)}
-          helperText={formik.touched.height && formik.errors.height}
-          variant="standard"
-        />
-        <InputStyled
-          required
-          id="age"
-          name="age"
-          label="Возраст"
-          type="number"
-          value={formik.values.age}
-          onChange={formik.handleChange}
-          error={formik.touched.age && Boolean(formik.errors.age)}
-          helperText={formik.touched.age && formik.errors.age}
-          variant="standard"
-        />
-        <InputStyled
-          required
-          id="weight"
-          name="weight"
-          label="Вес"
-          type="number"
-          value={formik.values.weight}
-          onChange={formik.handleChange}
-          error={formik.touched.weight && Boolean(formik.errors.weight)}
-          helperText={formik.touched.weight && formik.errors.weight}
-          variant="standard"
-        />
-        <InputStyled
-          required
-          id="desiredWeight"
-          name="desiredWeight"
-          label="Желаемый вес"
-          type="number"
-          value={formik.values.desiredWeight}
-          onChange={formik.handleChange}
-          error={
-            formik.touched.desiredWeight && Boolean(formik.errors.desiredWeight)
-          }
-          helperText={
-            formik.touched.desiredWeight && formik.errors.desiredWeight
-          }
-          variant="standard"
-        />
-        <>
-          <p>Группа крови*</p>
-          <RadioGroup
-            row
-            required
-            id="bloodType"
-            name="bloodType"
-            defaultValue="1"
-            onChange={formik.handleChange}
-          >
-            <FormControlLabel
-              name="bloodType"
-              value="1"
-              control={<BpRadio />}
-              label="1"
-            />
-            <FormControlLabel
-              name="bloodType"
-              value="2"
-              control={<BpRadio />}
-              label="2"
-            />
-            <FormControlLabel
-              name="bloodType"
-              value="3"
-              control={<BpRadio />}
-              label="3"
-            />
-            <RadioStyled
-              name="bloodType"
-              value="4"
-              control={<BpRadio />}
-              label="4"
-              sx={{
-                fontFamily: 'Verdana',
-              }}
-            />
-          </RadioGroup>
-        </>
-      </div>
 
-      <Button type="submit">Похудеть</Button>
-    </form>
+      <FormContent>
+        <CalcFormWrapper>
+          <UserMainDataWrapper>
+            <InputStyled
+              required
+              id="height"
+              name="height"
+              label="Рост"
+              type="number"
+              value={formik.values.height}
+              onChange={formik.handleChange}
+              error={formik.touched.height && Boolean(formik.errors.height)}
+              helperText={formik.touched.height && formik.errors.height}
+              variant="standard"
+            />
+            <InputStyled
+              required
+              id="age"
+              name="age"
+              label="Возраст"
+              type="number"
+              value={formik.values.age}
+              onChange={formik.handleChange}
+              error={formik.touched.age && Boolean(formik.errors.age)}
+              helperText={formik.touched.age && formik.errors.age}
+              variant="standard"
+            />
+            <InputStyled
+              required
+              id="weight"
+              name="weight"
+              label="Вес"
+              type="number"
+              value={formik.values.weight}
+              onChange={formik.handleChange}
+              error={formik.touched.weight && Boolean(formik.errors.weight)}
+              helperText={formik.touched.weight && formik.errors.weight}
+              variant="standard"
+            />
+          </UserMainDataWrapper>
+          <UserMainDataWrapper>
+            <InputStyled
+              required
+              id="desiredWeight"
+              name="desiredWeight"
+              label="Желаемый вес"
+              type="number"
+              value={formik.values.desiredWeight}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.desiredWeight &&
+                Boolean(formik.errors.desiredWeight)
+              }
+              helperText={
+                formik.touched.desiredWeight && formik.errors.desiredWeight
+              }
+              variant="standard"
+            />
+            <BloodGroup>
+              {formik.touched.bloodType && Boolean(formik.errors.bloodType) ? (
+                <BloodTextRed>Группа крови *</BloodTextRed>
+              ) : (
+                <BloodText>Группа крови *</BloodText>
+              )}
+
+              <StyledRadioGroup
+                row
+                required
+                id="bloodType"
+                name="bloodType"
+                value={formik.values.bloodType}
+                onChange={formik.handleChange}
+              >
+                <ControlLabel
+                  name="bloodType"
+                  value="1"
+                  control={<BpRadio />}
+                  label="1"
+                />
+                <ControlLabel
+                  name="bloodType"
+                  value="2"
+                  control={<BpRadio />}
+                  label="2"
+                />
+                <ControlLabel
+                  name="bloodType"
+                  value="3"
+                  control={<BpRadio />}
+                  label="3"
+                />
+                <ControlLabel
+                  name="bloodType"
+                  value="4"
+                  control={<BpRadio />}
+                  label="4"
+                />
+              </StyledRadioGroup>
+              {formik.touched.bloodType && formik.errors.bloodType && (
+                <BloodTextRed>{formik.errors.bloodType}</BloodTextRed>
+              )}
+            </BloodGroup>
+          </UserMainDataWrapper>
+        </CalcFormWrapper>
+        <BtnGroup>
+          <Button type="submit">Похудеть</Button>
+        </BtnGroup>
+      </FormContent>
+    </MainForm>
   );
 }
 
