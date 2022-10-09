@@ -36,10 +36,10 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
-  dailyRate: persistReducer(persistConfig, dailyReducer),
-  product: persistReducer(persistConfig, productReducer),
-  day: persistReducer(persistConfig, dayReducer),
-  user: persistReducer(persistConfig, userReducer),
+  dailyRate:  dailyReducer,
+  product: productReducer,
+  day: dayReducer,
+  user: userReducer,
 });
 
 // Persisting token field from auth slice to localstorage

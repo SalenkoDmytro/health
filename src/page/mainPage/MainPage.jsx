@@ -1,7 +1,7 @@
 import DailyCaloriesForm from 'components/dailyCaloriesForm/DailyCaloriesForm';
+import DailyCaloriesIntake from 'components/dailyCaloriesIntake/DailyCaloriesIntake';
 import Button from 'components/common/button/Button';
 import Modal from 'components/common/modal/Modal';
-
 import useToggleModal from 'hooks/toggleModal';
 
 function MainPage() {
@@ -21,12 +21,12 @@ function MainPage() {
       <Button onClick={() => openModal()}>Open Modal</Button>
       {isOpen && (
         <Modal
+          // hasBtnClose={false}
           closeModal={closeModal}
           handleKeyDown={handleKeyDown}
           handleBackdropClick={handleBackdropClick}
         >
-          <h1>MODAL Window</h1>
-          <p>My text</p>
+          <DailyCaloriesIntake />
         </Modal>
       )}
     </>
