@@ -4,9 +4,10 @@ import React, { useEffect } from 'react';
 // import DiaryDateCalendar from '../../components/diaryDateCalendar/DiaryDateCalendar';
 import { useDispatch, useSelector } from 'react-redux';
 import { productSearch } from '../../redux/productSearch/productSearchOperations';
+import { selectProduct } from '../../redux/productSearch/productSearchSelectors';
 
 function DiaryPage() {
-  const product = useSelector(state => state.product);
+  const product = useSelector(selectProduct);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productSearch('хлеб'))
