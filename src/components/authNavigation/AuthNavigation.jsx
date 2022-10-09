@@ -8,7 +8,7 @@ function AuthNavigation() {
         <AccentLink to="login">Вход</AccentLink>
       </Li>
       <Li>
-        <LinkStyled to="register">Регистрация</LinkStyled>
+        <LinkStyled to="registration">Регистрация</LinkStyled>
       </Li>
     </List>
   );
