@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
-function DiaryDateСalendar(props) {
+import svg from '../../assets/images/calendar-svg.svg';
+
+const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
 
-  const createDate = date => {
-    return { date: date.toISOString().slice(0, 10) };
-  };
-
   return (
-    <DatePicker
-      selected={startDate}
-      dateFormat="dd.MM.yyyy"
-      onChange={date => setStartDate(date)}
-    />
+    <div>
+      <DatePicker
+        selected={startDate}
+        dateFormat="dd.MM.yyyy"
+        onChange={date => setStartDate(date)}
+      />
+      <svg>
+        <use href={svg + '#calendar'}></use>
+      </svg>
+    </div>
   );
-}
+};
 
-export default DiaryDateСalendar;
+export default DiaryDateCalendar;
