@@ -14,7 +14,7 @@ import {
 
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
-import BpRadio, { RadioStyled } from './CalculatorCaloriesForm.styled';
+import BpRadio from './CalculatorCaloriesForm.styled';
 import { InputStyled } from './CalculatorCaloriesForm.styled';
 import { CalcFormWrapper } from './CalculatorCaloriesForm.styled';
 import { UserMainDataWrapper } from './CalculatorCaloriesForm.styled';
