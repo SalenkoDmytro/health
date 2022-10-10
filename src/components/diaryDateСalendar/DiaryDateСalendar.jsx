@@ -5,8 +5,8 @@ import s from './diaryDateCalendar.module.css';
 
 import svg from '../../assets/images/calendar-svg.svg';
 
-const DiaryDateCalendar = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const DiaryDateCalendar = ({ getDate, startDate }) => {
+  // const [startDate, setStartDate] = useState(new Date());
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <div className={s.Calendar}>
       <p className={s.Date}>{value}</p>
@@ -22,7 +22,7 @@ const DiaryDateCalendar = () => {
   return (
     <DatePicker
       selected={startDate}
-      onChange={date => setStartDate(date)}
+      onChange={date => getDate(date)}
       customInput={<CustomInput />}
       dateFormat="dd.MM.yyyy"
     />

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderStyled = styled.header`
   display: flex;
+  position: absolute;
 
   @media (max-width: 767px) {
     padding: 20px 20px 16px;
