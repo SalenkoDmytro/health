@@ -19,7 +19,7 @@ import {
 } from './DiaryAddProductForm.styled';
 import addIcon from 'assets/icons/addProduct.svg';
 
-export default function DiaryAddProductForm() {
+export default function DiaryAddProductForm({ date }) {
   const [searchProductRes, setSearchProductRes] = useState('');
   const product = useSelector(selectProduct);
   const dispatch = useDispatch();
@@ -40,7 +40,6 @@ export default function DiaryAddProductForm() {
     if (searchProductRes.trim().length >= 2) {
       dispatch(productSearch(searchProductRes));
     }
-
     // console.log('actions', actions);
   };
 
@@ -54,7 +53,7 @@ export default function DiaryAddProductForm() {
 
   const handleSubmit = (values, actions) => {
     const obj = {
-      date: '2020-12-31',
+      date: date,
       productId: product[0]._id,
       weight: values.productWeight,
     };
@@ -62,7 +61,7 @@ export default function DiaryAddProductForm() {
     // console.log(product[0]._id);
     dispatch(addDay(obj));
 
-    // console.log(obj);
+    console.log(product);
     // dispatch(productSearch(values.text));
     // actions.resetForm();
   };

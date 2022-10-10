@@ -17,7 +17,7 @@ export const HeaderStyled = styled.header`
 
   @media (min-width: 1200px) {
     align-items: baseline;
-    padding: 80px 16px;
+    padding: 80px 16px 80px 90px;
   }
 `;
 
