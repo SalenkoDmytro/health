@@ -1,24 +1,31 @@
-import React, { useEffect } from 'react';
-// import DiaryProductsList from '../../components/diaryProductsList/DiaryProductsList';
-// import DailyCaloriesForm from '../../components/dailyCaloriesForm/DailyCaloriesForm';
-// import DiaryDateCalendar from '../../components/diaryDateCalendar/DiaryDateCalendar';
-import { useDispatch, useSelector } from 'react-redux';
-import { productSearch } from '../../redux/productSearch/productSearchOperations';
-import { selectProduct } from '../../redux/productSearch/productSearchSelectors';
+import React, { useState } from 'react';
+import DiaryProductsList from '../../components/diaryProductsList/DiaryProductsList';
+import DailyCaloriesForm from '../../components/dailyCaloriesForm/DailyCaloriesForm';
+import DiaryDateСalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
+import RightSideBar from 'components/rightSideBar/RightSideBar';
+import s from './diaryPage.module.css';
+import Box from 'components/common/box';
+import { flex } from 'styled-system';
 
 function DiaryPage() {
-  const product = useSelector(selectProduct);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(productSearch('хлеб'))
-  }, [dispatch]);
-  console.log('product',product);
+  const [date, setDate] = useState(new Date());
+
+  const getDate = (date = new Date()) => {
+    setDate(date);
+  };
+
+  console.log(date);
   return (
-    <>
-      {/* <DiaryDateСalendar />
-      <DailyCaloriesForm />
-      <DiaryProductsList /> */}
-    </>
+    <Box display="flex">
+      <Box width="60%" ml="9%">
+        <DiaryDateСalendar getDate={getDate} startDate={date} />
+        <DailyCaloriesForm />
+        <DiaryProductsList />
+      </Box>
+      <Box width="40%">
+        <RightSideBar date={date} />
+      </Box>
+    </Box>
   );
 }
 
