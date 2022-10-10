@@ -16,10 +16,8 @@ export const register = createAsyncThunk(
   'auth/register',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/auth/register', user);
-      token.set(data.token);
-      console.log(data);
-      return data;
+      await axios.post('/auth/register', user);
+      window.location = "/health-care-project/login"
     } catch (error) {
       return rejectWithValue(error.message);
     }
