@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  getDefaultMiddleware,
-  combineReducers,
-} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -20,34 +16,28 @@ import dailyReducer from './daily/dailySlice';
 import dayReducer from './day/daySlice';
 import userReducer from './user/userSlice';
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-];
-
 const persistConfig = {
   key: 'auth',
   storage,
   whitelist: ['accessToken', 'refreshToken', 'sid'],
 };
 
-const rootReducer = combineReducers({
-  auth: persistReducer(persistConfig, authReducer),
-  dailyRate:  dailyReducer,
-  product: productReducer,
-  day: dayReducer,
-  user: userReducer,
-});
-
-// Persisting token field from auth slice to localstorage
-
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware,
-  devTools: process.env.NODE_ENV === 'development',
+  reducer: {
+    auth: persistReducer(persistConfig, authReducer),
+    dailyRate: dailyReducer,
+    product: productReducer,
+    day: dayReducer,
+    user: userReducer,
+  },
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE,
+          PERSIST, PURGE, REGISTER],
+      },
+    });
+  },
 });
 
 export const persistor = persistStore(store);
