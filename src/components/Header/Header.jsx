@@ -27,7 +27,7 @@ function Header() {
       <HeaderStyled>
         {isLogin ? (
           <>
-            <Logo />
+            <Logo closeMobMenu={closeMobMenu} />
             {isTablet && <UserInfo />}
             {isDesktop ? (
               <>
