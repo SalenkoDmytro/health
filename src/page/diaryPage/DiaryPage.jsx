@@ -22,6 +22,7 @@ function DiaryPage() {
         <DiaryDateСalendar />
         <DailyCaloriesForm />
         <DiaryProductsList />
+        ;l
       </div>
       <div className={s.RightPart}>
         <RightSideBar />
