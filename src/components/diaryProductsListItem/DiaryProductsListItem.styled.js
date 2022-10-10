@@ -1,42 +1,45 @@
+import { IoIosClose } from 'react-icons/io';
 import styled from 'styled-components';
 import { device } from 'utils/device';
 
-export const StyledItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  font-family: ${p => p.theme.fonts.main};
-  font-size: ${p => p.theme.fontSizes.s};
-  line-height: ${p => p.theme.lineHeights.text};
-  letter-spacing: ${p => p.theme.letterSpacing.l};
-  color: ${p => p.theme.fontWeights.normal};
-`;
-
 export const StyledNameText = styled.p`
-  width: 45%;
-  padding-bottom: ${p => `${p.theme.space[4] + 4}px`};
+  width: 46%;
   border-bottom: 1px solid #e0e0e0;
+  padding-bottom: ${p => `${p.theme.space[3]}px`};
 
-  @media ${device.mobile} {
-    background-color: teal;
-  }
-  @media ${device.fablet} {
-    background-color: green;
-  }
   @media ${device.tablet} {
-    background-color: tomato;
-  }
-  @media ${device.desktop} {
-    background-color: yellow;
+    width: 39%;
+    padding-bottom: ${p => `${p.theme.space[4] + 4}px`};
   }
 `;
 
 export const StyledNumberText = styled.p`
-  width: 20%;
-  /* padding-bottom: ${p => `${p.theme.space[4] + 4}px`}; */
+  width: 18%;
+  padding-bottom: ${p => `${p.theme.space[3]}px`};
   border-bottom: 1px solid #e0e0e0;
   text-align: right;
+
+  @media ${device.tablet} {
+    padding-bottom: ${p => `${p.theme.space[4] + 4}px`};
+    width: 17%;
+  }
 `;
 
-// @media screen and(min - width: 40em){
+export const StyledIconClose = styled(IoIosClose)`
+  width: ${p => `${p.theme.space[3] + 2}px`};
+  height: ${p => `${p.theme.space[3] + 2}px`};
+  color: ${p => p.theme.colors.button.icon};
 
-// }
+  :hover,
+  focus {
+    color: ${p => p.theme.colors.accent};
+    transform: scale(1.1);
+    transition: all 250 ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: color, transform;
+  }
+
+  @media ${device.fablet} {
+    width: ${p => `${p.theme.space[4] - 4}px`};
+    height: ${p => `${p.theme.space[4] - 4}px`};
+  }
+`;

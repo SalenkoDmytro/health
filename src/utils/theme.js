@@ -102,7 +102,7 @@ export const theme = {
     round: '50%',
   },
   animation: {
-    cubic: '250 ms cubic-bezier(0.4, 0, 0.2, 1)',
+    cubic: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   breakpoints: ['320px', '480px', '768px', '1200px'],
