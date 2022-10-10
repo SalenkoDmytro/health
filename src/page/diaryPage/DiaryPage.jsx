@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { productSearch } from '../../redux/productSearch/productSearchOperations';
 import { selectProduct } from '../../redux/productSearch/productSearchSelectors';
 import { paddingLeft } from 'styled-system';
+import s from './diaryPage.module.css';
 
 function DiaryPage() {
   const product = useSelector(selectProduct);
@@ -16,13 +17,13 @@ function DiaryPage() {
   }, [dispatch]);
   console.log('product', product);
   return (
-    <div style={{ display: 'flex' }}>
-      <div style={{ width: '60%' }}>
+    <div className={s.Wrapper}>
+      <div className={s.LeftPart}>
         <DiaryDateСalendar />
         <DailyCaloriesForm />
         <DiaryProductsList />
       </div>
-      <div style={{ width: '40%' }}>
+      <div className={s.RightPart}>
         <RightSideBar />
       </div>
     </div>

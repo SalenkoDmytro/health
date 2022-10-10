@@ -1,0 +1,12 @@
+.Wrapper{
+    display: flex;
+}
+
+.LeftPart{
+    width: 60%;
+    margin-left: 115px;
+}
+
+.RightPart{
+    width: 40%;
+}
