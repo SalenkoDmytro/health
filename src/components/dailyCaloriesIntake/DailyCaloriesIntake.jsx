@@ -11,11 +11,12 @@ import Box from 'components/common/box';
 import { useDispatch, useSelector } from 'react-redux';
 import { dailyRateUnauthorized } from 'redux/daily/dailyOperations';
 import { selectDailyProducts } from 'redux/daily/dailySelectors';
+import { NavLink } from 'react-router-dom';
 
 const initial = {
   weight: 110,
   height: 186,
-  age: 36,
+  age: 30,
   desiredWeight: 85,
   bloodType: 2,
 };
@@ -30,7 +31,7 @@ function DailyCaloriesIntake() {
 
   function randomProducts(product) {
     const arr = [];
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < 100; i += 1) {
       const randomIdex = product[Math.floor(Math.random() * product.length)];
       arr.push(randomIdex);
     }
@@ -50,13 +51,30 @@ function DailyCaloriesIntake() {
       <StyledText>
         Продукты, которые вам не рекомендуется употреблять
       </StyledText>
+      {/* <Box
+        width={296}
+        maxHeight={122}
+        overflow="hidden"
+        overflowY="auto"
+        mr="auto"
+        ml="auto"
+        marginBottom={40}
+        > */}
       <StyledList>
         {notAllowedProducts.map((item, index) => {
-          return <li key={index}>{item}</li>;
+          return (
+            <li key={index}>
+              {index + 1}. {item}
+            </li>
+          );
         })}
       </StyledList>
+      {/* </Box> */}
+
       <Box textAlign="center">
-        <Button>Начать худеть</Button>
+        <NavLink to="/registration">
+          <Button>Начать худеть</Button>
+        </NavLink>
       </Box>
     </Box>
   );
