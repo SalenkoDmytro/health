@@ -42,7 +42,7 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('/auth/logout');
+      const { data } = await axios.post('/auth/logout');
       token.unset();
     } catch (error) {
       return rejectWithValue(error.message);
@@ -55,17 +55,19 @@ export const refresh = createAsyncThunk(
   async (sid, { rejectWithValue, getState }) => {
     // ----------------------КУДА СОХРАНЯЕМ ТОКЕН????
 
-    // const tokenLS = getState().auth.refreshToken;
-    //
-    // if (!tokenLS) {
-    //   return rejectWithValue();
-    // }
-    // token.set(tokenLS);
+    const tokenLS = getState().auth.refreshToken;
+
+    if (!tokenLS) {
+      return rejectWithValue('Not logged');
+    }
+
+    token.set(tokenLS);
+
+    //--------------------
 
     try {
       const { data } = await axios.post('/auth/refresh', { sid });
         token.set(data.token);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
