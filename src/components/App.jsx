@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Loader from './Loader';
 import NotFound from 'page/notFoundPage/NotFound';
 import Header from './header';
+import Footer from './footer';
 import PublicRouter from '../utils/PublicRouter';
 import PrivateRoute from '../utils/PrivateRoute';
 import { Container } from './common/container/Container';
@@ -17,42 +18,43 @@ export default function App() {
   return (
     <>
       <Header />
-<Container>
-  <Suspense fallback={<Loader />}>
-    <Routes>
-      <Route path='/' element={
-        <PublicRouter>
-          <MainPage />
-        </PublicRouter>
-      } />
-      <Route path='/diary' element={
-        <PrivateRoute>
-          <DiaryPage />
-        </PrivateRoute>
-      } />
-      <Route path='/calculator' element={
-        <PrivateRoute>
-          <CalculatorPage />
-        </PrivateRoute>
-      } />
-      <Route path='/login' element={
-        <PublicRouter restricted redirectTo='/calculator'>
-          <LoginPage />
-        </PublicRouter>
-      } />
-      <Route path='/registration' element={
-        <PublicRouter restricted redirectTo='/login'>
-          <RegistrationPage />
-        </PublicRouter>
-      } />
-      <Route path='*' element={
-        <PublicRouter>
-          <NotFound />
-        </PublicRouter>
-      } />
-    </Routes>
-  </Suspense>
-</Container>
+      <Container>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path='/' element={
+              <PublicRouter>
+                <MainPage />
+              </PublicRouter>
+            } />
+            <Route path='/diary' element={
+              <PrivateRoute>
+                <DiaryPage />
+              </PrivateRoute>
+            } />
+            <Route path='/calculator' element={
+              <PrivateRoute>
+                <CalculatorPage />
+              </PrivateRoute>
+            } />
+            <Route path='/login' element={
+              <PublicRouter restricted redirectTo='/calculator'>
+                <LoginPage />
+              </PublicRouter>
+            } />
+            <Route path='/registration' element={
+              <PublicRouter restricted redirectTo='/login'>
+                <RegistrationPage />
+              </PublicRouter>
+            } />
+            <Route path='*' element={
+              <PublicRouter>
+                <NotFound />
+              </PublicRouter>
+            } />
+          </Routes>
+        </Suspense>
+        </Container>
+      {/*<Footer />*/}
     </>
   );
 }
