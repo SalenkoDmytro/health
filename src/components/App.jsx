@@ -6,7 +6,6 @@ import Header from './header';
 import PublicRouter from '../utils/PublicRouter';
 import PrivateRoute from '../utils/PrivateRoute';
 
-
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
 const CalculatorPage = lazy(() => import('page/calculatorPage'));
@@ -41,7 +40,7 @@ export default function App() {
             </PublicRouter>
           } />
           <Route path='/registration' element={
-            <PublicRouter restricted redirectTo='/calculator'>
+            <PublicRouter restricted redirectTo='/login'>
               <RegistrationPage />
             </PublicRouter>
           } />
