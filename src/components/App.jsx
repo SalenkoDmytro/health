@@ -15,43 +15,44 @@ const RegistrationPage = lazy(() => import('page/registrationPage'));
 
 export default function App() {
   return (
-    <Container>
+    <>
       <Header />
-
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path='/' element={
-            <PublicRouter>
-              <MainPage />
-            </PublicRouter>
-          } />
-          <Route path='/diary' element={
-            <PrivateRoute>
-              <DiaryPage />
-            </PrivateRoute>
-          } />
-          <Route path='/calculator' element={
-            <PrivateRoute>
-              <CalculatorPage />
-            </PrivateRoute>
-          } />
-          <Route path='/login' element={
-            <PublicRouter restricted redirectTo='/calculator'>
-              <LoginPage />
-            </PublicRouter>
-          } />
-          <Route path='/registration' element={
-            <PublicRouter restricted redirectTo='/login'>
-              <RegistrationPage />
-            </PublicRouter>
-          } />
-          <Route path='*' element={
-            <PublicRouter>
-              <NotFound />
-            </PublicRouter>
-          } />
-        </Routes>
-      </Suspense>
-    </Container>
+<Container>
+  <Suspense fallback={<Loader />}>
+    <Routes>
+      <Route path='/' element={
+        <PublicRouter>
+          <MainPage />
+        </PublicRouter>
+      } />
+      <Route path='/diary' element={
+        <PrivateRoute>
+          <DiaryPage />
+        </PrivateRoute>
+      } />
+      <Route path='/calculator' element={
+        <PrivateRoute>
+          <CalculatorPage />
+        </PrivateRoute>
+      } />
+      <Route path='/login' element={
+        <PublicRouter restricted redirectTo='/calculator'>
+          <LoginPage />
+        </PublicRouter>
+      } />
+      <Route path='/registration' element={
+        <PublicRouter restricted redirectTo='/login'>
+          <RegistrationPage />
+        </PublicRouter>
+      } />
+      <Route path='*' element={
+        <PublicRouter>
+          <NotFound />
+        </PublicRouter>
+      } />
+    </Routes>
+  </Suspense>
+</Container>
+    </>
   );
 }
