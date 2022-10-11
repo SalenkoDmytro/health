@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { device } from 'utils/device';
 
 export const List = styled.ul`
   display: flex;
   margin-left: auto;
 
-  @media (min-width: 1200px) {
+  @media ${device.desktop} {
     margin-left: 20px;
   }
 `;
@@ -23,7 +24,12 @@ export const LinkStyled = styled(Link)`
   letter-spacing: ${({ theme }) => theme.letterSpacing.l};
   text-transform: ${({ theme }) => theme.textTransform.upCase};
   color: ${({ theme }) => theme.colors.text.primaryText};
-  @media (min-width: 1200px) {
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.accent};
+    transition: color ${p => p.theme.animation.cubic};
+  }
+  @media ${device.desktop} {
     align-items: flex-end;
     height: 32px;
   }
@@ -32,7 +38,7 @@ export const LinkStyled = styled(Link)`
 export const AccentLink = styled(LinkStyled)`
   color: ${({ theme }) => theme.colors.text.secondaryText};
   margin-right: 16px;
-  @media (min-width: 1200px) {
+  @media ${device.desktop} {
     &::before {
       content: '';
       height: 32px;
