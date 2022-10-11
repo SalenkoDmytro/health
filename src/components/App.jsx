@@ -18,7 +18,6 @@ export default function App() {
   return (
     <>
       <Header />
-      <Container>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path='/' element={
@@ -53,7 +52,6 @@ export default function App() {
             } />
           </Routes>
         </Suspense>
-        </Container>
       {/*<Footer />*/}
     </>
   );

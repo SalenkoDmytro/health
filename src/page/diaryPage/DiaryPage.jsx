@@ -31,7 +31,7 @@ function DiaryPage() {
 
   return (
     <Box display="flex">
-      <Box width="60%" ml="9%">
+      <Box width="60%" >
         <DiaryDateСalendar getDate={getDate} startDate={date} />
         {/* <DailyCaloriesForm /> */}
         <DiaryAddProductForm date={date} />

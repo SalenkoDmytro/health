@@ -14,6 +14,7 @@ export const device = {
 
   fablet: `(min-width: ${size.fablet})`,
   fabletOnly: `(min-width:${size.fablet}) and (max-width:${size.fabletOnly})`,
+  fabletAndMobileOnly: `(max-width:${size.fabletOnly})`,
 
   tablet: `(min-width: ${size.tablet})`,
   tabletOnly: `(min-width:${size.tablet}) and (max-width:${size.noDesktop})`,
@@ -21,4 +22,3 @@ export const device = {
   noDesktop: `(max-width: ${size.noDesktop})`,
   desktop: `(min-width: ${size.desktop})`,
 };
-
