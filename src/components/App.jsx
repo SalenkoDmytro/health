@@ -3,8 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import Loader from './Loader';
 import NotFound from 'page/notFoundPage/NotFound';
 import Header from './header';
+import Footer from './footer';
+
 import PublicRouter from '../utils/PublicRouter';
 import PrivateRoute from '../utils/PrivateRoute';
+
 
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
@@ -51,6 +54,7 @@ export default function App() {
           } />
         </Routes>
       </Suspense>
+      <Footer />
     </>
   );
 }

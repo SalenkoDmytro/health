@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { device } from 'utils/device';
 
 export const Wrapper = styled.div`
   display: flex;
   margin-left: auto;
-  @media (max-width: 767px) {
+  @media ${device.fabletAndMobileOnly} {
     padding: 4px 20px;
 
     background-color: ${({ theme }) => theme.colors.primaryBackground};
@@ -13,14 +13,16 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   display: flex;
-  @media (max-width: 767px) {
+  @media ${device.fabletAndMobileOnly} {
     margin-left: auto;
   } ;
 `;
 
-export const BackButton = styled(Link)`
+export const BackButton = styled.button`
   display: flex;
   align-items: center;
+  border: none;
+  background-color: transparent;
 `;
 
 export const Text = styled.span`
@@ -46,7 +48,12 @@ export const Button = styled.button`
   line-height: ${({ theme }) => theme.lineHeights.nav};
   letter-spacing: ${({ theme }) => theme.letterSpacing.l};
   color: ${({ theme }) => theme.colors.text.primaryText};
-  @media (min-width: 1200px) {
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.accent};
+    transition: color ${p => p.theme.animation.cubic};
+  }
+  @media ${device.desktop} {
     margin-left: 20px;
   }
 
@@ -56,7 +63,7 @@ export const Button = styled.button`
     width: 2px;
     margin-right: 16px;
     background-color: ${({ theme }) => theme.colors.border};
-    @media (min-width: 1200px) {
+    @media ${device.desktop} {
       margin-right: 20px;
     }
   }

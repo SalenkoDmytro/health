@@ -1,20 +1,7 @@
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLinks, List, AccentLink } from './Navigation.styled';
 
 function Navigation({ closeMobMenu }) {
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        closeMobMenu();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeMobMenu]);
-
   return (
     <List>
       <li>

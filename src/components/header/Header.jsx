@@ -8,11 +8,13 @@ import { useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { HeaderStyled, MobMenuButton, MobMenu } from './Header.styled';
+import { useLocation } from 'react-router-dom';
 
 function Header() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const isLogin = useSelector(selectIsLoggedIn);
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
+  const { pathname } = useLocation();
 
   const toggleMenu = () => {
     setMobileMenuIsOpen(mobileMenuIsOpen => !mobileMenuIsOpen);
@@ -24,7 +26,9 @@ function Header() {
 
   return (
     <>
-      <HeaderStyled>
+      <HeaderStyled
+        className={isDesktop && pathname === '/diary' ? 'gradient' : null}
+      >
         {isLogin ? (
           <>
             <Logo closeMobMenu={closeMobMenu} />
@@ -51,7 +55,9 @@ function Header() {
           </>
         )}
       </HeaderStyled>
+
       {isMobile && isLogin && !mobileMenuIsOpen && <UserInfo />}
+
       {!isDesktop && isLogin && mobileMenuIsOpen && (
         <MobMenu>
           <Navigation closeMobMenu={closeMobMenu} />

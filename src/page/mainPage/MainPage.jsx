@@ -14,10 +14,11 @@ function MainPage() {
     handleBackdropClick,
   } = useToggleModal();
 
-   return ( <>
-      <DailyCaloriesForm />
+  return (
+    <>
+      <DailyCaloriesForm openModal={openModal} />
       {/* open modal */}
-      <Button onClick={() => openModal()}>Open Modal</Button>
+      {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
       {isOpen && (
         <Modal
           closeModal={closeModal}

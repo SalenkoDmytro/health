@@ -1,7 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useFormik } from 'formik';
 // import TextField from '@mui/material/TextField';
 
@@ -48,8 +47,6 @@ function CalculatorCaloriesForm({ openModal }) {
   // }, [dispatch, isAuth, userData]);
 
   console.log('userData', userData);
-
-  // console.log(userData);
 
   // ------- Валідація для форми -------
 
@@ -111,13 +108,7 @@ function CalculatorCaloriesForm({ openModal }) {
 
   return (
     <MainForm onSubmit={formik.handleSubmit}>
-      {isAuth ? (
-        <FormTitle>Узнай свою суточную норму калорий</FormTitle>
-      ) : (
-        <FormTitle>
-          Просчитай свою суточную норму калорий прямо сейчас
-        </FormTitle>
-      )}
+      <FormTitle>Узнай свою суточную норму калорий</FormTitle>
 
       <FormContent>
         <CalcFormWrapper>
