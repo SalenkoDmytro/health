@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
@@ -11,12 +11,12 @@ import fullLogoTab from '../../assets/images/logo/logo-full-tab.png';
 import fullLogoTabx2 from '../../assets/images/logo/logo-full-tab-x2.png';
 import fullLogoDesk from '../../assets/images/logo/logo-full-desk.png';
 import fullLogoDeskx2 from '../../assets/images/logo/logo-full-desc-x2.png';
-function Logo() {
+function Logo({ closeMobMenu }) {
   const { isDesktop, isMobile, isTablet } = useMatchMedia();
   const isLogin = useSelector(selectIsLoggedIn);
 
   return (
-    <Link to={isLogin ? '/diary' : '/'}>
+    <Link to={isLogin ? '/diary' : '/'} onClick={closeMobMenu}>
       {isMobile ? (
         isLogin ? (
           <img
@@ -59,3 +59,5 @@ function Logo() {
 }
 
 export default Logo;
+
+Logo.propTypes = { closeMobMenu: PropTypes.func };

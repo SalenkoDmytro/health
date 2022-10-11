@@ -1,30 +1,43 @@
-import { IoIosClose } from 'react-icons/io';
+import PropTypes from 'prop-types';
 import ButtonIcon from 'components/common/buttonIcon';
 import {
-  StyledItem,
   StyledNameText,
   StyledNumberText,
+  StyledIconClose,
 } from './DiaryProductsListItem.styled';
 
-import Box from 'components/common/box/Box';
-function DiaryProductsListItem({ id, title, weight, kcal }) {
+import useMatchMedia from 'hooks/useMatchMedia';
+
+function DiaryProductsListItem({ id, title, weight, kcal, onDelete }) {
+  const { isMobile } = useMatchMedia();
   const countKcal = (weight, kcal) => {
     return Math.floor(kcal * (weight / 100));
   };
 
   return (
-    <Box>
-      <StyledItem key={id}>
-        <StyledNameText>{title}</StyledNameText>
-        {/* select menu замість p*/}
-        <StyledNumberText>{weight} г</StyledNumberText>
-        <StyledNumberText>{countKcal(weight, kcal)} ккал</StyledNumberText>.
-        <ButtonIcon type="button" aria-label="delete product">
-          <IoIosClose size="20px" />
-        </ButtonIcon>
-      </StyledItem>
-    </Box>
+    <>
+      <StyledNameText>{title}</StyledNameText>
+      <StyledNumberText>{weight} г</StyledNumberText>
+      {!isMobile && (
+        <StyledNumberText>{countKcal(weight, kcal)} ккал</StyledNumberText>
+      )}
+      <ButtonIcon
+        type="button"
+        onClick={() => onDelete(id)}
+        aria-label="delete product"
+      >
+        <StyledIconClose />
+      </ButtonIcon>
+    </>
   );
 }
+
+DiaryProductsListItem.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  weight: PropTypes.number,
+  kcal: PropTypes.number,
+  onDelete: PropTypes.func,
+};
 
 export default DiaryProductsListItem;

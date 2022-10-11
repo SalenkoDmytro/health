@@ -16,10 +16,8 @@ export const register = createAsyncThunk(
   'auth/register',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/auth/register', user);
-      token.set(data.token);
-      console.log(data);
-      return data;
+      await axios.post('/auth/register', user);
+      window.location = "/health-care-project/login"
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -31,9 +29,7 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/login', user);
-      token.set(data.token);
-      console.log(data);
-
+      token.set(data.accessToken);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -55,19 +51,18 @@ export const logout = createAsyncThunk(
 export const refresh = createAsyncThunk(
   'auth/refresh',
   async (sid, { rejectWithValue, getState }) => {
-    // ----------------------КУДА СОХРАНЯЕМ ТОКЕН????
 
-    // const tokenLS = getState().auth.refreshToken;
-    //
-    // if (!tokenLS) {
-    //   return rejectWithValue();
-    // }
-    // token.set(tokenLS);
+    const tokenLS = getState().auth.refreshToken;
+
+    if (!tokenLS) {
+      return rejectWithValue('Not logged');
+    }
+
+    token.set(tokenLS);
 
     try {
       const { data } = await axios.post('/auth/refresh', { sid });
-        token.set(data.token);
-
+        token.set(data.refreshToken);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
