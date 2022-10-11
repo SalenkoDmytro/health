@@ -6,6 +6,7 @@ const NotFound = () => {
   return (
     <Image>
       <Box
+        // backgroundImage="url(/health-care-project/static/media/flat-lay-404.4ba14ba91aae619317b3.jpeg)"
         height="100vh"
         display="flex"
         flexDirection="column-reverse"
