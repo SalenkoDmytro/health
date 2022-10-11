@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'utils/device';
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -15,11 +16,25 @@ export const ModalContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 672px;
-  height: 573px;
+  @media (${device.mobile}) {
+    min-width: 320px;
+    padding: 34px 40px;
+  }
+  @media (${device.fablet}) {
+    min-width: 450px;
+  }
+
+  @media (${device.tablet}) {
+    min-width: 580px;
+  }
+
+  @media (${device.desktop}) {
+    width: 672px;
+    height: 573px;
+    padding: 64px 82px;
+  }
 
   min-width: ${p => `${p.theme.space[7] * 3}px`};
-  padding: 64px 82px;
   background-color: ${p => p.theme.colors.white};
   box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
 `;

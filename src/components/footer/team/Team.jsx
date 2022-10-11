@@ -18,78 +18,114 @@ const Team = () => {
         <h1>Team</h1>
         <TeamList>
           <TeamListItem>
-            Alena
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://github.com/Alena-Abharian"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Team Lead</OverlayText>
+                  <OverlayText>
+                    Alena Abharian, <br />
+                    Team Lead
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>
           </TeamListItem>
           <TeamListItem>
-            Maksym
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://github.com/H-Maksym"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Scrum master</OverlayText>
+                  <OverlayText>
+                    Maksym Holovachuk, <br /> Scrum master
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>
           </TeamListItem>
           <TeamListItem>
-            Max
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://github.com/KryzhMax"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Developer</OverlayText>
+                  <OverlayText>
+                    Max Kryzhanovskyi, <br /> Developer
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>
           </TeamListItem>
           <TeamListItem>
-            Mitya
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://github.com/Mitya-Kupriianov"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Developer</OverlayText>
+                  <OverlayText>
+                    Mitya Kupriyanov, <br /> Developer
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>
           </TeamListItem>
           <TeamListItem>
-            Shamrai
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://github.com/Hunt3RSH"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Developer</OverlayText>
+                  <OverlayText>
+                    Volodymyr Shamrai, <br /> Developer
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>
           </TeamListItem>
           <TeamListItem>
-            Andrew
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://google.com"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Developer</OverlayText>
+                  <OverlayText>
+                    Andrew, <br /> Developer
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>
           </TeamListItem>
           <TeamListItem>
-            Dima
-            <TeamLinkStyled target="_blank" href="https://google.com">
+            <TeamLinkStyled
+              target="_blank"
+              href="https://github.com/SalenkoDmytro"
+              rel="noreferrer nofollow noopener"
+            >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
                 <TeamPhotoStyled src={hunger} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>Developer</OverlayText>
+                  <OverlayText>
+                    Dmitry Salenko, <br /> Developer
+                  </OverlayText>
                 </Overlay>
               </Box>
             </TeamLinkStyled>

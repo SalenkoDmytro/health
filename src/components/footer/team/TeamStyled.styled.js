@@ -1,24 +1,29 @@
 import styled from 'styled-components';
+import { device } from 'utils/device';
 
 export const TeamList = styled.ul`
-  display: block;
-  gap: 20px;
+  display: flex;
   height: 400px;
+  gap: 20px;
+
+  flex-wrap: wrap;
 
   overflow: scroll;
 
-  @media (min-width: 480px) {
+  @media (${device.fablet}) {
     display: flex;
-    flex-wrap: wrap;
+    // gap: 20px;
+
+    // flex-wrap: wrap;
   }
 `;
 
 export const TeamListItem = styled.li`
-  @media (max-width: 767px) {
+  @media (${device.fablet}) {
     flex-basis: calc((100% - 20px) / 2);
   }
 
-  @media (min-width: 768px) {
+  @media (${device.desktop}) {
     flex-basis: calc((100% - 2 * 20px) / 3);
   }
 `;
@@ -68,15 +73,24 @@ export const TeamPhotoStyled = styled.img`
 `;
 
 export const OverlayText = styled.p`
-  @media (max-width: 479px) {
-    font-size: ${p => p.theme.fontSizes.s};
+  @media (${device.mobile}) {
+    font-size: ${p => p.theme.fontSizes.xs};
+    font-weight: ${p => p.theme.fontWeights.bold};
     font-family: ${p => p.theme.fonts.main};
     line-height: ${p => p.theme.lineHeights.text};
+    color: ${p => p.theme.colors.text.secondaryText};
+    overflow: auto;
   }
-  font-size: ${p => p.theme.fontSizes.m};
+
+  @media (${device.tablet}) {
+    font-size: ${p => p.theme.fontSizes.s};
+    letter-spacing: ${p => p.theme.letterSpacing.m};
+  }
+`;
+
+export const TeamTextStyled = styled.span`
+  font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.bold};
   letter-spacing: ${p => p.theme.letterSpacing.m};
   color: ${p => p.theme.colors.text.secondaryText};
-
-  overflow: auto;
 `;
