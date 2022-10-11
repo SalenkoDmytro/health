@@ -13,7 +13,8 @@ export const device = {
   mobileOnly: `(max-width: ${size.mobileOnly})`,
 
   fablet: `(min-width: ${size.fablet})`,
-  fabletOnly: `(min-width:${size.fablet}) and (max-width:#${size.fabletOnly})`,
+  fabletOnly: `(min-width:${size.fablet}) and (max-width:${size.fabletOnly})`,
+  fabletAndMobileOnly: `(max-width:${size.fabletOnly})`,
 
   tablet: `(min-width: ${size.tablet})`,
   tabletOnly: `(min-width:${size.tablet}) and (max-width:#${size.noDesktop})`,
