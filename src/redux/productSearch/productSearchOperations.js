@@ -19,16 +19,17 @@ export const productSearch = createAsyncThunk(
       const tokenLS = getState().auth.accessToken;
       token.set(tokenLS);
 
-      // if (search.length < 2) {
-      //   return initialState;
-      // }
-      const { data } = await axios.get('/product', {
-        params: {
-          search,
-        },
-      });
-
-      return data;
+      if (search.length < 2) {
+        return initialState;
+      }
+      if (search.length < 30) {
+        const { data } = await axios.get('/product', {
+          params: {
+            search,
+          },
+        });
+        return data;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }

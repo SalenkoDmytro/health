@@ -3,7 +3,7 @@ import { Form, Field } from 'formik';
 // import { IoIosAddCircle } from 'react-icons/io';
 import ButtonIcon from 'components/common/buttonIcon';
 
-export const StyledProductForm = styled(Form)`
+export const StyledProductForm = styled.form`
   display: flex;
   align-items: baseline;
   width: 100%;
