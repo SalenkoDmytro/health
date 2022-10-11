@@ -36,9 +36,25 @@ export const InputStyled = styled(Field)`
   }
 `;
 
-export const ErrorText = styled.p``;
+// export const StyledSelect = styled.select`
+//   /* position: absolute; */
+//   top: 70px;
+//   left: 0;
+//   width: 100%;
+//   height: 100px;
+//   overflow-y: scroll;
+// `;
 
-export const StyledFormLabel = styled.span``;
+export const StyledOption = styled.div`
+  position: absolute;
+  bottom: -70px;
+  height: 100px;
+  width: 280px;
+  overflow: scroll;
+  background-color: #ffffff;
+  padding: 15px 0;
+  z-index: 100;
+`;
 
 export const StyledIcon = styled.img`
   width: ${p => `${p.theme.space[4] - 2}px`};
