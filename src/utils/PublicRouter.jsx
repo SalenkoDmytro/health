@@ -11,7 +11,6 @@ const PublicRouter = (
   }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const shouldRedirect = isLoggedIn && restricted;
-
   return shouldRedirect ? <Navigate to={redirectTo} /> : children;
 };
 

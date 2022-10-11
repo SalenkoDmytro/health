@@ -5,7 +5,6 @@ const initialState = {
   userId: null,
   dailyRate: null,
   summaries: [],
-  // -------------> notAllowedProducts -> Response = Array of Arrays wtf???!!!  <--------------------
   notAllowedProducts: [],
   isLoggedIn: false,
   isLoading: false,
@@ -33,7 +32,7 @@ const dailySlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // --------------------LOG IN OPERATION--------------------(fulfilled?)
+    // --------------------LOG IN OPERATION--------------------
 
     [dailyRateAuthorized.pending]: state => {
       state.isLoading = true;
