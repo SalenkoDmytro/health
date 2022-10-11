@@ -17,8 +17,6 @@ export const dailyRateUnauthorized = createAsyncThunk(
   }
 );
 
-// ------------- ЕСЛИ БУДУТ ОШИБКИ - ПЕРЕСМОТРЕТЬ ПЕРЕДАЧУ ПАРАМЕТРОВ!
-
 // -------------------AUTHORIZED USER-------------------
 export const dailyRateAuthorized = createAsyncThunk(
   'dailyRate/calcAuth',
