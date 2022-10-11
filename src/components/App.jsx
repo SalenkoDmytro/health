@@ -5,6 +5,7 @@ import NotFound from 'page/notFoundPage/NotFound';
 import Header from './header';
 import PublicRouter from '../utils/PublicRouter';
 import PrivateRoute from '../utils/PrivateRoute';
+import { Container } from './common/container/Container';
 
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
@@ -14,7 +15,7 @@ const RegistrationPage = lazy(() => import('page/registrationPage'));
 
 export default function App() {
   return (
-    <>
+    <Container>
       <Header />
 
       <Suspense fallback={<Loader />}>
@@ -51,6 +52,6 @@ export default function App() {
           } />
         </Routes>
       </Suspense>
-    </>
+    </Container>
   );
 }
