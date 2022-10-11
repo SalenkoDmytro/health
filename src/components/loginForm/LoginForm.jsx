@@ -39,31 +39,34 @@ function LoginForm() {
   return (
     <FormContainer>
       <FormTitle>Вход</FormTitle>
-      <LoginFormContent onSubmit={handleSubmit}>
-        <InputStyled
-          required
-          type="email"
-          name="email"
-          label="Почта"
-          value={email}
-          onChange={handleChange}
-          variant="standard"
-        />
+      <form onSubmit={handleSubmit}>
+        <LoginFormContent>
+          <InputStyled
+            required
+            type="email"
+            name="email"
+            label="Почта"
+            value={email}
+            onChange={handleChange}
+            variant="standard"
+          />
 
-        <InputStyled
-          required
-          type="password"
-          name="password"
-          label="Пароль"
-          value={password}
-          onChange={handleChange}
-          variant="standard"
-        />
+          <InputStyled
+            required
+            type="password"
+            name="password"
+            label="Пароль"
+            value={password}
+            onChange={handleChange}
+            variant="standard"
+          />
+        </LoginFormContent>
+
         <LoginBtnWrapper>
           <Button type="submit">Вход</Button>
           <RegisterBtn to="/registration">Регистрация</RegisterBtn>
         </LoginBtnWrapper>
-      </LoginFormContent>
+      </form>
     </FormContainer>
   );
 }

@@ -4,6 +4,7 @@ import Radio, { RadioProps } from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import RadioGroup from '@mui/material/RadioGroup';
+import { device } from 'utils/device';
 
 const BpIcon = styled('span')(() => ({
   borderRadius: '50%',
@@ -69,15 +70,26 @@ export const FormTitle = styled.h2`
   font-size: ${x => x.theme.fontSizes.xl};
   line-height: ${x => x.theme.lineHeights.title};
   color: ${x => x.theme.colors.text.sectionTitle};
+  @media ${device.mobileOnly} {
+    font-size: ${x => x.theme.fontSizes.m};
+  }
 `;
 
 export const MainForm = styled.form`
   max-width: 608px;
+  @media ${device.mobileOnly} {
+    margin-top: 32px;
+  }
+  @media ${device.fablet} {
+    margin-top: 100px;
+  }
+  @media ${device.desktop} {
+    margin-top: 150px;
+  } ;
 `;
 
 export const InputStyled = styled(TextField)`
   position: relative;
-  max-width: 240px;
   label {
     font-family: ${x => x.theme.fonts.main};
     font-style: normal;
@@ -139,7 +151,10 @@ export const BloodTextRed = styled.span`
 export const StyledRadioGroup = styled(RadioGroup)`
   margin-top: 10px;
   width: 100%;
-  gap: 10px;
+  gap: 25px;
+  label {
+    margin-right: 0;
+  }
 `;
 
 export const FormContent = styled.div`
@@ -154,19 +169,28 @@ export const CalcFormWrapper = styled.div`
   gap: 32px;
   margin-bottom: 60px;
   margin-top: 60px;
+
+  @media ${device.mobileOnly} {
+    flex-direction: column;
+  }
 `;
 
 export const UserMainDataWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 240px;
   width: 100%;
   gap: 32px;
+  @media ${device.fablet} {
+    max-width: 240px;
+  }
 `;
 
 export const BtnGroup = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  @media ${device.mobileOnly} {
+    justify-content: center;
+  }
 `;
 
 export const ControlLabel = styled(FormControlLabel)`

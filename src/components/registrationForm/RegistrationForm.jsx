@@ -45,41 +45,44 @@ function RegistrationForm() {
   return (
     <FormContainer>
       <FormTitle>регистрация</FormTitle>
-      <LoginFormContent onSubmit={handleSubmit}>
-        <InputStyled
-          required
-          type="text"
-          name="name"
-          label="Имя"
-          value={username}
-          onChange={handleChange}
-          variant="standard"
-        />
+      <form onSubmit={handleSubmit}>
+        <LoginFormContent>
+          <InputStyled
+            required
+            type="text"
+            name="name"
+            label="Имя"
+            value={username}
+            onChange={handleChange}
+            variant="standard"
+          />
 
-        <InputStyled
-          required
-          type="email"
-          name="email"
-          label="Почта"
-          value={email}
-          onChange={handleChange}
-          variant="standard"
-        />
+          <InputStyled
+            required
+            type="email"
+            name="email"
+            label="Почта"
+            value={email}
+            onChange={handleChange}
+            variant="standard"
+          />
 
-        <InputStyled
-          required
-          type="password"
-          name="password"
-          label="Пароль"
-          value={password}
-          onChange={handleChange}
-          variant="standard"
-        />
+          <InputStyled
+            required
+            type="password"
+            name="password"
+            label="Пароль"
+            value={password}
+            onChange={handleChange}
+            variant="standard"
+          />
+        </LoginFormContent>
+
         <LoginBtnWrapper>
-          <Button type="submit">Регистрация</Button>
           <RegisterBtn to="/login">Вход</RegisterBtn>
+          <Button type="submit">Регистрация</Button>
         </LoginBtnWrapper>
-      </LoginFormContent>
+      </form>
     </FormContainer>
   );
 }
