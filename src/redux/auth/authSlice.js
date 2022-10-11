@@ -41,7 +41,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // --------------------LOG IN OPERATION--------------------(fulfilled?)
+    // --------------------LOG IN OPERATION--------------------
 
     [login.pending]: state => {
       state.isLoading = true;
@@ -66,7 +66,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // --------------------LOG OUT OPERATION-------------------- (fulfilled?)
+    // --------------------LOG OUT OPERATION--------------------
 
     [logout.pending]: state => {
       state.isLoading = true;
@@ -83,7 +83,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // --------------------REFRESH OPERATION--------------------(sid сохранять надо?)
+    // --------------------REFRESH OPERATION--------------------
 
     [refresh.pending]: state => {
       state.isLoading = true;
