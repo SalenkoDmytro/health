@@ -62,7 +62,7 @@ export const refresh = createAsyncThunk(
 
     try {
       const { data } = await axios.post('/auth/refresh', { sid });
-        token.set(data.token);
+        token.set(data.refreshToken);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
