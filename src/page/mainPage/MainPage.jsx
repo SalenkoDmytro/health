@@ -1,6 +1,6 @@
 import DailyCaloriesForm from 'components/dailyCaloriesForm/DailyCaloriesForm';
 import DailyCaloriesIntake from 'components/dailyCaloriesIntake/DailyCaloriesIntake';
-import Button from 'components/common/button/Button';
+// import Button from 'components/common/button/Button';
 import Modal from 'components/common/modal/Modal';
 import useToggleModal from 'hooks/toggleModal';
 
