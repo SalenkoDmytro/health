@@ -18,9 +18,11 @@ export const Box = styled.div`
   } ;
 `;
 
-export const BackButton = styled(Link)`
+export const BackButton = styled.button`
   display: flex;
   align-items: center;
+  border: none;
+  background-color: transparent;
 `;
 
 export const Text = styled.span`
