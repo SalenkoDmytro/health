@@ -2,7 +2,7 @@ const size = {
   mobile: '320px',
   mobileOnly: '478px',
   fablet: '480px',
-  fabletOnly: '766',
+  fabletOnly: '766px',
   tablet: '768px',
   noDesktop: '1198px',
   desktop: '1200px',
