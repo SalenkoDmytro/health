@@ -2,7 +2,7 @@ export const theme = {
   colors: {
     white: '#ffffff',
     black: '#000000',
-
+    accentAlpha: 'rgb(252, 132, 45, 0.2)',
     accent: '#FC842D',
     primaryBackground: '#F0F1F3',
     burgerBackground: '#264061',
@@ -23,6 +23,7 @@ export const theme = {
       border: '#FC842D',
       primaryText: '#FC842D',
       secondaryText: '#FFFFFF',
+      none: 'transparent',
     },
 
     form: {
