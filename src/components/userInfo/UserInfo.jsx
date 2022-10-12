@@ -10,8 +10,9 @@ function UserInfo() {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const { isMobile } = useMatchMedia();
-  const { isOpen, closeModal } = useToggleModal();
+  const { isOpen, closeModal, hasBtnClose = true } = useToggleModal();
 
+  console.log('Mitya', isOpen);
   return (
     <Wrapper>
       {isMobile && isOpen && (
