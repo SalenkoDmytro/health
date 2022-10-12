@@ -11,7 +11,7 @@ function LoginPage() {
       </Container>
       <PictureFruit />
     </>
-    )
+  );
 }
 
 export default LoginPage;
