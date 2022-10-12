@@ -7,9 +7,14 @@ import {
   SummarySubtitle,
   SummaryTitle,
 } from './RightSideBar.styled';
+import { useSelector } from 'react-redux';
+import { selectDaySummary } from 'redux/day/daySelectors';
 
 function RightSideBar({ date }) {
-  console.log(date.toLocaleString());
+  const consumption = useSelector(selectDaySummary);
+  const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
+    consumption;
+
   return (
     <SideBarStyled>
       <Summary>
@@ -17,19 +22,19 @@ function RightSideBar({ date }) {
         <SummaryList>
           <SummaryListItem>
             <span>Осталось</span>
-            <span>000 ккал</span>
+            <span>{Math.trunc(kcalLeft)} ккал</span>
           </SummaryListItem>
           <SummaryListItem>
             <span>Употреблено</span>
-            <span>000 ккал</span>
+            <span>{Math.trunc(kcalConsumed) || 0} ккал</span>
           </SummaryListItem>
           <SummaryListItem>
             <span>Дневная норма</span>
-            <span>000 ккал</span>
+            <span>{Math.trunc(dailyRate)} ккал</span>
           </SummaryListItem>
           <SummaryListItem>
-            <span>n% от нормы</span>
-            <span>000 ккал</span>
+            <span>% от нормы</span>
+            <span>{Math.trunc(percentsOfDailyRate) || 0} %</span>
           </SummaryListItem>
         </SummaryList>
       </Summary>
