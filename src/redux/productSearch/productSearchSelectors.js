@@ -1,1 +1,1 @@
-export const selectProduct = state => state.product.product;
+export const selectProducts = state => state.product.product;

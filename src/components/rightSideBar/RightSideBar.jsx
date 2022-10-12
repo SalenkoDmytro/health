@@ -15,7 +15,7 @@ function RightSideBar({ date }) {
       <Summary>
         <SummaryTitle SummaryTitle>{date.toLocaleString()}</SummaryTitle>
         <SummaryList>
-          < SummaryListItem>
+          <SummaryListItem>
             <span>Осталось</span>
             <span>000 ккал</span>
           </SummaryListItem>
