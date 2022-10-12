@@ -36,7 +36,9 @@ export const FormContainer = styled.div`
 export const LoginFormContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
+  overflow: hidden;
+
   @media ${device.fablet} {
     max-width: 240px;
   }

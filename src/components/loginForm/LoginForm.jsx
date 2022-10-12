@@ -22,13 +22,13 @@ function LoginForm() {
 
   const validationSchema = yup.object({
     email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Email is required'),
+      .string('Введите адрес электронной почты')
+      .email('Введите действительный адрес электронной почты')
+      .required('Электронная почта обязательна'),
     password: yup
-      .string('Enter your password')
-      .min(4, 'Password should be of minimum 4 characters length')
-      .required('Password is required'),
+      .string('Введите свой пароль')
+      .min(8, 'Пароль должен иметь длину не менее 8 символов')
+      .required('Требуется пароль'),
   });
 
   // ------- формік для матеріал UI -------
@@ -54,10 +54,9 @@ function LoginForm() {
       <form onSubmit={formik.handleSubmit}>
         <LoginFormContent>
           <InputStyled
-            required
             type="email"
             name="email"
-            label="Почта"
+            label="Почта *"
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
@@ -66,10 +65,9 @@ function LoginForm() {
           />
 
           <InputStyled
-            required
             type="password"
             name="password"
-            label="Пароль"
+            label="Пароль *"
             value={formik.values.password}
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}

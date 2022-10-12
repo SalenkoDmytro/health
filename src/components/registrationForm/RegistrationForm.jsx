@@ -1,5 +1,8 @@
 import React from 'react';
-import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+import {
+  BloodTextRed,
+  InputStyled,
+} from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
 import {
   FormContainer,
   FormTitle,
@@ -18,10 +21,10 @@ function RegistrationForm() {
   const stateError = useSelector(state => state.auth.error);
   const errorExist = () => {
     if (stateError.includes(409) === true) {
-      return 'занята почта';
+      return 'Электронная почта занята';
     }
     if (stateError.includes(400) === true) {
-      return 'проблемы из сервером';
+      return 'Ой извините, проблема с сервером';
     }
     return;
   };
@@ -30,18 +33,17 @@ function RegistrationForm() {
 
   const validationSchema = yup.object({
     username: yup
-      .string('Введите Имя')
-      .min(2, 'Короткое Имя')
-      .max(40, 'Слишком длинное Имя максимум 40 символов')
-      .required('Имя обязательно'),
+      .string('Введите ваше имя')
+      .max(40, 'Слишком длинное имя. максимальная длина 40 символов')
+      .required('Укажите имя'),
     email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Почта обязательно'),
+      .string('Введите адрес электронной почты')
+      .email('Введите действительный адрес электронной почты')
+      .required('Электронная почта обязательна'),
     password: yup
-      .string('Enter your password')
-      .min(4, 'Password should be of minimum 4 characters length')
-      .required('Пароль обязательно'),
+      .string('Введите свой пароль')
+      .min(8, 'Пароль должен иметь длину не менее 8 символов')
+      .required('Требуется пароль'),
   });
 
   // ------- формік для матеріал UI -------
@@ -64,14 +66,13 @@ function RegistrationForm() {
   return (
     <FormContainer>
       <FormTitle>регистрация</FormTitle>
-      {stateError ? <p>{errorExist()}</p> : <></>}
+      {stateError ? <BloodTextRed>{errorExist()}</BloodTextRed> : <></>}
       <form onSubmit={formik.handleSubmit}>
         <LoginFormContent>
           <InputStyled
-            required
             type="name"
             name="username"
-            label="Имя"
+            label="Имя *"
             value={formik.values.username}
             onChange={formik.handleChange}
             error={formik.touched.username && Boolean(formik.errors.username)}
@@ -80,10 +81,9 @@ function RegistrationForm() {
           />
 
           <InputStyled
-            required
             type="email"
             name="email"
-            label="Почта"
+            label="Почта *"
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
@@ -92,10 +92,9 @@ function RegistrationForm() {
           />
 
           <InputStyled
-            required
             type="password"
             name="password"
-            label="Пароль"
+            label="Пароль *"
             value={formik.values.password}
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}
