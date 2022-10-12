@@ -9,19 +9,24 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { HeaderStyled, MobMenuButton, MobMenu } from './Header.styled';
 import { useLocation } from 'react-router-dom';
+import useScrollLock from 'hooks/useScrollLock';
 
 function Header() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const isLogin = useSelector(selectIsLoggedIn);
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
   const { pathname } = useLocation();
+  const { lockScroll, UnlockScroll } = useScrollLock();
 
   const toggleMenu = () => {
-    setMobileMenuIsOpen(mobileMenuIsOpen => !mobileMenuIsOpen);
+    if (mobileMenuIsOpen) return closeMobMenu();
+    setMobileMenuIsOpen(true);
+    lockScroll();
   };
 
   const closeMobMenu = () => {
     setMobileMenuIsOpen(false);
+    UnlockScroll();
   };
 
   return (

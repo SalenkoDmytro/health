@@ -13,6 +13,8 @@ import { getUserData } from 'redux/user/userSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
 import { selectDayInfo } from 'redux/day/daySelectors';
 import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
+import PictureLeaf from '../../components/common/picture/PictureLeaf';
+import { Container } from '../../components/common/container/Container';
 
 function DiaryPage() {
   const [date, setDate] = useState(new Date());
@@ -40,17 +42,22 @@ function DiaryPage() {
   };
 
   return (
-    <Box display="flex">
-      <Box width="60%" ml="9%">
-        <DiaryDateСalendar getDate={getDate} startDate={date} />
-        {/* <DailyCaloriesForm /> */}
-        <DiaryAddProductForm date={date} />
-        <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-      </Box>
-      <Box width="40%">
-        <RightSideBar date={date} />
-      </Box>
-    </Box>
+    <>
+      <Container>
+        <Box display="flex">
+          <Box width="60%">
+            <DiaryDateСalendar getDate={getDate} startDate={date} />
+            {/* <DailyCaloriesForm /> */}
+            <DiaryAddProductForm date={date} />
+            <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
+          </Box>
+          <Box width="40%">
+            <RightSideBar date={date} />
+          </Box>
+        </Box>
+      </Container>
+      <PictureLeaf />
+    </>
   );
 }
 
