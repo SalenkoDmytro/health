@@ -1,6 +1,8 @@
 import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 import { login } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 import {
@@ -10,44 +12,56 @@ import {
   LoginFormContent,
   RegisterBtn,
 } from './LoginForm.styled';
+import { selectAccessToken } from 'redux/auth/authSelectors';
 
 function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const dispatch = useDispatch();
+  const isAuth = useSelector(selectAccessToken);
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      default:
-        break;
-    }
-  };
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(login({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
+  // ------- Валідація для форми -------
+
+  const validationSchema = yup.object({
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
+    password: yup
+      .string('Enter your password')
+      .min(4, 'Password should be of minimum 4 characters length')
+      .required('Password is required'),
+  });
+
+  // ------- формік для матеріал UI -------
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: event => {
+      const email = event.email;
+      const password = event.password;
+      if (!isAuth) {
+        dispatch(login({ email, password }));
+      }
+    },
+  });
 
   return (
     <FormContainer>
       <FormTitle>Вход</FormTitle>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <LoginFormContent>
           <InputStyled
             required
             type="email"
             name="email"
             label="Почта"
-            value={email}
-            onChange={handleChange}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
             variant="standard"
           />
 
@@ -56,8 +70,10 @@ function LoginForm() {
             type="password"
             name="password"
             label="Пароль"
-            value={password}
-            onChange={handleChange}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
             variant="standard"
           />
         </LoginFormContent>

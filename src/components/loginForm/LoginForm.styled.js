@@ -20,12 +20,13 @@ export const FormTitle = styled.h2`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 394px;
+
   @media ${device.mobileOnly} {
     margin-top: 40px;
   }
   @media ${device.fablet} {
     margin-top: 100px;
+    max-width: 394px;
   }
   @media ${device.desktop} {
     margin-top: 150px;

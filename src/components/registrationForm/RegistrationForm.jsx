@@ -1,3 +1,4 @@
+import React from 'react';
 import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
 import {
   FormContainer,
@@ -6,54 +7,75 @@ import {
   LoginFormContent,
   RegisterBtn,
 } from 'components/loginForm/LoginForm.styled';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 import { register } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 
 function RegistrationForm() {
-  const [username, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const dispatch = useDispatch();
-
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      default:
-        break;
+  const stateError = useSelector(state => state.auth.error);
+  const errorExist = () => {
+    if (stateError.includes(409) === true) {
+      return 'занята почта';
     }
+    if (stateError.includes(400) === true) {
+      return 'проблемы из сервером';
+    }
+    return;
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(register({ username, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
-  };
+  // ------- Валідація для форми -------
+
+  const validationSchema = yup.object({
+    username: yup
+      .string('Введите Имя')
+      .min(2, 'Короткое Имя')
+      .max(40, 'Слишком длинное Имя максимум 40 символов')
+      .required('Имя обязательно'),
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Почта обязательно'),
+    password: yup
+      .string('Enter your password')
+      .min(4, 'Password should be of minimum 4 characters length')
+      .required('Пароль обязательно'),
+  });
+
+  // ------- формік для матеріал UI -------
+
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: event => {
+      const username = event.username;
+      const email = event.email;
+      const password = event.password;
+      dispatch(register({ username, email, password }));
+    },
+  });
 
   return (
     <FormContainer>
       <FormTitle>регистрация</FormTitle>
-      <form onSubmit={handleSubmit}>
+      {stateError ? <p>{errorExist()}</p> : <></>}
+      <form onSubmit={formik.handleSubmit}>
         <LoginFormContent>
           <InputStyled
             required
-            type="text"
-            name="name"
+            type="name"
+            name="username"
             label="Имя"
-            value={username}
-            onChange={handleChange}
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
             variant="standard"
           />
 
@@ -62,8 +84,10 @@ function RegistrationForm() {
             type="email"
             name="email"
             label="Почта"
-            value={email}
-            onChange={handleChange}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
             variant="standard"
           />
 
@@ -72,8 +96,10 @@ function RegistrationForm() {
             type="password"
             name="password"
             label="Пароль"
-            value={password}
-            onChange={handleChange}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
             variant="standard"
           />
         </LoginFormContent>
