@@ -1,8 +1,7 @@
 import useMatchMedia from 'hooks/useMatchMedia';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
-import useToggleModal from 'hooks/toggleModal/useToggleModal';
-import { selectUserName } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { logout } from '../../redux/auth/authOperations';
 import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
 
@@ -10,9 +9,8 @@ function UserInfo({ closeModal, isOpen }) {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const { isMobile } = useMatchMedia();
-  // const { isOpen, closeModal, hasBtnClose = true } = useToggleModal();
+  const isLogin = useSelector(selectIsLoggedIn);
 
-  // console.log('Mitya', isOpen);
   return (
     <Wrapper>
       {isMobile && isOpen && (
@@ -20,12 +18,14 @@ function UserInfo({ closeModal, isOpen }) {
           <IoReturnDownBackSharp size={25} />
         </BackButton>
       )}
-      <Box>
-        <Text>{userName}</Text>
-        <Button type="button" onClick={() => dispatch(logout())}>
-          Выйти
-        </Button>
-      </Box>
+      {isLogin && (
+        <Box>
+          <Text>{userName}</Text>
+          <Button type="button" onClick={() => dispatch(logout())}>
+            Выйти
+          </Button>
+        </Box>
+      )}
     </Wrapper>
   );
 }
