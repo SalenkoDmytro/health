@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, useFormik } from 'formik';
-// import * as yup from 'yup';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import { productSearch } from 'redux/productSearch/productSearchOperations';
 import { selectProducts } from 'redux/productSearch/productSearchSelectors';
 import { addDay } from 'redux/day/dayOperations';
@@ -9,16 +9,16 @@ import Box from 'components/common/box';
 import { resetState } from 'redux/productSearch/productSearchSlice';
 import {
   StyledProductForm,
-  InputStyled,
-  LabelStyled,
-  StyledFormLabel,
+  StyledNameWrapper,
+  InputStyledNameProduct,
+  StyledWeightWrapper,
+  InputStyledWeightProduct,
   StyledButtonIcon,
   StyledIcon,
-  StyledSelect,
-  StyledOption,
+  // StyledSelect,
+  // StyledOption,
 } from './DiaryAddProductForm.styled';
 import addIcon from 'assets/icons/addProduct.svg';
-import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 
 export default function DiaryAddProductForm({ date }) {
@@ -27,16 +27,30 @@ export default function DiaryAddProductForm({ date }) {
   const [searchProduct, setSearchProduct] = useState('');
   const [selectProduct, setSelectProduct] = useState('');
   const [debouncedValue, setDebouncedValue] = useState(null);
-  let isSelected = true;
+  const validationSchema = yup.object({
+    productName: yup
+      .string('Выберите продукт из списка')
+      .required('Продукт обязателен!'),
+    productWeight: yup
+      .number('Введите число')
+      .typeError('Введите число')
+      .positive()
+      .integer()
+      .min(10, 'Введите больший вес')
+      .max(1000, 'Введите меньший вес')
+      .required('Вес обязателен!'),
+  });
+
   const formik = useFormik({
     initialValues: {
       productName: '',
       productWeight: '',
     },
-    // validateOnBlur,
-    // validationSchema={schema}
+    validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
+
+  // console.log(formik);
 
   useEffect(() => {
     if (debouncedValue) {
@@ -68,38 +82,48 @@ export default function DiaryAddProductForm({ date }) {
     <>
       <Box position="relative">
         <StyledProductForm onSubmit={formik.handleSubmit}>
-          <Box position="relative">
-            <TextField
+          <StyledNameWrapper>
+            <InputStyledNameProduct
+              sx={{ width: '240px' }}
               id="productName"
-              type="text"
               name="productName"
               autoComplete="off"
               label="Введите название продукта"
               onChange={formik.handleChange}
               value={searchProduct ? searchProduct : formik.values.productName}
+              error={
+                formik.touched.productName && Boolean(formik.errors.productName)
+              }
+              helperText={
+                formik.touched.productName && formik.errors.productName
+              }
               variant="standard"
             />
-            {/* <StyledFormLabel >Введите название продукта</StyledFormLabel> */}
-          </Box>
+          </StyledNameWrapper>
 
-          <Box position="relative">
-            <TextField
+          <StyledWeightWrapper>
+            <InputStyledWeightProduct
               id="productWeight"
-              type="text"
               name="productWeight"
               autoComplete="off"
               label="Граммы"
               onChange={formik.handleChange}
               value={formik.values.productWeight}
+              error={
+                formik.touched.productWeight &&
+                Boolean(formik.errors.productWeight)
+              }
+              helperText={
+                formik.touched.productWeight && formik.errors.productWeight
+              }
               variant="standard"
             />
-            {/* <StyledFormLabel >Граммы</StyledFormLabelf> */}
-          </Box>
-
+          </StyledWeightWrapper>
           <StyledButtonIcon type="submit" aria-label="добавить продукт">
             <StyledIcon src={addIcon} />
           </StyledButtonIcon>
         </StyledProductForm>
+
         {products.length > 0 && (
           <Select
             multiple

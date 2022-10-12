@@ -5,6 +5,7 @@ const daySlice = createSlice({
   name: 'contacts',
   initialState: {
     day: null,
+    dayInfo: null,
     isLoading: false,
     error: null,
   },
@@ -15,18 +16,18 @@ const daySlice = createSlice({
   },
   extraReducers: {
     //addNewDay
-    [addDay.pending]: (state) => {
+    [addDay.pending]: state => {
       state.isLoading = true;
       state.error = null;
     },
     [addDay.fulfilled]: (state, action) => {
-      state.day = action.payload
+      state.day = action.payload;
     },
     [addDay.rejected]: (state, action) => {
       state.error = action.payload;
     },
     //deleteDay
-    [deleteDay.pending]: (state) => {
+    [deleteDay.pending]: state => {
       state.isLoading = true;
       state.error = null;
     },
@@ -37,12 +38,12 @@ const daySlice = createSlice({
       state.error = action.payload;
     },
     //addDayInformation
-    [addDayInfo.pending]: (state) => {
+    [addDayInfo.pending]: state => {
       state.isLoading = true;
       state.error = null;
     },
     [addDayInfo.fulfilled]: (state, action) => {
-      state.day = action.payload;
+      state.dayInfo = action.payload;
     },
     [addDayInfo.rejected]: (state, action) => {
       state.error = action.payload;

@@ -6,7 +6,7 @@ function RightSideBar({ date }) {
   return (
     <div className={s.sidebar}>
       <div className={s.summary}>
-        <p className={s.summary__title}>{date.toLocaleString()}</p>
+        <p className={s.summary__title}>{date.toISOString().split('T')[0]}</p>
         <ul className={s.summary__list}>
           <li className={s.summary__listItem}>
             <span>Осталось</span>

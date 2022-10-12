@@ -1,53 +1,71 @@
 import styled from 'styled-components';
-import { Form, Field } from 'formik';
-// import { IoIosAddCircle } from 'react-icons/io';
 import ButtonIcon from 'components/common/buttonIcon';
+import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+import { device } from 'utils/device';
 
 export const StyledProductForm = styled.form`
-  display: flex;
-  align-items: baseline;
   width: 100%;
-`;
 
-export const LabelStyled = styled.label`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  color: ${p => p.theme.colors.text.primaryText};
-  transition: ${p => p.theme.animation.cubic};
-  transition-property: transform;
-`;
-
-export const InputStyled = styled(Field)`
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights.normal};
-  font-size: ${p => p.theme.fontSizes.s};
-  line-height: ${p => p.theme.lineHeights.text};
-  font: inherit;
-  outline: none;
-  padding: 10px 20px;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-
-  &:focus + ${LabelStyled} {
-    transform: translateY(${p => `${(p.theme.space[4] + 4) * -1}px`});
-    font-size: ${p => p.theme.fontSizes.xs};
+  @media ${device.tablet} {
+    display: flex;
+    margin-bottom: 44px;
   }
 `;
 
-// export const StyledSelect = styled.select`
-//   /* position: absolute; */
-//   top: 70px;
-//   left: 0;
-//   width: 100%;
-//   height: 100px;
-//   overflow-y: scroll;
-// `;
+export const StyledNameWrapper = styled.div`
+  @media ${device.mobileOnly} {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  @media ${device.tablet} {
+    /* width: 240px; */
+    margin-right: 20px;
+  }
+  @media ${device.desktop} {
+    margin-right: 48px;
+  }
+`;
+
+export const InputStyledNameProduct = styled(InputStyled)`
+  @media ${device.tablet} {
+    width: 240px;
+  }
+`;
+
+export const StyledWeightWrapper = styled.div`
+  @media ${device.mobileOnly} {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  @media ${device.tablet} {
+    margin-right: 86px;
+  }
+  @media ${device.desktop} {
+    margin-right: 60px;
+  }
+`;
+
+export const InputStyledWeightProduct = styled(InputStyled)`
+  /* label {
+    @media ${device.tablet} {
+      text-align: right;
+    }
+  } */
+
+  @media ${device.mobileOnly} {
+    width: 100%;
+  }
+
+  @media ${device.tablet} {
+    width: 106px;
+  }
+`;
 
 export const StyledOption = styled.div`
   position: absolute;
-  bottom: -70px;
+  bottom: 0px;
   height: 100px;
   width: 280px;
   overflow: scroll;
@@ -65,10 +83,10 @@ export const StyledIcon = styled.img`
 
 export const StyledButtonIcon = styled(ButtonIcon)`
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: ${p => `${p.theme.space[5] + 16}px`};
-  height: ${p => `${p.theme.space[5] + 16}px`};
+  justify-content: center;
+  min-width: ${p => `${p.theme.space[5] + 16}px`};
+  min-height: ${p => `${p.theme.space[5] + 16}px`};
   border-radius: ${p => p.theme.radii.round};
   background-color: ${p => p.theme.colors.button.primaryBackground};
   &:hover ${StyledIcon} {
