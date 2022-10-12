@@ -32,6 +32,22 @@ export default function App() {
             }
           />
           <Route
+            path="/registration"
+            element={
+              <PublicRouter restricted redirectTo="/login">
+                <RegistrationPage />
+              </PublicRouter>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRouter restricted redirectTo="/calculator">
+                <LoginPage />
+              </PublicRouter>
+            }
+          />
+          <Route
             path="/diary"
             element={
               <PrivateRoute>
@@ -45,22 +61,6 @@ export default function App() {
               <PrivateRoute>
                 <CalculatorPage />
               </PrivateRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRouter restricted redirectTo="/calculator">
-                <LoginPage />
-              </PublicRouter>
-            }
-          />
-          <Route
-            path="/registration"
-            element={
-              <PublicRouter restricted redirectTo="/login">
-                <RegistrationPage />
-              </PublicRouter>
             }
           />
           <Route
