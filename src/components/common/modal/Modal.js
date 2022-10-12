@@ -38,12 +38,6 @@ export default function Modal({
       modalRoot
     );
   }
-  // return createPortal(
-  //   <ModalBackdrop onClick={handleBackdropClick}>
-  //     <ModalContent>{children}</ModalContent>
-  //   </ModalBackdrop>,
-  //   modalRoot
-  // );
 }
 
 Modal.propTypes = {
