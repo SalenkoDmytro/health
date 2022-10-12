@@ -26,4 +26,11 @@ export const PictureLeafStyled = styled.div`
     background-position: bottom 0 right 0;
     background-color: #F0F1F3;
   }
+
+  @media ${device.fabletAndMobileOnly} {
+    width: 100%;
+    height: 40%;
+    background-position: bottom 0 right 0;
+    background-color: #F0F1F3;
+  }
 `
