@@ -6,13 +6,13 @@ import { selectUserName } from 'redux/auth/authSelectors';
 import { logout } from '../../redux/auth/authOperations';
 import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
 
-function UserInfo() {
+function UserInfo({ closeModal, isOpen }) {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const { isMobile } = useMatchMedia();
-  const { isOpen, closeModal, hasBtnClose = true } = useToggleModal();
+  // const { isOpen, closeModal, hasBtnClose = true } = useToggleModal();
 
-  console.log('Mitya', isOpen);
+  // console.log('Mitya', isOpen);
   return (
     <Wrapper>
       {isMobile && isOpen && (
