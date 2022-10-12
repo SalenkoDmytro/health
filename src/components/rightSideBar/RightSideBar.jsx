@@ -11,9 +11,13 @@ import { useSelector } from 'react-redux';
 import { selectDaySummary } from 'redux/day/daySelectors';
 
 function RightSideBar({ date }) {
+
+  // console.log(date.toLocaleString());
+
   const consumption = useSelector(selectDaySummary);
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
     consumption;
+
 
   return (
     <SideBarStyled>

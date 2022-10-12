@@ -14,18 +14,20 @@ import {
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 import BpRadio from './CalculatorCaloriesForm.styled';
-import { InputStyled } from './CalculatorCaloriesForm.styled';
-import { CalcFormWrapper } from './CalculatorCaloriesForm.styled';
-import { UserMainDataWrapper } from './CalculatorCaloriesForm.styled';
-import { BtnGroup } from './CalculatorCaloriesForm.styled';
-import { MainForm } from './CalculatorCaloriesForm.styled';
-import { FormContent } from './CalculatorCaloriesForm.styled';
-import { FormTitle } from './CalculatorCaloriesForm.styled';
-import { BloodText } from './CalculatorCaloriesForm.styled';
-import { BloodGroup } from './CalculatorCaloriesForm.styled';
-import { StyledRadioGroup } from './CalculatorCaloriesForm.styled';
-import { BloodTextRed } from './CalculatorCaloriesForm.styled';
-import { ControlLabel } from './CalculatorCaloriesForm.styled';
+import {
+  InputStyled,
+  CalcFormWrapper,
+  UserMainDataWrapper,
+  BtnGroup,
+  MainForm,
+  FormContent,
+  FormTitle,
+  BloodText,
+  BloodGroup,
+  StyledRadioGroup,
+  BloodTextRed,
+  ControlLabel,
+} from './CalculatorCaloriesForm.styled';
 
 function CalculatorCaloriesForm({ openModal }) {
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ function CalculatorCaloriesForm({ openModal }) {
   const userData = useSelector(getUserData);
   const user = useSelector(selectUser);
 
-  console.log('userData', userData);
+  // console.log('userData', userData);
 
   // ------- Валідація для форми -------
 
@@ -78,10 +80,10 @@ function CalculatorCaloriesForm({ openModal }) {
     validationSchema: validationSchema,
 
     onSubmit: values => {
-      console.log('values', values);
+      // console.log('values', values);
       if (isAuth) {
         dispatch(dailyRateAuthorized({ userId: user.id, ...values }));
-        console.log('values1', values);
+        // console.log('values1', values);
       } else {
         dispatch(dailyRateUnauthorized(values));
         if (openModal) {

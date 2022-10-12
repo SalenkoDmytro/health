@@ -23,14 +23,20 @@ function MainPage() {
     handleKeyDown,
     handleBackdropClick,
   } = useToggleModal();
+
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
+
+  // console.log('1111', isOpen);
 
   return (
     <>
+      {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
       <Container>
-        {isMobile && isOpen && (
-          <UserInfo closeModal={closeModal} isOpen={isOpen} />
-        )}
+
+        //{isMobile && isOpen && (
+         // <UserInfo closeModal={closeModal} isOpen={isOpen} />
+        //)}
+
         {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
         {isTablet && <DailyCaloriesForm openModal={openModal} />}
         {isDesktop && <DailyCaloriesForm openModal={openModal} />}

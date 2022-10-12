@@ -1,4 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectAccessToken } from 'redux/auth/authSelectors';
+
 import {
   FooterStyled,
   FooterTextStyled,
@@ -9,16 +12,18 @@ import Modal from 'components/common/modal/Modal';
 import { IoIosClose } from 'react-icons/io';
 import Box from 'components/common/box';
 import Team from './team/Team';
-
+import useMatchMedia from 'hooks/useMatchMedia';
 import useToggleModal from 'hooks/toggleModal';
 // import PropTypes from 'prop-types';
 
 const Footer = () => {
+  const { isMobile } = useMatchMedia();
+
   const {
-    isOpen,
-    // openModal,
-    toggleModal,
-    closeModal,
+    isFooterOpen,
+    // openFooterModal,
+    toggleFooterModal,
+    closeFooterModal,
     handleKeyDown,
     handleBackdropClick,
     hasBtnClose = true,
@@ -30,7 +35,7 @@ const Footer = () => {
           ©2022 Healthy-mom | created by&nbsp;
         </FooterTextStyled>
         <Button
-          onClick={() => toggleModal()}
+          onClick={() => toggleFooterModal()}
           style={{
             backgroundColor: 'transparent',
             boxShadow: 'none',
@@ -40,9 +45,10 @@ const Footer = () => {
         >
           GoIT Team #1
         </Button>
-        {isOpen && (
+
+        {isFooterOpen && (
           <Modal
-            closeModal={closeModal}
+            closeModal={closeFooterModal}
             handleKeyDown={handleKeyDown}
             handleBackdropClick={handleBackdropClick}
           >
@@ -50,7 +56,7 @@ const Footer = () => {
               {hasBtnClose && (
                 <FooterButtonStyled
                   type="button"
-                  onClick={closeModal}
+                  onClick={closeFooterModal}
                   aria-label="close modal"
                 >
                   <IoIosClose size="20px" />

@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import NotFound from 'page/notFoundPage/NotFound';
 // import Header from './header';
 // import Footer from './footer';
+// import useToggleModal from 'hooks/toggleModal';
 
 import PublicRouter from '../utils/PublicRouter';
 import PrivateRoute from '../utils/PrivateRoute';
@@ -16,18 +17,52 @@ const LoginPage = lazy(() => import('page/loginPage'));
 const RegistrationPage = lazy(() => import('page/registrationPage'));
 
 export default function App() {
+  // const {
+  //   isOpen,
+  //   openModal,
+  //   hasBtnClose = true,
+  //   toggleModal,
+  //   closeModal,
+  //   handleKeyDown,
+  //   handleBackdropClick,
+  // } = useToggleModal();
+
+  // let isOpen;
+  // const getIsOpen = data => {
+  //   isOpen = data;
+  // };
   return (
     <>
       {/* <Header /> */}
 
       {/* <Suspense fallback={<Loader />}> */}
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <Layout
+            // isOpen={isOpen}
+            // toggleModal={toggleModal}
+            // openModal={openModal}
+            // hasBtnClose={hasBtnClose}
+            // closeModal={closeModal}
+            // handleKeyDown={handleKeyDown}
+            // handleBackdropClick={handleBackdropClick}
+            />
+          }
+        >
           <Route
             index
             element={
               <PublicRouter>
-                <MainPage />
+                <MainPage
+                // isOpen={isOpen}
+                // openModal={openModal}
+                // hasBtnClose={hasBtnClose}
+                // closeModal={closeModal}
+                // handleKeyDown={handleKeyDown}
+                // handleBackdropClick={handleBackdropClick}
+                />
               </PublicRouter>
             }
           />

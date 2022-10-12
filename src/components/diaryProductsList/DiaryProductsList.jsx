@@ -6,7 +6,7 @@ export default function DiaryProductsList({ dayId, eatenProducts }) {
   return (
     <StyledWrap>
       <StyledList>
-        {eatenProducts.map(item => {
+        {eatenProducts?.map(item => {
           return (
             <StyledItem key={item.id}>
               <DiaryProductsListItem

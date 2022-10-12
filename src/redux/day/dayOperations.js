@@ -18,7 +18,7 @@ export const addDay = createAsyncThunk('add/addDay', async (date, thunkAPI) => {
 
     token.set(tokenLS);
     const res = await axios.post('/day', date);
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue("Sorry, can't add new day, server Error!");
