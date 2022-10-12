@@ -23,3 +23,4 @@ export const PictureFruitStyled = styled.div`
   background-position: bottom 0 right 0;
 }
 `
+
