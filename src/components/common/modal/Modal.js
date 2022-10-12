@@ -5,8 +5,9 @@ import { ModalBackdrop, ModalContent } from './Modal.styled';
 import { IoIosClose } from 'react-icons/io';
 import ButtonIcon from 'components/common/buttonIcon';
 import Box from 'components/common/box';
+import useMatchMedia from 'hooks/useMatchMedia';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#root');
 
 export default function Modal({
   children = '',
@@ -15,12 +16,17 @@ export default function Modal({
   closeModal = () => {},
   hasBtnClose = true,
 }) {
+  const { isMobile } = useMatchMedia();
+
   useEffect(() => {
+    if (isMobile) {
+      return;
+    }
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]);
+  }, [handleKeyDown, isMobile]);
 
   return createPortal(
     <ModalBackdrop onClick={handleBackdropClick}>
