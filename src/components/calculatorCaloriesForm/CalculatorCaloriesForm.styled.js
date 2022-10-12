@@ -40,7 +40,7 @@ const BpCheckedIcon = styled(BpIcon)({
 });
 
 // Inspired by blueprintjs
-export default function BpRadio(props: RadioProps) {
+export default function BpRadio(props) {
   return (
     <Radio
       sx={{

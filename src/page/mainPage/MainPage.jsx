@@ -5,6 +5,8 @@ import Modal from 'components/common/modal/Modal';
 import useToggleModal from 'hooks/toggleModal';
 import useMatchMedia from 'hooks/useMatchMedia';
 import UserInfo from 'components/userInfo';
+import PictureFruit from '../../components/common/picture/PictureFruit';
+import { Container } from '../../components/common/container/Container';
 
 function MainPage() {
   const {
@@ -19,23 +21,26 @@ function MainPage() {
 
   return (
     <>
-      {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
-      {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
-      {isTablet && <DailyCaloriesForm openModal={openModal} />}
-      {isDesktop && <DailyCaloriesForm openModal={openModal} />}
+      <Container>
+        {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
+        {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
+        {isTablet && <DailyCaloriesForm openModal={openModal} />}
+        {isDesktop && <DailyCaloriesForm openModal={openModal} />}
 
-      {/* <DailyCaloriesForm openModal={openModal} /> */}
-      {/* open modal */}
-      {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
-      {isOpen && (
-        <Modal
-          closeModal={closeModal}
-          handleKeyDown={handleKeyDown}
-          handleBackdropClick={handleBackdropClick}
-        >
-          <DailyCaloriesIntake />
-        </Modal>
-      )}
+        {/* <DailyCaloriesForm openModal={openModal} /> */}
+        {/* open modal */}
+        {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
+        {isOpen && (
+          <Modal
+            closeModal={closeModal}
+            handleKeyDown={handleKeyDown}
+            handleBackdropClick={handleBackdropClick}
+          >
+            <DailyCaloriesIntake />
+          </Modal>
+        )}
+      </Container>
+      <PictureFruit/>
     </>
   );
 }
