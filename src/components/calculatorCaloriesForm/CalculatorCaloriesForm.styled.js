@@ -79,9 +79,11 @@ export const MainForm = styled.form`
   max-width: 608px;
   @media ${device.mobileOnly} {
     margin-top: 32px;
+    margin-bottom: 40px;
   }
   @media ${device.fablet} {
     margin-top: 100px;
+    margin-bottom: 48px;
   }
   @media ${device.desktop} {
     margin-top: 150px;
