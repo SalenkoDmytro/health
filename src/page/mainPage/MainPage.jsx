@@ -26,12 +26,12 @@ function MainPage() {
 
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
 
-  console.log('1111', isOpen);
+  // console.log('1111', isOpen);
 
   return (
     <>
+      {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
       <Container>
-        {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
         {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
         {isTablet && <DailyCaloriesForm openModal={openModal} />}
         {isDesktop && <DailyCaloriesForm openModal={openModal} />}

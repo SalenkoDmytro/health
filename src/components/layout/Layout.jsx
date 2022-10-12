@@ -11,8 +11,8 @@ import useMatchMedia from 'hooks/useMatchMedia';
 // import useToggleModal from 'hooks/toggleModal';
 
 const Layout = () => {
-  const { isOpen } = useToggleModal();
-  const { isMobile } = useMatchMedia();
+  const { isOpen, isFooterOpen } = useToggleModal();
+  const { isMobile, isTablet, isDesktop } = useMatchMedia();
   console.log(isOpen);
   return (
     <Wrapper>
@@ -24,7 +24,9 @@ const Layout = () => {
           </BoxStyled>
         </Main>
 
-        {isMobile && !isOpen && <Footer />}
+        {(isMobile && !isOpen && <Footer />) ||
+          (isTablet && <Footer />) ||
+          (isDesktop && <Footer />)}
       </Suspense>
     </Wrapper>
   );

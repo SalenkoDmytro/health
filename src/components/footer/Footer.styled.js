@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 import ButtonIcon from 'components/common/buttonIcon';
-
 import { device } from 'utils/device';
 
 export const FooterStyled = styled.footer`
-  // margin-top: -30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  // background-color: ${({ theme }) => theme.colors.white};
   background-color: inherit;
 
   @media (${device.mobile}) {
@@ -19,12 +17,10 @@ export const FooterStyled = styled.footer`
 
   @media (${device.tabletOnly}) {
     padding: 20px 32px 16px;
-    // position: absolute;
-    // bottom: 0;
   }
 
   @media (${device.desktop}) {
-    align-items: baseline;
+    align-items: center;
   }
 `;
 
