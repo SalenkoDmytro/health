@@ -13,7 +13,6 @@ export const PictureFruitStyled = styled.div`
   background-size: contain;
   z-index: -1;
 
-
  @media ${device.desktop} {
    background-image: url(${imageDesk});
    background-position: top 0 right 0;
