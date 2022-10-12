@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import ButtonIcon from 'components/common/buttonIcon';
+
 import { device } from 'utils/device';
 
 export const FooterStyled = styled.footer`
-  position: fixed;
-  bottom: 0;
+  // margin-top: -30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,11 +18,12 @@ export const FooterStyled = styled.footer`
 
   @media (${device.tabletOnly}) {
     padding: 20px 32px 16px;
+    position: absolute;
+    bottom: 0;
   }
 
   @media (${device.desktop}) {
     align-items: baseline;
-    padding: 80px 16px;
   }
 `;
 
@@ -36,6 +38,15 @@ export const FooterTextStyled = styled.p`
   color: ${({ theme }) => theme.colors.text.secondaryText};
 `;
 
-// export const FooterButtonStyled = styled(Button)`
-//   background-color: ${p => p.theme.colors.button.secondaryBackground};
-// `;
+export const FooterButtonStyled = styled(ButtonIcon)`
+  @media (${device.mobile}) {
+    display: none;
+  }
+
+  @media (${device.fablet}) {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+`;

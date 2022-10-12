@@ -77,15 +77,6 @@ export const FormTitle = styled.h2`
 
 export const MainForm = styled.form`
   max-width: 608px;
-  @media ${device.mobileOnly} {
-    margin-top: 32px;
-  }
-  @media ${device.fablet} {
-    margin-top: 100px;
-  }
-  @media ${device.desktop} {
-    margin-top: 150px;
-  } ;
 `;
 
 export const InputStyled = styled(TextField)`
