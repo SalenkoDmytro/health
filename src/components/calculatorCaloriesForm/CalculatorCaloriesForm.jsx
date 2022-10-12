@@ -32,19 +32,6 @@ function CalculatorCaloriesForm({ openModal }) {
   const isAuth = useSelector(selectAccessToken);
   const userData = useSelector(getUserData);
   const user = useSelector(selectUser);
-  // console.log('isAuth',isAuth);
-  // console.log('userData',userData);
-
-  // useEffect(() => {
-
-  //   if (isAuth && !userData) {
-  //     dispatch(getUser());
-  //   }
-  //   // if (!isAuth) {
-  //   //   console.log('isAuth', isAuth);
-  //   //   dispatch(refresh(sid));
-  //   // }
-  // }, [dispatch, isAuth, userData]);
 
   console.log('userData', userData);
 

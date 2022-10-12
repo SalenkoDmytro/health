@@ -4,10 +4,15 @@ import Modal from 'components/common/modal/Modal';
 import useToggleModal from 'hooks/toggleModal';
 import useMatchMedia from 'hooks/useMatchMedia';
 import UserInfo from 'components/userInfo';
+
 // import ButtonIcon from 'components/common/buttonIcon';
 import Box from 'components/common/box';
 import { IoIosClose } from 'react-icons/io';
 import { Button } from './MainPage.styled';
+
+import PictureFruit from '../../components/common/picture/PictureFruit';
+import { Container } from '../../components/common/container/Container';
+
 
 function MainPage() {
   const {
@@ -23,10 +28,12 @@ function MainPage() {
 
   return (
     <>
-      {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
-      {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
-      {isTablet && <DailyCaloriesForm openModal={openModal} />}
-      {isDesktop && <DailyCaloriesForm openModal={openModal} />}
+      <Container>
+        {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
+        {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
+        {isTablet && <DailyCaloriesForm openModal={openModal} />}
+        {isDesktop && <DailyCaloriesForm openModal={openModal} />}
+
 
       {/* <DailyCaloriesForm openModal={openModal} /> */}
       {/* open modal */}
@@ -54,6 +61,9 @@ function MainPage() {
           <DailyCaloriesIntake />
         </Modal>
       )}
+      </Container>
+      <PictureFruit/>
+
     </>
   );
 }
