@@ -39,9 +39,10 @@ const daySlice = createSlice({
       state.error = null;
     },
     [deleteDay.fulfilled]: (state, action) => {
-      state.eatenProducts = state.eatenProducts.filter(
-        product => product.id !== action.payload.eatenProductId
-      );
+      state.daySummary = action.payload.newDaySummary;
+      // state.eatenProducts = state.eatenProducts.filter(
+      //   product => product.id !== action.payload.eatenProductId
+      // );
     },
     [deleteDay.rejected]: (state, action) => {
       state.error = action.payload;

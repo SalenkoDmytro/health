@@ -31,10 +31,11 @@ export const deleteDay = createAsyncThunk(
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
-      await axios.delete(`/day`, {
+      const result = await axios.delete(`/day`, {
         data,
       });
-      return data;
+      console.log(result.data);
+      return result.data;
     } catch (err) {
       return thunkAPI.rejectWithValue("Sorry, can't delete day, server Error!");
     }
