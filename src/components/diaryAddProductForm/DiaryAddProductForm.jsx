@@ -61,7 +61,7 @@ export default function DiaryAddProductForm({ date }) {
     );
     // eslint-disable-next-line
   }, [formik.values.productName]);
-
+  //*select products from list
   const handleChangeMultiple = ({ target }) => {
     setSearchProduct(target.options[target.selectedIndex].title);
     setSelectProduct(target.options[target.selectedIndex].value);
