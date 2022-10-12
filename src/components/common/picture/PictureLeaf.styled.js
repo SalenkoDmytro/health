@@ -20,7 +20,6 @@ export const PictureLeafStyled = styled.div`
   };
 
   @media ${device.tabletOnly} {
-    paddind: 10px
     width: 100%;
     height: 40%;
     background-image: url(${imageTab});
