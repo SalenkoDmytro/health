@@ -40,7 +40,7 @@ const BpCheckedIcon = styled(BpIcon)({
 });
 
 // Inspired by blueprintjs
-export default function BpRadio(props: RadioProps) {
+export default function BpRadio(props) {
   return (
     <Radio
       sx={{
@@ -103,7 +103,6 @@ export const InputStyled = styled(TextField)`
     position: absolute;
     bottom: -20px;
     width: 150%;
-    overflow: hidden;
   }
 `;
 export const BloodGroup = styled.div`

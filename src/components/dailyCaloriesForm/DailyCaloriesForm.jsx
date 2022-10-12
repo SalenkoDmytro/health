@@ -25,6 +25,7 @@ import BpRadio, {
 import Button from 'components/common/button/Button';
 
 function DailyCaloriesForm({ openModal }) {
+  console.log(222, openModal);
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
   const userData = useSelector(getUserData);

@@ -12,49 +12,48 @@ const token = {
   },
 };
 
-export const addDay = createAsyncThunk(
-  'add/addDay',
-  async ( date , thunkAPI) => {
-    try {
-      const tokenLS = thunkAPI.getState().auth.accessToken;
+export const addDay = createAsyncThunk('add/addDay', async (date, thunkAPI) => {
+  try {
+    const tokenLS = thunkAPI.getState().auth.accessToken;
 
-      token.set(tokenLS)
-      const res = await axios.post('/day',  date );
-      return res.data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue('Sorry, can\'t add new day, server Error!');
-    }
-  },
-);
+    token.set(tokenLS);
+    const res = await axios.post('/day', date);
+    console.log(res.data);
+    return res.data;
+  } catch (err) {
+    return thunkAPI.rejectWithValue("Sorry, can't add new day, server Error!");
+  }
+});
 
 export const deleteDay = createAsyncThunk(
   'delete/deleteDay',
   async (data, thunkAPI) => {
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
-
-      token.set(tokenLS)
+      token.set(tokenLS);
       await axios.delete(`/day`, {
-        data
+        data,
       });
       return data;
     } catch (err) {
-      return thunkAPI.rejectWithValue('Sorry, can\'t delete day, server Error!');
+      return thunkAPI.rejectWithValue("Sorry, can't delete day, server Error!");
     }
-  },
+  }
 );
 
 export const addDayInfo = createAsyncThunk(
   'addInfo/addDayInfo',
-  async ( date , thunkAPI) => {
+  async (date, thunkAPI) => {
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
+      token.set(tokenLS);
 
-      token.set(tokenLS)
-      const res = await axios.post('/day/info',  date );
+      const res = await axios.post('/day/info', date);
       return res.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue('Sorry, can\'t add new information, server Error!');
+      return thunkAPI.rejectWithValue(
+        "Sorry, can't add new information, server Error!"
+      );
     }
-  },
+  }
 );

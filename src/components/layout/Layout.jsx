@@ -25,8 +25,10 @@ const Layout = () => {
           </BoxStyled>
         </main>
       </Suspense>
+
       <Footer />
     </>
+
   );
 };
 
