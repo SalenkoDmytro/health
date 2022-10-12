@@ -4,8 +4,12 @@ import { addDay, deleteDay, addDayInfo } from './dayOperations';
 const daySlice = createSlice({
   name: 'contacts',
   initialState: {
-    day: null,
-    dayInfo: null,
+    dayId: null,
+    date: null,
+    daySummary: {},
+    eatenProducts: [],
+    // day: null,
+    // dayInfo: null,
     isLoading: false,
     error: null,
   },
@@ -21,8 +25,11 @@ const daySlice = createSlice({
       state.error = null;
     },
     [addDay.fulfilled]: (state, action) => {
-      state.day = action.payload;
+      state.dayId = action.payload.day.id;
+      state.daySummary = action.payload.daySummary;
+      state.eatenProducts = action.payload.day.eatenProducts.reverse();
     },
+
     [addDay.rejected]: (state, action) => {
       state.error = action.payload;
     },
@@ -32,7 +39,9 @@ const daySlice = createSlice({
       state.error = null;
     },
     [deleteDay.fulfilled]: (state, action) => {
-      state.day = null;
+      state.eatenProducts = state.eatenProducts.filter(
+        product => product.id !== action.payload.eatenProductId
+      );
     },
     [deleteDay.rejected]: (state, action) => {
       state.error = action.payload;
@@ -43,6 +52,10 @@ const daySlice = createSlice({
       state.error = null;
     },
     [addDayInfo.fulfilled]: (state, action) => {
+      state.dayId = action.payload.id;
+      state.eatenProducts = action.payload.eatenProducts;
+      state.daySummary = action.payload.daySummary;
+      state.date = action.payload.date;
       state.dayInfo = action.payload;
     },
     [addDayInfo.rejected]: (state, action) => {

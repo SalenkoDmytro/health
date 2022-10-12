@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { productSearch } from 'redux/productSearch/productSearchOperations';
 import { selectProducts } from 'redux/productSearch/productSearchSelectors';
-import { addDay } from 'redux/day/dayOperations';
+import { addDay, addDayInfo } from 'redux/day/dayOperations';
 import Box from 'components/common/box';
 import { resetState } from 'redux/productSearch/productSearchSlice';
 import {
@@ -74,6 +74,7 @@ export default function DiaryAddProductForm({ date }) {
       productId: selectProduct,
       weight: values.productWeight,
     };
+    console.log(100000000000, obj);
     dispatch(addDay(obj));
     setSearchProduct('');
     formik.resetForm();
@@ -124,25 +125,27 @@ export default function DiaryAddProductForm({ date }) {
           </StyledButtonIcon>
         </StyledProductForm>
 
-        {products.length > 0 && (
-          <Select
-            multiple
-            native
-            value={products}
-            // @ts-ignore Typings are not considering `native`
-            onChange={handleChangeMultiple}
-            label="Выберите продукт"
-            // inputProps={{
-            //   id: 'productName',
-            // }}
-          >
-            {products.map(({ title, _id }) => (
-              <option title={title.ru} key={_id} value={_id}>
-                {title.ru}
-              </option>
-            ))}
-          </Select>
-        )}
+        {!searchProduct
+          ? products.length > 0 && (
+              <Select
+                multiple
+                native
+                value={products}
+                // @ts-ignore Typings are not considering `native`
+                onChange={handleChangeMultiple}
+                label="Выберите продукт"
+                // inputProps={{
+                //   id: 'productName',
+                // }}
+              >
+                {products.map(({ title, _id }) => (
+                  <option title={title.ru} key={_id} value={_id}>
+                    {title.ru}
+                  </option>
+                ))}
+              </Select>
+            )
+          : ''}
       </Box>
     </>
   );

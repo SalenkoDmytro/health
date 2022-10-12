@@ -12,6 +12,8 @@ import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { getUserData } from 'redux/user/userSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
 import { selectDayInfo } from 'redux/day/daySelectors';
+import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
+
 function DiaryPage() {
   const [date, setDate] = useState(new Date());
   const dayInfo = useSelector(selectDayInfo);
@@ -19,6 +21,9 @@ function DiaryPage() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
   const userData = useSelector(getUserData);
+  const eatenProducts = useSelector(selectEatenProducts);
+  const dayId = useSelector(selectDayId);
+
   useEffect(() => {
     if (isAuth && !userData) {
       dispatch(getUser());
@@ -40,7 +45,7 @@ function DiaryPage() {
         <DiaryDateСalendar getDate={getDate} startDate={date} />
         {/* <DailyCaloriesForm /> */}
         <DiaryAddProductForm date={date} />
-        <DiaryProductsList dayInfo={dayInfo} />
+        <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
       </Box>
       <Box width="40%">
         <RightSideBar date={date} />

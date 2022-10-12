@@ -1,21 +1,20 @@
-// import { useSelector } from 'react';
+import { useSelector } from 'react-redux';
 import DiaryProductsListItem from 'components/diaryProductsListItem';
 import { StyledWrap, StyledList, StyledItem } from './DiaryProductsList.styled';
-// import { selectDailyProducts } from 'redux/daily/dailySelectors';
 
-export default function DiaryProductsList({ dayInfo }) {
+export default function DiaryProductsList({ dayId, eatenProducts }) {
   return (
     <StyledWrap>
       <StyledList>
-        {dayInfo?.eatenProducts?.map(({ id, title, weight, kcal }) => {
+        {eatenProducts.map(item => {
           return (
-            <StyledItem key={id}>
+            <StyledItem key={item.id}>
               <DiaryProductsListItem
-                dayId={dayInfo.id}
-                eatenProductId={id}
-                title={title}
-                weight={weight}
-                kcal={kcal}
+                dayId={dayId}
+                eatenProductId={item.id}
+                title={item.title}
+                weight={item.weight}
+                kcal={item.kcal}
               />
             </StyledItem>
           );
