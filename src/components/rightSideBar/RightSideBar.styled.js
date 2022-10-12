@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const SideBarStyled = styled.div`
-  background-color: #F0F1F3;
   padding-left: 94px;
   height: 100vh;
 `;

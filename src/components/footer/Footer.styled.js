@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'utils/device';
+
 export const FooterStyled = styled.footer`
   position: fixed;
   bottom: 0;
@@ -7,17 +8,15 @@ export const FooterStyled = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
 
   @media (${device.mobile}) {
+    border-top: 2px solid ${({ theme }) => theme.colors.border};
     padding: 20px 20px 16px;
   }
 
   @media (${device.tabletOnly}) {
     padding: 20px 32px 16px;
-  }
-
-  @media (${device.noDesktop}) {
-    border-top: 2px solid ${({ theme }) => theme.colors.border};
   }
 
   @media (${device.desktop}) {

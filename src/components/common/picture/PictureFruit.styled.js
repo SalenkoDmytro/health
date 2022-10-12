@@ -3,7 +3,7 @@ import imageDesk from '../../../assets/images/primaryImgDesk.png';
 import imageTab from '../../../assets/images/primaryImgTab.png';
 import { device } from '../../../utils/device';
 
-export const PictureStyled = styled.div`
+export const PictureFruitStyled = styled.div`
   height: 100%;
   width: 100%;
   position: absolute;
@@ -14,13 +14,13 @@ export const PictureStyled = styled.div`
   z-index: -1;
 
 
- @media ${device.tablet} {
+ @media ${device.desktop} {
    background-image: url(${imageDesk});
    background-position: top 0 right 0;
  };
 
-//   @media ${device.tablet} {
-//   background-image: url(${imageTab});
-//   background-position: bottom 0 right 0;
-// }
+  @media ${device.tabletOnly} {
+  background-image: url(${imageTab});
+  background-position: bottom 0 right 0;
+}
 `

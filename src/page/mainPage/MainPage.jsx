@@ -3,7 +3,9 @@ import DailyCaloriesIntake from 'components/dailyCaloriesIntake/DailyCaloriesInt
 // import Button from 'components/common/button/Button';
 import Modal from 'components/common/modal/Modal';
 import useToggleModal from 'hooks/toggleModal';
-import PictureFruit from '../../components/common/picture/Picture';
+import useMatchMedia from 'hooks/useMatchMedia';
+import UserInfo from 'components/userInfo';
+import PictureFruit from '../../components/common/picture/PictureFruit';
 import { Container } from '../../components/common/container/Container';
 
 function MainPage() {
@@ -15,11 +17,17 @@ function MainPage() {
     handleKeyDown,
     handleBackdropClick,
   } = useToggleModal();
+  const { isDesktop, isTablet, isMobile } = useMatchMedia();
 
   return (
     <>
       <Container>
-        <DailyCaloriesForm openModal={openModal} />
+        {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
+        {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
+        {isTablet && <DailyCaloriesForm openModal={openModal} />}
+        {isDesktop && <DailyCaloriesForm openModal={openModal} />}
+
+        {/* <DailyCaloriesForm openModal={openModal} /> */}
         {/* open modal */}
         {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
         {isOpen && (
@@ -32,7 +40,7 @@ function MainPage() {
           </Modal>
         )}
       </Container>
-   <PictureFruit/>
+      <PictureFruit/>
     </>
   );
 }
