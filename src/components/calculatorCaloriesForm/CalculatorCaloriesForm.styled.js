@@ -112,7 +112,6 @@ export const InputStyled = styled(TextField)`
     position: absolute;
     bottom: -20px;
     width: 150%;
-    overflow: hidden;
   }
 `;
 export const BloodGroup = styled.div`
