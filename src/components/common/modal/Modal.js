@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { ModalBackdrop, ModalContent } from './Modal.styled';
 import useMatchMedia from 'hooks/useMatchMedia';
 
-const modalRoot = document.querySelector('#root');
+const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({
   children = '',
@@ -24,12 +24,20 @@ export default function Modal({
     };
   }, [handleKeyDown, isMobile]);
 
-  return createPortal(
-    <ModalBackdrop onClick={handleBackdropClick}>
-      <ModalContent>{children}</ModalContent>
-    </ModalBackdrop>,
-    modalRoot
-  );
+  if (isMobile) {
+    return (
+      <ModalBackdrop onClick={handleBackdropClick}>
+        <ModalContent>{children}</ModalContent>
+      </ModalBackdrop>
+    );
+  } else {
+    return createPortal(
+      <ModalBackdrop onClick={handleBackdropClick}>
+        <ModalContent>{children}</ModalContent>
+      </ModalBackdrop>,
+      modalRoot
+    );
+  }
 }
 
 Modal.propTypes = {
