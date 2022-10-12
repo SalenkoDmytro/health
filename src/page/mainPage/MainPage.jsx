@@ -1,8 +1,10 @@
 import DailyCaloriesForm from 'components/dailyCaloriesForm/DailyCaloriesForm';
 import DailyCaloriesIntake from 'components/dailyCaloriesIntake/DailyCaloriesIntake';
-import Button from 'components/common/button/Button';
+// import Button from 'components/common/button/Button';
 import Modal from 'components/common/modal/Modal';
 import useToggleModal from 'hooks/toggleModal';
+import useMatchMedia from 'hooks/useMatchMedia';
+import UserInfo from 'components/userInfo';
 
 function MainPage() {
   const {
@@ -13,10 +15,16 @@ function MainPage() {
     handleKeyDown,
     handleBackdropClick,
   } = useToggleModal();
+  const { isDesktop, isTablet, isMobile } = useMatchMedia();
 
   return (
     <>
-      <DailyCaloriesForm openModal={openModal} />
+      {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
+      {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
+      {isTablet && <DailyCaloriesForm openModal={openModal} />}
+      {isDesktop && <DailyCaloriesForm openModal={openModal} />}
+
+      {/* <DailyCaloriesForm openModal={openModal} /> */}
       {/* open modal */}
       {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
       {isOpen && (

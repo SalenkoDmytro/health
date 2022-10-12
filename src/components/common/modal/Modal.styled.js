@@ -2,30 +2,36 @@ import styled from 'styled-components';
 import { device } from 'utils/device';
 
 export const ModalBackdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(33, 33, 33, 0.12);
+  @media (${device.tablet}) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(33, 33, 33, 0.12);
+  }
 `;
 
 export const ModalContent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
   @media (${device.mobile}) {
-    min-width: 320px;
+    // min-width: 320px;
+    width: 100%;
     padding: 34px 40px;
+    margin-right: auto;
+    margin-left: auto;
   }
   @media (${device.fablet}) {
-    min-width: 450px;
+    width: 450px;
   }
 
   @media (${device.tablet}) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     min-width: 580px;
+    padding: 34px 40px;
+    box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
   }
 
   @media (${device.desktop}) {
@@ -34,7 +40,6 @@ export const ModalContent = styled.div`
     padding: 64px 82px;
   }
 
-  min-width: ${p => `${p.theme.space[7] * 3}px`};
+  // min-width: ${p => `${p.theme.space[7] * 3}px`};
   background-color: ${p => p.theme.colors.white};
-  box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
 `;
