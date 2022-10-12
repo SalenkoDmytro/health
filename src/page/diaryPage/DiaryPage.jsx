@@ -29,7 +29,7 @@ function DiaryPage() {
   useEffect(() => {
     if (isAuth && !userData) {
       dispatch(getUser());
-      console.log('isAuth1', isAuth);
+      // console.log('isAuth1', isAuth);
     }
   }, [dispatch, isAuth, userData]);
 

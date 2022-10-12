@@ -13,7 +13,6 @@ import { Button } from './MainPage.styled';
 import PictureFruit from '../../components/common/picture/PictureFruit';
 import { Container } from '../../components/common/container/Container';
 
-
 function MainPage() {
   const {
     isOpen,
@@ -24,7 +23,10 @@ function MainPage() {
     handleKeyDown,
     handleBackdropClick,
   } = useToggleModal();
+
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
+
+  console.log('1111', isOpen);
 
   return (
     <>
@@ -34,36 +36,34 @@ function MainPage() {
         {isTablet && <DailyCaloriesForm openModal={openModal} />}
         {isDesktop && <DailyCaloriesForm openModal={openModal} />}
 
+        {/* <DailyCaloriesForm openModal={openModal} /> */}
+        {/* open modal */}
+        {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
+        {isOpen && (
+          <Modal
+            closeModal={closeModal}
+            handleKeyDown={handleKeyDown}
+            handleBackdropClick={handleBackdropClick}
+          >
+            {!isMobile && (
+              <Box position="absolute" top="0" right="0" zIndex="100">
+                {hasBtnClose && (
+                  <Button
+                    type="button"
+                    onClick={closeModal}
+                    aria-label="close modal"
+                  >
+                    <IoIosClose size="20px" />
+                  </Button>
+                )}
+              </Box>
+            )}
 
-      {/* <DailyCaloriesForm openModal={openModal} /> */}
-      {/* open modal */}
-      {/* <Button onClick={() => openModal()}>Open Modal</Button> */}
-      {isOpen && (
-        <Modal
-          closeModal={closeModal}
-          handleKeyDown={handleKeyDown}
-          handleBackdropClick={handleBackdropClick}
-        >
-          {!isMobile && (
-            <Box position="absolute" top="0" right="0" zIndex="100">
-              {hasBtnClose && (
-                <Button
-                  type="button"
-                  onClick={closeModal}
-                  aria-label="close modal"
-                >
-                  <IoIosClose size="20px" />
-                </Button>
-              )}
-            </Box>
-          )}
-
-          <DailyCaloriesIntake />
-        </Modal>
-      )}
+            <DailyCaloriesIntake />
+          </Modal>
+        )}
       </Container>
-      <PictureFruit/>
-
+      <PictureFruit />
     </>
   );
 }

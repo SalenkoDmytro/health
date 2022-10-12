@@ -12,7 +12,7 @@ function UserInfo() {
   const { isMobile } = useMatchMedia();
   const { isOpen, closeModal, hasBtnClose = true } = useToggleModal();
 
-  console.log('Mitya', isOpen);
+  // console.log('Mitya', isOpen);
   return (
     <Wrapper>
       {isMobile && isOpen && (

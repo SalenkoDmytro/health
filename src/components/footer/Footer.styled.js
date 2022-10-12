@@ -9,7 +9,8 @@ export const FooterStyled = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.white};
+  // background-color: ${({ theme }) => theme.colors.white};
+  background-color: inherit;
 
   @media (${device.mobile}) {
     border-top: 2px solid ${({ theme }) => theme.colors.border};
@@ -18,8 +19,8 @@ export const FooterStyled = styled.footer`
 
   @media (${device.tabletOnly}) {
     padding: 20px 32px 16px;
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
   }
 
   @media (${device.desktop}) {

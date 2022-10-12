@@ -9,7 +9,7 @@ import {
 } from './RightSideBar.styled';
 
 function RightSideBar({ date }) {
-  console.log(date.toLocaleString());
+  // console.log(date.toLocaleString());
   return (
     <SideBarStyled>
       <Summary>
