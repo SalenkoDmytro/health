@@ -5,7 +5,7 @@ import { device } from 'utils/device';
 
 export const StyledProductForm = styled.form`
   width: 100%;
-
+  padding-bottom: 60px;
   @media ${device.tablet} {
     display: flex;
     margin-bottom: 44px;
