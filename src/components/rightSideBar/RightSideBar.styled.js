@@ -1,8 +1,17 @@
 import styled from 'styled-components';
+import { device } from 'utils/device';
 
 export const SideBarStyled = styled.div`
-  padding-left: 94px;
-  height: 100vh;
+  @media ${device.tablet} {
+    display: flex;
+    gap: 60px;
+  }
+
+  @media ${device.desktop} {
+    display: block
+    padding-left: 94px;
+    height: 100vh;
+  }
 `;
 
 export const Summary = styled.div`
@@ -38,10 +47,19 @@ export const SummaryListItem = styled.li`
   display: flex;
   justify-content: space-between;
 
-  :not(:last-child){
+  :not(:last-child) {
     margin-bottom: 10px;
   }
 `;
 
+export const SideBar = styled.div`
+  background-color: #f0f1f3;
 
+  @media ${device.tablet} {
+    padding: 91px 87px;
+  }
 
+  @media ${device.desktop} {
+    width: 40%;
+  }
+`;

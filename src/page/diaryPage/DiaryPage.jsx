@@ -10,7 +10,9 @@ import DiaryProductsList from 'components/diaryProductsList/DiaryProductsList';
 import DiaryDateСalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from 'components/diaryAddProductForm';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
-import Box from 'components/common/box';
+import { DiaryBox, Diary } from './DiaryPage.styled';
+import Box from 'components/common/box/Box';
+import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 import { getUser } from 'redux/user/userOperations';
 import PictureLeaf from 'components/common/picture/PictureLeaf';
@@ -41,19 +43,16 @@ function DiaryPage() {
 
   return (
     <>
-      <Container>
-        <Box display="flex">
-          <Box width="60%">
-            <DiaryDateСalendar getDate={getDate} startDate={date} />
-            <DiaryAddProductForm date={date} />
-            <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-          </Box>
-          <Box width="40%">
-            <RightSideBar date={date} />
-          </Box>
-        </Box>
-      </Container>
-      <PictureLeaf />
+      <DiaryBox>
+        <Diary>
+          <DiaryDateСalendar getDate={getDate} startDate={date} />
+          <DiaryAddProductForm date={date} />
+          <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
+        </Diary>
+        <SideBar>
+          <RightSideBar date={date} />
+        </SideBar>
+      </DiaryBox>
     </>
   );
 }
