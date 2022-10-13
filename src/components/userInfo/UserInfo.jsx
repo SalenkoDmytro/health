@@ -5,12 +5,24 @@ import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { logout } from '../../redux/auth/authOperations';
 import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
 
+import { resetStateDailySlice } from 'redux/daily/dailySlice';
+import { resetStateDaySlice } from 'redux/day/daySlice';
+import { resetStateUserSlice } from 'redux/user/userSlice';
+import { resetStateProductSlice } from 'redux/productSearch/productSearchSlice';
+
 function UserInfo({ closeModal, isOpen }) {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const { isMobile } = useMatchMedia();
   const isLogin = useSelector(selectIsLoggedIn);
 
+  const logoutState = () => {
+    dispatch(resetStateProductSlice());
+    dispatch(resetStateUserSlice());
+    dispatch(resetStateDaySlice());
+    dispatch(resetStateDailySlice());
+    dispatch(logout());
+  };
   return (
     <Wrapper>
       {isMobile && isOpen && (
@@ -21,7 +33,7 @@ function UserInfo({ closeModal, isOpen }) {
       {isLogin && (
         <Box>
           <Text>{userName}</Text>
-          <Button type="button" onClick={() => dispatch(logout())}>
+          <Button type="button" onClick={() => logoutState()}>
             Выйти
           </Button>
         </Box>
