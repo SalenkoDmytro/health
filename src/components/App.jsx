@@ -13,6 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAccessToken } from 'redux/auth/authSelectors';
 import { getUser } from 'redux/user/userOperations';
 
+import { resetStateDailySlice } from 'redux/daily/dailySlice';
+import { resetStateDaySlice } from 'redux/day/daySlice';
+import { resetStateUserSlice } from 'redux/user/userSlice';
+import { resetStateProductSlice } from 'redux/productSearch/productSearchSlice';
+
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
 const CalculatorPage = lazy(() => import('page/calculatorPage'));
@@ -38,13 +43,11 @@ export default function App() {
   // };
 
   useEffect(() => {
-    dispatch(resetStateProductSlice());
-    dispatch(resetStateUserSlice());
-    dispatch(resetStateDaySlice());
-    dispatch(resetStateDailySlice());
-
-    console.log('fghjkm');
     if (isAuth) {
+      dispatch(resetStateProductSlice());
+      dispatch(resetStateUserSlice());
+      dispatch(resetStateDaySlice());
+      dispatch(resetStateDailySlice());
       dispatch(getUser());
     }
   }, [dispatch, isAuth]);

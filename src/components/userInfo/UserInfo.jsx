@@ -4,10 +4,12 @@ import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { logout } from '../../redux/auth/authOperations';
 import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
+
 import { resetStateDailySlice } from 'redux/daily/dailySlice';
 import { resetStateDaySlice } from 'redux/day/daySlice';
 import { resetStateUserSlice } from 'redux/user/userSlice';
 import { resetStateProductSlice } from 'redux/productSearch/productSearchSlice';
+
 function UserInfo({ closeModal, isOpen }) {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
