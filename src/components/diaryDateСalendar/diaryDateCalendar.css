@@ -11,3 +11,10 @@ line-height: 41px;
     gap: 21px;
     margin-bottom: 60px;
 }
+
+.react-datepicker__day--selected{
+    background-color: orange;
+    border: none;
+    border-radius: 50%;
+  } 
+
