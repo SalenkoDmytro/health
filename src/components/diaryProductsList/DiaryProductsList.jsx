@@ -2,11 +2,10 @@ import DiaryProductsListItem from 'components/diaryProductsListItem';
 import { StyledWrap, StyledList, StyledItem } from './DiaryProductsList.styled';
 
 export default function DiaryProductsList({ dayId, eatenProducts }) {
-  console.log(eatenProducts);
   return (
     <StyledWrap>
-      {/* <StyledList>
-        {eatenProducts.map(item => {
+      <StyledList>
+        {eatenProducts?.map(item => {
           return (
             <StyledItem key={item.id}>
               <DiaryProductsListItem
@@ -19,7 +18,7 @@ export default function DiaryProductsList({ dayId, eatenProducts }) {
             </StyledItem>
           );
         })}
-      </StyledList> */}
+      </StyledList>
     </StyledWrap>
   );
 }

@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { productSearch } from 'redux/productSearch/productSearchOperations';
 import { selectProducts } from 'redux/productSearch/productSearchSelectors';
-import { addDay, addDayInfo } from 'redux/day/dayOperations';
+import { addDay } from 'redux/day/dayOperations';
 import Box from 'components/common/box';
 import { resetState } from 'redux/productSearch/productSearchSlice';
 import {
@@ -24,7 +24,7 @@ import Select from '@mui/material/Select';
 export default function DiaryAddProductForm({ date }) {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
-  const [searchProduct, setSearchProduct] = useState('');
+  // const [searchProduct, setSearchProduct] = useState('');
   const [selectProduct, setSelectProduct] = useState('');
   const [debouncedValue, setDebouncedValue] = useState(null);
   const validationSchema = yup.object({
@@ -78,7 +78,7 @@ export default function DiaryAddProductForm({ date }) {
       weight: values.productWeight,
     };
     dispatch(addDay(obj));
-    setSearchProduct('');
+    setSelectProduct('');
     formik.resetForm();
   }
 
@@ -122,10 +122,12 @@ export default function DiaryAddProductForm({ date }) {
               onBlur={formik.handleBlur}
               value={formik.values.productName}
               error={
-                //!selectProduct $$ formik.values.productName.length!=0
-                // ? 'выберите продукт'
+                // !selectProduct && formik.values.productName.length != 0
+                //   ? 'vvvvvv'
                 //   : null
-                formik.touched.productName && Boolean(formik.errors.productName)
+                formik.touched.productName &&
+                formik.values.productName.length != 0 &&
+                Boolean(formik.errors.productName)
               }
               helperText={
                 formik.touched.productName && formik.errors.productName
@@ -141,6 +143,7 @@ export default function DiaryAddProductForm({ date }) {
               autoComplete="off"
               label="Граммы"
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               value={formik.values.productWeight}
               error={
                 formik.touched.productWeight &&

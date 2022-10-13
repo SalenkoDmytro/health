@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 import { selectDaySummary } from 'redux/day/daySelectors';
 
 function RightSideBar({ date }) {
-  const consumption = useSelector(selectDaySummary);
+  const consumption = useSelector(selectDaySummary) || {};
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
     consumption;
 
