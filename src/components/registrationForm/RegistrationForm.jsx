@@ -1,9 +1,7 @@
 import React from 'react';
+import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
 import {
-  BloodTextRed,
-  InputStyled,
-} from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
-import {
+  ErrorText,
   FormContainer,
   FormTitle,
   LoginBtnWrapper,
@@ -33,15 +31,15 @@ function RegistrationForm() {
   const validationSchema = yup.object({
     username: yup
       .string('Введите ваше имя')
-      .max(40, 'Слишком длинное имя. максимальная длина 40 символов')
+      .max(40, 'Максимальная длина 40 символов')
       .required('Укажите имя'),
     email: yup
       .string('Введите адрес электронной почты')
-      .email('Введите действительный адрес электронной почты')
+      .email('Почта не действительна')
       .required('Электронная почта обязательна'),
     password: yup
       .string('Введите свой пароль')
-      .min(8, 'Пароль должен иметь длину не менее 8 символов')
+      .min(8, 'Не менее 8 символов')
       .required('Требуется пароль'),
   });
 
@@ -65,7 +63,7 @@ function RegistrationForm() {
   return (
     <FormContainer>
       <FormTitle>регистрация</FormTitle>
-      {stateError ? <BloodTextRed>{errorExist()}</BloodTextRed> : <></>}
+      {stateError ? <ErrorText>{errorExist()}</ErrorText> : <></>}
       <form onSubmit={formik.handleSubmit}>
         <LoginFormContent>
           <InputStyled
