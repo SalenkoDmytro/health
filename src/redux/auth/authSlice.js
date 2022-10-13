@@ -31,7 +31,7 @@ const authSlice = createSlice({
     [register.pending]: state => {
       state.isLoading = true;
     },
-    [register.fulfilled]: (state) => {
+    [register.fulfilled]: state => {
       state.error = null;
       state.isRegistered = true;
       state.isLoading = false;

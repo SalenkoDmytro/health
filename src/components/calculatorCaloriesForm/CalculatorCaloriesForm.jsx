@@ -34,7 +34,6 @@ function CalculatorCaloriesForm({ openModal }) {
   const isAuth = useSelector(selectAccessToken);
   const userData = useSelector(getUserData);
   const user = useSelector(selectUser);
-
   // console.log('userData', userData);
 
   // ------- Валідація для форми -------

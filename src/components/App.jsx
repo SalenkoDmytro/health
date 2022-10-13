@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import Loader from './Loader';
 import NotFound from 'page/notFoundPage/NotFound';
@@ -9,6 +9,9 @@ import NotFound from 'page/notFoundPage/NotFound';
 import PublicRouter from '../utils/PublicRouter';
 import PrivateRoute from '../utils/PrivateRoute';
 import Layout from './layout/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAccessToken } from 'redux/auth/authSelectors';
+import { getUser } from 'redux/user/userOperations';
 
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
@@ -17,6 +20,8 @@ const LoginPage = lazy(() => import('page/loginPage'));
 const RegistrationPage = lazy(() => import('page/registrationPage'));
 
 export default function App() {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(selectAccessToken);
   // const {
   //   isOpen,
   //   openModal,
@@ -31,6 +36,14 @@ export default function App() {
   // const getIsOpen = data => {
   //   isOpen = data;
   // };
+
+  useEffect(() => {
+    console.log('fghjkm');
+    if (isAuth) {
+      dispatch(getUser());
+    }
+  }, [dispatch, isAuth]);
+
   return (
     <>
       {/* <Header /> */}

@@ -6,6 +6,9 @@ import { getUserData } from 'redux/user/userSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
 import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
 
+// import Loader from 'components/Loader.jsx';
+import { selectUser } from 'redux/user/userSelectors';
+
 import DiaryProductsList from 'components/diaryProductsList/DiaryProductsList';
 import DiaryDateСalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from 'components/diaryAddProductForm';
@@ -17,19 +20,26 @@ import PictureLeaf from 'components/common/picture/PictureLeaf';
 import { Container } from 'components/common/container/Container';
 
 function DiaryPage() {
+  const user = useSelector(selectUser);
+  console.log('DiaryPage', user);
+
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
-  const isAuth = useSelector(selectIsLoggedIn);
-  const userData = useSelector(getUserData);
+  // const isAuth = useSelector(selectIsLoggedIn);
+  // const userData = useSelector(getUserData);
   const eatenProducts = useSelector(selectEatenProducts);
   const dayId = useSelector(selectDayId);
 
-  useEffect(() => {
-    if (isAuth && !userData) {
-      dispatch(getUser());
-      // console.log('isAuth1', isAuth);
-    }
-  }, [dispatch, isAuth, userData]);
+  // useEffect(() => {
+  //   if (isAuth && !userData) {
+  //     dispatch(getUser());
+  //     // console.log('isAuth1', isAuth);
+  //   }
+  // }, [dispatch, isAuth, userData]);
+
+  // useEffect(() => {
+  //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
+  // }, [date, dispatch]);
 
   useEffect(() => {
     dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));

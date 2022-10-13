@@ -14,12 +14,12 @@ function CalculatorPage() {
   // console.log('isAuth', isAuth);
   // console.log('userData', userData);
 
-  useEffect(() => {
-    if (isAuth && !userData) {
-      dispatch(getUser());
-      // console.log('isAuth1', isAuth);
-    }
-  }, [dispatch, isAuth, userData]);
+  // useEffect(() => {
+  //   if (isAuth && !userData) {
+  //     dispatch(getUser());
+  //     // console.log('isAuth1', isAuth);
+  //   }
+  // }, [dispatch, isAuth, userData]);
 
   return (
     <>
