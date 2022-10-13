@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import PublicRoute from 'utils/PublicRouter';
 import PrivateRoute from 'utils/PrivateRoute';
 import NotFound from 'page/notFoundPage/NotFound';
+import Loader from 'components/Loader';
 
 const MainPage = lazy(() => import('page/mainPage/MainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage/DiaryPage'));
@@ -14,7 +15,7 @@ const RegistrationPage = lazy(() =>
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<p>Loading page...</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* Public routes */}
