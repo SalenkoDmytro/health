@@ -5,12 +5,12 @@ function Navigation({ closeMobMenu }) {
   return (
     <List>
       <li>
-        <AccentLink to="diary" onClick={closeMobMenu}>
+        <AccentLink to="/diary" onClick={closeMobMenu}>
           Дневник
         </AccentLink>
       </li>
       <li>
-        <NavLinks to="calculator" onClick={closeMobMenu}>
+        <NavLinks to="/calculator" onClick={closeMobMenu}>
           Калькулятор
         </NavLinks>
       </li>
