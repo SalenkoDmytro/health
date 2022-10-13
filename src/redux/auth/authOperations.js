@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { initialState } from './authSlice';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
@@ -40,6 +41,7 @@ export const logout = createAsyncThunk(
   async (_, { fulfillWithValue }) => {
     try {
       await axios.post('/auth/logout');
+      dispatch();
       token.unset();
     } catch (error) {
       fulfillWithValue();
