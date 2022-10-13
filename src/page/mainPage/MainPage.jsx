@@ -5,7 +5,6 @@ import useToggleModal from 'hooks/toggleModal';
 import useMatchMedia from 'hooks/useMatchMedia';
 import UserInfo from 'components/userInfo';
 
-// import ButtonIcon from 'components/common/buttonIcon';
 import Box from 'components/common/box';
 import { IoIosClose } from 'react-icons/io';
 import { Button } from './MainPage.styled';
@@ -13,6 +12,7 @@ import { Button } from './MainPage.styled';
 import PictureFruit from '../../components/common/picture/PictureFruit';
 import { Container } from '../../components/common/container/Container';
 
+import Header from 'components/header/Header';
 function MainPage() {
   const {
     isOpen,
@@ -30,6 +30,7 @@ function MainPage() {
 
   return (
     <>
+      <Header />
       {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
       <Container>
         {/* {isMobile && isOpen && (

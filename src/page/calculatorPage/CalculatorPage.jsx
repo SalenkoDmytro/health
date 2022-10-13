@@ -9,6 +9,7 @@ import PictureLeaf from '../../components/common/picture/PictureLeaf';
 import Box from 'components/common/box/Box';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
 import { CalculatorBox } from './CalculatorPage.styled';
+import Header from 'components/header/Header';
 
 function CalculatorPage() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function CalculatorPage() {
 
   return (
     <>
+      <Header />
       <Container>
         <CalculatorBox>
           <Box width="60%">

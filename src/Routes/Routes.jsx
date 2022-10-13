@@ -1,90 +1,35 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
-import PublicRouter from '../utils/PublicRouter';
-import PrivateRoute from '../utils/PrivateRoute';
-import Layout from 'components/layout/Layout';
+import { lazy, Suspense } from 'react';
+import PublicRoute from 'utils/PublicRouter';
+import PrivateRoute from 'utils/PrivateRoute';
 import NotFound from 'page/notFoundPage/NotFound';
 
-const MainPage = lazy(() => import('page/mainPage'));
-const DiaryPage = lazy(() => import('page/diaryPage'));
-const CalculatorPage = lazy(() => import('page/calculatorPage'));
-const LoginPage = lazy(() => import('page/loginPage'));
-const RegistrationPage = lazy(() => import('page/registrationPage'));
+const MainPage = lazy(() => import('page/mainPage/MainPage'));
+const DiaryPage = lazy(() => import('page/diaryPage/DiaryPage'));
+const CalculatorPage = lazy(() => import('page/calculatorPage/CalculatorPage'));
+const LoginPage = lazy(() => import('page/loginPage/LoginPage'));
+const RegistrationPage = lazy(() =>
+  import('page/registrationPage/RegistrationPage')
+);
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Layout
-          // isOpen={isOpen}
-          // toggleModal={toggleModal}
-          // openModal={openModal}
-          // hasBtnClose={hasBtnClose}
-          // closeModal={closeModal}
-          // handleKeyDown={handleKeyDown}
-          // handleBackdropClick={handleBackdropClick}
-          />
-        }
-      >
-        <Route
-          index
-          element={
-            <PublicRouter>
-              <MainPage
-              // isOpen={isOpen}
-              // openModal={openModal}
-              // hasBtnClose={hasBtnClose}
-              // closeModal={closeModal}
-              // handleKeyDown={handleKeyDown}
-              // handleBackdropClick={handleBackdropClick}
-              />
-            </PublicRouter>
-          }
-        />
-        <Route
-          path="/registration"
-          element={
-            <PublicRouter restricted redirectTo="/login">
-              <RegistrationPage />
-            </PublicRouter>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRouter restricted redirectTo="/calculator">
-              <LoginPage />
-            </PublicRouter>
-          }
-        />
-        <Route
-          path="/diary"
-          element={
-            <PrivateRoute>
-              <DiaryPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/calculator"
-          element={
-            <PrivateRoute>
-              <CalculatorPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <PublicRouter>
-              <NotFound />
-            </PublicRouter>
-          }
-        />
-      </Route>
-    </Routes>
+    <Suspense fallback={<p>Loading page...</p>}>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        {/* Public routes */}
+        <Route element={<PublicRoute />}>
+          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+        {/* Private routes */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/diary" element={<DiaryPage />} />
+          <Route path="/calculator" element={<CalculatorPage />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 };
 
