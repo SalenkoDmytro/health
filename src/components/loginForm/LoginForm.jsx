@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import { login } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 import {
+  ErrorText,
   FormContainer,
   FormTitle,
   LoginBtnWrapper,
@@ -17,17 +18,32 @@ import { selectAccessToken } from 'redux/auth/authSelectors';
 function LoginForm() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
+  const stateError = useSelector(state => state.auth.error);
+  const errorExist = () => {
+    if (stateError.includes(403) === true) {
+      return (
+        <>
+          Электронная почта не существует <br />
+          или неверный пароль
+        </>
+      );
+    }
+    if (stateError.includes(400) === true) {
+      return 'Ой извините, проблема с сервером';
+    }
+  };
 
+  // console.log(errorExist());
   // ------- Валідація для форми -------
 
   const validationSchema = yup.object({
     email: yup
       .string('Введите адрес электронной почты')
-      .email('Введите действительный адрес электронной почты')
+      .email('Почта не действительна')
       .required('Электронная почта обязательна'),
     password: yup
       .string('Введите свой пароль')
-      .min(8, 'Пароль должен иметь длину не менее 8 символов')
+      .min(8, 'Не менее 8 символов')
       .required('Требуется пароль'),
   });
 
@@ -51,6 +67,7 @@ function LoginForm() {
   return (
     <FormContainer>
       <FormTitle>Вход</FormTitle>
+      {stateError ? <ErrorText>{errorExist()}</ErrorText> : <></>}
       <form onSubmit={formik.handleSubmit}>
         <LoginFormContent>
           <InputStyled

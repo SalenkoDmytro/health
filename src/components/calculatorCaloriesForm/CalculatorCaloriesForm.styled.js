@@ -113,8 +113,7 @@ export const InputStyled = styled(TextField)`
   p {
     font-family: ${x => x.theme.fonts.main};
     position: absolute;
-    bottom: -20px;
-    width: 150%;
+    bottom: -25px;
   }
 `;
 export const BloodGroup = styled.div`
@@ -181,7 +180,7 @@ export const UserMainDataWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 32px;
+  gap: 40px;
   @media ${device.fablet} {
     max-width: 240px;
   }
