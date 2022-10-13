@@ -2,17 +2,15 @@ import styled from 'styled-components';
 import { device } from 'utils/device';
 
 export const SideBarStyled = styled.div`
- 
-
-  @media ${device.desktop} {
-    display: block
-    padding-left: 94px;
-    height: 100vh;
-  }
-
   @media ${device.tablet} {
     display: flex;
     gap: 60px;
+  }
+
+  @media ${device.desktop} {
+    flex-direction: column;
+    padding-left: 94px;
+    height: 100vh;
   }
 `;
 
@@ -71,5 +69,6 @@ export const SideBar = styled.div`
 
   @media ${device.desktop} {
     width: 40%;
+    padding: 0px 175px 189px 60px;
   }
 `;
