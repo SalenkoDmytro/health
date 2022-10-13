@@ -15,31 +15,32 @@ function RightSideBar({ date }) {
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
     consumption;
 
+  const formattedDate =
+    date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+
   return (
     <SideBarStyled>
-      <div>
-        <Summary>
-          <SummaryTitle SummaryTitle>{date.toLocaleString()}</SummaryTitle>
-          <SummaryList>
-            <SummaryListItem>
-              <span>Осталось</span>
-              <span>{Math.trunc(kcalLeft)} ккал</span>
-            </SummaryListItem>
-            <SummaryListItem>
-              <span>Употреблено</span>
-              <span>{Math.trunc(kcalConsumed) || 0} ккал</span>
-            </SummaryListItem>
-            <SummaryListItem>
-              <span>Дневная норма</span>
-              <span>{Math.trunc(dailyRate)} ккал</span>
-            </SummaryListItem>
-            <SummaryListItem>
-              <span>% от нормы</span>
-              <span>{Math.trunc(percentsOfDailyRate) || 0} %</span>
-            </SummaryListItem>
-          </SummaryList>
-        </Summary>
-      </div>
+      <Summary>
+        <SummaryTitle SummaryTitle>{formattedDate}</SummaryTitle>
+        <SummaryList>
+          <SummaryListItem>
+            <span>Осталось</span>
+            <span>{Math.trunc(kcalLeft)} ккал</span>
+          </SummaryListItem>
+          <SummaryListItem>
+            <span>Употреблено</span>
+            <span>{Math.trunc(kcalConsumed) || 0} ккал</span>
+          </SummaryListItem>
+          <SummaryListItem>
+            <span>Дневная норма</span>
+            <span>{Math.trunc(dailyRate)} ккал</span>
+          </SummaryListItem>
+          <SummaryListItem>
+            <span>% от нормы</span>
+            <span>{Math.trunc(percentsOfDailyRate) || 0} %</span>
+          </SummaryListItem>
+        </SummaryList>
+      </Summary>
       <div>
         <SummaryTitle>Нерекомендуемые продукты </SummaryTitle>
         <SummarySubtitle>
