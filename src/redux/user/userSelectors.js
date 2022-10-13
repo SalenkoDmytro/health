@@ -1,4 +1,7 @@
-export const selectUser = state => state.user;
+export const selectUser = state => {
+  console.log(state);
+  return state.user;
+};
 
 export const selectUserIsLoading = state => state.user.isLoading;
 

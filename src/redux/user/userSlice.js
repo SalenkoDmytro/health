@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getUser } from './userOperations';
 
-const initialState = {
+export const initialState = {
   email: '',
   username: '',
   id: '',
@@ -14,6 +14,11 @@ const initialState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
+  reducers: {
+    resetStateUserSlice(state) {
+      state = initialState;
+    },
+  },
   extraReducers: {
     [getUser.pending]: state => {
       state.isLoading = true;
@@ -31,4 +36,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { resetStateUserSlice } = userSlice.actions;
 export default userSlice.reducer;

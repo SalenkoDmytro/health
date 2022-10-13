@@ -18,12 +18,12 @@ function CalculatorPage() {
   const userData = useSelector(getUserData);
   const [date, setDate] = useState(new Date());
 
-  useEffect(() => {
-    if (isAuth && !userData) {
-      dispatch(getUser());
-      // console.log('isAuth1', isAuth);
-    }
-  }, [dispatch, isAuth, userData]);
+  // useEffect(() => {
+  //   if (isAuth && !userData) {
+  //     dispatch(getUser());
+  //     // console.log('isAuth1', isAuth);
+  //   }
+  // }, [dispatch, isAuth, userData]);
 
   return (
     <>

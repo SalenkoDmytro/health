@@ -17,6 +17,7 @@ import Button from 'components/common/button/Button';
 function RegistrationForm() {
   const dispatch = useDispatch();
   const stateError = useSelector(state => state.auth.error);
+
   const errorExist = () => {
     if (stateError.includes(409) === true) {
       return 'Электронная почта занята';

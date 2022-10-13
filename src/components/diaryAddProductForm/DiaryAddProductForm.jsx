@@ -26,8 +26,7 @@ import addIcon from 'assets/icons/addProduct.svg';
 export default function DiaryAddProductForm({ date }) {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
-  // const [searchProduct, setSearchProduct] = useState('');
-  const [selectProduct, setSelectProduct] = useState('');
+  const [selectProduct, setSelectProduct] = useState(null);
   const [debouncedValue, setDebouncedValue] = useState(null);
   const validationSchema = yup.object({
     productName: yup
@@ -80,7 +79,7 @@ export default function DiaryAddProductForm({ date }) {
       weight: values.productWeight,
     };
     dispatch(addDay(obj));
-    setSelectProduct('');
+    setSelectProduct(null);
     formik.resetForm();
   }
 
@@ -108,7 +107,7 @@ export default function DiaryAddProductForm({ date }) {
     setSelectProduct('');
     formik.setFieldValue('productName', e.target.value);
   };
-
+  console.log(!selectProduct, formik.values.productName.length);
   return (
     <>
       <Box position="relative">
@@ -124,11 +123,12 @@ export default function DiaryAddProductForm({ date }) {
               onBlur={formik.handleBlur}
               value={formik.values.productName}
               error={
-                // !selectProduct && formik.values.productName.length != 0
-                //   ? 'vvvvvv'
-                //   : null
+                /*!selectProduct && formik.values.productName.length != 0
+                  ? 'vvvvvv'
+                   : null*/
                 formik.touched.productName &&
-                formik.values.productName.length !== 0 &&
+                !selectProduct &&
+                Boolean(formik.values.productName.length !== 0) &&
                 Boolean(formik.errors.productName)
               }
               helperText={

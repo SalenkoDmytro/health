@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { initialState } from './authSlice';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
@@ -36,12 +35,12 @@ export const login = createAsyncThunk(
     }
   }
 );
+
 export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { fulfillWithValue }) => {
     try {
       await axios.post('/auth/logout');
-      dispatch();
       token.unset();
     } catch (error) {
       fulfillWithValue();
@@ -53,11 +52,9 @@ export const refresh = createAsyncThunk(
   'auth/refresh',
   async (sid, { rejectWithValue, getState }) => {
     const tokenLS = getState().auth.refreshToken;
-
     if (!tokenLS) {
       return rejectWithValue('Not logged');
     }
-
     token.set(tokenLS);
 
     try {

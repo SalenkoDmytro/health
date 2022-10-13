@@ -12,17 +12,14 @@ const token = {
   },
 };
 
-export const getUser = createAsyncThunk(
-  'user/getUser',
-  async (_, thunkAPI) => {
-    try {
-      const tokenLS = thunkAPI.getState().auth.accessToken;
+export const getUser = createAsyncThunk('user/getUser', async (_, thunkAPI) => {
+  try {
+    const tokenLS = thunkAPI.getState().auth.accessToken;
+    token.set(tokenLS);
 
-      token.set(tokenLS)
-      const res = await axios.get('/user');
-      return res.data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue('Sorry, server Error!');
-    }
-  },
-);
+    const res = await axios.get('/user');
+    return res.data;
+  } catch (err) {
+    return thunkAPI.rejectWithValue('Sorry, server Error!');
+  }
+});
