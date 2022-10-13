@@ -1,6 +1,19 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ButtonIcon from 'components/common/buttonIcon';
 import { device } from 'utils/device';
+
+const gradient = keyframes`
+{
+0% {
+  background-position: 0 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0 50%;
+}}
+`;
 
 export const FooterStyled = styled.footer`
   display: flex;
@@ -25,6 +38,22 @@ export const FooterStyled = styled.footer`
 `;
 
 export const FooterTextStyled = styled.p`
+  animation: ${gradient} 8s ease-in-out infinite;
+  background: linear-gradient(
+    to right,
+    ${({ theme }) => theme.colors.accent},
+    ${({ theme }) => theme.colors.accent},
+    ${({ theme }) => theme.colors.text.primaryText},
+    ${({ theme }) => theme.colors.text.secondaryText},
+    ${({ theme }) => theme.colors.text.primaryText},
+    ${({ theme }) => theme.colors.accent},
+    ${({ theme }) => theme.colors.accent}
+  );
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
