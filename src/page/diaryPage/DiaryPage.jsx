@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+//Redux
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { getUserData } from 'redux/user/userSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
 import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
-
+import { getUser } from 'redux/user/userOperations';
+//Components
 import DiaryProductsList from 'components/diaryProductsList/DiaryProductsList';
 import DiaryDateСalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from 'components/diaryAddProductForm';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
-import Box from 'components/common/box';
-
-import { getUser } from 'redux/user/userOperations';
-import PictureLeaf from 'components/common/picture/PictureLeaf';
-import { Container } from 'components/common/container/Container';
+import Header from 'components/header/Header';
+import Footer from 'components/footer/Footer';
+// Styled
+import { DiaryBox, Diary } from './DiaryPage.styled';
+import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 function DiaryPage() {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
+  // Selectors
   const isAuth = useSelector(selectIsLoggedIn);
   const userData = useSelector(getUserData);
   const eatenProducts = useSelector(selectEatenProducts);
@@ -27,7 +29,6 @@ function DiaryPage() {
   useEffect(() => {
     if (isAuth && !userData) {
       dispatch(getUser());
-      // console.log('isAuth1', isAuth);
     }
   }, [dispatch, isAuth, userData]);
 
@@ -41,19 +42,18 @@ function DiaryPage() {
 
   return (
     <>
-      <Container>
-        <Box display="flex">
-          <Box width="60%">
-            <DiaryDateСalendar getDate={getDate} startDate={date} />
-            <DiaryAddProductForm date={date} />
-            <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-          </Box>
-          <Box width="40%">
-            <RightSideBar date={date} />
-          </Box>
-        </Box>
-      </Container>
-      <PictureLeaf />
+      <Header />
+      <DiaryBox>
+        <Diary>
+          <DiaryDateСalendar getDate={getDate} startDate={date} />
+          <DiaryAddProductForm date={date} />
+          <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
+        </Diary>
+        <SideBar>
+          <RightSideBar date={date} />
+        </SideBar>
+      </DiaryBox>
+      <Footer />
     </>
   );
 }
