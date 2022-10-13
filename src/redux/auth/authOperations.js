@@ -41,7 +41,6 @@ export const logout = createAsyncThunk(
   async (_, { fulfillWithValue }) => {
     try {
       await axios.post('/auth/logout');
-      dispatch();
       token.unset();
     } catch (error) {
       fulfillWithValue();
