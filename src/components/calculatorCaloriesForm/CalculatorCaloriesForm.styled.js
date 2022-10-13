@@ -77,6 +77,18 @@ export const FormTitle = styled.h2`
 
 export const MainForm = styled.form`
   max-width: 608px;
+
+  @media ${device.mobileOnly} {
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+  @media ${device.fablet} {
+    margin-top: 100px;
+    margin-bottom: 48px;
+  }
+  @media ${device.desktop} {
+    margin-top: 150px;
+  } ;
 `;
 
 export const InputStyled = styled(TextField)`
@@ -101,8 +113,7 @@ export const InputStyled = styled(TextField)`
   p {
     font-family: ${x => x.theme.fonts.main};
     position: absolute;
-    bottom: -20px;
-    width: 150%;
+    bottom: -25px;
   }
 `;
 export const BloodGroup = styled.div`
@@ -169,7 +180,7 @@ export const UserMainDataWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 32px;
+  gap: 40px;
   @media ${device.fablet} {
     max-width: 240px;
   }

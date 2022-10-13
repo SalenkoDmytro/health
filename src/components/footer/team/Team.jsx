@@ -9,6 +9,12 @@ import {
   OverlayText,
 } from './TeamStyled.styled';
 import Box from 'components/common/box/Box';
+import Alena from '../../../assets/images/team/Alena Abharian.jpeg';
+import Andrew from '../../../assets/images/team/Andrew.jpeg';
+// import Dmitry from '../../../assets/images/team/DmitrySalenko.png';
+import Maksym from '../../../assets/images/team/MaksymHolovachuk.jpeg';
+import Mitya from '../../../assets/images/team/MityaKupriyanov.png';
+import Shamrai from '../../../assets/images/team/Shamrai.jpeg';
 import hunger from '../../../assets/images/notFound/hunger-404.webp';
 
 const Team = () => {
@@ -24,7 +30,7 @@ const Team = () => {
               rel="noreferrer nofollow noopener"
             >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
-                <TeamPhotoStyled src={hunger} alt="Team-member photo" />
+                <TeamPhotoStyled src={Alena} alt="Team-member photo" />
                 <Overlay>
                   <OverlayText>
                     Alena Abharian, <br />
@@ -41,7 +47,7 @@ const Team = () => {
               rel="noreferrer nofollow noopener"
             >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
-                <TeamPhotoStyled src={hunger} alt="Team-member photo" />
+                <TeamPhotoStyled src={Maksym} alt="Team-member photo" />
                 <Overlay>
                   <OverlayText>
                     Maksym Holovachuk, <br /> Scrum master
@@ -89,9 +95,9 @@ const Team = () => {
               rel="noreferrer nofollow noopener"
             >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
-                <TeamPhotoStyled src={hunger} alt="Team-member photo" />
+                <TeamPhotoStyled src={Shamrai} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>
+                  <OverlayText style={{ color: 'white' }}>
                     Volodymyr Shamrai, <br /> Developer
                   </OverlayText>
                 </Overlay>
@@ -105,9 +111,9 @@ const Team = () => {
               rel="noreferrer nofollow noopener"
             >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
-                <TeamPhotoStyled src={hunger} alt="Team-member photo" />
+                <TeamPhotoStyled src={Andrew} alt="Team-member photo" />
                 <Overlay>
-                  <OverlayText>
+                  <OverlayText style={{ color: 'white' }}>
                     Andrew, <br /> Developer
                   </OverlayText>
                 </Overlay>
