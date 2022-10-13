@@ -28,7 +28,7 @@ const AppRoutes = () => {
           <Route path="/diary" element={<DiaryPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
         </Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );
