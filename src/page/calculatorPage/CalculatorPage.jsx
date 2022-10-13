@@ -10,6 +10,7 @@ import Box from 'components/common/box/Box';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
 import { CalculatorBox } from './CalculatorPage.styled';
 import Header from 'components/header/Header';
+import Footer from 'components/footer/Footer';
 
 function CalculatorPage() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function CalculatorPage() {
         </CalculatorBox>
       </Container>
       <PictureLeaf />
+      <Footer />
     </>
   );
 }

@@ -12,6 +12,7 @@ import DiaryDateСalendar from 'components/diaryDateСalendar/DiaryDateСalendar
 import DiaryAddProductForm from 'components/diaryAddProductForm';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
 import Header from 'components/header/Header';
+import Footer from 'components/footer/Footer';
 // Styled
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
@@ -52,6 +53,7 @@ function DiaryPage() {
           <RightSideBar date={date} />
         </SideBar>
       </DiaryBox>
+      <Footer />
     </>
   );
 }
