@@ -41,6 +41,7 @@ const dailySlice = createSlice({
       state,
       { payload: { id, dailyRate, summaries, notAllowedProducts } }
     ) => {
+      console.log(id);
       state.userId = id;
       state.dailyRate = dailyRate;
       state.summaries = summaries;

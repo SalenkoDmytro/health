@@ -18,7 +18,6 @@ export const addDay = createAsyncThunk('add/addDay', async (date, thunkAPI) => {
 
     token.set(tokenLS);
     const res = await axios.post('/day', date);
-    console.log(res.data);
     return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue("Sorry, can't add new day, server Error!");
@@ -34,8 +33,11 @@ export const deleteDay = createAsyncThunk(
       const result = await axios.delete(`/day`, {
         data,
       });
-      console.log(result.data);
-      return result.data;
+      const obj = {
+        result: result.data,
+        data,
+      };
+      return obj;
     } catch (err) {
       return thunkAPI.rejectWithValue("Sorry, can't delete day, server Error!");
     }
