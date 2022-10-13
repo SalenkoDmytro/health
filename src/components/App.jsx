@@ -18,6 +18,8 @@ import { resetStateDaySlice } from 'redux/day/daySlice';
 import { resetStateUserSlice } from 'redux/user/userSlice';
 import { resetStateProductSlice } from 'redux/productSearch/productSearchSlice';
 
+import axios from 'axios';
+
 const MainPage = lazy(() => import('page/mainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage'));
 const CalculatorPage = lazy(() => import('page/calculatorPage'));
@@ -43,14 +45,27 @@ export default function App() {
   // };
 
   useEffect(() => {
-    if (!isAuth) {
+    if (isAuth) {
+      // console.log('first');
       dispatch(getUser());
-    } else {
-      dispatch(resetStateProductSlice());
-      dispatch(resetStateUserSlice());
-      dispatch(resetStateDaySlice());
-      dispatch(resetStateDailySlice());
+
+      const fetchUser = async () => {
+        try {
+          const result = await axios(`/user`);
+          //TODO dispatch
+          console.log('🚀 ~ fetchUser ~ result', result.data);
+          return result;
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchUser();
     }
+
+    // dispatch(resetStateProductSlice());
+    // dispatch(resetStateUserSlice());
+    // dispatch(resetStateDaySlice());
+    // dispatch(resetStateDailySlice());
   }, [dispatch, isAuth]);
 
   return (

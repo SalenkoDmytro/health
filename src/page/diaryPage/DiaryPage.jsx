@@ -25,25 +25,25 @@ function DiaryPage() {
 
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
-  // const isAuth = useSelector(selectIsLoggedIn);
-  // const userData = useSelector(getUserData);
+  const isAuth = useSelector(selectIsLoggedIn);
+  const userData = useSelector(getUserData);
   const eatenProducts = useSelector(selectEatenProducts);
   const dayId = useSelector(selectDayId);
 
-  // useEffect(() => {
-  //   if (isAuth && !userData) {
-  //     dispatch(getUser());
-  //     // console.log('isAuth1', isAuth);
-  //   }
-  // }, [dispatch, isAuth, userData]);
+  useEffect(() => {
+    if (isAuth /* && !userData */) {
+      // dispatch(getUser());
+      dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
+    }
+  }, [date, dispatch, isAuth, userData]);
 
   // useEffect(() => {
   //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
   // }, [date, dispatch]);
 
-  useEffect(() => {
-    dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
-  }, [date, dispatch]);
+  // useEffect(() => {
+  //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
+  // }, [date, dispatch]);
 
   const getDate = (date = new Date()) => {
     setDate(date);
