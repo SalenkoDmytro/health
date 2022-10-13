@@ -19,7 +19,6 @@ import { Container } from '../../components/common/container/Container';
 function DiaryPage() {
   const [date, setDate] = useState(new Date());
   const dayInfo = useSelector(selectDayInfo);
-  // const dayInfo = {};
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
   const userData = useSelector(getUserData);

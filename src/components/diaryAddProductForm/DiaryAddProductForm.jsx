@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -50,9 +50,8 @@ export default function DiaryAddProductForm({ date }) {
     onSubmit: handleSubmit,
   });
 
-  // console.log(formik);
-
   useEffect(() => {
+    if (selectProduct) return;
     if (debouncedValue) {
       clearTimeout(debouncedValue);
     }
@@ -61,9 +60,13 @@ export default function DiaryAddProductForm({ date }) {
     );
     // eslint-disable-next-line
   }, [formik.values.productName]);
+
   //*select products from list
   const handleChangeMultiple = ({ target }) => {
-    setSearchProduct(target.options[target.selectedIndex].title);
+    formik.setFieldValue(
+      'productName',
+      target.options[target.selectedIndex].title
+    );
     setSelectProduct(target.options[target.selectedIndex].value);
     dispatch(resetState());
   };
@@ -74,25 +77,54 @@ export default function DiaryAddProductForm({ date }) {
       productId: selectProduct,
       weight: values.productWeight,
     };
-    console.log(100000000000, obj);
     dispatch(addDay(obj));
     setSearchProduct('');
     formik.resetForm();
   }
+
+  const selectRef = useRef();
+
+  const handleClick = useCallback(
+    e => {
+      const path = e.path || (e.composedPath && e.composedPath());
+      if (!path.includes(selectRef.current)) {
+        dispatch(resetState());
+      }
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleClick);
+    };
+  }, [handleClick]);
+
+  const inputClick = e => {
+    setSelectProduct('');
+    formik.setFieldValue('productName', e.target.value);
+  };
+
   return (
     <>
       <Box position="relative">
         <StyledProductForm onSubmit={formik.handleSubmit}>
           <StyledNameWrapper>
             <InputStyledNameProduct
-              sx={{ width: '240px' }}
+              // sx={{ width: '240px' }}
               id="productName"
               name="productName"
               autoComplete="off"
               label="Введите название продукта"
-              onChange={formik.handleChange}
-              value={searchProduct ? searchProduct : formik.values.productName}
+              onChange={inputClick}
+              onBlur={formik.handleBlur}
+              value={formik.values.productName}
               error={
+                //!selectProduct $$ formik.values.productName.length!=0
+                // ? 'выберите продукт'
+                //   : null
                 formik.touched.productName && Boolean(formik.errors.productName)
               }
               helperText={
@@ -125,27 +157,26 @@ export default function DiaryAddProductForm({ date }) {
           </StyledButtonIcon>
         </StyledProductForm>
 
-        {!searchProduct
-          ? products.length > 0 && (
-              <Select
-                multiple
-                native
-                value={products}
-                // @ts-ignore Typings are not considering `native`
-                onChange={handleChangeMultiple}
-                label="Выберите продукт"
-                // inputProps={{
-                //   id: 'productName',
-                // }}
-              >
-                {products.map(({ title, _id }) => (
-                  <option title={title.ru} key={_id} value={_id}>
-                    {title.ru}
-                  </option>
-                ))}
-              </Select>
-            )
-          : ''}
+        {products?.length > 0 && (
+          <Select
+            multiple
+            native
+            value={products}
+            // @ts-ignore Typings are not considering `native`
+            onChange={handleChangeMultiple}
+            label="Выберите продукт"
+            // inputProps={{
+            //   id: 'productName',
+            // }}
+            ref={selectRef}
+          >
+            {products.map(({ title, _id }) => (
+              <option title={title.ru} key={_id} value={_id}>
+                {title.ru}
+              </option>
+            ))}
+          </Select>
+        )}
       </Box>
     </>
   );

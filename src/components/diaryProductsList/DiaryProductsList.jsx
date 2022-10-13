@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux';
 import DiaryProductsListItem from 'components/diaryProductsListItem';
 import { StyledWrap, StyledList, StyledItem } from './DiaryProductsList.styled';
 
 export default function DiaryProductsList({ dayId, eatenProducts }) {
+  console.log(eatenProducts);
   return (
     <StyledWrap>
-      <StyledList>
+      {/* <StyledList>
         {eatenProducts.map(item => {
           return (
             <StyledItem key={item.id}>
@@ -19,7 +19,7 @@ export default function DiaryProductsList({ dayId, eatenProducts }) {
             </StyledItem>
           );
         })}
-      </StyledList>
+      </StyledList> */}
     </StyledWrap>
   );
 }
