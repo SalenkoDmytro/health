@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       await axios.post('/auth/register', user);
-      window.location = "/health-care-project/login"
+
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -32,18 +32,19 @@ export const login = createAsyncThunk(
       token.set(data.accessToken);
       return data;
     } catch (error) {
+
       return rejectWithValue(error.message);
     }
   }
 );
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (_, { rejectWithValue }) => {
+  async (_, { fulfillWithValue, dispatch }) => {
     try {
       await axios.post('/auth/logout');
       token.unset();
     } catch (error) {
-      return rejectWithValue(error.message);
+      fulfillWithValue();
     }
   }
 );

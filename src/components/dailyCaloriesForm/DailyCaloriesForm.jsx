@@ -25,6 +25,7 @@ import BpRadio, {
 import Button from 'components/common/button/Button';
 
 function DailyCaloriesForm({ openModal }) {
+  // console.log(222, openModal);
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
   const userData = useSelector(getUserData);
@@ -43,7 +44,7 @@ function DailyCaloriesForm({ openModal }) {
   //   // }
   // }, [dispatch, isAuth, userData]);
 
-  console.log('userData', userData);
+  // console.log('userData', userData);
 
   // ------- Валідація для форми -------
 
@@ -88,10 +89,10 @@ function DailyCaloriesForm({ openModal }) {
     validationSchema: validationSchema,
 
     onSubmit: values => {
-      console.log('values', values);
+      // console.log('values', values);
       if (isAuth) {
         dispatch(dailyRateAuthorized({ userId: user.id, ...values }));
-        console.log('values1', values);
+        // console.log('values1', values);
       } else {
         dispatch(dailyRateUnauthorized(values));
         if (openModal) {

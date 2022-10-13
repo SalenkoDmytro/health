@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import { initialState } from './productSearchSlice';
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 const token = {
@@ -19,14 +19,19 @@ export const productSearch = createAsyncThunk(
       const tokenLS = getState().auth.accessToken;
       token.set(tokenLS);
 
-      const { data } = await axios.get('/product', {params: {
-        search,
-        }});
-
-      return data;
+      if (search.length < 2) {
+        return initialState;
+      }
+      if (search.length < 30) {
+        const { data } = await axios.get('/product', {
+          params: {
+            search,
+          },
+        });
+        return data;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
-

@@ -77,6 +77,7 @@ export const FormTitle = styled.h2`
 
 export const MainForm = styled.form`
   max-width: 608px;
+
   @media ${device.mobileOnly} {
     margin-top: 32px;
     margin-bottom: 40px;

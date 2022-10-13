@@ -1,22 +1,34 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import useToggleModal from 'hooks/toggleModal';
 
 import Header from '../header';
 import Footer from '../footer';
 import Loader from '../Loader';
+import { BoxStyled, Wrapper, Main } from './Layout.styled';
+import useMatchMedia from 'hooks/useMatchMedia';
+// import useToggleModal from 'hooks/toggleModal';
 
 const Layout = () => {
+  const { isOpen, isFooterOpen } = useToggleModal();
+  const { isMobile, isTablet, isDesktop } = useMatchMedia();
+  console.log(isOpen);
   return (
-    <div>
+    <Wrapper>
       <Header />
       <Suspense fallback={<Loader />}>
-        <main style={{ marginBottom: '101px' }}>
-          <Outlet />
-        </main>
+        <Main>
+          <BoxStyled as={'section'}>
+            <Outlet />
+          </BoxStyled>
+        </Main>
+
+        {(isMobile && !isOpen && <Footer />) ||
+          (isTablet && <Footer />) ||
+          (isDesktop && <Footer />)}
       </Suspense>
-      {/*<Footer />*/}
-    </div>
+    </Wrapper>
   );
 };
 

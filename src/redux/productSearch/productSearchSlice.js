@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { productSearch } from './productSearchOperations';
 
-const initialState = {
+export const initialState = {
   product: [],
   isLoggedIn: false,
   isLoading: false,
@@ -11,6 +11,11 @@ const initialState = {
 const productSlice = createSlice({
   name: 'products',
   initialState,
+  reducers: {
+    resetState(state, action) {
+      state.product = initialState;
+    },
+  },
   extraReducers: {
     // --------------------PRODUCT-SEARCH OPERATION--------------------
 
@@ -27,5 +32,7 @@ const productSlice = createSlice({
     },
   },
 });
+
+export const { resetState } = productSlice.actions;
 
 export default productSlice.reducer;

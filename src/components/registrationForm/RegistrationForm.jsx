@@ -26,7 +26,6 @@ function RegistrationForm() {
     if (stateError.includes(400) === true) {
       return 'Ой извините, проблема с сервером';
     }
-    return;
   };
 
   // ------- Валідація для форми -------

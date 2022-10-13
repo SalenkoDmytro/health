@@ -16,20 +16,21 @@ export const ModalContent = styled.div`
   @media (${device.mobile}) {
     // min-width: 320px;
     width: 100%;
-    padding: 34px 40px;
+    // padding: 34px 40px;
     margin-right: auto;
     margin-left: auto;
   }
-  @media (${device.fablet}) {
-    width: 450px;
-  }
+  // @media (${device.fablet}) {
+  //   width: 450px;
+  // }
 
   @media (${device.tablet}) {
+    padding: 34px 40px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 580px;
+    width: 580px;
     padding: 34px 40px;
     box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
   }

@@ -19,6 +19,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isFetchingCurrentUser: false,
+  isRegistered: false,
 };
 
 const authSlice = createSlice({
@@ -30,11 +31,9 @@ const authSlice = createSlice({
     [register.pending]: state => {
       state.isLoading = true;
     },
-    [register.fulfilled]: (state, { payload }) => {
-      state.user = payload;
-      //   state.token = token;
+    [register.fulfilled]: (state) => {
       state.error = null;
-      state.isLoggedIn = true;
+      state.isRegistered = true;
       state.isLoading = false;
     },
     [register.rejected]: (state, { payload }) => {
