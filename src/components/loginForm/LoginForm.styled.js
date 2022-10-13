@@ -20,7 +20,7 @@ export const FormTitle = styled.h2`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-
+  position: relative;
   @media ${device.mobileOnly} {
     margin-top: 40px;
   }
@@ -33,11 +33,19 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const ErrorText = styled.span`
+  font-family: ${x => x.theme.fonts.main};
+  position: absolute;
+  top: 40px;
+  color: #d32f2f;
+  font-weight: 600;
+`;
+
 export const LoginFormContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  overflow: hidden;
+  gap: 40px;
+  /* overflow: hidden; */
 
   @media ${device.fablet} {
     max-width: 240px;

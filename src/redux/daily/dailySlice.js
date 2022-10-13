@@ -15,6 +15,12 @@ const dailySlice = createSlice({
   name: 'dailyRate',
   initialState,
   reducers: {
+    setStateDailySlice(state, action) {
+      state.userId = action.payload.id;
+      state.dailyRate = action.payload.userData;
+      // state.summaries = action.payload.userData;
+    },
+
     resetStateDailySlice(state) {
       console.log(state);
       state = initialState;
@@ -48,7 +54,6 @@ const dailySlice = createSlice({
       state,
       { payload: { id, dailyRate, summaries, notAllowedProducts } }
     ) => {
-      console.log(id);
       state.userId = id;
       state.dailyRate = dailyRate;
       state.summaries = summaries;

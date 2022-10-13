@@ -15,10 +15,13 @@ function RightSideBar({ date }) {
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
     consumption;
 
+  const formattedDate =
+    date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+
   return (
     <SideBarStyled>
       <Summary>
-        <SummaryTitle SummaryTitle>{date.toLocaleString()}</SummaryTitle>
+        <SummaryTitle SummaryTitle>{formattedDate}</SummaryTitle>
         <SummaryList>
           <SummaryListItem>
             <span>Осталось</span>

@@ -58,7 +58,7 @@ function CalculatorCaloriesForm({ openModal }) {
       .when('weight', (weight, schema) => {
         return schema.test({
           test: desiredWeight => !!weight && desiredWeight < weight,
-          message: 'Желаемый вес должен быть меньше текущего',
+          message: 'Вес должен быть меньше текущего',
         });
       }),
     bloodType: Yup.number().required('Обязательно *'),
@@ -102,10 +102,9 @@ function CalculatorCaloriesForm({ openModal }) {
         <CalcFormWrapper>
           <UserMainDataWrapper>
             <InputStyled
-              required
               id="height"
               name="height"
-              label="Рост"
+              label="Рост *"
               type="number"
               value={formik.values.height}
               onChange={formik.handleChange}
@@ -114,10 +113,9 @@ function CalculatorCaloriesForm({ openModal }) {
               variant="standard"
             />
             <InputStyled
-              required
               id="age"
               name="age"
-              label="Возраст"
+              label="Возраст *"
               type="number"
               value={formik.values.age}
               onChange={formik.handleChange}
@@ -126,10 +124,9 @@ function CalculatorCaloriesForm({ openModal }) {
               variant="standard"
             />
             <InputStyled
-              required
               id="weight"
               name="weight"
-              label="Вес"
+              label="Вес *"
               type="number"
               value={formik.values.weight}
               onChange={formik.handleChange}
@@ -140,10 +137,9 @@ function CalculatorCaloriesForm({ openModal }) {
           </UserMainDataWrapper>
           <UserMainDataWrapper>
             <InputStyled
-              required
               id="desiredWeight"
               name="desiredWeight"
-              label="Желаемый вес"
+              label="Желаемый вес *"
               type="number"
               value={formik.values.desiredWeight}
               onChange={formik.handleChange}
