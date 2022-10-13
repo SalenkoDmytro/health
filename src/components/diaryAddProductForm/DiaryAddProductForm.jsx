@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import Select from '@mui/material/Select';
 import * as yup from 'yup';
+
 import { productSearch } from 'redux/productSearch/productSearchOperations';
 import { selectProducts } from 'redux/productSearch/productSearchSelectors';
-import { addDay } from 'redux/day/dayOperations';
-import Box from 'components/common/box';
 import { resetState } from 'redux/productSearch/productSearchSlice';
+import { addDay } from 'redux/day/dayOperations';
+
+import Box from 'components/common/box';
 import {
   StyledProductForm,
   StyledNameWrapper,
@@ -19,7 +22,6 @@ import {
   // StyledOption,
 } from './DiaryAddProductForm.styled';
 import addIcon from 'assets/icons/addProduct.svg';
-import Select from '@mui/material/Select';
 
 export default function DiaryAddProductForm({ date }) {
   const dispatch = useDispatch();
@@ -126,7 +128,7 @@ export default function DiaryAddProductForm({ date }) {
                 //   ? 'vvvvvv'
                 //   : null
                 formik.touched.productName &&
-                formik.values.productName.length != 0 &&
+                formik.values.productName.length !== 0 &&
                 Boolean(formik.errors.productName)
               }
               helperText={
@@ -147,6 +149,7 @@ export default function DiaryAddProductForm({ date }) {
               value={formik.values.productWeight}
               error={
                 formik.touched.productWeight &&
+                formik.values.productWeight.length !== 0 &&
                 Boolean(formik.errors.productWeight)
               }
               helperText={
