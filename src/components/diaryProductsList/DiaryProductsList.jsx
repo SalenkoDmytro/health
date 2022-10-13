@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import DiaryProductsListItem from 'components/diaryProductsListItem';
 import { StyledWrap, StyledList, StyledItem } from './DiaryProductsList.styled';
 

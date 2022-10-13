@@ -32,10 +32,9 @@ function MainPage() {
     <>
       {isMobile && isOpen && <UserInfo closeModal={closeModal} />}
       <Container>
-
-        //{isMobile && isOpen && (
-         // <UserInfo closeModal={closeModal} isOpen={isOpen} />
-        //)}
+        {/* {isMobile && isOpen && (
+         <UserInfo closeModal={closeModal} isOpen={isOpen} />
+        )} */}
 
         {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
         {isTablet && <DailyCaloriesForm openModal={openModal} />}
