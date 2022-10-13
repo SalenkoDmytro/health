@@ -43,12 +43,13 @@ export default function App() {
   // };
 
   useEffect(() => {
-    if (isAuth) {
+    if (!isAuth) {
+      dispatch(getUser());
+    } else {
       dispatch(resetStateProductSlice());
       dispatch(resetStateUserSlice());
       dispatch(resetStateDaySlice());
       dispatch(resetStateDailySlice());
-      dispatch(getUser());
     }
   }, [dispatch, isAuth]);
 

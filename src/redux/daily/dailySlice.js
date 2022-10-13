@@ -16,6 +16,7 @@ const dailySlice = createSlice({
   initialState,
   reducers: {
     resetStateDailySlice(state) {
+      console.log(state);
       state = initialState;
     },
   },
