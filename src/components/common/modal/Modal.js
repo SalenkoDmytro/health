@@ -42,4 +42,5 @@ export default function Modal({
 
 Modal.propTypes = {
   children: PropTypes.node,
+  footerModal: PropTypes.bool,
 };

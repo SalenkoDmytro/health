@@ -11,13 +11,13 @@ function CalculatorPage() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
   const userData = useSelector(getUserData);
-  console.log('isAuth', isAuth);
-  console.log('userData', userData);
+  // console.log('isAuth', isAuth);
+  // console.log('userData', userData);
 
   useEffect(() => {
     if (isAuth && !userData) {
       dispatch(getUser());
-      console.log('isAuth1', isAuth);
+      // console.log('isAuth1', isAuth);
     }
   }, [dispatch, isAuth, userData]);
 
@@ -26,7 +26,7 @@ function CalculatorPage() {
       <Container>
         <CalculatorCaloriesForm />
       </Container>
-      <PictureLeaf/>
+      <PictureLeaf />
     </>
   );
 }

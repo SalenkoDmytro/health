@@ -15,3 +15,13 @@ export const BoxStyled = styled(Box)`
     margin-top: 150px;
   } ;
 `;
+
+export const Wrapper = styled(Box)`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Main = styled.main`
+  flex: 1 1 auto;
+`;
