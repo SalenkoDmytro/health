@@ -38,6 +38,11 @@ export default function App() {
   // };
 
   useEffect(() => {
+    dispatch(resetStateProductSlice());
+    dispatch(resetStateUserSlice());
+    dispatch(resetStateDaySlice());
+    dispatch(resetStateDailySlice());
+
     console.log('fghjkm');
     if (isAuth) {
       dispatch(getUser());

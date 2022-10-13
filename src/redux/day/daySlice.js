@@ -1,23 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addDay, deleteDay, addDayInfo } from './dayOperations';
 
+const initialState = {
+  dayId: null,
+  date: null,
+  daySummary: {},
+  eatenProducts: [],
+  isLoading: false,
+  error: null,
+};
+
 const daySlice = createSlice({
   name: 'contacts',
-  initialState: {
-    dayId: null,
-    date: null,
-    daySummary: {},
-    eatenProducts: [],
-    // day: null,
-    // dayInfo: null,
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     filterItem: (state, action) => {
       state.filter = action.payload;
     },
+    resetStateDaySlice(state) {
+      state = initialState;
+    },
   },
+
   extraReducers: {
     //addNewDay
     [addDay.pending]: state => {
@@ -65,5 +69,7 @@ const daySlice = createSlice({
     },
   },
 });
+
+export const { resetStateDaySlice } = daySlice.actions;
 
 export default daySlice.reducer;

@@ -14,6 +14,12 @@ const initialState = {
 const dailySlice = createSlice({
   name: 'dailyRate',
   initialState,
+  reducers: {
+    resetStateDailySlice(state) {
+      state = initialState;
+    },
+  },
+
   extraReducers: {
     // --------------------REGISTER OPERATION--------------------
 
@@ -56,5 +62,7 @@ const dailySlice = createSlice({
     },
   },
 });
+
+export const { resetStateDailySlice } = dailySlice.actions;
 
 export default dailySlice.reducer;
