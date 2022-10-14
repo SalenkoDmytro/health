@@ -8,12 +8,14 @@ export const DiaryBox = styled.div`
 `;
 
 export const Diary = styled.div`
-  @media ${device.tablet} {
-    padding-left: 90px;
+  @media ${device.fablet} {
+    margin-top: 80px;
+    margin-bottom:40px;
   }
 
   @media ${device.desktop} {
     width: 60%;
-    padding-left: 115px;
+    margin-top: 100px;
+    margin-bottom:40px;
   }
 `;

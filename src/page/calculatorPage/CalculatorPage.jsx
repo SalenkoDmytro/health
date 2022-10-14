@@ -8,9 +8,10 @@ import { Container } from '../../components/common/container/Container';
 import PictureLeaf from '../../components/common/picture/PictureLeaf';
 import Box from 'components/common/box/Box';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
-import { CalculatorBox } from './CalculatorPage.styled';
+import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import Header from 'components/header/Header';
 import Footer from 'components/footer/Footer';
+import { SideBar } from '../../components/rightSideBar/RightSideBar.styled';
 
 function CalculatorPage() {
   const dispatch = useDispatch();
@@ -30,16 +31,15 @@ function CalculatorPage() {
       <Header />
       <Container>
         <CalculatorBox>
-          <Box width="60%">
+          <Calculator>
             <CalculatorCaloriesForm />
-          </Box>
-          <Box width="40%">
+          </Calculator>
+          <SideBar>
             <RightSideBar date={date} />
-          </Box>
+          </SideBar>
         </CalculatorBox>
       </Container>
       <PictureLeaf />
-      <Footer />
     </>
   );
 }

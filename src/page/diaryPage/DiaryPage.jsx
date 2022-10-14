@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//Redux
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
 import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
@@ -17,6 +16,8 @@ import Footer from 'components/footer/Footer';
 // Styled
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
+import { PictureLeafStyled } from '../../components/common/picture/PictureLeaf.styled';
+import { Container } from '../../components/common/container/Container';
 
 import { selectUserInfo } from 'redux/userData/userDataSelectors';
 import { getUserInfo } from 'redux/userData/userDataOperation';

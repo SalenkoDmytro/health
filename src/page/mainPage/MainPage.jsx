@@ -8,10 +8,10 @@ import Footer from 'components/footer/Footer';
 import Box from 'components/common/box';
 import { IoIosClose } from 'react-icons/io';
 import { Button } from './MainPage.styled';
-
 import PictureFruit from '../../components/common/picture/PictureFruit';
 import { Container } from '../../components/common/container/Container';
 import Header from 'components/header/Header';
+
 function MainPage() {
   const {
     isOpen,
@@ -24,8 +24,6 @@ function MainPage() {
   } = useToggleModal();
 
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
-
-  // console.log('1111', isOpen);
 
   return (
     <>
@@ -65,8 +63,8 @@ function MainPage() {
           </Modal>
         )}
       </Container>
-      <PictureFruit />
       <Footer />
+      <PictureFruit />
     </>
   );
 }
