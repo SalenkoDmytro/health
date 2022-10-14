@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'utils/device';
-
 export const SideBarStyled = styled.div`
+
   @media ${device.tablet} {
     display: flex;
     gap: 60px;
@@ -10,7 +10,7 @@ export const SideBarStyled = styled.div`
   @media ${device.desktop} {
     flex-direction: column;
     padding-left: 94px;
-    height: 100vh;
+    //height: 100vh;
   }
 `;
 
@@ -57,18 +57,26 @@ export const SummaryListItem = styled.li`
 `;
 
 export const SideBar = styled.div`
-  background-color: #f0f1f3;
+  //background-color: #f0f1f3;
 
-  @media ${device.mobile} {
-    padding: 40px 15px 84px 15px;
+  @media ${device.mobileOnly} {
+    //padding:  15px 84px 15px 0;
+    margin-top: 40px;
   }
 
-  @media ${device.tablet} {
-    padding: 91px 87px;
+  @media ${device.tabletOnly} {
+    margin-top: 40px;
+  }
+
+  @media ${device.fabletOnly} {
+    //padding: 10px 80px 80px 0;
+    margin-top: 50px;
   }
 
   @media ${device.desktop} {
     width: 40%;
-    padding: 0px 175px 189px 60px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 100px;
+    margin-bottom: 189px;
   }
 `;

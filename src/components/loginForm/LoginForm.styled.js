@@ -29,7 +29,8 @@ export const FormContainer = styled.div`
     max-width: 394px;
   }
   @media ${device.desktop} {
-    margin-top: 150px;
+    margin-top: 100px;
+  margin-bottom: 80px;
   }
 `;
 

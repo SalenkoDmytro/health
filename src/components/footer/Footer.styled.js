@@ -21,15 +21,17 @@ export const FooterStyled = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: inherit;
+  background-color: ${({ theme }) => theme.colors.white};
 
   @media (${device.mobile}) {
     border-top: 2px solid ${({ theme }) => theme.colors.border};
     padding: 20px 20px 16px;
+    margin-top: 40px;
   }
 
   @media (${device.tabletOnly}) {
     padding: 20px 32px 16px;
+    margin-top: 30px;
   }
 
   @media (${device.desktop}) {
@@ -71,8 +73,8 @@ export const FooterButtonStyled = styled(ButtonIcon)`
 
   @media (${device.fablet}) {
     display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    //position: absolute;
+    //top: 20px;
+    //right: 20px;
   }
 `;

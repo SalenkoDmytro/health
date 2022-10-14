@@ -83,12 +83,12 @@ export const MainForm = styled.form`
     margin-bottom: 40px;
   }
   @media ${device.fablet} {
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: 48px;
   }
-  @media ${device.desktop} {
-    margin-top: 150px;
-  } ;
+  // @media ${device.desktop} {
+     margin-top: 100px;
+  // } ;
 `;
 
 export const InputStyled = styled(TextField)`

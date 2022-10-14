@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//Redux
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { getUserData } from 'redux/user/userSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
@@ -18,6 +17,8 @@ import Footer from 'components/footer/Footer';
 // Styled
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
+import { PictureLeafStyled } from '../../components/common/picture/PictureLeaf.styled';
+import { Container } from '../../components/common/container/Container';
 
 function DiaryPage() {
   const user = useSelector(selectUser);
@@ -53,17 +54,19 @@ function DiaryPage() {
   return (
     <>
       <Header />
-      <DiaryBox>
-        <Diary>
-          <DiaryDateСalendar getDate={getDate} startDate={date} />
-          <DiaryAddProductForm date={date} />
-          <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-        </Diary>
-        <SideBar>
-          <RightSideBar date={date} />
-        </SideBar>
-      </DiaryBox>
-      <Footer />
+      <Container>
+        <DiaryBox>
+          <Diary>
+            <DiaryDateСalendar getDate={getDate} startDate={date} />
+            <DiaryAddProductForm date={date} />
+            <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
+          </Diary>
+          <SideBar>
+            <RightSideBar date={date} />
+          </SideBar>
+        </DiaryBox>
+      </Container>
+      <PictureLeafStyled/>
     </>
   );
 }

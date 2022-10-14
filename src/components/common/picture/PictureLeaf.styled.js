@@ -20,23 +20,36 @@ export const PictureLeafStyled = styled.div`
   }
 
   @media ${device.tabletOnly} {
+    margin-top:20px ;
+    bottom: 0;
+    right: 0;
+    top: unset;
     width: 100%;
-    height: 40%;
+    height: 25%;
     background-image: url(${imageTab});
     background-position: bottom 0 right 0;
     background-color: #f0f1f3;
   }
 
   @media ${device.mobileOnly} {
+    margin-top:20px ;
+    bottom: 0;
+    right: 0;
+    top: unset;
     width: 100%;
-    // height: 40%;
+     height: 45vh;
     background-position: bottom 0 right 0;
     background-color: #f0f1f3;
   }
-  @media ${device.fablet} {
+  @media ${device.fabletOnly} {
+    margin-top:20px ;
+    bottom: 0%;
+    right: 0;
+    top: unset;
     width: 100%;
-    height: 40%;
+    height: 45vh;
     background-position: bottom 0 right 0;
+    background-image: url(${imageTab});
     background-color: #f0f1f3;
   }
 `;
