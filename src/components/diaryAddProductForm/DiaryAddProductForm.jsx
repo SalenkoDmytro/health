@@ -107,7 +107,6 @@ export default function DiaryAddProductForm({ date }) {
     setSelectProduct('');
     formik.setFieldValue('productName', e.target.value);
   };
-  console.log(!selectProduct, formik.values.productName.length);
   return (
     <>
       <Box position="relative">

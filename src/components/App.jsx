@@ -23,7 +23,7 @@ export default function App() {
         try {
           const result = await axios(`/user`);
           //TODO dispatch
-          console.log('🚀 ~ fetchUser ~ result', result.data);
+          // console.log('🚀 ~ fetchUser ~ result', result.data);
           return result;
         } catch (err) {
           console.log(err);

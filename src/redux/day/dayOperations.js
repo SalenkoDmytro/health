@@ -21,7 +21,12 @@ export const addDay = createAsyncThunk('add/addDay', async (date, thunkAPI) => {
     token.set(tokenLS);
     const res = await axios.post('/day', date);
     toast.info(`Ваш продукт добавлен в список`);
-    return res.data;
+    const obj = {
+      day: res.data.newDay || res.data.day,
+      eatenProducts: res.data.eatenProducts,
+      daySummary: res.data.newSummary || res.data.summary,
+    };
+    return obj;
   } catch (err) {
     return thunkAPI.rejectWithValue("Sorry, can't add new day, server Error!");
   }

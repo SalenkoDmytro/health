@@ -30,7 +30,7 @@ const daySlice = createSlice({
     },
     [addDay.fulfilled]: (state, action) => {
       state.dayId = action.payload.day.id;
-      state.daySummary = action.payload.daySummary;
+      state.daySummary = action.payload.day.daySummary;
       state.eatenProducts = action.payload.day.eatenProducts.reverse();
     },
 
