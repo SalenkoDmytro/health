@@ -4,7 +4,7 @@ import imageTab from '../../../assets/images/primaryImgTab.png';
 import { device } from '../../../utils/device';
 
 export const PictureFruitStyled = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   top: 0;
   right: 0;
