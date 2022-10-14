@@ -137,7 +137,6 @@ export const deleteDayProduct = createAsyncThunk(
         data,
       });
 
-      console.log('deleteDayProduct data', data);
       const obj = {
         dailyRate: result.data.dailyRate,
         daySummary: {
@@ -145,7 +144,7 @@ export const deleteDayProduct = createAsyncThunk(
           kcalLeft: result.data.kcalLeft,
           percentsOfDailyRate: result.data.percentsOfDailyRate,
         },
-        eatenProductId: date.eatenProductId,
+        eatenProductId: data.eatenProductId,
       };
       toast.info(`Ваш продукт успешно удален`, toastConfigs);
 
@@ -164,8 +163,10 @@ export const getDayInfo = createAsyncThunk(
       token.set(tokenLS);
 
       const res = await axios.post('/day/info', date);
+      // console.log('🚀 ~ res dayId', res.data);
+
       const obj = {
-        dayId: res.data.daySummary.id,
+        dayId: res.data.id,
         dailyRate: res.data.daySummary.dailyRate,
         eatenProducts: res.data.eatenProducts,
         daySummary: {

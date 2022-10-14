@@ -54,7 +54,7 @@ const getUserData = createSlice({
       state.notAllowedProducts = notAllowedProducts;
       state.dailyRate = dailyRate;
       state.eatenProducts = eatenProducts;
-      // state.daySummary = { ...payload.daySummary };
+      // state.daySummary = payload.daySummary ;
     },
 
     [getUserInfo.rejected]: (state, action) => {
@@ -96,6 +96,7 @@ const getUserData = createSlice({
       state.eatenProducts = state.eatenProducts.filter(
         product => product.id !== action.payload.eatenProductId
       );
+
       state.isLoading = false;
     },
     [deleteDayProduct.rejected]: (state, action) => {
