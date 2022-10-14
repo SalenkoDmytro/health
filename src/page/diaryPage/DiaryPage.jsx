@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //Redux
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/user/userSelectors';
 import { addDayInfo } from 'redux/day/dayOperations';
 import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
 
@@ -19,40 +18,74 @@ import Footer from 'components/footer/Footer';
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
-function DiaryPage() {
-  const user = useSelector(selectUser);
-  console.log('DiaryPage', user);
+import { selectUserInfo } from 'redux/userData/userDataSelectors';
+import { getUserInfo } from 'redux/userData/userDataOperation';
+import {
+  dailyRateUnauthorized,
+  dailyRateAuthorized,
+} from 'redux/daily/dailyOperations';
 
-  const [date, setDate] = useState(new Date());
+function DiaryPage() {
   const dispatch = useDispatch();
-  // Selectors
   const isAuth = useSelector(selectIsLoggedIn);
-  const userData = useSelector(getUserData);
-  const eatenProducts = useSelector(selectEatenProducts);
-  const dayId = useSelector(selectDayId);
+  // const userData = useSelector(getUser);
+
+  // const eatenProducts = useSelector(selectEatenProducts);
+  // const dayId = useSelector(selectDayId);
+
+  // const [date, setDate] = useState(new Date());
+
+  // const user = useSelector(selectUser);
+  // console.log('DiaryPage', user);
+
+  //!checked
+
+  // Selectors
+
+  const userInfo = useSelector(selectUserInfo);
+  console.log('🚀 ~ DiaryPage ~ userInfo', userInfo);
 
   useEffect(() => {
-    if (isAuth /* && !userData */) {
-      // dispatch(getUser());
-      dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
+    dispatch(getUserInfo());
+
+    if (true) {
+      dispatch(
+        dailyRateUnauthorized({
+          weight: 130,
+          height: 150,
+          age: 50,
+          desiredWeight: 60,
+          bloodType: 1,
+        })
+      );
+    } else {
+      // dispatch(
+      //   dailyRateAuthorized({
+      //     weight: 130,
+      //     height: 180,
+      //     age: 30,
+      //     desiredWeight: 60,
+      //     bloodType: 1,
+      //   })
+      // );
     }
-  }, [date, dispatch, isAuth, userData]);
 
-  // useEffect(() => {
-  //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
-  // }, [date, dispatch]);
+    console.log('🚀 ~ DiaryPage ~ userInfo', userInfo);
 
-  // useEffect(() => {
-  //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
-  // }, [date, dispatch]);
+    //   if (isAuth /* && !userData */) {
+    //     // dispatch(getUser());
+    //     dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
+    //   }
+    // }, [date, dispatch, isAuth]);
 
-  const getDate = (date = new Date()) => {
-    setDate(date);
-  };
+    // const getDate = (date = new Date()) => {
+    //   setDate(date);
+  }, [dispatch, isAuth, userInfo]);
 
   return (
     <>
-      <Header />
+      <div>Dairy</div>
+      {/*       <Header />
       <DiaryBox>
         <Diary>
           <DiaryDateСalendar getDate={getDate} startDate={date} />
@@ -63,7 +96,7 @@ function DiaryPage() {
           <RightSideBar date={date} />
         </SideBar>
       </DiaryBox>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

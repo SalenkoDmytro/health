@@ -65,7 +65,6 @@ export const addDayInfo = createAsyncThunk(
       return res.data;
     } catch (err) {
       console.log('error', err.request.status);
-      console.log(date);
 
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new information, server Error!"

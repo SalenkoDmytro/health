@@ -16,10 +16,12 @@ import dailyReducer from './daily/dailySlice';
 import dayReducer from './day/daySlice';
 import userReducer from './user/userSlice';
 
+import userDataReducer from './userData/userDataSlice';
+
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['user','isLoggedIn','accessToken', 'refreshToken', 'sid'],
+  whitelist: ['user', 'isLoggedIn', 'accessToken', 'refreshToken', 'sid'],
 };
 
 export const store = configureStore({
@@ -29,17 +31,15 @@ export const store = configureStore({
     product: productReducer,
     day: dayReducer,
     user: userReducer,
+    userData: userDataReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE,
-          PERSIST, PURGE, REGISTER],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     });
   },
 });
 
 export const persistor = persistStore(store);
-
-

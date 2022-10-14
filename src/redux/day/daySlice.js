@@ -18,7 +18,12 @@ const daySlice = createSlice({
       state.filter = action.payload;
     },
     resetStateDaySlice(state) {
-      state = initialState;
+      state.dayId = null;
+      state.date = null;
+      state.daySummary = null;
+      state.eatenProducts = null;
+      state.isLoading = false;
+      state.error = null;
     },
   },
 
@@ -29,9 +34,9 @@ const daySlice = createSlice({
       state.error = null;
     },
     [addDay.fulfilled]: (state, action) => {
-      state.dayId = action.payload.day.id;
-      state.daySummary = action.payload.day.daySummary;
-      state.eatenProducts = action.payload.day.eatenProducts.reverse();
+      // state.dayId = action.payload.day.id;
+      // state.daySummary = action.payload.day.daySummary;
+      // state.eatenProducts = action.payload.day.eatenProducts.reverse();
     },
 
     [addDay.rejected]: (state, action) => {
@@ -43,10 +48,10 @@ const daySlice = createSlice({
       state.error = null;
     },
     [deleteDay.fulfilled]: (state, action) => {
-      state.daySummary = action.payload.result.newDaySummary;
-      state.eatenProducts = state.eatenProducts.filter(
-        product => product.id !== action.payload.data.eatenProductId
-      );
+      // state.daySummary = action.payload.result.newDaySummary;
+      // state.eatenProducts = state.eatenProducts.filter(
+      //   product => product.id !== action.payload.data.eatenProductId
+      // );
     },
     [deleteDay.rejected]: (state, action) => {
       state.error = action.payload;
@@ -57,12 +62,11 @@ const daySlice = createSlice({
       state.error = null;
     },
     [addDayInfo.fulfilled]: (state, action) => {
-      console.log(action.payload);
-      state.dayId = action.payload.id;
-      state.eatenProducts = action.payload.eatenProducts;
-      state.daySummary = action.payload.daySummary;
-      state.date = action.payload.date;
-      state.dayInfo = action.payload;
+      // state.dayId = action.payload.id;
+      // state.eatenProducts = action.payload.eatenProducts;
+      // state.daySummary = action.payload.daySummary;
+      // state.date = action.payload.date;
+      // state.dayInfo = action.payload;
     },
     [addDayInfo.rejected]: (state, action) => {
       state.error = action.payload;

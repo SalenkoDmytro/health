@@ -16,14 +16,19 @@ const dailySlice = createSlice({
   initialState,
   reducers: {
     setStateDailySlice(state, action) {
-      state.userId = action.payload.id;
-      state.dailyRate = action.payload.userData;
-      // state.summaries = action.payload.userData;
+      // state.userId = action.payload.id;
+      // state.dailyRate = action.payload.userData;
+      // // state.summaries = action.payload.userData;
     },
 
     resetStateDailySlice(state) {
-      console.log(state);
-      state = initialState;
+      state.userId = null;
+      state.dailyRate = null;
+      state.summaries = [];
+      state.notAllowedProducts = [];
+      state.isLoggedIn = false;
+      state.isLoading = false;
+      state.error = null;
     },
   },
 

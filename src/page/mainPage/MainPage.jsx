@@ -29,8 +29,7 @@ function MainPage() {
 
   return (
     <>
-
-      <Header />   
+      <Header />
       {isMobile && isOpen && (
         <UserInfo closeModal={closeModal} isOpen={isOpen} />
       )}

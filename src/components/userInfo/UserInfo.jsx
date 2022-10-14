@@ -23,6 +23,7 @@ function UserInfo({ closeModal, isOpen }) {
     dispatch(resetStateDailySlice());
     dispatch(logout());
   };
+
   return (
     <Wrapper>
       {isMobile && isOpen && (

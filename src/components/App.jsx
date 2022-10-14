@@ -16,20 +16,19 @@ export default function App() {
 
   useEffect(() => {
     if (isAuth) {
-      // console.log('first');
-      dispatch(getUser());
-
-      const fetchUser = async () => {
-        try {
-          const result = await axios(`/user`);
-          //TODO dispatch
-          // console.log('🚀 ~ fetchUser ~ result', result.data);
-          return result;
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      fetchUser();
+      //Взяти юзера і записати стейт
+      // dispatch(getUser());
+      // const fetchUser = async () => {
+      //   try {
+      //     const result = await axios(`/user`);
+      //     //TODO dispatch
+      //     // console.log('🚀 ~ fetchUser ~ result', result.data);
+      //     return result;
+      //   } catch (err) {
+      //     console.log(err);
+      //   }
+      // };
+      // fetchUser();
     }
 
     // dispatch(resetStateProductSlice());
