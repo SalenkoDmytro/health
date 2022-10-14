@@ -24,7 +24,12 @@ import {
   dailyRateUnauthorized,
   dailyRateAuthorized,
 } from 'redux/daily/dailyOperations';
-
+import { getDayInfo } from 'redux/userData/userDataOperation';
+import {
+  deleteDayProduct,
+  addDayProduct,
+} from 'redux/userData/userDataOperation';
+import { func } from 'prop-types';
 function DiaryPage() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
@@ -37,38 +42,59 @@ function DiaryPage() {
 
   // const user = useSelector(selectUser);
   // console.log('DiaryPage', user);
-
+  const date = new Date();
   //!checked
 
   // Selectors
 
+  function delProduct() {
+    dispatch(
+      deleteDayProduct({
+        dayId: '6344401ee037c408de8539c7',
+        eatenProductId: 'fed502be-0695-44fb-9e5d-c555b24f09d8',
+      })
+    );
+  }
+
+  function addProduct() {
+    dispatch(
+      getDayInfo({
+        date: '2020-12-31',
+        productId: '9a8e2129-d028-4778-b417-0f02f47eb14d',
+        weight: 100,
+      })
+    );
+  }
+
   const userInfo = useSelector(selectUserInfo);
-  console.log('🚀 ~ DiaryPage ~ userInfo', userInfo);
 
   useEffect(() => {
-    dispatch(getUserInfo());
+    // dispatch(getUserInfo());
 
-    if (true) {
-      dispatch(
-        dailyRateUnauthorized({
-          weight: 130,
-          height: 150,
-          age: 50,
-          desiredWeight: 60,
-          bloodType: 1,
-        })
-      );
-    } else {
-      // dispatch(
-      //   dailyRateAuthorized({
-      //     weight: 130,
-      //     height: 180,
-      //     age: 30,
-      //     desiredWeight: 60,
-      //     bloodType: 1,
-      //   })
-      // );
-    }
+    dispatch(getDayInfo({ date: '2020-12-31' }));
+    // dispatch(getDayInfo({ date: date.toISOString().split('T')[0] }));
+
+    // if (true) {
+    //   dispatch(
+    //     dailyRateUnauthorized({
+    //       weight: 130,
+    //       height: 150,
+    //       age: 50,
+    //       desiredWeight: 60,
+    //       bloodType: 1,
+    //     })
+    //   );
+    // } else {
+    //   // dispatch(
+    //   //   dailyRateAuthorized({
+    //   //     weight: 130,
+    //   //     height: 180,
+    //   //     age: 30,
+    //   //     desiredWeight: 60,
+    //   //     bloodType: 1,
+    //   //   })
+    //   // );
+    // }
 
     console.log('🚀 ~ DiaryPage ~ userInfo', userInfo);
 
@@ -80,11 +106,14 @@ function DiaryPage() {
 
     // const getDate = (date = new Date()) => {
     //   setDate(date);
-  }, [dispatch, isAuth, userInfo]);
+  }, [date, dispatch, isAuth, userInfo]);
 
   return (
     <>
       <div>Dairy</div>
+      <button onClick={() => delProduct()}>Удалить</button>
+      <button onClick={() => addProduct()}>Добавить</button>
+
       {/*       <Header />
       <DiaryBox>
         <Diary>

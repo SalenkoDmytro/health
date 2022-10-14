@@ -5,6 +5,11 @@ import {
   dailyRateUnauthorized,
   dailyRateAuthorized,
 } from './userDataOperation';
+import {
+  addDayProduct,
+  deleteDayProduct,
+  getDayInfo,
+} from './userDataOperation';
 
 const initialState = {
   dayId: null,
@@ -45,10 +50,10 @@ const getUserData = createSlice({
       state,
       { payload: { bodyParams, notAllowedProducts, dailyRate, eatenProducts } }
     ) => {
-      state.bodyParams = { ...bodyParams };
-      state.notAllowedProducts = [...notAllowedProducts];
+      state.bodyParams = bodyParams;
+      state.notAllowedProducts = notAllowedProducts;
       state.dailyRate = dailyRate;
-      state.eatenProducts = [...eatenProducts];
+      state.eatenProducts = eatenProducts;
       // state.daySummary = { ...payload.daySummary };
     },
 
@@ -57,49 +62,67 @@ const getUserData = createSlice({
     },
 
     //**DAY INFO */
-    // //addNewDay
-    // [addDay.pending]: state => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // [addDay.fulfilled]: (state, action) => {
-    //   state.dayId = action.payload.day.id;
-    //   state.daySummary = action.payload.day.daySummary;
-    //   state.eatenProducts = action.payload.day.eatenProducts.reverse();
-    // },
+    //!addDayProduct
+    [addDayProduct.pending]: state => {
+      // state.isLoading = true;
+      state.error = null;
+    },
+    [addDayProduct.fulfilled]: (state, action) => {
+      console.log('addDayProduct', action.payload);
+      state.dayId = action.payload.day.id;
+      state.dailyRate = action.payload.day.daySummary.dailyRate;
 
-    // [addDay.rejected]: (state, action) => {
-    //   state.error = action.payload;
-    // },
-    // //deleteDay
-    // [deleteDay.pending]: state => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // [deleteDay.fulfilled]: (state, action) => {
-    //   state.daySummary = action.payload.result.newDaySummary;
-    //   state.eatenProducts = state.eatenProducts.filter(
-    //     product => product.id !== action.payload.data.eatenProductId
-    //   );
-    // },
-    // [deleteDay.rejected]: (state, action) => {
-    //   state.error = action.payload;
-    // },
-    // //addDayInformation
-    // [addDayInfo.pending]: state => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // [addDayInfo.fulfilled]: (state, action) => {
-    //   state.dayId = action.payload.id;
-    //   state.eatenProducts = action.payload.eatenProducts;
-    //   state.daySummary = action.payload.daySummary;
-    //   state.date = action.payload.date;
-    //   state.dayInfo = action.payload;
-    // },
-    // [addDayInfo.rejected]: (state, action) => {
-    //   state.error = action.payload;
-    // },
+      state.daySummary.kcalConsumed =
+        action.payload.day.daySummary.kcalConsumed;
+      state.daySummary.kcalLeft = action.payload.day.daySummary.kcalLeft;
+      state.daySummary.percentsOfDailyRate =
+        action.payload.day.daySummary.percentsOfDailyRate;
+
+      state.eatenProducts = action.payload.day.eatenProducts;
+    },
+
+    [addDayProduct.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
+
+    //! deleteDayProduct
+    [deleteDayProduct.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [deleteDayProduct.fulfilled]: (state, action) => {
+      state.dailyRate = action.payload.dailyRate;
+      state.daySummary = action.payload.daySummary;
+      state.eatenProducts = state.eatenProducts.filter(
+        product => product.id !== action.payload.eatenProductId
+      );
+      state.isLoading = false;
+    },
+    [deleteDayProduct.rejected]: (state, action) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
+
+    //!getDayInfo
+    [getDayInfo.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [getDayInfo.fulfilled]: (
+      state,
+      { payload: { dayId, dailyRate, eatenProducts, daySummary } }
+    ) => {
+      console.log('action.payload', eatenProducts);
+      state.dailyRate = dailyRate;
+      state.dayId = dayId;
+      state.eatenProducts = eatenProducts;
+      // state.daySummary = { ...daySummary };
+      state.isLoading = false;
+    },
+    [getDayInfo.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
 
     //**DAILY RATE */
     // --------------------REGISTER OPERATION--------------------
