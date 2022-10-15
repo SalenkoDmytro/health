@@ -121,9 +121,11 @@ export const addDayProduct = createAsyncThunk(
       toast.info(`Ваш продукт добавлен в список`);
       const obj = {
         day: res.data.newDay || res.data.day,
-        eatenProducts: res.data.eatenProducts,
-        daySummary: res.data.newSummary || res.data.summary,
+        eatenProduct: res.data.eatenProduct,
+
+        daySummary: res.data.daySummary,
       };
+
       return obj;
     } catch (err) {
       return thunkAPI.rejectWithValue(
@@ -142,12 +144,14 @@ export const deleteDayProduct = createAsyncThunk(
       const result = await axios.delete(`/day`, {
         data,
       });
+
+      console.log(data);
       const obj = {
-        dailyRate: result.data.dailyRate,
+        dailyRate: result.data.newDaySummary.dailyRate,
         daySummary: {
-          kcalConsumed: result.data.kcalConsumed,
-          kcalLeft: result.data.kcalLeft,
-          percentsOfDailyRate: result.data.percentsOfDailyRate,
+          kcalConsumed: result.data.newDaySummary.kcalConsumed,
+          kcalLeft: result.data.newDaySummary.kcalLeft,
+          percentsOfDailyRate: result.data.newDaySummary.percentsOfDailyRate,
         },
         eatenProductId: data.eatenProductId,
       };
