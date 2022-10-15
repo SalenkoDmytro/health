@@ -140,7 +140,7 @@ const getUserDataSlice = createSlice({
     },
 
     //**DAILY RATE */
-    // --------------------REGISTER OPERATION--------------------
+    // --------------------NON AUTH USER DAILY RATE--------------------
     [dailyRateUnauthorized.pending]: state => {
       state.isLoading = true;
     },
@@ -157,23 +157,17 @@ const getUserDataSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // --------------------LOG IN OPERATION--------------------
+    // -------------------- AUTH USER DAILY RATE--------------------
 
     [dailyRateAuthorized.pending]: state => {
       state.isLoading = true;
     },
-    [dailyRateAuthorized.fulfilled]: (
-      state,
-      // payload
-      { payload: { id, dailyRate, summaries, notAllowedProducts } }
-    ) => {
-      console.log('🚀 ~ notAllowedProductsLOGIN', notAllowedProducts);
-      // console.log('payload LOG IN', payload);
-      // state.userId = id;
-      state.dailyRate = dailyRate;
-      state.daySummary = summaries;
-      state.notAllowedProducts = notAllowedProducts;
-
+    [dailyRateAuthorized.fulfilled]: (state, { payload }) => {
+      // state.userId = payload.id;
+      state.dailyRate = payload.data.dailyRate;
+      // state.daySummary = payload.summaries;
+      state.notAllowedProducts = payload.data.notAllowedProducts;
+      state.bodyParams = payload.reqData;
       state.isLoggedIn = true;
       state.isLoading = false;
     },

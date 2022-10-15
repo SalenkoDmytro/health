@@ -34,7 +34,6 @@ function DailyCaloriesForm({ openModal }) {
   const isAuth = useSelector(selectAccessToken);
   const userBodyParams = useSelector(selectUDBodyParams);
   const userId = useSelector(selectUDUserId);
-  console.log('🚀 ~ DailyCaloriesForm ~ userId', userId);
 
   // ------- Валідація для форми -------
 
@@ -83,9 +82,10 @@ function DailyCaloriesForm({ openModal }) {
     onSubmit: values => {
       // console.log('values', values);
       if (isAuth) {
+        // console.log(33333333);
         dispatch(dailyRateAuthorized({ userId: userId, ...values }));
-        // console.log('values1', values);
       } else {
+        // console.log(444444444);
         dispatch(dailyRateUnauthorized(values));
         if (openModal) {
           setTimeout(() => {

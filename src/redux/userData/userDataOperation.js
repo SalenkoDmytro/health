@@ -22,6 +22,7 @@ export const getUserInfo = createAsyncThunk(
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
       const res = await axios.get('/user');
+      console.log('GET USER INFO AFTER AUTHORIZATION ', res.data);
       const obj = getDataFromGetUserInfo(res.data);
       return obj;
     } catch (err) {
@@ -34,8 +35,7 @@ export const getUserInfo = createAsyncThunk(
 function getDataFromGetUserInfo(data) {
   const userId = data.id;
   const dailyRate = data.userData.dailyRate;
-  console.log('Function return object', data);
-  const notAllowedProducts = data.userData.notAllowedProducts;
+  const notAllowedProducts = [data.userData.notAllowedProducts];
   const { height, age, weight, desiredWeight, bloodType } = data.userData;
   const bodyParams = { height, age, weight, desiredWeight, bloodType };
   let eatenProducts = [];
@@ -78,7 +78,7 @@ function getDataFromGetUserInfo(data) {
 
 // -------------------UNAUTHORIZED USER-------------------
 export const dailyRateUnauthorized = createAsyncThunk(
-  'dailyRate/calcAuth',
+  'dailyRateUnauthorized/calcNoAuth',
   async (requestData, { rejectWithValue }) => {
     const reqData = {
       ...requestData,
@@ -95,11 +95,16 @@ export const dailyRateUnauthorized = createAsyncThunk(
 
 // -------------------AUTHORIZED USER-------------------
 export const dailyRateAuthorized = createAsyncThunk(
-  'dailyRate/calcAuth',
-  async ({ userId, ...requestData }, { rejectWithValue }) => {
+  'dailyRateAuthorized/calcAuth',
+  async ({ userId, ...requestData }, { rejectWithValue, getState }) => {
+    const reqData = {
+      ...requestData,
+      bloodType: Number(requestData.bloodType),
+    };
     try {
-      const { data } = await axios.post(`/daily-rate/${userId}`, requestData);
-      return data;
+      const { data } = await axios.post(`/daily-rate/${userId}`, reqData);
+
+      return { data, reqData };
     } catch (error) {
       return rejectWithValue(error.message);
     }

@@ -14,7 +14,7 @@ import authReducer from './auth/authSlice';
 import productReducer from './productSearch/productSearchSlice';
 import userDataReducer from './userData/userDataSlice';
 
-import dailyReducer from './daily/dailySlice';
+// import dailyReducer from './daily/dailySlice';
 
 const persistConfig = {
   key: 'auth',
@@ -25,7 +25,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    dailyRate: dailyReducer,
+    // dailyRate: dailyReducer,
     product: productReducer,
     userData: userDataReducer,
   },

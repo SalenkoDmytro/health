@@ -99,9 +99,13 @@ function CalculatorCaloriesForm({ openModal }) {
 
     onSubmit: values => {
       if (isAuth) {
-        dispatch(dailyRateAuthorized({ userId: userId, ...values }));
+        // console.log(1111111111);
+        dispatch(dailyRateAuthorized({ userId, ...values }));
       } else {
         dispatch(dailyRateUnauthorized(values));
+        // console.log(222222222);
+
+        console.log('🚀 :rofl:');
         if (openModal) {
           setTimeout(() => {
             openModal();
