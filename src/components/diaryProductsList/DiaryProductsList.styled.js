@@ -1,5 +1,10 @@
 import styled from 'styled-components';
+import ButtonIcon from 'components/common/buttonIcon';
 import { device } from 'utils/device';
+import {
+  StyledButtonIcon,
+  StyledIcon,
+} from 'components/diaryAddProductForm/DiaryAddProductForm.styled';
 
 export const StyledWrap = styled.div`
   width: 100%;
@@ -57,5 +62,25 @@ export const StyledItem = styled.li`
   color: ${p => p.theme.fontWeights.normal};
   @media ${device.mobile} {
     margin-bottom: ${p => `${p.theme.space[4]}px`};
+  }
+`;
+
+export const StyledModalIcon = styled(StyledIcon)`
+  /* width: ${p => `${p.theme.space[4] - 2}px`};
+  height: ${p => `${p.theme.space[4] - 2}px`}; */
+  transition: ${p => p.theme.animation.cubic};
+  transition-property: transform;
+`;
+
+export const StyledModalOpenIcon = styled(StyledButtonIcon)`
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* min-width: ${p => `${p.theme.space[5] + 16}px`};
+  min-height: ${p => `${p.theme.space[5] + 16}px`};
+  border-radius: ${p => p.theme.radii.round};
+  background-color: ${p => p.theme.colors.button.primaryBackground}; */
+  &:hover ${StyledModalIcon} {
+    transform: scale(1.5);
   }
 `;
