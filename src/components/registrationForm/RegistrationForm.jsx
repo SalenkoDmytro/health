@@ -11,13 +11,14 @@ import {
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { register } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
 
 function RegistrationForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const stateError = useSelector(state => state.auth.error);
-
   const errorExist = () => {
     if (stateError.includes(409) === true) {
       return 'Электронная почта занята';
@@ -57,7 +58,10 @@ function RegistrationForm() {
       const username = event.username;
       const email = event.email;
       const password = event.password;
-      dispatch(register({ username, email, password }));
+      dispatch(register({ username, email, password }))
+        .then(({ error }) => {
+          !error && navigate('/login'); // if no error (success) redirect ot login page
+        });
     },
   });
 
