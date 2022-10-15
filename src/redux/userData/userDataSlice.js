@@ -56,6 +56,7 @@ const getUserData = createSlice({
           notAllowedProducts,
           dailyRate,
           eatenProducts,
+          daySummary,
         },
       }
     ) => {
@@ -64,7 +65,7 @@ const getUserData = createSlice({
       state.notAllowedProducts = notAllowedProducts;
       state.dailyRate = dailyRate;
       state.eatenProducts = eatenProducts;
-      // state.daySummary = payload.daySummary ;
+      state.daySummary = daySummary;
     },
 
     [getUserInfo.rejected]: (state, action) => {
@@ -74,11 +75,10 @@ const getUserData = createSlice({
     //**DAY INFO */
     //!addDayProduct
     [addDayProduct.pending]: state => {
-      // state.isLoading = true;
+      state.isLoading = true;
       state.error = null;
     },
     [addDayProduct.fulfilled]: (state, action) => {
-      console.log('addDayProduct', action.payload);
       state.dayId = action.payload.day.id;
       state.dailyRate = action.payload.day.daySummary.dailyRate;
 
@@ -89,9 +89,11 @@ const getUserData = createSlice({
         action.payload.day.daySummary.percentsOfDailyRate;
 
       state.eatenProducts = action.payload.day.eatenProducts;
+      state.isLoading = false;
     },
 
     [addDayProduct.rejected]: (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     },
 
