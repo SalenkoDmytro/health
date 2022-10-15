@@ -18,7 +18,7 @@ function CalculatorPage() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <CalculatorBox>
           <Calculator>
