@@ -1,8 +1,7 @@
 // import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
 
-import { useSelector } from 'react-redux';
-
-import Header from 'components/header/Header';
+import { useState } from 'react';
+// import Header from 'components/header/Header';
 import { Container } from 'components/common/container/Container';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
 import PictureLeaf from 'components/common/picture/PictureLeaf';
@@ -12,9 +11,7 @@ import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 function CalculatorPage() {
-  // const userData = useSelector(Треба записати тут новий селектор виходячи з даних які в userData{
-  //selectUDDailyRate,selectUDDaySummary,selectUDNotAllowedProducts
-  //});
+  const [date] = useState(new Date());
 
   return (
     <>
@@ -24,7 +21,9 @@ function CalculatorPage() {
           <Calculator>
             <DailyCaloriesForm />
           </Calculator>
-          <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
+          <SideBar>
+            <RightSideBar date={date} />
+          </SideBar>
         </CalculatorBox>
       </Container>
       <PictureLeaf />
