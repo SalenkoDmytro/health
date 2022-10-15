@@ -6,7 +6,7 @@ import Footer from '../../components/footer';
 const NotFound = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Image>
         <BoxStyled>
           <h1>404</h1>

@@ -5,6 +5,7 @@ import PrivateRouter from 'Routes/PrivateRoute';
 
 import NotFound from 'page/notFoundPage/NotFound';
 import Loader from 'components/Loader';
+import Layout from 'components/layout/Layout';
 
 const MainPage = lazy(() => import('page/mainPage/MainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage/DiaryPage'));
@@ -18,30 +19,32 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        {/* Public routes */}
-        <Route
-          path="/registration"
-          element={
-            <PublicRouter restricted redirectTo="/login">
-              <RegistrationPage />
-            </PublicRouter>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRouter restricted redirectTo="/calculator">
-              <LoginPage />
-            </PublicRouter>
-          }
-        />
-        {/* Private routes */}
-        <Route element={<PrivateRouter />}>
-          <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/calculator" element={<CalculatorPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          {/* Public routes */}
+          <Route
+            path="/registration"
+            element={
+              <PublicRouter restricted redirectTo="/login">
+                <RegistrationPage />
+              </PublicRouter>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRouter restricted redirectTo="/calculator">
+                <LoginPage />
+              </PublicRouter>
+            }
+          />
+          {/* Private routes */}
+          <Route element={<PrivateRouter />}>
+            <Route path="/diary" element={<DiaryPage />} />
+            <Route path="/calculator" element={<CalculatorPage />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

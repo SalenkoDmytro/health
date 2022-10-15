@@ -8,12 +8,12 @@ import Footer from 'components/footer/Footer';
 function RegistrationPage() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <RegistrationForm />
       </Container>
       <PictureFruit />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
