@@ -27,7 +27,7 @@ export const HeaderStyled = styled.header`
 
   @media ${device.desktop} {
     align-items: baseline;
-    padding: 50px 16px 0px;
+    padding: 16px 16px 0px;
   }
 `;
 
