@@ -9,7 +9,7 @@ import GlobalStyles from 'utils/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'utils/theme';
 import './index.css';
-import { ToastContainer } from 'react-toastify';
+import { Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { StyledToastContainer } from 'config/toast/toastifyConfig';
 
@@ -25,6 +25,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Provider>
     </ThemeProvider>
     <GlobalStyles />
-    <StyledToastContainer />
+    <StyledToastContainer transition={Zoom} closeButton={false} />
   </React.StrictMode>
 );

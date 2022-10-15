@@ -35,7 +35,7 @@ function DiaryProductsListItem({ dayId, eatenProductId, title, weight, kcal }) {
 DiaryProductsListItem.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
-  weight: PropTypes.number,
+  // weight: PropTypes.string,
   kcal: PropTypes.number,
   onDelete: PropTypes.func,
 };

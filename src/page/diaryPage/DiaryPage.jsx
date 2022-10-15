@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import useMatchMedia from 'hooks/useMatchMedia';
 
 import { getDayInfo } from 'redux/userData/userDataOperation';
 import {
@@ -8,7 +9,7 @@ import {
   selectUDEatenProducts,
 } from 'redux/userData/userDataSelectors';
 
-import Header from 'components/header/Header';
+// import Header from 'components/header/Header';
 // import Footer from 'components/footer/Footer';
 
 // import Loader from 'components/Loader.jsx';
@@ -23,6 +24,7 @@ import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled'
 import { Container } from 'components/common/container/Container';
 
 function DiaryPage() {
+  const { isMobile } = useMatchMedia();
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
   const eatenProducts = useSelector(selectUDEatenProducts);
@@ -41,12 +43,12 @@ function DiaryPage() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <DiaryBox>
           <Diary>
             <DiaryDateCalendar getDate={getDate} startDate={date} />
-            <DiaryAddProductForm date={date} />
+            {!isMobile && <DiaryAddProductForm date={date} />}
             <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
           </Diary>
           <SideBar>
