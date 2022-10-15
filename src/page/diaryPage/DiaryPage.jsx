@@ -1,51 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/user/userSelectors';
-import { addDayInfo } from 'redux/day/dayOperations';
-import { selectEatenProducts, selectDayId } from 'redux/day/daySelectors';
+
+import { getDayInfo } from 'redux/userData/userDataOperation';
+import {
+  selectUDDayId,
+  selectUDEatenProducts,
+} from 'redux/userData/userDataSelectors';
+
+import Header from 'components/header/Header';
+// import Footer from 'components/footer/Footer';
 
 // import Loader from 'components/Loader.jsx';
-import { selectUser } from 'redux/user/userSelectors';
-
 import DiaryProductsList from 'components/diaryProductsList/DiaryProductsList';
-import DiaryDateСalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
+import DiaryDateCalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from 'components/diaryAddProductForm';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
-import Header from 'components/header/Header';
-import Footer from 'components/footer/Footer';
-// Styled
+
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
-import { PictureLeafStyled } from '../../components/common/picture/PictureLeaf.styled';
-import { Container } from '../../components/common/container/Container';
+import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
+import { Container } from 'components/common/container/Container';
 
 function DiaryPage() {
-  const user = useSelector(selectUser);
-  console.log('DiaryPage', user);
-
-  const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
-  // Selectors
   const isAuth = useSelector(selectIsLoggedIn);
-  const userData = useSelector(getUserData);
-  const eatenProducts = useSelector(selectEatenProducts);
-  const dayId = useSelector(selectDayId);
+  const eatenProducts = useSelector(selectUDEatenProducts);
+  const dayId = useSelector(selectUDDayId);
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    if (isAuth /* && !userData */) {
-      // dispatch(getUser());
-      dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
+    if (isAuth) {
+      dispatch(getDayInfo({ date: date.toISOString().split('T')[0] }));
     }
-  }, [date, dispatch, isAuth, userData]);
-
-  // useEffect(() => {
-  //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
-  // }, [date, dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(addDayInfo({ date: date.toISOString().split('T')[0] }));
-  // }, [date, dispatch]);
+  }, [date, dispatch, isAuth]);
 
   const getDate = (date = new Date()) => {
     setDate(date);
@@ -57,7 +45,7 @@ function DiaryPage() {
       <Container>
         <DiaryBox>
           <Diary>
-            <DiaryDateСalendar getDate={getDate} startDate={date} />
+            <DiaryDateCalendar getDate={getDate} startDate={date} />
             <DiaryAddProductForm date={date} />
             <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
           </Diary>
@@ -66,7 +54,8 @@ function DiaryPage() {
           </SideBar>
         </DiaryBox>
       </Container>
-      <PictureLeafStyled/>
+      <PictureLeafStyled />
+      {/* <Footer /> */}
     </>
   );
 }

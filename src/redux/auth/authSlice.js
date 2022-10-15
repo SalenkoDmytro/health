@@ -6,20 +6,10 @@ const initialState = {
   refreshToken: null,
   accessToken: null,
   sid: '',
-  userData: {
-    weight: null,
-    height: null,
-    age: null,
-    bloodType: null,
-    desiredWeight: null,
-    dailyRate: null,
-    notAllowedProducts: [],
-  },
   isLoggedIn: false,
   isLoading: false,
   error: null,
   isFetchingCurrentUser: false,
-  isRegistered: false,
 };
 
 const authSlice = createSlice({
@@ -33,7 +23,6 @@ const authSlice = createSlice({
     },
     [register.fulfilled]: state => {
       state.error = null;
-      state.isRegistered = true;
       state.isLoading = false;
     },
     [register.rejected]: (state, { payload }) => {
@@ -55,7 +44,6 @@ const authSlice = createSlice({
       state.refreshToken = refreshToken;
       state.sid = sid;
 
-      state.userData = user.userData;
       state.user.id = id;
 
       state.isLoggedIn = true;

@@ -12,34 +12,30 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
 import productReducer from './productSearch/productSearchSlice';
-import dailyReducer from './daily/dailySlice';
-import dayReducer from './day/daySlice';
-import userReducer from './user/userSlice';
+import userDataReducer from './userData/userDataSlice';
+
+// import dailyReducer from './daily/dailySlice';
 
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['user','isLoggedIn','accessToken', 'refreshToken', 'sid'],
+  whitelist: ['user', 'isLoggedIn', 'accessToken', 'refreshToken', 'sid'],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    dailyRate: dailyReducer,
+    // dailyRate: dailyReducer,
     product: productReducer,
-    day: dayReducer,
-    user: userReducer,
+    userData: userDataReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE,
-          PERSIST, PURGE, REGISTER],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     });
   },
 });
 
 export const persistor = persistStore(store);
-
-

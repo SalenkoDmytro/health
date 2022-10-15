@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import { productSearch } from 'redux/productSearch/productSearchOperations';
 import { selectProducts } from 'redux/productSearch/productSearchSelectors';
 import { resetState } from 'redux/productSearch/productSearchSlice';
-import { addDay } from 'redux/day/dayOperations';
+import { addDayProduct } from 'redux/userData/userDataOperation';
 
 import Box from 'components/common/box';
 import {
@@ -78,7 +78,7 @@ export default function DiaryAddProductForm({ date }) {
       productId: selectProduct,
       weight: values.productWeight,
     };
-    dispatch(addDay(obj));
+    dispatch(addDayProduct(obj));
     setSelectProduct(null);
     formik.resetForm();
   }
@@ -107,7 +107,6 @@ export default function DiaryAddProductForm({ date }) {
     setSelectProduct('');
     formik.setFieldValue('productName', e.target.value);
   };
-  console.log(!selectProduct, formik.values.productName.length);
   return (
     <>
       <Box position="relative">

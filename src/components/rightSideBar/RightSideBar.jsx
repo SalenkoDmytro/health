@@ -1,4 +1,4 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   SideBarStyled,
   Summary,
@@ -7,13 +7,15 @@ import {
   SummarySubtitle,
   SummaryTitle,
 } from './RightSideBar.styled';
-import { useSelector } from 'react-redux';
-import { selectDaySummary } from 'redux/day/daySelectors';
+import {
+  selectUDDaySummary,
+  selectUDDailyRate,
+} from 'redux/userData/userDataSelectors';
 
 function RightSideBar({ date }) {
-  const consumption = useSelector(selectDaySummary) || {};
-  const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
-    consumption;
+  const dailyRate = useSelector(selectUDDailyRate);
+  const consumption = useSelector(selectUDDaySummary) || {};
+  const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
 
   const formattedDate =
     date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
