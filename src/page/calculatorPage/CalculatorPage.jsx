@@ -11,7 +11,7 @@ import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 function CalculatorPage() {
-  const [date] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
   return (
     <>
@@ -21,9 +21,7 @@ function CalculatorPage() {
           <Calculator>
             <DailyCaloriesForm />
           </Calculator>
-          <SideBar>
-            <RightSideBar date={date} />
-          </SideBar>
+          <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
         </CalculatorBox>
       </Container>
       <PictureLeaf />

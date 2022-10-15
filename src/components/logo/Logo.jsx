@@ -1,16 +1,18 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import useMatchMedia from 'hooks/useMatchMedia';
-import logoMob from '../../assets/images/logo/logo-min-mob.png';
-import logoMobx2 from '../../assets/images/logo/logo-min-mob-x2.png';
-import fullLogoMob from '../../assets/images/logo/logo-full-mob.png';
-import fullLogoMobx2 from '../../assets/images/logo/logo-full-mob-x2.png';
-import fullLogoTab from '../../assets/images/logo/logo-full-tab.png';
-import fullLogoTabx2 from '../../assets/images/logo/logo-full-tab-x2.png';
-import fullLogoDesk from '../../assets/images/logo/logo-full-desk.png';
-import fullLogoDeskx2 from '../../assets/images/logo/logo-full-desc-x2.png';
+import PropTypes from 'prop-types';
+
+import logoMob from 'assets/images/logo/logo-min-mob.png';
+import logoMobx2 from 'assets/images/logo/logo-min-mob-x2.png';
+import fullLogoMob from 'assets/images/logo/logo-full-mob.png';
+import fullLogoMobx2 from 'assets/images/logo/logo-full-mob-x2.png';
+import fullLogoTab from 'assets/images/logo/logo-full-tab.png';
+import fullLogoTabx2 from 'assets/images/logo/logo-full-tab-x2.png';
+import fullLogoDesk from 'assets/images/logo/logo-full-desk.png';
+import fullLogoDeskx2 from 'assets/images/logo/logo-full-desc-x2.png';
+
 function Logo({ closeMobMenu }) {
   const { isDesktop, isMobile, isTablet } = useMatchMedia();
   const isLogin = useSelector(selectIsLoggedIn);
@@ -36,6 +38,7 @@ function Logo({ closeMobMenu }) {
           />
         )
       ) : null}
+
       {isTablet ? (
         <img
           src={fullLogoTab}

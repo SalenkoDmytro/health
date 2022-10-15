@@ -1,15 +1,16 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import useMatchMedia from 'hooks/useMatchMedia';
+import useScrollLock from 'hooks/useScrollLock';
+
 import AuthNavigation from 'components/authNavigation';
 import Logo from 'components/logo/Logo';
 import Navigation from 'components/navigation';
 import UserInfo from 'components/userInfo/UserInfo';
-import useMatchMedia from 'hooks/useMatchMedia';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { HeaderStyled, MobMenuButton, MobMenu } from './Header.styled';
-import { useLocation } from 'react-router-dom';
-import useScrollLock from 'hooks/useScrollLock';
 
 function Header() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
