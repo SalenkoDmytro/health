@@ -5,8 +5,7 @@ import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { logout } from '../../redux/auth/authOperations';
 import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
 
-import { resetStateDailySlice } from 'redux/daily/dailySlice';
-import { resetStateProductSlice } from 'redux/productSearch/productSearchSlice';
+import { resetStateUserDataSlice } from 'redux/userData/userDataSlice';
 
 function UserInfo({ closeModal, isOpen }) {
   const dispatch = useDispatch();
@@ -15,8 +14,7 @@ function UserInfo({ closeModal, isOpen }) {
   const isLogin = useSelector(selectIsLoggedIn);
 
   const logoutState = () => {
-    dispatch(resetStateProductSlice());
-    dispatch(resetStateDailySlice());
+    dispatch(resetStateUserDataSlice());
     dispatch(logout());
   };
 

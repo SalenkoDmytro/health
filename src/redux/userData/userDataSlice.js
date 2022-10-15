@@ -33,11 +33,13 @@ const initialState = {
   error: null,
 };
 
-const getUserData = createSlice({
+const getUserDataSlice = createSlice({
   name: 'userData',
   initialState,
   reducers: {
-    resetStateDaySlice(state) {},
+    resetStateUserDataSlice(state) {
+      state = initialState;
+    },
   },
 
   extraReducers: {
@@ -112,8 +114,8 @@ const getUserData = createSlice({
       state.isLoading = false;
     },
     [deleteDayProduct.rejected]: (state, action) => {
-      state.error = action.payload;
       state.isLoading = false;
+      state.error = action.payload;
     },
 
     //!getDayInfo
@@ -165,6 +167,7 @@ const getUserData = createSlice({
       // payload
       { payload: { id, dailyRate, summaries, notAllowedProducts } }
     ) => {
+      console.log('🚀 ~ notAllowedProductsLOGIN', notAllowedProducts);
       // console.log('payload LOG IN', payload);
       // state.userId = id;
       state.dailyRate = dailyRate;
@@ -181,4 +184,5 @@ const getUserData = createSlice({
   },
 });
 
-export default getUserData.reducer;
+export const { resetStateUserDataSlice } = getUserDataSlice.actions;
+export default getUserDataSlice.reducer;

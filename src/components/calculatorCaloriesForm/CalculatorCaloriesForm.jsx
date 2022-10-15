@@ -1,7 +1,6 @@
-import React from 'react';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 // import TextField from '@mui/material/TextField';
 
 import { selectAccessToken } from 'redux/auth/authSelectors';
@@ -99,10 +98,8 @@ function CalculatorCaloriesForm({ openModal }) {
     validationSchema: validationSchema,
 
     onSubmit: values => {
-      // console.log('values', values);
       if (isAuth) {
         dispatch(dailyRateAuthorized({ userId: userId, ...values }));
-        // console.log('values1', values);
       } else {
         dispatch(dailyRateUnauthorized(values));
         if (openModal) {

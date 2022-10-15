@@ -12,9 +12,9 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
 import productReducer from './productSearch/productSearchSlice';
-import dailyReducer from './daily/dailySlice';
-
 import userDataReducer from './userData/userDataSlice';
+
+import dailyReducer from './daily/dailySlice';
 
 const persistConfig = {
   key: 'auth',

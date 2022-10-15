@@ -15,7 +15,6 @@ const token = {
 };
 
 //**GET USER INFO AFTER AUTHORIZATION */
-
 export const getUserInfo = createAsyncThunk(
   'user/getUser',
   async (_, thunkAPI) => {
@@ -31,10 +30,12 @@ export const getUserInfo = createAsyncThunk(
   }
 );
 
+//**Function return object user */
 function getDataFromGetUserInfo(data) {
   const userId = data.id;
   const dailyRate = data.userData.dailyRate;
-  const notAllowedProducts = [data.userData.notAllowedProducts];
+  console.log('Function return object', data);
+  const notAllowedProducts = data.userData.notAllowedProducts;
   const { height, age, weight, desiredWeight, bloodType } = data.userData;
   const bodyParams = { height, age, weight, desiredWeight, bloodType };
   let eatenProducts = [];
@@ -79,9 +80,12 @@ function getDataFromGetUserInfo(data) {
 export const dailyRateUnauthorized = createAsyncThunk(
   'dailyRate/calcAuth',
   async (requestData, { rejectWithValue }) => {
-    const a = { ...requestData, bloodType: Number(requestData.bloodType) };
+    const reqData = {
+      ...requestData,
+      bloodType: Number(requestData.bloodType),
+    };
     try {
-      const { data } = await axios.post('/daily-rate', a);
+      const { data } = await axios.post('/daily-rate', reqData);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -103,7 +107,6 @@ export const dailyRateAuthorized = createAsyncThunk(
 );
 
 //**USER DATA OPERATION IN DAIRY */
-
 export const addDayProduct = createAsyncThunk(
   'addDayProduct/addDayProduct',
   async (date, thunkAPI) => {
@@ -112,8 +115,6 @@ export const addDayProduct = createAsyncThunk(
       token.set(tokenLS);
       const res = await axios.post('/day', date);
       toast.info(`Ваш продукт добавлен в список`);
-
-      console.log('add date', date);
       const obj = {
         day: res.data.newDay || res.data.day,
         eatenProducts: res.data.eatenProducts,
@@ -137,7 +138,6 @@ export const deleteDayProduct = createAsyncThunk(
       const result = await axios.delete(`/day`, {
         data,
       });
-
       const obj = {
         dailyRate: result.data.dailyRate,
         daySummary: {
@@ -148,7 +148,6 @@ export const deleteDayProduct = createAsyncThunk(
         eatenProductId: data.eatenProductId,
       };
       toast.info(`Ваш продукт успешно удален`, toastConfigs);
-
       return obj;
     } catch (err) {
       return thunkAPI.rejectWithValue("Sorry, can't delete day, server Error!");
@@ -162,10 +161,7 @@ export const getDayInfo = createAsyncThunk(
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
-
       const res = await axios.post('/day/info', date);
-      // console.log('🚀 ~ res dayId', res.data);
-
       const obj = {
         dayId: res.data.id,
         dailyRate: res.data.daySummary.dailyRate,
@@ -178,8 +174,6 @@ export const getDayInfo = createAsyncThunk(
       };
       return obj;
     } catch (err) {
-      console.log('error', err.request.status);
-
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new information, server Error!"
       );

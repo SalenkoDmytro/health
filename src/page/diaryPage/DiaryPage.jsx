@@ -8,6 +8,9 @@ import {
   selectUDEatenProducts,
 } from 'redux/userData/userDataSelectors';
 
+import Header from 'components/header/Header';
+// import Footer from 'components/footer/Footer';
+
 // import Loader from 'components/Loader.jsx';
 import DiaryProductsList from 'components/diaryProductsList/DiaryProductsList';
 import DiaryDateCalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
@@ -38,7 +41,7 @@ function DiaryPage() {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Container>
         <DiaryBox>
           <Diary>
