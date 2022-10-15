@@ -1,7 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import PublicRouter from 'utils/PublicRouter';
-import PrivateRouter from 'utils/PrivateRoute';
+import PublicRouter from 'Routes/PublicRouter';
+import PrivateRouter from 'Routes/PrivateRoute';
+
 import NotFound from 'page/notFoundPage/NotFound';
 import Loader from 'components/Loader';
 
@@ -9,7 +10,9 @@ const MainPage = lazy(() => import('page/mainPage/MainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage/DiaryPage'));
 const CalculatorPage = lazy(() => import('page/calculatorPage/CalculatorPage'));
 const LoginPage = lazy(() => import('page/loginPage/LoginPage'));
-const RegistrationPage = lazy(() => import('page/registrationPage/RegistrationPage'));
+const RegistrationPage = lazy(() =>
+  import('page/registrationPage/RegistrationPage')
+);
 
 const AppRoutes = () => {
   return (
@@ -17,16 +20,22 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* Public routes */}
-          <Route path="/registration" element={
+        <Route
+          path="/registration"
+          element={
             <PublicRouter restricted redirectTo="/login">
               <RegistrationPage />
             </PublicRouter>
-          } />
-          <Route path="/login" element={
+          }
+        />
+        <Route
+          path="/login"
+          element={
             <PublicRouter restricted redirectTo="/calculator">
               <LoginPage />
             </PublicRouter>
-          } />
+          }
+        />
         {/* Private routes */}
         <Route element={<PrivateRouter />}>
           <Route path="/diary" element={<DiaryPage />} />

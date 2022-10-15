@@ -1,15 +1,20 @@
-import React from 'react';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 // import TextField from '@mui/material/TextField';
 
 import { selectAccessToken } from 'redux/auth/authSelectors';
-import { getUserData, selectUser } from 'redux/user/userSelectors';
+
+// import { selectUser } from 'redux/user/userSelectors';
+// import {
+//   dailyRateAuthorized,
+//   dailyRateUnauthorized,
+// } from 'redux/daily/dailyOperations';
+
 import {
   dailyRateAuthorized,
   dailyRateUnauthorized,
-} from 'redux/daily/dailyOperations';
+} from 'redux/userData/userDataOperation';
 
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 import Button from 'components/common/button/Button';
@@ -29,12 +34,16 @@ import {
   ControlLabel,
 } from './CalculatorCaloriesForm.styled';
 
+import {
+  selectUDBodyParams,
+  selectUDUserId,
+} from 'redux/userData/userDataSelectors';
+
 function CalculatorCaloriesForm({ openModal }) {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
-  const userData = useSelector(getUserData);
-  const user = useSelector(selectUser);
-  // console.log('userData', userData);
+  const userBodyParams = useSelector(selectUDBodyParams);
+  const userId = useSelector(selectUDUserId);
 
   // ------- Валідація для форми -------
 
@@ -68,23 +77,35 @@ function CalculatorCaloriesForm({ openModal }) {
 
   const formik = useFormik({
     initialValues: {
-      height: userData && userData.height ? userData.height : '',
-      age: userData && userData.age ? userData.age : '',
-      weight: userData && userData.weight ? userData.weight : '',
-      desiredWeight:
-        userData && userData.desiredWeight ? userData.desiredWeight : '',
-      bloodType:
-        userData && userData.bloodType ? userData.bloodType.toString() : '',
+      // height: userData && userData.height ? userData.height : '',
+      // age: userData && userData.age ? userData.age : '',
+      // weight: userData && userData.weight ? userData.weight : '',
+      // desiredWeight:
+      //   userData && userData.desiredWeight ? userData.desiredWeight : '',
+      // bloodType:
+      //   userData && userData.bloodType ? userData.bloodType.toString() : '',
+
+      height: userBodyParams?.height ? userBodyParams.height : '',
+      age: userBodyParams?.age ? userBodyParams.age : '',
+      weight: userBodyParams?.weight ? userBodyParams.weight : '',
+      desiredWeight: userBodyParams?.desiredWeight
+        ? userBodyParams.desiredWeight
+        : '',
+      bloodType: userBodyParams?.bloodType
+        ? userBodyParams.bloodType.toString()
+        : '',
     },
     validationSchema: validationSchema,
 
     onSubmit: values => {
-      // console.log('values', values);
       if (isAuth) {
-        dispatch(dailyRateAuthorized({ userId: user.id, ...values }));
-        // console.log('values1', values);
+        // console.log(1111111111);
+        dispatch(dailyRateAuthorized({ userId, ...values }));
       } else {
         dispatch(dailyRateUnauthorized(values));
+        // console.log(222222222);
+
+        console.log('🚀 :rofl:');
         if (openModal) {
           setTimeout(() => {
             openModal();

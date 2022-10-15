@@ -8,7 +8,7 @@ import {
 
 import useMatchMedia from 'hooks/useMatchMedia';
 import { useDispatch } from 'react-redux';
-import { deleteDay } from 'redux/day/dayOperations';
+import { deleteDayProduct } from 'redux/userData/userDataOperation';
 
 function DiaryProductsListItem({ dayId, eatenProductId, title, weight, kcal }) {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function DiaryProductsListItem({ dayId, eatenProductId, title, weight, kcal }) {
       )}
       <ButtonIcon
         type="button"
-        onClick={() => dispatch(deleteDay({ dayId, eatenProductId }))}
+        onClick={() => dispatch(deleteDayProduct({ dayId, eatenProductId }))}
         aria-label="delete product"
       >
         <StyledIconClose />
