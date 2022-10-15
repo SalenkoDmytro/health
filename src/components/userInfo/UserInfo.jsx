@@ -1,10 +1,9 @@
-import useMatchMedia from 'hooks/useMatchMedia';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
+import useMatchMedia from 'hooks/useMatchMedia';
 import { logout } from '../../redux/auth/authOperations';
 import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
-
 import { resetStateUserDataSlice } from 'redux/userData/userDataSlice';
 
 function UserInfo({ closeModal, isOpen }) {

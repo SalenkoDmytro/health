@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import toastConfigs from 'config/toast';
 import { toast } from 'react-toastify';
+import { MdFastfood, MdNoFood } from 'react-icons/md';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
@@ -25,6 +25,7 @@ export const getUserInfo = createAsyncThunk(
       const obj = getDataFromGetUserInfo(res.data);
       return obj;
     } catch (err) {
+      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue('Sorry, server Error!');
     }
   }
@@ -87,6 +88,7 @@ export const dailyRateUnauthorized = createAsyncThunk(
       const { data } = await axios.post('/daily-rate', reqData);
       return data;
     } catch (error) {
+      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
@@ -105,6 +107,7 @@ export const dailyRateAuthorized = createAsyncThunk(
 
       return { data, reqData };
     } catch (error) {
+      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
@@ -118,7 +121,9 @@ export const addDayProduct = createAsyncThunk(
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
       const res = await axios.post('/day', date);
-      toast.info(`Ваш продукт добавлен в список`);
+      toast.success(`Ваш продукт добавлен в список`, {
+        icon: <MdFastfood size={25} color="green" />,
+      });
       const obj = {
         day: res.data.newDay || res.data.day,
         eatenProducts: res.data.eatenProducts,
@@ -126,6 +131,7 @@ export const addDayProduct = createAsyncThunk(
       };
       return obj;
     } catch (err) {
+      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new day, server Error!"
       );
@@ -151,9 +157,12 @@ export const deleteDayProduct = createAsyncThunk(
         },
         eatenProductId: data.eatenProductId,
       };
-      toast.info(`Ваш продукт успешно удален`, toastConfigs);
+      toast.error(`Ваш продукт успешно удален`, {
+        icon: <MdNoFood size={25} color="red" />,
+      });
       return obj;
     } catch (err) {
+      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue("Sorry, can't delete day, server Error!");
     }
   }
@@ -178,6 +187,7 @@ export const getDayInfo = createAsyncThunk(
       };
       return obj;
     } catch (err) {
+      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new information, server Error!"
       );
