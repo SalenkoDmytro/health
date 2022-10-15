@@ -90,15 +90,18 @@ const getUserDataSlice = createSlice({
     },
     [addDayProduct.fulfilled]: (state, action) => {
       state.dayId = action.payload.day.id;
-      state.dailyRate = action.payload.day.daySummary.dailyRate;
+      state.dailyRate = action.payload.daySummary.dailyRate;
 
-      state.daySummary.kcalConsumed =
-        action.payload.day.daySummary.kcalConsumed;
-      state.daySummary.kcalLeft = action.payload.day.daySummary.kcalLeft;
+      state.daySummary.kcalConsumed = action.payload.daySummary.kcalConsumed;
+      state.daySummary.kcalLeft = action.payload.daySummary.kcalLeft;
       state.daySummary.percentsOfDailyRate =
-        action.payload.day.daySummary.percentsOfDailyRate;
+        action.payload.daySummary.percentsOfDailyRate;
 
-      state.eatenProducts = action.payload.day.eatenProducts;
+      state.eatenProducts = [
+        ...state.eatenProducts,
+        action.payload.eatenProduct,
+      ];
+
       state.isLoading = false;
     },
 

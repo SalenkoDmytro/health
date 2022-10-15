@@ -14,9 +14,9 @@ export const selectUDError = state => state.userData.error;
 //Function Utils by state
 export function getRandomAllNotAllowedProducts(product) {
   const arr = [];
-  for (let i = 0; i < 10; i += 1) {
-    const randomIdex = product[Math.floor(Math.random() * product.length)];
-    arr.push(randomIdex);
+  for (let i = 0; i < 4; i += 1) {
+    // const randomIdex = product[Math.floor(Math.random() * product.length)];
+    arr.push(product[i]);
   }
   return arr;
 }
