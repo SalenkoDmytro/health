@@ -23,6 +23,9 @@ export const FooterStyled = styled.footer`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.white};
 
+  position: absolute;
+  bottom: 0;
+
   @media (${device.mobile}) {
     border-top: 2px solid ${({ theme }) => theme.colors.border};
     padding: 20px 20px 16px;
@@ -36,6 +39,8 @@ export const FooterStyled = styled.footer`
 
   @media (${device.desktop}) {
     align-items: center;
+    position: absolute;
+    bottom: 0;
   }
 `;
 

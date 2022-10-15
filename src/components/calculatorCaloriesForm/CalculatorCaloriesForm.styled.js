@@ -80,14 +80,14 @@ export const MainForm = styled.form`
 
   @media ${device.mobileOnly} {
     margin-top: 32px;
-    margin-bottom: 40px;
+
   }
   @media ${device.fablet} {
-    margin-top: 80px;
-    margin-bottom: 48px;
+    margin-top: 65px;
+
   }
   // @media ${device.desktop} {
-     margin-top: 100px;
+     margin-top: 65px;
   // } ;
 `;
 
