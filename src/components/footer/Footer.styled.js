@@ -26,12 +26,10 @@ export const FooterStyled = styled.footer`
   @media (${device.mobile}) {
     border-top: 2px solid ${({ theme }) => theme.colors.border};
     padding: 20px 20px 16px;
-    margin-top: 40px;
   }
 
   @media (${device.tabletOnly}) {
     padding: 20px 32px 16px;
-    margin-top: 30px;
   }
 
   @media (${device.desktop}) {
