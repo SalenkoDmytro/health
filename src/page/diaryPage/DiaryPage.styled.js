@@ -9,13 +9,13 @@ export const DiaryBox = styled.div`
 
 export const Diary = styled.div`
   @media ${device.fablet} {
-    margin-top: 80px;
-    margin-bottom:40px;
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
 
   @media ${device.desktop} {
     width: 60%;
-    margin-top: 100px;
-    margin-bottom:40px;
+    padding-top: 100px;
+    padding-bottom: 40px;
   }
 `;
