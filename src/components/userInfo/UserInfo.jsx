@@ -7,7 +7,6 @@ import { Wrapper, Text, Button, Box, BackButton } from './UserInfo.styled';
 
 import { resetStateDailySlice } from 'redux/daily/dailySlice';
 import { resetStateDaySlice } from 'redux/day/daySlice';
-import { resetStateUserSlice } from 'redux/user/userSlice';
 import { resetStateProductSlice } from 'redux/productSearch/productSearchSlice';
 
 function UserInfo({ closeModal, isOpen }) {
@@ -18,7 +17,6 @@ function UserInfo({ closeModal, isOpen }) {
 
   const logoutState = () => {
     dispatch(resetStateProductSlice());
-    dispatch(resetStateUserSlice());
     dispatch(resetStateDaySlice());
     dispatch(resetStateDailySlice());
     dispatch(logout());
