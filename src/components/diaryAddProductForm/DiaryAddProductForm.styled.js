@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ButtonIcon from 'components/common/buttonIcon';
-import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+import { InputStyled } from 'components/dailyCaloriesForm/DailyCaloriesForm.styled';
 import { device } from 'utils/device';
 
 export const StyledProductForm = styled.form`

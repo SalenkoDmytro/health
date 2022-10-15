@@ -25,7 +25,7 @@ import BpRadio, {
   MainForm,
   StyledRadioGroup,
   UserMainDataWrapper,
-} from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+} from './DailyCaloriesForm.styled';
 
 import Button from 'components/common/button/Button';
 
@@ -81,10 +81,8 @@ function DailyCaloriesForm({ openModal }) {
 
     onSubmit: values => {
       if (isAuth) {
-        // console.log(33333333);
         dispatch(dailyRateAuthorized({ userId: userId, ...values }));
       } else {
-        // console.log(444444444);
         dispatch(dailyRateUnauthorized(values));
         if (openModal) {
           setTimeout(() => {

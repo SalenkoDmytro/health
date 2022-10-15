@@ -135,7 +135,6 @@ const getUserDataSlice = createSlice({
       state,
       { payload: { dayId, dailyRate, eatenProducts, daySummary } }
     ) => {
-      console.log('action.payload', eatenProducts);
       state.dailyRate = dailyRate;
       state.dayId = dayId;
       state.eatenProducts = eatenProducts;
