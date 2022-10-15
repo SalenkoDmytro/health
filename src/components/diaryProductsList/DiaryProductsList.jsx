@@ -2,6 +2,11 @@ import useMatchMedia from 'hooks/useMatchMedia';
 
 import DiaryProductsListItem from 'components/diaryProductsListItem';
 import { StyledWrap, StyledList, StyledItem } from './DiaryProductsList.styled';
+import {
+  StyledModalOpenIcon,
+  StyledModalIcon,
+} from './DiaryProductsList.styled';
+import addIcon from 'assets/icons/addProduct.svg';
 
 export default function DiaryProductsList({ dayId, eatenProducts }) {
   const { isMobile } = useMatchMedia();
@@ -25,13 +30,14 @@ export default function DiaryProductsList({ dayId, eatenProducts }) {
       </StyledList>
       {console.log('Прописати для кнопки відкриття модалки')}
       {isMobile && (
-        <button
+        <StyledModalOpenIcon
           onClick={() => {
-            console.log('відкриття модалки');
+            console.log('поставити функцію відкриття модалки');
           }}
+          aria-label="открыть модалку"
         >
-          Додати
-        </button>
+          <StyledModalIcon src={addIcon} />
+        </StyledModalOpenIcon>
       )}
     </StyledWrap>
   );
