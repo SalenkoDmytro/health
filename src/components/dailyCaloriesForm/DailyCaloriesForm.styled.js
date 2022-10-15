@@ -78,16 +78,16 @@ export const FormTitle = styled.h2`
 export const MainForm = styled.form`
   max-width: 608px;
 
-  @media ${device.mobileOnly} {
-    margin-top: 32px;
+  // @media ${device.mobileOnly} {
+  //   margin-top: 32px;
 
-  }
-  @media ${device.fablet} {
-    margin-top: 65px;
+  // }
+  // @media ${device.fablet} {
+  //   margin-top: 65px;
 
-  }
-  // @media ${device.desktop} {
-     margin-top: 65px;
+  // }
+  //  @media ${device.desktop} {
+  //    margin-top: 65px;
   // } ;
 `;
 
