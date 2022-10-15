@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+import { InputStyled } from 'components/dailyCaloriesForm/DailyCaloriesForm.styled';
 import {
   ErrorText,
   FormContainer,

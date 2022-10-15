@@ -22,7 +22,6 @@ export const getUserInfo = createAsyncThunk(
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
       const res = await axios.get('/user');
-      console.log('GET USER INFO AFTER AUTHORIZATION ', res.data);
       const obj = getDataFromGetUserInfo(res.data);
       return obj;
     } catch (err) {

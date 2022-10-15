@@ -1,4 +1,4 @@
-import { InputStyled } from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+import { InputStyled } from 'components/dailyCaloriesForm/DailyCaloriesForm.styled';
 import React from 'react';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
