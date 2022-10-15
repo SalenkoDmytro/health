@@ -80,12 +80,9 @@ function DailyCaloriesForm({ openModal }) {
     validationSchema: validationSchema,
 
     onSubmit: values => {
-      // console.log('values', values);
       if (isAuth) {
-        // console.log(33333333);
         dispatch(dailyRateAuthorized({ userId: userId, ...values }));
       } else {
-        // console.log(444444444);
         dispatch(dailyRateUnauthorized(values));
         if (openModal) {
           setTimeout(() => {
