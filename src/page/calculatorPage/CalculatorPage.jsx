@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CalculatorCaloriesForm from '../../components/calculatorCaloriesForm/CalculatorCaloriesForm';
 import { getUser } from '../../redux/user/userOperations';
 import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
-import { getUserData } from '../../redux/user/userSelectors';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../../components/common/container/Container';
 import PictureLeaf from '../../components/common/picture/PictureLeaf';
@@ -16,7 +16,9 @@ import { SideBar } from '../../components/rightSideBar/RightSideBar.styled';
 function CalculatorPage() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
-  const userData = useSelector(getUserData);
+  // const userData = useSelector(Треба записати тут новий селектор виходячи з даних які в userData{
+  //selectUDDailyRate,selectUDDaySummary,selectUDNotAllowedProducts
+  //});
   const [date, setDate] = useState(new Date());
 
   // useEffect(() => {
@@ -34,9 +36,7 @@ function CalculatorPage() {
           <Calculator>
             <CalculatorCaloriesForm />
           </Calculator>
-          <SideBar>
-            <RightSideBar date={date} />
-          </SideBar>
+          <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
         </CalculatorBox>
       </Container>
       <PictureLeaf />

@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toastConfigs from 'config/toast';
 import { toast } from 'react-toastify';
-import { date } from 'yup';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
@@ -33,6 +32,7 @@ export const getUserInfo = createAsyncThunk(
 );
 
 function getDataFromGetUserInfo(data) {
+  const userId = data.id;
   const dailyRate = data.userData.dailyRate;
   const notAllowedProducts = [data.userData.notAllowedProducts];
   const { height, age, weight, desiredWeight, bloodType } = data.userData;
@@ -64,6 +64,7 @@ function getDataFromGetUserInfo(data) {
   }
 
   return {
+    userId,
     dailyRate,
     bodyParams,
     daySummary,

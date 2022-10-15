@@ -14,7 +14,6 @@ import authReducer from './auth/authSlice';
 import productReducer from './productSearch/productSearchSlice';
 import dailyReducer from './daily/dailySlice';
 import dayReducer from './day/daySlice';
-import userReducer from './user/userSlice';
 
 import userDataReducer from './userData/userDataSlice';
 
@@ -30,7 +29,6 @@ export const store = configureStore({
     dailyRate: dailyReducer,
     product: productReducer,
     day: dayReducer,
-    user: userReducer,
     userData: userDataReducer,
   },
   middleware(getDefaultMiddleware) {

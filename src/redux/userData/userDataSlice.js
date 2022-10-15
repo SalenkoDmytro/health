@@ -12,6 +12,7 @@ import {
 } from './userDataOperation';
 
 const initialState = {
+  userId: null,
   dayId: null,
   eatenProducts: null,
   dailyRate: 0,
@@ -48,8 +49,17 @@ const getUserData = createSlice({
 
     [getUserInfo.fulfilled]: (
       state,
-      { payload: { bodyParams, notAllowedProducts, dailyRate, eatenProducts } }
+      {
+        payload: {
+          userId,
+          bodyParams,
+          notAllowedProducts,
+          dailyRate,
+          eatenProducts,
+        },
+      }
     ) => {
+      state.userId = userId;
       state.bodyParams = bodyParams;
       state.notAllowedProducts = notAllowedProducts;
       state.dailyRate = dailyRate;

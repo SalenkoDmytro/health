@@ -1,8 +1,7 @@
+export const selectUDUserId = state => state.userData.userId;
 export const selectUDDayId = state => state.userData.dayId;
-export const selectUDEatenProducts = state => {
-  console.log(state);
-  return state.userData.eatenProducts;
-};
+export const selectUDEatenProducts = state => state.userData.eatenProducts;
+
 export const selectUDDailyRate = state => state.userData.dailyRate;
 export const selectUDDaySummary = state => state.userData.daySummary;
 export const selectUDBodyParams = state => state.userData.bodyParams;
