@@ -9,3 +9,13 @@ export const selectUDNotAllowedProducts = state =>
   state.userData.notAllowedProducts;
 export const selectUDIsLoading = state => state.userData.isLoading;
 export const selectUDError = state => state.userData.error;
+
+//Function Utils
+export function getRandomAllNotAllowedProducts(product) {
+  const arr = [];
+  for (let i = 0; i < 10; i += 1) {
+    const randomIdex = product[Math.floor(Math.random() * product.length)];
+    arr.push(randomIdex);
+  }
+  return arr;
+}

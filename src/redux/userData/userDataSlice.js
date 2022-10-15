@@ -145,7 +145,6 @@ const getUserData = createSlice({
       // payload
       { payload: { dailyRate, notAllowedProducts } }
     ) => {
-      console.log('payload LOG OUT', notAllowedProducts);
       state.dailyRate = dailyRate;
       state.notAllowedProducts = notAllowedProducts;
       state.isLoading = false;

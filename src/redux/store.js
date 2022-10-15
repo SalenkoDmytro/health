@@ -13,7 +13,6 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
 import productReducer from './productSearch/productSearchSlice';
 import dailyReducer from './daily/dailySlice';
-import dayReducer from './day/daySlice';
 
 import userDataReducer from './userData/userDataSlice';
 
@@ -28,7 +27,6 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authReducer),
     dailyRate: dailyReducer,
     product: productReducer,
-    day: dayReducer,
     userData: userDataReducer,
   },
   middleware(getDefaultMiddleware) {
