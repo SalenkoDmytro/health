@@ -67,13 +67,13 @@ function DailyCaloriesForm({ openModal }) {
 
   const formik = useFormik({
     initialValues: {
-      height: userBodyParams.height ? userBodyParams.height : '',
-      age: userBodyParams.age ? userBodyParams.age : '',
-      weight: userBodyParams.weight ? userBodyParams.weight : '',
-      desiredWeight: userBodyParams.desiredWeight
+      height: userBodyParams?.height ? userBodyParams.height : '',
+      age: userBodyParams?.age ? userBodyParams.age : '',
+      weight: userBodyParams?.weight ? userBodyParams.weight : '',
+      desiredWeight: userBodyParams?.desiredWeight
         ? userBodyParams.desiredWeight
         : '',
-      bloodType: userBodyParams.bloodType
+      bloodType: userBodyParams?.bloodType
         ? userBodyParams.bloodType.toString()
         : '',
     },

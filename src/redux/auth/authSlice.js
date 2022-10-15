@@ -10,7 +10,6 @@ const initialState = {
   isLoading: false,
   error: null,
   isFetchingCurrentUser: false,
-  // isRegistered: false,
 };
 
 const authSlice = createSlice({
@@ -24,7 +23,6 @@ const authSlice = createSlice({
     },
     [register.fulfilled]: state => {
       state.error = null;
-      // state.isRegistered = true;
       state.isLoading = false;
     },
     [register.rejected]: (state, { payload }) => {

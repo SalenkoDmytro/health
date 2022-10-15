@@ -38,7 +38,15 @@ const getUserDataSlice = createSlice({
   initialState,
   reducers: {
     resetStateUserDataSlice(state) {
-      state = initialState;
+      state.userId = null;
+      state.dayId = null;
+      state.eatenProducts = null;
+      state.dailyRate = null;
+      state.daySummary = null;
+      state.bodyParams = null;
+      state.notAllowedProducts = null;
+      state.isLoading = null;
+      state.error = null;
     },
   },
 
