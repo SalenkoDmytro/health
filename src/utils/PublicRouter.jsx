@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router-dom';
-import { selectIsLoggedIn, selectisRegistered } from '../redux/auth/authSelectors';
+import { Navigate } from 'react-router-dom';
+import { selectIsLoggedIn } from '../redux/auth/authSelectors';
 
 const PublicRouter = (
   {
@@ -9,11 +9,9 @@ const PublicRouter = (
     restricted = false,
     redirectTo = '/',
   }) => {
-  const { pathname } = useLocation();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isRegistered = useSelector(selectisRegistered);
-  const isRegistrationPage = pathname === '/registration';
-  const shouldRedirect = (isRegistrationPage && isRegistered) || (isLoggedIn && restricted);
+  const shouldRedirect = isLoggedIn && restricted;
+
   return shouldRedirect ? <Navigate to={redirectTo} /> : children;
 };
 
