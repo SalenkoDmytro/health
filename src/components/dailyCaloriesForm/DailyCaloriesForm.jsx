@@ -25,7 +25,7 @@ import BpRadio, {
   MainForm,
   StyledRadioGroup,
   UserMainDataWrapper,
-} from 'components/calculatorCaloriesForm/CalculatorCaloriesForm.styled';
+} from './DailyCaloriesForm.styled';
 
 import Button from 'components/common/button/Button';
 

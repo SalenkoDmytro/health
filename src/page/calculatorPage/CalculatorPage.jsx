@@ -8,6 +8,7 @@ import RightSideBar from 'components/rightSideBar/RightSideBar';
 import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import Header from 'components/header/Header';
 import { SideBar } from '../../components/rightSideBar/RightSideBar.styled';
+import DailyCaloriesForm from 'components/dailyCaloriesForm/DailyCaloriesForm';
 
 function CalculatorPage() {
   // const userData = useSelector(Треба записати тут новий селектор виходячи з даних які в userData{
@@ -20,7 +21,8 @@ function CalculatorPage() {
       <Container>
         <CalculatorBox>
           <Calculator>
-            <CalculatorCaloriesForm />
+            <DailyCaloriesForm />
+            {/* <CalculatorCaloriesForm /> */}
           </Calculator>
           <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
         </CalculatorBox>
