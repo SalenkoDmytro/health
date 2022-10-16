@@ -151,7 +151,6 @@ export const deleteDayProduct = createAsyncThunk(
         data,
       });
 
-      console.log(data);
       const obj = {
         dailyRate: result.data.newDaySummary.dailyRate,
         daySummary: {

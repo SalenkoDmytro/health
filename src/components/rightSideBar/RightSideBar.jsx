@@ -24,8 +24,7 @@ function RightSideBar({ date }) {
   const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts[0]);
   const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
 
-  const formattedDate =
-    date?.getDate() + '.' + (date?.getMonth() + 1) + '.' + date?.getFullYear();
+  const formattedDate = date.date.toISOString().split('T')[0];
 
   return (
     <SideBarStyled>
@@ -38,7 +37,7 @@ function RightSideBar({ date }) {
           </SummaryListItem>
           <SummaryListItem>
             <span>Употреблено</span>
-            <span>{Math.trunc(kcalConsumed) || 0} ккал</span>
+            <span>{Math.trunc(kcalConsumed)} ккал</span>
           </SummaryListItem>
           <SummaryListItem>
             <span>Дневная норма</span>
@@ -46,7 +45,7 @@ function RightSideBar({ date }) {
           </SummaryListItem>
           <SummaryListItem>
             <span>% от нормы</span>
-            <span>{Math.trunc(percentsOfDailyRate) || 0} %</span>
+            <span>{Math.trunc(percentsOfDailyRate)} %</span>
           </SummaryListItem>
         </SummaryList>
       </Summary>
@@ -55,7 +54,7 @@ function RightSideBar({ date }) {
         <SummarySubtitle></SummarySubtitle>
         <ul>
           {notAllowedList.map(product => (
-            <li key={nanoid()}>{product}</li>
+            <li key={product}>{product}</li>
           ))}
         </ul>
       </div>
