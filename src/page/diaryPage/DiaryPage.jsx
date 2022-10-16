@@ -20,7 +20,8 @@ import RightSideBar from 'components/rightSideBar/RightSideBar';
 
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
-import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
+// import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
+import PictureLeaf from 'components/common/picture/PictureLeaf';
 import { Container } from 'components/common/container/Container';
 import { selectUDDateUser } from 'redux/userData/userDataSelectors';
 function DiaryPage() {
@@ -49,17 +50,24 @@ function DiaryPage() {
   return (
     <>
       {/* <Header /> */}
-      <Container>
-        <DiaryBox>
-          <Diary>
+      <DiaryBox>
+        <Diary>
+          <Container>
             <DiaryDateCalendar getDate={getDate} startDate={date} />
             {!isMobile && <DiaryAddProductForm date={date} />}
             <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-          </Diary>
-          <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
-        </DiaryBox>
-      </Container>
-      <PictureLeafStyled />
+
+          </Container>
+        </Diary>
+        <SideBar>
+          <Container>
+            {/* <RightSideBar date={date} /> */}
+          </Container>
+        </SideBar>
+      </DiaryBox>
+      <PictureLeaf />
+      {/* <PictureLeafStyled /> */}
+
       {/* <Footer /> */}
     </>
   );

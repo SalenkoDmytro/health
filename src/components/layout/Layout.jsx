@@ -5,17 +5,21 @@ import useToggleModal from 'hooks/toggleModal';
 
 import Header from '../header';
 import Footer from '../footer';
+import UserInfo from 'components/userInfo';
 import Loader from '../Loader';
 import { BoxStyled, Wrapper, Main } from './Layout.styled';
 import useMatchMedia from 'hooks/useMatchMedia';
 // import useToggleModal from 'hooks/toggleModal';
 
 const Layout = () => {
-  const { isOpen, isFooterOpen } = useToggleModal();
+  const { isOpen, isFooterOpen, closeModal } = useToggleModal();
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
   return (
     <Wrapper>
       <Header />
+      {/* {isMobile && isOpen && (
+        <UserInfo closeModal={closeModal} isOpen={isOpen} />
+      )} */}
       <Suspense fallback={<Loader />}>
         <Main>
           <BoxStyled as={'section'}>
