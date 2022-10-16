@@ -8,14 +8,17 @@ import {
 } from './DiaryProductsList.styled';
 import addIcon from 'assets/icons/addProduct.svg';
 
-export default function DiaryProductsList({ dayId, eatenProducts = [], openModal }) {
-
+export default function DiaryProductsList({
+  dayId,
+  eatenProducts = [],
+  openModal,
+}) {
   const { isMobile } = useMatchMedia();
 
   return (
     <StyledWrap>
       <StyledList>
-        {eatenProducts.map(item => {
+        {eatenProducts?.map(item => {
           return (
             <StyledItem key={item?.id}>
               <DiaryProductsListItem
