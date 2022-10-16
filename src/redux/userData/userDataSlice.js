@@ -18,9 +18,9 @@ const initialState = {
   eatenProducts: null,
   dailyRate: 0,
   daySummary: {
-    kcalConsumed: null,
-    kcalLeft: null,
-    percentsOfDailyRate: null,
+    kcalConsumed: 0,
+    kcalLeft: 0,
+    percentsOfDailyRate: 0,
   },
   bodyParams: {
     height: null,
