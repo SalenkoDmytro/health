@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { IoMdLogIn, IoMdLogOut } from 'react-icons/io';
+import { IoMdLogIn } from 'react-icons/io';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
@@ -21,7 +21,6 @@ export const register = createAsyncThunk(
       await axios.post('/auth/register', user);
       toast.success(`Пользователь ${user.username} успешно зарегистрирован`);
     } catch (error) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
@@ -33,7 +32,7 @@ export const login = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/login', user);
       token.set(data.accessToken);
-      toast(`С возвращением, ${user.username ?? user.email}`, {
+      toast(`Вы успешно вошли в свой аккаунт`, {
         icon: <IoMdLogIn size={25} color="green" />,
       });
       return data;
@@ -50,9 +49,6 @@ export const logout = createAsyncThunk(
     try {
       await axios.post('/auth/logout');
       token.unset();
-      toast(`Вы вышли из своего аккаунта `, {
-        icon: <IoMdLogOut size={25} color="red" />,
-      });
     } catch (error) {
       toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       fulfillWithValue();
@@ -74,7 +70,6 @@ export const refresh = createAsyncThunk(
       token.set(data.refreshToken);
       return data;
     } catch (error) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
