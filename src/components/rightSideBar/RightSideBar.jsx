@@ -18,9 +18,11 @@ function RightSideBar({ date }) {
   const dailyRate = useSelector(selectUDDailyRate);
   const consumption = useSelector(selectUDDaySummary) || {};
   const notAllowedProducts = useSelector(selectUDNotAllowedProducts);
-  // const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts[0]);
 
-  // const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts, 4);
+  const notAllowedList = getRandomAllNotAllowedProducts(
+    notAllowedProducts[0],
+    6
+  );
 
   const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
   // const formattedDate = date.toISOString().split('T')[0];
@@ -52,11 +54,11 @@ function RightSideBar({ date }) {
         <div>
           <SummaryTitle>Нерекомендуемые продукты </SummaryTitle>
           <SummarySubtitle></SummarySubtitle>
-          {/* <ul>
+          <ul>
             {notAllowedList.map(product => (
               <li key={product}>{product}</li>
             ))}
-          </ul> */}
+          </ul>
         </div>
       </SideBarStyled>
     </>

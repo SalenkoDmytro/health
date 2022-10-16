@@ -17,14 +17,8 @@ const RegistrationPage = lazy(() =>
 );
 
 const AppRoutes = () => {
-  const {
-    isOpen,
-    openModal,
-    hasBtnClose = true,
-    closeModal,
-    handleKeyDown,
-    handleBackdropClick,
-  } = useToggleModal();
+  const { isOpen, openModal, closeModal, handleKeyDown, handleBackdropClick } =
+    useToggleModal();
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
