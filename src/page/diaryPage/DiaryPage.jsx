@@ -23,7 +23,6 @@ import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 // import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
 import PictureLeaf from 'components/common/picture/PictureLeaf';
 import { Container } from 'components/common/container/Container';
-
 function DiaryPage() {
   const { isMobile } = useMatchMedia();
   const dispatch = useDispatch();
@@ -38,31 +37,31 @@ function DiaryPage() {
     }
   }, [date, dispatch, isAuth]);
 
-  const getDate = (date = new Date()) => {
+  const getDate = date => {
     setDate(date);
   };
 
   return (
     <>
       {/* <Header /> */}
-      <DiaryBox>
-        <Diary>
-          <Container>
-            <DiaryDateCalendar getDate={getDate} startDate={date} />
-            {!isMobile && <DiaryAddProductForm date={date} />}
-            <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-
-          </Container>
-        </Diary>
-        <SideBar>
-          <Container>
-            {/* <RightSideBar date={date} /> */}
-          </Container>
-        </SideBar>
-      </DiaryBox>
-      <PictureLeaf />
+      <>
+        <DiaryBox>
+          <Diary>
+            <Container>
+              <DiaryDateCalendar getDate={getDate} startDate={date} />
+              {!isMobile && <DiaryAddProductForm date={date} />}
+              <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
+            </Container>
+          </Diary>
+          <SideBar>
+            <Container>
+              <RightSideBar date={date} />
+            </Container>
+          </SideBar>
+        </DiaryBox>
+        <PictureLeaf />
+      </>
       {/* <PictureLeafStyled /> */}
-
       {/* <Footer /> */}
     </>
   );

@@ -125,12 +125,12 @@ export const addDayProduct = createAsyncThunk(
         icon: <MdFastfood size={25} color="green" />,
       });
       const obj = {
-        day: res.data.newDay || res.data.day,
+        day: res.data.newDay ? res.data.newDay : res.data.day,
         eatenProduct: res.data.eatenProduct,
-
-        daySummary: res.data.daySummary,
+        daySummary: res.data.newSummary
+          ? res.data.newSummary
+          : res.data.daySummary,
       };
-
       return obj;
     } catch (err) {
       toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
@@ -175,24 +175,36 @@ export const deleteDayProduct = createAsyncThunk(
 export const getDayInfo = createAsyncThunk(
   'getDayInfo/getDayInfo',
   async (date, thunkAPI) => {
+    let obj;
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
       const res = await axios.post('/day/info', date);
-      const obj = {
-        dayId: res.data.id,
-        dateUser: res.data.daySummary.date,
-        dailyRate: res.data.daySummary.dailyRate,
-        eatenProducts: res.data.eatenProducts,
+
+      obj = {
+        dayId: !res.data.eatenProducts ? null : res.data.id,
+        dateUser: !res.data.eatenProducts ? date : res.data.daySummary.date,
+        dailyRate: !res.data.eatenProducts
+          ? res.data.dailyRate
+          : res.data.daySummary.dailyRate,
+        eatenProducts: !res.data.eatenProducts ? [] : res.data.eatenProducts,
         daySummary: {
-          kcalConsumed: res.data.daySummary.kcalConsumed,
-          kcalLeft: res.data.daySummary.kcalLeft,
-          percentsOfDailyRate: res.data.daySummary.percentsOfDailyRate,
+          kcalConsumed: !res.data.eatenProducts
+            ? res.data.kcalConsumed
+            : res.data.daySummary.kcalConsumed,
+          kcalLeft: !res.data.eatenProducts
+            ? res.data.kcalLeft
+            : res.data.daySummary.kcalLeft,
+          percentsOfDailyRate: !res.data.eatenProducts
+            ? res.data.percentsOfDailyRate
+            : res.data.daySummary.percentsOfDailyRate,
         },
       };
       return obj;
     } catch (err) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
+      toast.error('Проблема з getDayInfo');
+      console.log(err);
+      // toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new information, server Error!"
       );
