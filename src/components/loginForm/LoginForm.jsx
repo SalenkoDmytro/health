@@ -33,7 +33,6 @@ function LoginForm() {
     }
   };
 
-  // console.log(errorExist());
   // ------- Валідація для форми -------
 
   const validationSchema = yup.object({
