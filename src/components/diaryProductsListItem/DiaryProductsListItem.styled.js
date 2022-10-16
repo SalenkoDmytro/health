@@ -26,8 +26,8 @@ export const StyledNumberText = styled.p`
 `;
 
 export const StyledIconClose = styled(IoIosClose)`
-  width: ${p => `${p.theme.space[3] + 2}px`};
-  height: ${p => `${p.theme.space[3] + 2}px`};
+  width: ${p => `${p.theme.space[4] + 9}px`};
+  height: ${p => `${p.theme.space[4] + 9}px`};
   color: ${p => p.theme.colors.button.icon};
 
   :hover,
@@ -38,8 +38,8 @@ export const StyledIconClose = styled(IoIosClose)`
     transition-property: color, transform;
   }
 
-  @media ${device.fablet} {
-    width: ${p => `${p.theme.space[4] - 4}px`};
-    height: ${p => `${p.theme.space[4] - 4}px`};
-  }
+  // @media ${device.fablet} {
+  //   width: ${p => `${p.theme.space[5] + 4}px`};
+  //   height: ${p => `${p.theme.space[5] + 4}px`};
+  // }
 `;
