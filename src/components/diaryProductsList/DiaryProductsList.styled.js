@@ -45,6 +45,10 @@ export const StyledList = styled.ul`
     /* width: 8px; */
   }
 
+  @media ${device.fabletAndMobileOnly} {
+    margin-bottom: ${p => `${p.theme.space[4] + 4}px`};
+  }
+
   @media ${device.tablet} {
     max-height: ${p => `${p.theme.space[8] + 40}px`};
   }

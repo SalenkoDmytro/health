@@ -6,6 +6,7 @@ import PrivateRouter from 'Routes/PrivateRoute';
 import NotFound from 'page/notFoundPage/NotFound';
 import Loader from 'components/Loader';
 import Layout from 'components/layout/Layout';
+import useToggleModal from 'hooks/toggleModal';
 
 const MainPage = lazy(() => import('page/mainPage/MainPage'));
 const DiaryPage = lazy(() => import('page/diaryPage/DiaryPage'));
@@ -16,11 +17,34 @@ const RegistrationPage = lazy(() =>
 );
 
 const AppRoutes = () => {
+  const {
+    isOpen,
+    openModal,
+    hasBtnClose = true,
+    // toggleModal,
+    closeModal,
+    handleKeyDown,
+    handleBackdropClick,
+  } = useToggleModal();
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
+        <Route
+          path="/"
+          element={<Layout closeModal={closeModal} isOpen={isOpen} />}
+        >
+          <Route
+            index
+            element={
+              <MainPage
+                isOpen={isOpen}
+                openModal={openModal}
+                handleKeyDown={handleKeyDown}
+                handleBackdropClick={handleBackdropClick}
+                closeModal={closeModal}
+              />
+            }
+          />
           {/* Public routes */}
           <Route
             path="/registration"
@@ -40,7 +64,10 @@ const AppRoutes = () => {
           />
           {/* Private routes */}
           <Route element={<PrivateRouter />}>
-            <Route path="/diary" element={<DiaryPage />} />
+            <Route
+              path="/diary"
+              element={<DiaryPage openModal={openModal} isOpen={isOpen} />}
+            />
             <Route path="/calculator" element={<CalculatorPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />

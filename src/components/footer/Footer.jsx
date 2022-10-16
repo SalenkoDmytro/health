@@ -21,6 +21,7 @@ const Footer = () => {
 
   const {
     isFooterOpen,
+    isOpen,
     // openFooterModal,
     toggleFooterModal,
     closeFooterModal,
@@ -46,7 +47,7 @@ const Footer = () => {
           GoIT Team #1
         </Button>
 
-        {isFooterOpen && (
+        {isFooterOpen && !isOpen && (
           <Modal
             closeModal={closeFooterModal}
             handleKeyDown={handleKeyDown}
