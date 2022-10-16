@@ -176,7 +176,6 @@ export const getDayInfo = createAsyncThunk(
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
       const res = await axios.post('/day/info', date);
-      console.log(res);
 
       obj = {
         dayId: !res.data.eatenProducts ? null : res.data.id,

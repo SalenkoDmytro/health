@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { addDay, deleteDay, addDayInfo } from './dayOperations';
 import { getUserInfo } from './userDataOperation';
 import {
   dailyRateUnauthorized,
