@@ -18,6 +18,7 @@ import {
   InputStyledWeightProduct,
   StyledButtonIcon,
   StyledIcon,
+  Wrapper,
   // StyledSelect,
   // StyledOption,
 } from './DiaryAddProductForm.styled';
@@ -161,24 +162,25 @@ export default function DiaryAddProductForm({ date }) {
             <StyledIcon src={addIcon} />
           </StyledButtonIcon>
         </StyledProductForm>
-
-        {products?.length > 0 && (
-          <Select
-            multiple
-            native
-            value={products}
-            // @ts-ignore Typings are not considering `native`
-            onChange={handleChangeMultiple}
-            label="Выберите продукт"
-            ref={selectRef}
-          >
-            {products.map(({ title, _id }) => (
-              <option title={title.ru} key={_id} value={_id}>
-                {title.ru}
-              </option>
-            ))}
-          </Select>
-        )}
+        <Wrapper>
+          {products?.length > 0 && (
+            <Select
+              multiple
+              native
+              value={products}
+              // @ts-ignore Typings are not considering `native`
+              onChange={handleChangeMultiple}
+              label="Выберите продукт"
+              ref={selectRef}
+            >
+              {products.map(({ title, _id }) => (
+                <option title={title.ru} key={_id} value={_id}>
+                  {title.ru}
+                </option>
+              ))}
+            </Select>
+          )}
+        </Wrapper>
       </Box>
     </>
   );

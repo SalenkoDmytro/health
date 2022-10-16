@@ -8,7 +8,8 @@ import {
 } from './DiaryProductsList.styled';
 import addIcon from 'assets/icons/addProduct.svg';
 
-export default function DiaryProductsList({ dayId, eatenProducts = [] }) {
+export default function DiaryProductsList({ dayId, eatenProducts = [], openModal }) {
+
   const { isMobile } = useMatchMedia();
 
   return (
@@ -33,6 +34,7 @@ export default function DiaryProductsList({ dayId, eatenProducts = [] }) {
         <StyledModalOpenIcon
           onClick={() => {
             console.log('поставити функцію відкриття модалки');
+            openModal();
           }}
           aria-label="открыть модалку"
         >

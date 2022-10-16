@@ -6,13 +6,19 @@ import { device } from 'utils/device';
 export const StyledProductForm = styled.form`
   width: 100%;
   padding-bottom: 60px;
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
   @media ${device.fablet} {
-    display: flex;
+    gap: 80px;
+  }
+
+  @media ${device.tablet} {
     gap: 50px;
-    // margin-bottom: 44px;
-    @media ${device.desktop} {
-      gap: 30px;
-    }
+    flex-direction: row;
+  }
+  @media ${device.desktop} {
+    gap: 30px;
   }
 `;
 
@@ -32,12 +38,8 @@ export const StyledNameWrapper = styled.div`
 `;
 
 export const InputStyledNameProduct = styled(InputStyled)`
-  @media ${device.mobileOnly} {
-    width: 80%;
-  }
-  @media ${device.fablet} {
-    width: 180px;
-  }
+  width: 80%;
+
   @media ${device.tablet} {
     width: 250px;
   }
@@ -64,13 +66,8 @@ export const InputStyledWeightProduct = styled(InputStyled)`
     }
   } */
 
-  @media ${device.mobileOnly} {
-    width: 80%;
-  }
+  width: 80%;
 
-  @media ${device.fablet} {
-    width: 100px;
-  }
   @media ${device.tablet} {
     width: 220px;
   }
@@ -98,13 +95,33 @@ export const StyledButtonIcon = styled(ButtonIcon)`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: auto;
-  margin-left: auto;
   min-width: ${p => `${p.theme.space[5] + 16}px`};
   min-height: ${p => `${p.theme.space[5] + 16}px`};
   border-radius: ${p => p.theme.radii.round};
   background-color: ${p => p.theme.colors.button.primaryBackground};
   &:hover ${StyledIcon} {
     transform: scale(1.5);
+  }
+  @media ${device.fabletAndMobileOnly} {
+    margin-right: auto;
+    margin-left: auto;
+  }
+`;
+
+export const Wrapper = styled.div`
+  background-color: white;
+  position: absolute;
+  @media ${device.mobileOnly} {
+    top: 55px;
+    left: 0;
+  }
+  @media ${device.fabletOnly} {
+    top: 55px;
+    left: 0;
+  }
+  @media ${device.tablet} {
+    top: 55px;
+    left: 0;
+    width: 320px;
   }
 `;

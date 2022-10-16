@@ -10,24 +10,31 @@ import { Button } from './MainPage.styled';
 import PictureFruit from '../../components/common/picture/PictureFruit';
 import { Container } from '../../components/common/container/Container';
 
-function MainPage() {
-  const {
-    isOpen,
-    openModal,
-    hasBtnClose = true,
-    // toggleModal,
-    closeModal,
-    handleKeyDown,
-    handleBackdropClick,
-  } = useToggleModal();
+function MainPage({
+  isOpen,
+  openModal,
+  closeModal,
+  handleKeyDown,
+  handleBackdropClick,
+}) {
+  // const {
+  //   isOpen,
+  //   openModal,
+  //   closeModal,
+  //   handleKeyDown,
+  //   handleBackdropClick,
+  //   // toggleModal,
+  //   hasBtnClose = true,
+  // } = useToggleModal();
+  const hasBtnClose = true;
 
   const { isDesktop, isTablet, isMobile } = useMatchMedia();
 
   return (
     <>
-      {isMobile && isOpen && (
+      {/* {isMobile && isOpen && (
         <UserInfo closeModal={closeModal} isOpen={isOpen} />
-      )}
+      )} */}
       <Container>
         {isMobile && !isOpen && <DailyCaloriesForm openModal={openModal} />}
         {isTablet && <DailyCaloriesForm openModal={openModal} />}
@@ -59,7 +66,9 @@ function MainPage() {
           </Modal>
         )}
       </Container>
-      <PictureFruit />
+      {isMobile && !isOpen && <PictureFruit />}
+      {isTablet && <PictureFruit />}
+      {isDesktop && <PictureFruit />}
     </>
   );
 }
