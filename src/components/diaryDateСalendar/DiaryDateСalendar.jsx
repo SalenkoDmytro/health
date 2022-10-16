@@ -5,9 +5,7 @@ import './diaryDateCalendar.css';
 
 import svg from '../../assets/images/calendar-svg.svg';
 
-const DiaryDateCalendar = ({ getDate, startDate }) => {
-  // const [startDate, setStartDate] = useState(new Date());
-  const currentDate = new Date();
+const DiaryDateCalendar = ({ formatDate, getDate, startDate }) => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <div className="Calendar">
       <p className="Date">{value}</p>
@@ -22,11 +20,14 @@ const DiaryDateCalendar = ({ getDate, startDate }) => {
   ));
   return (
     <DatePicker
-      selected={startDate}
-      onChange={date => getDate(date)}
+      //!!!!!!!!!!!!!!!!!!Змінити формат дати */
+      //З цими параметрами календар не працює
+      // selected={formatDate}
+      //!!!!!!!!!!!!!!!!!!Змінити формат дати */
+      // onChange={date => getDate(date)}
       customInput={<CustomInput />}
       dateFormat="dd.MM.yyyy"
-      maxDate={currentDate}
+      maxDate={formatDate}
     />
   );
 };
