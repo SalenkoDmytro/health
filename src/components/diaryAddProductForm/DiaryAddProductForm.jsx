@@ -72,6 +72,7 @@ export default function DiaryAddProductForm({ date }) {
     dispatch(resetState());
   };
 
+  //Submit в залежності від медіа
   function handleSubmit(values) {
     const obj = {
       date: date.toISOString().split('T')[0],
@@ -97,7 +98,6 @@ export default function DiaryAddProductForm({ date }) {
 
   useEffect(() => {
     document.body.addEventListener('click', handleClick);
-
     return () => {
       document.body.removeEventListener('click', handleClick);
     };
@@ -170,9 +170,6 @@ export default function DiaryAddProductForm({ date }) {
             // @ts-ignore Typings are not considering `native`
             onChange={handleChangeMultiple}
             label="Выберите продукт"
-            // inputProps={{
-            //   id: 'productName',
-            // }}
             ref={selectRef}
           >
             {products.map(({ title, _id }) => (

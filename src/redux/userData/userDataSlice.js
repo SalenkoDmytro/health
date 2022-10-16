@@ -13,6 +13,7 @@ import {
 
 const initialState = {
   userId: null,
+  dateUser: null,
   dayId: null,
   eatenProducts: null,
   dailyRate: 0,
@@ -39,6 +40,7 @@ const getUserDataSlice = createSlice({
   reducers: {
     resetStateUserDataSlice(state) {
       state.userId = null;
+      state.dateUser = null;
       state.dayId = null;
       state.eatenProducts = null;
       state.dailyRate = null;
@@ -90,15 +92,18 @@ const getUserDataSlice = createSlice({
     },
     [addDayProduct.fulfilled]: (state, action) => {
       state.dayId = action.payload.day.id;
-      state.dailyRate = action.payload.day.daySummary.dailyRate;
+      state.dailyRate = action.payload.daySummary.dailyRate;
 
-      state.daySummary.kcalConsumed =
-        action.payload.day.daySummary.kcalConsumed;
-      state.daySummary.kcalLeft = action.payload.day.daySummary.kcalLeft;
+      state.daySummary.kcalConsumed = action.payload.daySummary.kcalConsumed;
+      state.daySummary.kcalLeft = action.payload.daySummary.kcalLeft;
       state.daySummary.percentsOfDailyRate =
-        action.payload.day.daySummary.percentsOfDailyRate;
+        action.payload.daySummary.percentsOfDailyRate;
 
-      state.eatenProducts = action.payload.day.eatenProducts;
+      state.eatenProducts = [
+        ...state.eatenProducts,
+        action.payload.eatenProduct,
+      ];
+
       state.isLoading = false;
     },
 
@@ -133,8 +138,9 @@ const getUserDataSlice = createSlice({
     },
     [getDayInfo.fulfilled]: (
       state,
-      { payload: { dayId, dailyRate, eatenProducts, daySummary } }
+      { payload: { dayId, dailyRate, eatenProducts, daySummary, dateUser } }
     ) => {
+      state.dateUser = dateUser;
       state.dailyRate = dailyRate;
       state.dayId = dayId;
       state.eatenProducts = eatenProducts;
