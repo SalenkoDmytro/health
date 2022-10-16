@@ -190,7 +190,6 @@ const getUserDataSlice = createSlice({
     [dailyRateAuthorized.fulfilled]: (state, { payload }) => {
       // state.userId = payload.id;
       state.dailyRate = payload.data.dailyRate;
-      // state.daySummary = payload.summaries;
       state.notAllowedProducts = payload.data.notAllowedProducts;
       state.bodyParams = payload.reqData;
       state.isLoggedIn = true;
