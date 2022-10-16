@@ -1,16 +1,15 @@
 import React, { forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './diaryDateCalendar.css';
 import parseISO from 'date-fns/parseISO';
 import { format } from 'date-fns';
-
+import { Title, Calendar } from './diaryDateCalendar.styled';
 import svg from '../../assets/images/calendar-svg.svg';
 
 const DiaryDateCalendar = ({ formatDate, getDate, startDate }) => {
-  const CustomInput = forwardRef(({ value, onClick }, ref) => (
-    <div className="Calendar">
-      <p className="Date">{value}</p>
+  const CustomInput = forwardRef(({ onClick }, ref) => (
+    <Calendar>
+      <Title>{startDate}</Title>
       <svg
         style={{ width: '20px', height: '20px' }}
         onClick={onClick}
@@ -18,7 +17,7 @@ const DiaryDateCalendar = ({ formatDate, getDate, startDate }) => {
       >
         <use href={svg + '#calendar'}></use>
       </svg>
-    </div>
+    </Calendar>
   ));
 
   return (

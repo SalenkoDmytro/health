@@ -74,16 +74,23 @@ const getUserDataSlice = createSlice({
           notAllowedProducts,
           dailyRate,
           eatenProducts,
-          daySummary,
+          daySummary: { kcalConsumed, kcalLeft, percentsOfDailyRate },
         },
       }
     ) => {
       state.userId = userId;
       state.bodyParams = bodyParams;
-      state.notAllowedProducts = notAllowedProducts;
+      state.notAllowedProducts = notAllowedProducts[0];
       state.dailyRate = dailyRate;
       state.eatenProducts = eatenProducts;
-      state.daySummary = daySummary;
+      state.daySummary.kcalLeft = kcalLeft;
+      kcalConsumed < 0
+        ? (state.daySummary.kcalConsumed = 0)
+        : (state.daySummary.kcalConsumed = kcalConsumed);
+      state.daySummary.percentsOfDailyRate = null;
+      percentsOfDailyRate < 0
+        ? (state.daySummary.percentsOfDailyRate = 0)
+        : (state.daySummary.percentsOfDailyRate = percentsOfDailyRate);
     },
 
     [getUserInfo.rejected]: (state, action) => {
