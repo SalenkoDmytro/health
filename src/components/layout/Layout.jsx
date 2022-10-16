@@ -5,7 +5,7 @@ import useToggleModal from 'hooks/toggleModal';
 
 import Header from '../header';
 import Footer from '../footer';
-import UserInfo from 'components/userInfo';
+// import UserInfo from 'components/userInfo';
 import Loader from '../Loader';
 import { BoxStyled, Wrapper, Main } from './Layout.styled';
 import useMatchMedia from 'hooks/useMatchMedia';

@@ -1,6 +1,7 @@
-// import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
-
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectAccessToken } from 'redux/auth/authSelectors';
 // import Header from 'components/header/Header';
 import { Container } from 'components/common/container/Container';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
@@ -11,8 +12,9 @@ import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 function CalculatorPage() {
-  const [date, setDate] = useState(new Date());
-
+  // const [date, setDate] = useState(new Date());
+  const isAuth = useSelector(selectAccessToken);
+  console.log('🚀 ~ CalculatorPage ~ isAuth', isAuth);
   return (
     <>
       {/* <Header /> */}
@@ -22,9 +24,15 @@ function CalculatorPage() {
             <DailyCaloriesForm />
           </Container>
         </Calculator>
-        <Container>
-          <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
-        </Container>
+        {!Boolean(isAuth) ? (
+          <Container>
+            <SideBar>
+              <RightSideBar /* date={date} */ />
+            </SideBar>
+          </Container>
+        ) : (
+          ''
+        )}
       </CalculatorBox>
       <PictureLeaf />
     </>
