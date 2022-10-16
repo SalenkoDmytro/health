@@ -22,7 +22,8 @@ function DailyCaloriesIntake() {
   const dailyRate = useSelector(selectUDDailyRate);
   const allNotAllowedProducts = useSelector(selectUDNotAllowedProducts);
   const randomNotAllowedProducts = getRandomAllNotAllowedProducts(
-    allNotAllowedProducts
+    allNotAllowedProducts,
+    10
   );
 
   return (
