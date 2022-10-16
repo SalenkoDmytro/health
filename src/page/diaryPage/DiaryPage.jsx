@@ -50,21 +50,24 @@ function DiaryPage() {
   return (
     <>
       {/* <Header /> */}
-      <DiaryBox>
-        <Diary>
-          <Container>
-            <DiaryDateCalendar getDate={getDate} startDate={date} />
-            {!isMobile && <DiaryAddProductForm date={date} />}
-            <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-          </Container>
-        </Diary>
-        <SideBar>
-          <Container>{/* <RightSideBar date={date} /> */}</Container>
-        </SideBar>
-      </DiaryBox>
-      <PictureLeaf />
+      <>
+        <DiaryBox>
+          <Diary>
+            <Container>
+              <DiaryDateCalendar getDate={getDate} startDate={date} />
+              {!isMobile && <DiaryAddProductForm date={date} />}
+              <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
+            </Container>
+          </Diary>
+          <SideBar>
+            <Container>
+              <RightSideBar date={date} />
+            </Container>
+          </SideBar>
+        </DiaryBox>
+        <PictureLeaf />
+      </>
       {/* <PictureLeafStyled /> */}
-
       {/* <Footer /> */}
     </>
   );
