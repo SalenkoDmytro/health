@@ -35,7 +35,7 @@ function DiaryPage() {
 
   // console.log('🚀 ~ DiaryPage ~ selDateUser', selDateUser);
 
-  // console.log('🚀 ~ DiaryPage ~ date', date.toISOString().split('T')[0]);
+  console.log('🚀 ~ DiaryPage ~ date', date.toISOString().split('T')[0]);
 
   useEffect(() => {
     if (isAuth) {
@@ -56,13 +56,10 @@ function DiaryPage() {
             <DiaryDateCalendar getDate={getDate} startDate={date} />
             {!isMobile && <DiaryAddProductForm date={date} />}
             <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-
           </Container>
         </Diary>
         <SideBar>
-          <Container>
-            {/* <RightSideBar date={date} /> */}
-          </Container>
+          <Container>{/* <RightSideBar date={date} /> */}</Container>
         </SideBar>
       </DiaryBox>
       <PictureLeaf />
