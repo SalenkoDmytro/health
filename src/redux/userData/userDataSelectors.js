@@ -1,6 +1,4 @@
 export const selectUDUserId = state => state.userData.userId;
-export const selectUDDateUser = state => state.userData.dateUser;
-
 export const selectUDDayId = state => state.userData.dayId;
 export const selectUDEatenProducts = state => state.userData.eatenProducts;
 

@@ -24,11 +24,13 @@ import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 // import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
 import PictureLeaf from 'components/common/picture/PictureLeaf';
 import { Container } from 'components/common/container/Container';
+
 import UserInfo from 'components/userInfo';
 import Modal from 'components/common/modal/Modal';
 
 function DiaryPage({ openModal, isOpen }) {
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
+
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsLoggedIn);
   const eatenProducts = useSelector(selectUDEatenProducts);
@@ -50,7 +52,7 @@ function DiaryPage({ openModal, isOpen }) {
     }
   }, [date, dispatch, isAuth]);
 
-  const getDate = (date = new Date()) => {
+  const getDate = date => {
     setDate(date);
   };
 
@@ -105,17 +107,17 @@ function DiaryPage({ openModal, isOpen }) {
         </Diary>
         {isMobile && !isOpen && (
           <SideBar>
-            <Container>{/* <RightSideBar date={date} /> */}</Container>
+            <Container><RightSideBar date={date} /> </Container>
           </SideBar>
         )}
         {isTablet && (
           <SideBar>
-            <Container>{/* <RightSideBar date={date} /> */}</Container>
+            <Container><RightSideBar date={date} /> </Container>
           </SideBar>
         )}
         {isDesktop && (
           <SideBar>
-            <Container>{/* <RightSideBar date={date} /> */}</Container>
+            <Container> <RightSideBar date={date} /> </Container>
           </SideBar>
         )}
       </DiaryBox>
@@ -133,8 +135,8 @@ function DiaryPage({ openModal, isOpen }) {
           </Container>
         </Modal>
       )}
-      {/* <PictureLeafStyled /> */}
 
+      {/* <PictureLeafStyled /> */}
       {/* <Footer /> */}
     </>
   );

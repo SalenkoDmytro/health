@@ -25,7 +25,7 @@ function RightSideBar({ date }) {
   const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
 
   const formattedDate =
-    date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+    date?.getDate() + '.' + (date?.getMonth() + 1) + '.' + date?.getFullYear();
 
   return (
     <SideBarStyled>
