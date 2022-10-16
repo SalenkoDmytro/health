@@ -21,7 +21,7 @@ function RightSideBar({ date }) {
   const consumption = useSelector(selectUDDaySummary) || {};
   const notAllowedProducts = useSelector(selectUDNotAllowedProducts);
 
-  const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts[0]);
+  const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts, 4);
   const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
 
   const formattedDate =

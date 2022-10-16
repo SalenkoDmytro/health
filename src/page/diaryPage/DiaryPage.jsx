@@ -105,21 +105,27 @@ function DiaryPage({ openModal, isOpen }) {
             )}
           </Container>
         </Diary>
-        {isMobile && !isOpen && (
+        {/* {isMobile && !isOpen && (
           <SideBar>
-            <Container><RightSideBar date={date} /> </Container>
+            <Container>
+              <RightSideBar date={date} />{' '}
+            </Container>
           </SideBar>
         )}
         {isTablet && (
           <SideBar>
-            <Container><RightSideBar date={date} /> </Container>
+            <Container>
+              <RightSideBar date={date} />{' '}
+            </Container>
           </SideBar>
         )}
         {isDesktop && (
           <SideBar>
-            <Container> <RightSideBar date={date} /> </Container>
+            <Container>
+              <RightSideBar date={date} />{' '}
+            </Container>
           </SideBar>
-        )}
+        )} */}
       </DiaryBox>
       {isMobile && !isOpen && <PictureLeaf />}
       {isTablet && <PictureLeaf />}
