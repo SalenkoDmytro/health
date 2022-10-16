@@ -19,14 +19,16 @@ function CalculatorPage() {
   return (
     <>
       {/* <Header /> */}
-      <Container>
-        <CalculatorBox>
-          <Calculator>
+      <CalculatorBox>
+        <Calculator>
+          <Container>
             <DailyCaloriesForm />
-          </Calculator>
+          </Container>
+        </Calculator>
+        <Container>
           <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
-        </CalculatorBox>
-      </Container>
+        </Container>
+      </CalculatorBox>
       <PictureLeaf />
     </>
   );

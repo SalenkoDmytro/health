@@ -19,7 +19,8 @@ import RightSideBar from 'components/rightSideBar/RightSideBar';
 
 import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
-import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
+// import { PictureLeafStyled } from 'components/common/picture/PictureLeaf.styled';
+import PictureLeaf from 'components/common/picture/PictureLeaf';
 import { Container } from 'components/common/container/Container';
 
 function DiaryPage() {
@@ -42,19 +43,22 @@ function DiaryPage() {
   return (
     <>
       {/* <Header /> */}
-      <Container>
-        <DiaryBox>
-          <Diary>
+      <DiaryBox>
+        <Diary>
+          <Container>
             <DiaryDateCalendar getDate={getDate} startDate={date} />
             <DiaryAddProductForm date={date} />
             <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
-          </Diary>
-          <SideBar>
+          </Container>
+        </Diary>
+        <SideBar>
+          <Container>
             <RightSideBar date={date} />
-          </SideBar>
-        </DiaryBox>
-      </Container>
-      <PictureLeafStyled />
+          </Container>
+        </SideBar>
+      </DiaryBox>
+      <PictureLeaf />
+      {/* <PictureLeafStyled /> */}
       {/* <Footer /> */}
     </>
   );

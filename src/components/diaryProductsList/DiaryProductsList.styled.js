@@ -3,9 +3,9 @@ import { device } from 'utils/device';
 
 export const StyledWrap = styled.div`
   width: 100%;
-  margin-bottom: ${p => `${p.theme.space[4] - 4}px`};
+  padding-bottom: ${p => `${p.theme.space[4] + 4}px`};
   @media ${device.tablet} {
-    margin-bottom: ${p => `${p.theme.space[0]}px`};
+    padding-bottom: ${p => `${p.theme.space[0]}px`};
   }
 `;
 

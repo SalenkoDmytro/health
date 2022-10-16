@@ -3,53 +3,62 @@ import imageDesk from '../../../assets/images/summaryImgDesk.png';
 import imageTab from '../../../assets/images/summaryImgTadl.png';
 import { device } from '../../../utils/device';
 
-export const PictureLeafStyled = styled.div`
+export const PictureLeafBox = styled.div`
   position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 70%;
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: #f0f1f3;
   z-index: -1;
 
   @media ${device.desktop} {
-    top: 0;
-    right: 0;
     width: 40%;
     height: 100%;
+    background-position: bottom 100px right 0;
     background-image: url(${imageDesk});
-    background-position: top 0 right 0;
-    background-color: #f0f1f3;
+  }
+
+  // @media ${device.tabletOnly} {
+  //   background-image: url(${imageTab});
+  // }
+
+  // // @media ${device.mobileOnly} {
+
+  // // }
+  // @media ${device.fabletOnly} {
+  //   background-image: url(${imageTab});
+  // }
+`;
+export const PictureLeafStyled = styled.div`
+  position: absolute;
+  bottom: 98px;
+  right: 0;
+  width: 100%;
+  height: 60%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom 0 right 0;
+  // background-color: #f0f1f3;
+  z-index: -1;
+
+  @media ${device.desktop} {
+    width: 40%;
+    height: 100%;
+    // background-image: url(${imageDesk});
   }
 
   @media ${device.tabletOnly} {
-    margin-top:20px ;
-    bottom: 0;
-    right: 0;
-    top: unset;
-    width: 100%;
-    height: 25%;
     background-image: url(${imageTab});
-    background-position: bottom 0 right 0;
-    background-color: #f0f1f3;
   }
 
-  @media ${device.mobileOnly} {
-    margin-top:20px ;
-    bottom: 0;
-    right: 0;
-    top: unset;
-    width: 100%;
-     height: 45vh;
-    background-position: bottom 0 right 0;
-    background-color: #f0f1f3;
-  }
+  // @media ${device.mobileOnly} {
+
+  // }
   @media ${device.fabletOnly} {
-    margin-top:20px ;
-    bottom: 0%;
-    right: 0;
-    top: unset;
-    width: 100%;
-    height: 45vh;
-    background-position: bottom 0 right 0;
+    height: 35%;
     background-image: url(${imageTab});
-    background-color: #f0f1f3;
   }
 `;

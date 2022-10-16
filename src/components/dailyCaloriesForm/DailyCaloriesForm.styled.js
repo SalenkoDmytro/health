@@ -192,6 +192,12 @@ export const BtnGroup = styled.div`
   @media ${device.mobileOnly} {
     justify-content: center;
   }
+  @media ${device.fabletOnly} {
+    justify-content: center;
+  }
+  @media ${device.tabletOnly} {
+    justify-content: flex-end;
+  }
 `;
 
 export const ControlLabel = styled(FormControlLabel)`
