@@ -34,8 +34,6 @@ export const FooterStyled = styled.footer`
 
   @media (${device.desktop}) {
     align-items: center;
-    position: absolute;
-    bottom: 0;
   }
 `;
 
@@ -73,8 +71,5 @@ export const FooterButtonStyled = styled(ButtonIcon)`
 
   @media (${device.fablet}) {
     display: block;
-    //position: absolute;
-    //top: 20px;
-    //right: 20px;
   }
 `;
