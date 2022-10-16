@@ -8,6 +8,7 @@ export const DiaryBox = styled.div`
 `;
 
 export const Diary = styled.div`
+  background-color: white;
   @media ${device.fablet} {
     // padding-top: 80px;
     padding-bottom: 40px;

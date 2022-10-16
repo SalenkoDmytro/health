@@ -3,12 +3,15 @@ import { device } from 'utils/device';
 
 export const Wrapper = styled.div`
   display: flex;
-  margin-left: auto;
+  // margin-left: auto;
   @media ${device.fabletAndMobileOnly} {
     padding: 4px 20px;
 
     background-color: ${({ theme }) => theme.colors.primaryBackground};
-  } ;
+  }
+  @media ${device.tablet} {
+    margin-left: auto;
+  }
 `;
 
 export const Box = styled.div`

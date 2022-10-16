@@ -6,9 +6,13 @@ import { device } from 'utils/device';
 export const StyledProductForm = styled.form`
   width: 100%;
   padding-bottom: 60px;
-  @media ${device.tablet} {
+  @media ${device.fablet} {
     display: flex;
-    margin-bottom: 44px;
+    gap: 50px;
+    // margin-bottom: 44px;
+    @media ${device.desktop} {
+      gap: 30px;
+    }
   }
 `;
 
@@ -28,8 +32,14 @@ export const StyledNameWrapper = styled.div`
 `;
 
 export const InputStyledNameProduct = styled(InputStyled)`
+  @media ${device.mobileOnly} {
+    width: 80%;
+  }
+  @media ${device.fablet} {
+    width: 180px;
+  }
   @media ${device.tablet} {
-    width: 240px;
+    width: 250px;
   }
 `;
 
@@ -55,11 +65,14 @@ export const InputStyledWeightProduct = styled(InputStyled)`
   } */
 
   @media ${device.mobileOnly} {
-    width: 100%;
+    width: 80%;
   }
 
+  @media ${device.fablet} {
+    width: 100px;
+  }
   @media ${device.tablet} {
-    width: 106px;
+    width: 220px;
   }
 `;
 
@@ -85,6 +98,8 @@ export const StyledButtonIcon = styled(ButtonIcon)`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
   min-width: ${p => `${p.theme.space[5] + 16}px`};
   min-height: ${p => `${p.theme.space[5] + 16}px`};
   border-radius: ${p => p.theme.radii.round};

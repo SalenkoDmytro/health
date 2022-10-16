@@ -4,13 +4,11 @@ import Modal from 'components/common/modal/Modal';
 import useToggleModal from 'hooks/toggleModal';
 import useMatchMedia from 'hooks/useMatchMedia';
 import UserInfo from 'components/userInfo';
-// import Footer from 'components/footer/Footer';
 import Box from 'components/common/box';
 import { IoIosClose } from 'react-icons/io';
 import { Button } from './MainPage.styled';
 import PictureFruit from '../../components/common/picture/PictureFruit';
 import { Container } from '../../components/common/container/Container';
-// import Header from 'components/header/Header';
 
 function MainPage() {
   const {
@@ -27,7 +25,6 @@ function MainPage() {
 
   return (
     <>
-      {/* <Header /> */}
       {isMobile && isOpen && (
         <UserInfo closeModal={closeModal} isOpen={isOpen} />
       )}
@@ -62,7 +59,6 @@ function MainPage() {
           </Modal>
         )}
       </Container>
-      {/* <Footer /> */}
       <PictureFruit />
     </>
   );
