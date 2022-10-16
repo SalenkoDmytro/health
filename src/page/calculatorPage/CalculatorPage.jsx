@@ -11,7 +11,7 @@ import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 function CalculatorPage() {
-  const isAuth = useSelector(selectAccessToken);
+  // const isAuth = useSelector(selectAccessToken);
 
   return (
     <>
