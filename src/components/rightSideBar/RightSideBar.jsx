@@ -18,6 +18,10 @@ function RightSideBar({ date }) {
   const dailyRate = useSelector(selectUDDailyRate);
   const consumption = useSelector(selectUDDaySummary) || {};
   const notAllowedProducts = useSelector(selectUDNotAllowedProducts);
+  // console.log(
+  //   '🚀 ~ file: RightSideBar.jsx ~ line 21 ~ RightSideBar ~ notAllowedProducts',
+  //   notAllowedProducts
+  // );
 
   const notAllowedList = getRandomAllNotAllowedProducts(
     notAllowedProducts[0],
@@ -55,8 +59,8 @@ function RightSideBar({ date }) {
           <SummaryTitle>Нерекомендуемые продукты </SummaryTitle>
           <SummarySubtitle></SummarySubtitle>
           <ul>
-            {notAllowedList.map(product => (
-              <li key={product}>{product}</li>
+            {notAllowedList.map((product, index) => (
+              <li key={index}>{product}</li>
             ))}
           </ul>
         </div>
