@@ -13,6 +13,7 @@ import {
 
 const initialState = {
   userId: null,
+  dateUser: null,
   dayId: null,
   eatenProducts: null,
   dailyRate: 0,
@@ -39,6 +40,7 @@ const getUserDataSlice = createSlice({
   reducers: {
     resetStateUserDataSlice(state) {
       state.userId = null;
+      state.dateUser = null;
       state.dayId = null;
       state.eatenProducts = null;
       state.dailyRate = null;
@@ -136,8 +138,9 @@ const getUserDataSlice = createSlice({
     },
     [getDayInfo.fulfilled]: (
       state,
-      { payload: { dayId, dailyRate, eatenProducts, daySummary } }
+      { payload: { dayId, dailyRate, eatenProducts, daySummary, dateUser } }
     ) => {
+      state.dateUser = dateUser;
       state.dailyRate = dailyRate;
       state.dayId = dayId;
       state.eatenProducts = eatenProducts;

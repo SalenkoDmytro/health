@@ -1,4 +1,6 @@
 export const selectUDUserId = state => state.userData.userId;
+export const selectUDDateUser = state => state.userData.dateUser;
+
 export const selectUDDayId = state => state.userData.dayId;
 export const selectUDEatenProducts = state => state.userData.eatenProducts;
 
@@ -15,8 +17,8 @@ export const selectUDError = state => state.userData.error;
 export function getRandomAllNotAllowedProducts(product) {
   const arr = [];
   for (let i = 0; i < 4; i += 1) {
-    // const randomIdex = product[Math.floor(Math.random() * product.length)];
-    arr.push(product[i]);
+    const randomIdex = product[Math.floor(Math.random() * product.length)];
+    arr.push(randomIdex);
   }
   return arr;
 }

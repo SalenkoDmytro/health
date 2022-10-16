@@ -51,9 +51,7 @@ function DiaryPage() {
             {!isMobile && <DiaryAddProductForm date={date} />}
             <DiaryProductsList dayId={dayId} eatenProducts={eatenProducts} />
           </Diary>
-          <SideBar>
-            <RightSideBar date={date} />
-          </SideBar>
+          <SideBar>{/* <RightSideBar date={date} /> */}</SideBar>
         </DiaryBox>
       </Container>
       <PictureLeafStyled />

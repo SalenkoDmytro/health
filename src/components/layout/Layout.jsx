@@ -13,7 +13,6 @@ import useMatchMedia from 'hooks/useMatchMedia';
 const Layout = () => {
   const { isOpen, isFooterOpen } = useToggleModal();
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
-  console.log(isOpen);
   return (
     <Wrapper>
       <Header />

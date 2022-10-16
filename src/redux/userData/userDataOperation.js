@@ -181,6 +181,7 @@ export const getDayInfo = createAsyncThunk(
       const res = await axios.post('/day/info', date);
       const obj = {
         dayId: res.data.id,
+        dateUser: res.data.daySummary.date,
         dailyRate: res.data.daySummary.dailyRate,
         eatenProducts: res.data.eatenProducts,
         daySummary: {
