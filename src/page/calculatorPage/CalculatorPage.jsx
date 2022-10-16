@@ -22,13 +22,13 @@ function CalculatorPage() {
             <DailyCaloriesForm />
           </Container>
         </Calculator>
-        {/* {isAuth && (
+        {isAuth && (
           <Container>
             <SideBar>
               <RightSideBar date={'2022-10-16'} />
             </SideBar>
           </Container>
-        )} */}
+        )}
       </CalculatorBox>
       <PictureLeaf />
     </>
