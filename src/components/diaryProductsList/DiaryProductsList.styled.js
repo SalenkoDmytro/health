@@ -56,7 +56,7 @@ export const StyledList = styled.ul`
 export const StyledItem = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: ce;
+  align-items: flex-start;
   margin-bottom: ${p => `${p.theme.space[4] + 4}px`};
   font-family: ${p => p.theme.fonts.main};
   font-size: ${p => p.theme.fontSizes.s};
