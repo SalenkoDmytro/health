@@ -202,7 +202,6 @@ export const getDayInfo = createAsyncThunk(
       return obj;
     } catch (err) {
       toast.error('Проблема з getDayInfo');
-      console.log(err);
       // toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new information, server Error!"
