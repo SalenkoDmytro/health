@@ -2,6 +2,9 @@ import React, { forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './diaryDateCalendar.css';
+import parseISO from 'date-fns/parseISO';
+import parse from 'date-fns/getUnixTime';
+import { format } from 'date-fns';
 
 import svg from '../../assets/images/calendar-svg.svg';
 
@@ -18,16 +21,14 @@ const DiaryDateCalendar = ({ formatDate, getDate, startDate }) => {
       </svg>
     </div>
   ));
+
   return (
     <DatePicker
-      //!!!!!!!!!!!!!!!!!!Змінити формат дати */
-      //З цими параметрами календар не працює
-      // selected={formatDate}
-      //!!!!!!!!!!!!!!!!!!Змінити формат дати */
-      // onChange={date => getDate(date)}
+      selected={parseISO(formatDate)}
+      onChange={date => getDate(format(new Date(date), 'yyyy-MM-dd'))}
       customInput={<CustomInput />}
       dateFormat="dd.MM.yyyy"
-      maxDate={formatDate}
+      maxDate={parseISO(formatDate)}
     />
   );
 };

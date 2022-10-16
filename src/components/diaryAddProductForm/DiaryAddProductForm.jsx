@@ -76,7 +76,7 @@ export default function DiaryAddProductForm({ date }) {
   //Submit в залежності від медіа
   function handleSubmit(values) {
     const obj = {
-      date: date.toISOString().split('T')[0],
+      date: date.split('T')[0],
       productId: selectProduct,
       weight: values.productWeight,
     };

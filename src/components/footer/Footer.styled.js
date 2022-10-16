@@ -32,9 +32,11 @@ export const FooterStyled = styled.footer`
     padding: 20px 32px 16px;
   }
 
+
   @media (${device.desktop}) {
     align-items: center;
   }
+
 `;
 
 export const FooterTextStyled = styled.p`

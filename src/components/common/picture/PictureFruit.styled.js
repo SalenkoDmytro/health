@@ -20,12 +20,12 @@ export const PictureFruitBox = styled.div`
 
   @media ${device.tabletOnly} {
     background-image: url(${imageTab});
-    background-position: bottom 0 right 0;
+    background-position: bottom 98px right 0;
   }
 
   @media ${device.fabletOnly} {
     background-image: url(${imageTab});
-    background-position: bottom 0 right 0;
+    background-position: bottom 98px right 0;
   }
 `;
 export const PictureFruitStyled = styled.div`

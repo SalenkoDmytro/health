@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'utils/device';
 export const SideBarStyled = styled.div`
-
   @media ${device.tablet} {
     display: flex;
     gap: 60px;
@@ -74,7 +73,7 @@ export const SideBar = styled.div`
   }
 
   @media ${device.desktop} {
-    width: 40%;
+    // width: 40%;
     padding: 10px 10px 10px 10px;
     margin-top: 100px;
     margin-bottom: 189px;
