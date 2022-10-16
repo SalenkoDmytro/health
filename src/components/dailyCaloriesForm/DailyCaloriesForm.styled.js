@@ -88,6 +88,7 @@ export const MainForm = styled.form`
   // }
   //  @media ${device.desktop} {
   //    margin-top: 65px;
+  //    padding-bottom: 65px;
   // } ;
 `;
 
