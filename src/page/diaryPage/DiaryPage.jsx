@@ -49,85 +49,33 @@ function DiaryPage({ openModal, isOpen }) {
 
   return (
     <>
-      <DiaryBox>
-        <Diary>
-          <Container>
-            {isMobile && !isOpen && (
-              <DiaryDateCalendar
-                formatDate={formatDate}
-                getDate={getDate}
-                startDate={date}
-              />
-            )}
-            {isTablet && (
-              <DiaryDateCalendar
-                formatDate={formatDate}
-                getDate={getDate}
-                startDate={date}
-              />
-            )}
-            {isDesktop && (
-              <DiaryDateCalendar
-                formatDate={formatDate}
-                getDate={getDate}
-                startDate={date}
-              />
-            )}
-
-            {!isMobile && <DiaryAddProductForm date={date} />}
-
-            {isMobile && !isOpen && (
-              <DiaryProductsList
-                dayId={dayId}
-                eatenProducts={eatenProducts}
-                openModal={openModal}
-              />
-            )}
-            {isTablet && (
-              <DiaryProductsList
-                dayId={dayId}
-                eatenProducts={eatenProducts}
-                openModal={openModal}
-              />
-            )}
-            {isDesktop && (
-              <DiaryProductsList
-                dayId={dayId}
-                eatenProducts={eatenProducts}
-                openModal={openModal}
-              />
-            )}
-          </Container>
-        </Diary>
-
-        {isMobile && !isOpen && (
-          <SideBar>
-            <Container>
-              <RightSideBar date={date} />
-            </Container>
-          </SideBar>
-        )}
-
-        {isTablet && (
-          <SideBar>
-            <Container>
-              <RightSideBar date={date} />
-            </Container>
-          </SideBar>
-        )}
-        {isDesktop && (
-          <SideBar>
-            <Container>
-              <RightSideBar date={date} />
-            </Container>
-          </SideBar>
-        )}
-      </DiaryBox>
-
-      {isMobile && !isOpen && <PictureLeaf />}
-      {isTablet && <PictureLeaf />}
-      {isDesktop && <PictureLeaf />}
-      {isOpen && (
+      {!isOpen ? (
+        <>
+          <DiaryBox>
+            <Diary>
+              <Container>
+                <DiaryDateCalendar
+                  formatDate={formatDate}
+                  getDate={getDate}
+                  startDate={date}
+                />
+                {!isMobile && <DiaryAddProductForm date={date} />}
+                <DiaryProductsList
+                  dayId={dayId}
+                  eatenProducts={eatenProducts}
+                  openModal={openModal}
+                />
+              </Container>
+            </Diary>
+            <SideBar>
+              <Container>
+                <RightSideBar date={date} />
+              </Container>
+            </SideBar>
+          </DiaryBox>
+          <PictureLeaf />
+        </>
+      ) : (
         <Modal
         // closeModal={closeModal}
         // handleKeyDown={handleKeyDown}
