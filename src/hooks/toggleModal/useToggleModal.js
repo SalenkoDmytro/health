@@ -6,7 +6,6 @@ export default function useToggleModal() {
 
   const openModal = () => {
     setIsOpen(true);
-    console.log('openModal', isOpen);
   };
 
   const openFooterModal = () => {
@@ -15,7 +14,6 @@ export default function useToggleModal() {
 
   const closeModal = () => {
     setIsOpen(false);
-    console.log('closeModal', isOpen);
   };
   const closeFooterModal = () => {
     setIsFooterOpen(false);
@@ -23,7 +21,6 @@ export default function useToggleModal() {
 
   const toggleModal = () => {
     setIsOpen(isOpen => !isOpen);
-    console.log('toggleModal', isOpen);
   };
   const toggleFooterModal = () => {
     setIsFooterOpen(isFooterOpen => !isFooterOpen);

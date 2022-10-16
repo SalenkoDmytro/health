@@ -32,11 +32,9 @@ export default function DiaryProductsList({
           );
         })}
       </StyledList>
-      {console.log('Прописати для кнопки відкриття модалки')}
       {isMobile && (
         <StyledModalOpenIcon
           onClick={() => {
-            console.log('поставити функцію відкриття модалки');
             openModal();
           }}
           aria-label="открыть модалку"
