@@ -61,7 +61,6 @@ function RightSideBar({ date }) {
           </ul>
         </div>
       </SideBarStyled>
-      ;
     </>
   );
 }

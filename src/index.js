@@ -24,6 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Provider>
     </ThemeProvider>
     <GlobalStyles />
-    <StyledToastContainer /* transition={Zoom} */ closeButton={false} />
+    <StyledToastContainer closeButton={false} />
   </React.StrictMode>
 );

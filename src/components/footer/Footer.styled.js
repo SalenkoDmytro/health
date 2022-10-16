@@ -32,11 +32,11 @@ export const FooterStyled = styled.footer`
     padding: 20px 32px 16px;
   }
 
-  // @media (${device.desktop}) {
-  //   align-items: center;
-  //   position: absolute;
-  //   bottom: 0;
-  // }
+
+  @media (${device.desktop}) {
+    align-items: center;
+  }
+
 `;
 
 export const FooterTextStyled = styled.p`
@@ -73,8 +73,5 @@ export const FooterButtonStyled = styled(ButtonIcon)`
 
   @media (${device.fablet}) {
     display: block;
-    //position: absolute;
-    //top: 20px;
-    //right: 20px;
   }
 `;
