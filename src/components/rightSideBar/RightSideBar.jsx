@@ -20,8 +20,7 @@ function RightSideBar({ date }) {
   const notAllowedProducts = useSelector(selectUDNotAllowedProducts);
   // const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts[0]);
 
-
-  const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts, 4);
+  // const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts, 4);
 
   const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
   // const formattedDate = date.toISOString().split('T')[0];
