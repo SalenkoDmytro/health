@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   // margin-left: auto;
   @media ${device.fabletAndMobileOnly} {
-    padding: 4px 20px;
+    // padding: 4px 20px;
 
     background-color: ${({ theme }) => theme.colors.primaryBackground};
   }
