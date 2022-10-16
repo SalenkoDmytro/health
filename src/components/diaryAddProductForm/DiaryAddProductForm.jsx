@@ -19,8 +19,6 @@ import {
   StyledButtonIcon,
   StyledIcon,
   Wrapper,
-  // StyledSelect,
-  // StyledOption,
 } from './DiaryAddProductForm.styled';
 import addIcon from 'assets/icons/addProduct.svg';
 
@@ -73,7 +71,6 @@ export default function DiaryAddProductForm({ date }) {
     dispatch(resetState());
   };
 
-  //Submit в залежності від медіа
   function handleSubmit(values) {
     const obj = {
       date: date.split('T')[0],
@@ -114,7 +111,6 @@ export default function DiaryAddProductForm({ date }) {
         <StyledProductForm onSubmit={formik.handleSubmit}>
           <StyledNameWrapper>
             <InputStyledNameProduct
-              // sx={{ width: '240px' }}
               id="productName"
               name="productName"
               autoComplete="off"
@@ -123,9 +119,6 @@ export default function DiaryAddProductForm({ date }) {
               onBlur={formik.handleBlur}
               value={formik.values.productName}
               error={
-                /*!selectProduct && formik.values.productName.length != 0
-                  ? 'vvvvvv'
-                   : null*/
                 formik.touched.productName &&
                 !selectProduct &&
                 Boolean(formik.values.productName.length !== 0) &&
@@ -168,7 +161,6 @@ export default function DiaryAddProductForm({ date }) {
               multiple
               native
               value={products}
-              // @ts-ignore Typings are not considering `native`
               onChange={handleChangeMultiple}
               label="Выберите продукт"
               ref={selectRef}
