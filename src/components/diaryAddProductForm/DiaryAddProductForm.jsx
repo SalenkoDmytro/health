@@ -136,6 +136,7 @@ export default function DiaryAddProductForm({ date }) {
               id="productWeight"
               name="productWeight"
               autoComplete="off"
+              type="number"
               label="Граммы"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
