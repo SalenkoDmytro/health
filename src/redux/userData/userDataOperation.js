@@ -88,7 +88,6 @@ export const dailyRateUnauthorized = createAsyncThunk(
       const { data } = await axios.post('/daily-rate', reqData);
       return data;
     } catch (error) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
@@ -104,10 +103,8 @@ export const dailyRateAuthorized = createAsyncThunk(
     };
     try {
       const { data } = await axios.post(`/daily-rate/${userId}`, reqData);
-
       return { data, reqData };
     } catch (error) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
@@ -144,6 +141,7 @@ export const addDayProduct = createAsyncThunk(
 export const deleteDayProduct = createAsyncThunk(
   'deleteDayProduct/deleteDayProduct',
   async (data, thunkAPI) => {
+    console.log(data);
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
       token.set(tokenLS);
@@ -174,6 +172,7 @@ export const deleteDayProduct = createAsyncThunk(
 export const getDayInfo = createAsyncThunk(
   'getDayInfo/getDayInfo',
   async (date, thunkAPI) => {
+    console.log(date);
     let obj;
     try {
       const tokenLS = thunkAPI.getState().auth.accessToken;
@@ -201,9 +200,6 @@ export const getDayInfo = createAsyncThunk(
       };
       return obj;
     } catch (err) {
-      toast.error('Проблема з getDayInfo');
-      console.log(err);
-      // toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new information, server Error!"
       );
