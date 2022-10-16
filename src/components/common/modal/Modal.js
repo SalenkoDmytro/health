@@ -26,7 +26,7 @@ export default function Modal({
 
   if (isMobile) {
     return (
-      <ModalBackdrop onClick={handleBackdropClick}>
+      <ModalBackdrop>
         <ModalContent>{children}</ModalContent>
       </ModalBackdrop>
     );
