@@ -13,28 +13,25 @@ import DiaryProductsList from 'components/diaryProductsList/DiaryProductsList';
 import DiaryDateCalendar from 'components/diaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from 'components/diaryAddProductForm';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
+import Modal from 'components/common/modal/Modal';
 
-import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
-
 import PictureLeaf from 'components/common/picture/PictureLeaf';
 import { Container } from 'components/common/container/Container';
 
-import Modal from 'components/common/modal/Modal';
+import { DiaryBox, Diary } from './DiaryPage.styled';
 
 function DiaryPage({ openModal, isOpen }) {
-  const { isMobile, isTablet, isDesktop } = useMatchMedia();
+  const { isMobile } = useMatchMedia();
 
   const dispatch = useDispatch();
   const isAuth = useSelector(selectAccessToken);
   const eatenProducts = useSelector(selectUDEatenProducts);
   const dayId = useSelector(selectUDDayId);
-  let yourDate = new Date();
-  let formatDate;
+  let yourDate = new Date(Date.now());
   const offset = yourDate.getTimezoneOffset();
   yourDate = new Date(yourDate.getTime() - offset * 60 * 1000);
-  formatDate = yourDate.toISOString().split('T')[0];
-
+  const formatDate = yourDate.toISOString().split('T')[0];
   const [date, setDate] = useState(formatDate);
 
   useEffect(() => {

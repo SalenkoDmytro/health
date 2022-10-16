@@ -22,7 +22,7 @@ const DiaryDateCalendar = ({ formatDate, getDate, startDate }) => {
 
   return (
     <DatePicker
-      selected={parseISO(formatDate)}
+      selected={parseISO(startDate)}
       onChange={date => getDate(format(new Date(date), 'yyyy-MM-dd'))}
       customInput={<CustomInput />}
       dateFormat="dd.MM.yyyy"
