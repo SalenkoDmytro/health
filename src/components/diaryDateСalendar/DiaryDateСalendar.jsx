@@ -3,7 +3,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './diaryDateCalendar.css';
 import parseISO from 'date-fns/parseISO';
-import parse from 'date-fns/getUnixTime';
 import { format } from 'date-fns';
 
 import svg from '../../assets/images/calendar-svg.svg';

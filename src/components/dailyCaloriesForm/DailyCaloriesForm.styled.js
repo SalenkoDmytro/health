@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Radio, { RadioProps } from '@mui/material/Radio';
+import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import RadioGroup from '@mui/material/RadioGroup';

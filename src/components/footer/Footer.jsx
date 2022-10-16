@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectAccessToken } from 'redux/auth/authSelectors';
 
 import {
   FooterStyled,
@@ -12,17 +10,13 @@ import Modal from 'components/common/modal/Modal';
 import { IoIosClose } from 'react-icons/io';
 import Box from 'components/common/box';
 import Team from './team/Team';
-import useMatchMedia from 'hooks/useMatchMedia';
 import useToggleModal from 'hooks/toggleModal';
 // import PropTypes from 'prop-types';
 
 const Footer = () => {
-  const { isMobile } = useMatchMedia();
-
   const {
     isFooterOpen,
     isOpen,
-    // openFooterModal,
     toggleFooterModal,
     closeFooterModal,
     handleKeyDown,

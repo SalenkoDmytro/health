@@ -18,7 +18,7 @@ import DiaryDateCalendar from 'components/diaryDateСalendar/DiaryDateСalendar'
 import DiaryAddProductForm from 'components/diaryAddProductForm';
 import RightSideBar from 'components/rightSideBar/RightSideBar';
 
-import { DiaryBox, Diary, Button } from './DiaryPage.styled';
+import { DiaryBox, Diary } from './DiaryPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
 
 import PictureLeaf from 'components/common/picture/PictureLeaf';

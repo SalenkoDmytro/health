@@ -9,7 +9,6 @@ import GlobalStyles from 'utils/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'utils/theme';
 import './index.css';
-import { Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { StyledToastContainer } from 'config/toast/toastifyConfig';
 
