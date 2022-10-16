@@ -18,9 +18,9 @@ export const Main = styled.main`
     margin-top: 32px;
   }
   @media ${device.fablet} {
-    margin-top: 100px;
+    margin-top: 40px;
   }
   @media ${device.desktop} {
-    margin-top: 150px;
+    margin-top: 100px;
   } ;
 `;
