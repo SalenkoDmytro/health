@@ -4,15 +4,6 @@ import { device } from 'utils/device';
 export const HeaderStyled = styled.header`
   display: flex;
 
-  // &.gradient {
-  //   background-image: linear-gradient(
-  //     to right,
-  //     transparent 63.5%,
-  //     ${({ theme }) => theme.colors.primaryBackground} 63.5%,
-  //     ${({ theme }) => theme.colors.primaryBackground} 100%
-  //   );
-  // }
-
   @media ${device.fabletAndMobileOnly} {
     padding: 20px 20px 16px;
   }
@@ -32,7 +23,7 @@ export const HeaderStyled = styled.header`
 `;
 
 export const MobMenu = styled.div`
-  position: fixed;
+  /* position: fixed; */
   z-index: 1;
   padding: 60px 20px;
   height: 100vh;
