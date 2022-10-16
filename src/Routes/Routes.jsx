@@ -21,7 +21,6 @@ const AppRoutes = () => {
     isOpen,
     openModal,
     hasBtnClose = true,
-    // toggleModal,
     closeModal,
     handleKeyDown,
     handleBackdropClick,
