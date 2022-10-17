@@ -9,13 +9,13 @@ import {
   OverlayText,
 } from './TeamStyled.styled';
 import Box from 'components/common/box/Box';
-import Alena from '../../../assets/images/team/Alena Abharian.jpeg';
-import Andrew from '../../../assets/images/team/Andrew.jpeg';
-// import Dmitry from '../../../assets/images/team/DmitrySalenko.png';
-import Maksym from '../../../assets/images/team/MaksymHolovachuk.jpeg';
-import Mitya from '../../../assets/images/team/MityaKupriyanov.png';
-import Shamrai from '../../../assets/images/team/Shamrai.jpeg';
-import hunger from '../../../assets/images/notFound/hunger-404.webp';
+import Alena from 'assets/images/team/Alena Abharian.jpeg';
+import Andrew from 'assets/images/team/Andrew.jpeg';
+import Dmitry from 'assets/images/team/DmitrySalenko.png';
+import Maksym from 'assets/images/team/MaksymHolovachuk.jpeg';
+import Mitya from 'assets/images/team/MityaKupriyanov.png';
+import Shamrai from 'assets/images/team/Shamrai.jpeg';
+import hunger from 'assets/images/notFound/hunger-404.webp';
 
 const Team = () => {
   return (
@@ -79,7 +79,7 @@ const Team = () => {
               rel="noreferrer nofollow noopener"
             >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
-                <TeamPhotoStyled src={hunger} alt="Team-member photo" />
+                <TeamPhotoStyled src={Mitya} alt="Team-member photo" />
                 <Overlay>
                   <OverlayText>
                     Mitya Kupriyanov, <br /> Developer
@@ -127,7 +127,7 @@ const Team = () => {
               rel="noreferrer nofollow noopener"
             >
               <Box style={{ position: 'relative', overflow: 'hidden' }}>
-                <TeamPhotoStyled src={hunger} alt="Team-member photo" />
+                <TeamPhotoStyled src={Dmitry} alt="Team-member photo" />
                 <Overlay>
                   <OverlayText>
                     Dmitry Salenko, <br /> Developer

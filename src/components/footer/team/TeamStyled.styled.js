@@ -16,6 +16,30 @@ export const TeamList = styled.ul`
 
     // flex-wrap: wrap;
   }
+
+  scrollbar-color: #6969dd #e0e0e0;
+  scrollbar-width: thin;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${p => p.theme.colors.primaryBackground};
+    border-radius: ${p => p.theme.radii.md};
+    margin-block: ${p => `${p.theme.space[2]}px`};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${p => p.theme.colors.burgerBackground};
+    border-radius: ${p => p.theme.radii.md};
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    /* background-color: orange; */
+    transform: scale(1.1);
+    /* width: 8px; */
+  }
 `;
 
 export const TeamListItem = styled.li`
