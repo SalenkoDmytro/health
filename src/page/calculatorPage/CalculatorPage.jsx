@@ -7,7 +7,6 @@ import DailyCaloriesForm from 'components/dailyCaloriesForm/DailyCaloriesForm';
 
 import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
-import toDate from 'date-fns/toDate';
 
 function CalculatorPage() {
   const isAuth = useSelector(selectAccessToken);
