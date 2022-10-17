@@ -22,8 +22,6 @@ function RightSideBar({ date }) {
   const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts, 6);
 
   const { /* kcalLeft, */ kcalConsumed, percentsOfDailyRate } = consumption;
-  console.log('🚀 ~ RightSideBar ~ percentsOfDailyRate', percentsOfDailyRate);
-  console.log('🚀 ~ RightSideBar ~ kcalConsumed', kcalConsumed);
 
   return (
     <>
