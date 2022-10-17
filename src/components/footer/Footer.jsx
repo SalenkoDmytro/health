@@ -35,9 +35,10 @@ const Footer = () => {
             boxShadow: 'none',
             color: '#000',
             padding: 0,
+            minWidth: '280px',
           }}
         >
-          GoIT Team #1
+          Reactyvni benderyky
         </Button>
 
         {isFooterOpen && !isOpen && (
