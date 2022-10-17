@@ -55,7 +55,6 @@ export const TeamWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  overflow: scroll;
 `;
 
 export const Overlay = styled.div`
