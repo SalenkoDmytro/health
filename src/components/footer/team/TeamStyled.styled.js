@@ -8,13 +8,10 @@ export const TeamList = styled.ul`
 
   flex-wrap: wrap;
 
-  overflow: scroll;
+  overflow-y: scroll;
 
   @media (${device.fablet}) {
     display: flex;
-    // gap: 20px;
-
-    // flex-wrap: wrap;
   }
 
   scrollbar-color: #6969dd #e0e0e0;
