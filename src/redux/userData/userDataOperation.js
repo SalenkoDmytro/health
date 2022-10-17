@@ -130,7 +130,9 @@ export const addDayProduct = createAsyncThunk(
       };
       return obj;
     } catch (err) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
+      toast.error(
+        'Начните вводить название и выберите из списка доступных продуктов'
+      );
       return thunkAPI.rejectWithValue(
         "Sorry, can't add new day, server Error!"
       );
