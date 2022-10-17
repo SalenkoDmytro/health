@@ -37,7 +37,7 @@ export const login = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
+      // toast.error('Что-то пошло не так, попробуйте перезагрузить страницу');
       return rejectWithValue(error.message);
     }
   }
