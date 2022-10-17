@@ -96,7 +96,7 @@ export const OverlayText = styled.p`
     font-weight: ${p => p.theme.fontWeights.bold};
     font-family: ${p => p.theme.fonts.main};
     line-height: ${p => p.theme.lineHeights.text};
-    color: ${p => p.theme.colors.text.secondaryText};
+    color: ${p => p.theme.colors.white};
     overflow: auto;
   }
 
