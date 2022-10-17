@@ -11,7 +11,6 @@ import { IoIosClose } from 'react-icons/io';
 import Box from 'components/common/box';
 import Team from './team/Team';
 import useToggleModal from 'hooks/toggleModal';
-// import PropTypes from 'prop-types';
 
 const Footer = () => {
   const {

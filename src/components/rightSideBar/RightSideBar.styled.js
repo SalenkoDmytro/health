@@ -9,7 +9,6 @@ export const SideBarStyled = styled.div`
   @media ${device.desktop} {
     flex-direction: column;
     padding-left: 94px;
-    //height: 100vh;
   }
 `;
 
@@ -56,10 +55,7 @@ export const SummaryListItem = styled.li`
 `;
 
 export const SideBar = styled.div`
-  //background-color: #f0f1f3;
-
   @media ${device.mobileOnly} {
-    //padding:  15px 84px 15px 0;
     margin-top: 40px;
   }
 
@@ -68,12 +64,10 @@ export const SideBar = styled.div`
   }
 
   @media ${device.fabletOnly} {
-    //padding: 10px 80px 80px 0;
     margin-top: 50px;
   }
 
   @media ${device.desktop} {
-    // width: 40%;
     padding: 10px 10px 10px 10px;
     margin-top: 100px;
     margin-bottom: 189px;

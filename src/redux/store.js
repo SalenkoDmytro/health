@@ -14,8 +14,6 @@ import authReducer from './auth/authSlice';
 import productReducer from './productSearch/productSearchSlice';
 import userDataReducer from './userData/userDataSlice';
 
-// import dailyReducer from './daily/dailySlice';
-
 const persistConfig = {
   key: 'auth',
   storage,

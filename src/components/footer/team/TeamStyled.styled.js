@@ -33,9 +33,7 @@ export const TeamList = styled.ul`
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    /* background-color: orange; */
     transform: scale(1.1);
-    /* width: 8px; */
   }
 `;
 
