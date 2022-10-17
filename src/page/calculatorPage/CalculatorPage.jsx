@@ -7,9 +7,15 @@ import DailyCaloriesForm from 'components/dailyCaloriesForm/DailyCaloriesForm';
 
 import { Calculator, CalculatorBox } from './CalculatorPage.styled';
 import { SideBar } from 'components/rightSideBar/RightSideBar.styled';
+import toDate from 'date-fns/toDate';
 
 function CalculatorPage() {
   const isAuth = useSelector(selectAccessToken);
+
+  let yourDate = new Date(Date.now());
+  const offset = yourDate.getTimezoneOffset();
+  yourDate = new Date(yourDate.getTime() - offset * 60 * 1000);
+  const formatDate = yourDate.toISOString().split('T')[0];
 
   return (
     <>
@@ -22,7 +28,7 @@ function CalculatorPage() {
         {isAuth && (
           <Container>
             <SideBar>
-              <RightSideBar date={'2022-10-16'} />
+              <RightSideBar date={formatDate} />
             </SideBar>
           </Container>
         )}

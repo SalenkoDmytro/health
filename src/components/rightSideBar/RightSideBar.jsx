@@ -21,7 +21,7 @@ function RightSideBar({ date }) {
 
   const notAllowedList = getRandomAllNotAllowedProducts(notAllowedProducts, 6);
 
-  const { kcalLeft, kcalConsumed, percentsOfDailyRate } = consumption;
+  const { /* kcalLeft, */ kcalConsumed, percentsOfDailyRate } = consumption;
 
   return (
     <>
@@ -31,7 +31,14 @@ function RightSideBar({ date }) {
           <SummaryList>
             <SummaryListItem>
               <span>Осталось</span>
-              <span>{Math.floor(kcalLeft)} ккал</span>
+              <span>
+                {dailyRate - kcalConsumed < 0
+                  ? '0 '
+                  : Math.floor(dailyRate - kcalConsumed)}
+                ккал
+              </span>
+
+              {/* <span>{Math.floor(kcalLeft)} ккал</span> */}
             </SummaryListItem>
             <SummaryListItem>
               <span>Употреблено</span>
@@ -43,7 +50,12 @@ function RightSideBar({ date }) {
             </SummaryListItem>
             <SummaryListItem>
               <span>% от нормы</span>
-              <span>{Math.floor(percentsOfDailyRate)} %</span>
+              <span>
+                {percentsOfDailyRate === 100
+                  ? Math.floor((kcalConsumed / dailyRate) * 100)
+                  : Math.floor(percentsOfDailyRate)}
+                %
+              </span>
             </SummaryListItem>
           </SummaryList>
         </Summary>
