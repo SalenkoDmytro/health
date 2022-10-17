@@ -125,3 +125,8 @@ export const Wrapper = styled.div`
     width: 320px;
   }
 `;
+
+export const StyledSpan = styled.span`
+  font-size: ${p => p.theme.fontSizes.xs};
+  color: ${p => p.theme.colors.accent};
+`;

@@ -31,7 +31,7 @@ export const productSearch = createAsyncThunk(
         return data;
       }
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.request.status);
     }
   }
 );

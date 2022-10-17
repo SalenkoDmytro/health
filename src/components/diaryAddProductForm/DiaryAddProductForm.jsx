@@ -5,7 +5,10 @@ import Select from '@mui/material/Select';
 import * as yup from 'yup';
 
 import { productSearch } from 'redux/productSearch/productSearchOperations';
-import { selectProducts } from 'redux/productSearch/productSearchSelectors';
+import {
+  selectError,
+  selectProducts,
+} from 'redux/productSearch/productSearchSelectors';
 import { resetState } from 'redux/productSearch/productSearchSlice';
 import { addDayProduct } from 'redux/userData/userDataOperation';
 
@@ -18,6 +21,7 @@ import {
   InputStyledWeightProduct,
   StyledButtonIcon,
   StyledIcon,
+  StyledSpan,
   Wrapper,
 } from './DiaryAddProductForm.styled';
 import addIcon from 'assets/icons/addProduct.svg';
@@ -25,6 +29,7 @@ import addIcon from 'assets/icons/addProduct.svg';
 export default function DiaryAddProductForm({ date }) {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
+  const error = useSelector(selectError);
   const [selectProduct, setSelectProduct] = useState(null);
   const [debouncedValue, setDebouncedValue] = useState(null);
   const validationSchema = yup.object({
@@ -157,7 +162,7 @@ export default function DiaryAddProductForm({ date }) {
           </StyledButtonIcon>
         </StyledProductForm>
         <Wrapper>
-          {products?.length > 0 && (
+          {error !== 400 && products?.length > 0 ? (
             <Select
               multiple
               native
@@ -172,6 +177,10 @@ export default function DiaryAddProductForm({ date }) {
                 </option>
               ))}
             </Select>
+          ) : (
+            error === 400 && (
+              <StyledSpan>Введите другое название продукта</StyledSpan>
+            )
           )}
         </Wrapper>
       </Box>

@@ -24,6 +24,7 @@ const productSlice = createSlice({
     // --------------------PRODUCT-SEARCH OPERATION--------------------
 
     [productSearch.pending]: state => {
+      state.error = null;
       state.isLoading = true;
     },
     [productSearch.fulfilled]: (state, { payload }) => {
