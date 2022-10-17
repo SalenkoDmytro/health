@@ -190,6 +190,8 @@ const getUserDataSlice = createSlice({
     [dailyRateAuthorized.fulfilled]: (state, { payload }) => {
       // state.userId = payload.id;
       state.dailyRate = payload.data.dailyRate;
+      state.daySummary.percentsOfDailyRate =
+        (state.daySummary.kcalConsumed / (state.dailyRate || 1)) * 100;
       state.notAllowedProducts = payload.data.notAllowedProducts;
       state.bodyParams = payload.reqData;
       state.isLoggedIn = true;
