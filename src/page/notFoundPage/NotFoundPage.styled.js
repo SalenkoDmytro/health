@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import Box from 'components/common/box/Box';
 import { device } from 'utils/device';
-
-// import hunger from 'assets/images/notFound/hunger-404.webp';
 import healthy from 'assets/images/notFound/flat-lay-404.jpeg';
 
 export const Image = styled.div`

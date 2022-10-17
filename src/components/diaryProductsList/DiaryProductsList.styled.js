@@ -39,9 +39,7 @@ export const StyledList = styled.ul`
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    /* background-color: orange; */
     transform: scale(1.1);
-    /* width: 8px; */
   }
 
   @media ${device.fabletAndMobileOnly} {
@@ -76,9 +74,6 @@ export const StyledModalIcon = styled(StyledIcon)`
 `;
 
 export const StyledModalOpenIcon = styled(StyledButtonIcon)`
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   /* min-width: ${p => `${p.theme.space[5] + 16}px`};
   min-height: ${p => `${p.theme.space[5] + 16}px`};
   border-radius: ${p => p.theme.radii.round};

@@ -73,11 +73,7 @@ function DiaryPage({ openModal, isOpen }) {
           <PictureLeaf />
         </>
       ) : (
-        <Modal
-        // closeModal={closeModal}
-        // handleKeyDown={handleKeyDown}
-        // handleBackdropClick={handleBackdropClick}
-        >
+        <Modal>
           <Container>
             <DiaryAddProductForm date={date} />
           </Container>

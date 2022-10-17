@@ -60,14 +60,12 @@ export const StyledList = styled.ol`
   width: 280px;
   margin: 0px auto 40px;
   color: ${p => p.theme.colors.text.primaryText};
-  //   list-style: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
   max-height: 122px;
   overflow: hidden;
   overflow-y: auto;
-  //   padding-left: 30px;
 
   scrollbar-color: #6969dd #e0e0e0;
   scrollbar-width: thin;
@@ -88,9 +86,7 @@ export const StyledList = styled.ol`
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    /* background-color: orange; */
     transform: scale(1.1);
-    /* width: 8px; */
   }
 
   @media ${device.tablet} {
