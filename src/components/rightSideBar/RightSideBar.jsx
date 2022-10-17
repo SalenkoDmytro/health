@@ -37,8 +37,6 @@ function RightSideBar({ date }) {
                   : Math.floor(dailyRate - kcalConsumed)}
                 ккал
               </span>
-
-              {/* <span>{Math.floor(kcalLeft)} ккал</span> */}
             </SummaryListItem>
             <SummaryListItem>
               <span>Употреблено</span>
