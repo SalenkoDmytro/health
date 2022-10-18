@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/health/static/css/main.cdebdb7d.css",
+    "main.js": "/health/static/js/main.07fc588a.js",
+    "static/js/844.aafd8a13.chunk.js": "/health/static/js/844.aafd8a13.chunk.js",
+    "static/js/439.68a9c224.chunk.js": "/health/static/js/439.68a9c224.chunk.js",
+    "static/js/236.e50e8b36.chunk.js": "/health/static/js/236.e50e8b36.chunk.js",
+    "static/js/55.0405157e.chunk.js": "/health/static/js/55.0405157e.chunk.js",
+    "static/js/165.7b203fac.chunk.js": "/health/static/js/165.7b203fac.chunk.js",
+    "static/js/376.581a08dd.chunk.js": "/health/static/js/376.581a08dd.chunk.js",
+    "static/css/44.54bb5762.chunk.css": "/health/static/css/44.54bb5762.chunk.css",
+    "static/js/44.4706fe74.chunk.js": "/health/static/js/44.4706fe74.chunk.js",
+    "static/media/primaryImgDesk.png": "/health/static/media/primaryImgDesk.016b8c8044fa169ac24a.png",
+    "static/media/primaryImgTab.png": "/health/static/media/primaryImgTab.1c423c61002d6bb936cc.png",
+    "static/media/flat-lay-404.jpeg": "/health/static/media/flat-lay-404.4ba14ba91aae619317b3.jpeg",
+    "static/media/DmitrySalenko.png": "/health/static/media/DmitrySalenko.1387fc1c5139c041e5e3.png",
+    "static/media/ShamraiV.jpeg": "/health/static/media/ShamraiV.ba32936fb4bbbb7aaa00.jpeg",
+    "static/media/MityaKupriyanov.png": "/health/static/media/MityaKupriyanov.077618c194385745fde9.png",
+    "static/media/me1.jpg": "/health/static/media/me1.cb9fd19f065e440c0c50.jpg",
+    "static/media/summaryImgDesk.png": "/health/static/media/summaryImgDesk.032a3bee9ac1dc9057be.png",
+    "static/media/MaksymHolovachuk.jpeg": "/health/static/media/MaksymHolovachuk.191912b99ffc7daa466a.jpeg",
+    "static/media/Andrew.jpeg": "/health/static/media/Andrew.bcec3d0a82c9ee75c2d2.jpeg",
+    "static/media/Alena Abharian.jpeg": "/health/static/media/Alena Abharian.c7f5bbe03be385651bb2.jpeg",
+    "static/media/summaryImgTadl.png": "/health/static/media/summaryImgTadl.d09141402614a67df357.png",
+    "index.html": "/health/index.html",
+    "static/media/calendar-svg.svg": "/health/static/media/calendar-svg.ba503d1014b2f1e6ae15c0d1c126f371.svg",
+    "static/media/addProduct.svg": "/health/static/media/addProduct.1af623af381df34865932cccc30d9826.svg",
+    "main.cdebdb7d.css.map": "/health/static/css/main.cdebdb7d.css.map",
+    "main.07fc588a.js.map": "/health/static/js/main.07fc588a.js.map",
+    "844.aafd8a13.chunk.js.map": "/health/static/js/844.aafd8a13.chunk.js.map",
+    "439.68a9c224.chunk.js.map": "/health/static/js/439.68a9c224.chunk.js.map",
+    "236.e50e8b36.chunk.js.map": "/health/static/js/236.e50e8b36.chunk.js.map",
+    "55.0405157e.chunk.js.map": "/health/static/js/55.0405157e.chunk.js.map",
+    "165.7b203fac.chunk.js.map": "/health/static/js/165.7b203fac.chunk.js.map",
+    "376.581a08dd.chunk.js.map": "/health/static/js/376.581a08dd.chunk.js.map",
+    "44.54bb5762.chunk.css.map": "/health/static/css/44.54bb5762.chunk.css.map",
+    "44.4706fe74.chunk.js.map": "/health/static/js/44.4706fe74.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdebdb7d.css",
+    "static/js/main.07fc588a.js"
+  ]
+}
