@@ -26,7 +26,7 @@ const DiaryDateCalendar = ({ formatDate, getDate, startDate }) => {
       onChange={date => getDate(format(new Date(date), 'yyyy-MM-dd'))}
       customInput={<CustomInput />}
       dateFormat="dd.MM.yyyy"
-      maxDate={parseISO(formatDate)}
+      // maxDate={parseISO(formatDate)}
     />
   );
 };
