@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/health/static/css/main.cdebdb7d.css",
-    "main.js": "/health/static/js/main.07fc588a.js",
+    "main.js": "/health/static/js/main.9fa85a17.js",
     "static/js/844.aafd8a13.chunk.js": "/health/static/js/844.aafd8a13.chunk.js",
-    "static/js/439.68a9c224.chunk.js": "/health/static/js/439.68a9c224.chunk.js",
+    "static/js/439.7a8a28bd.chunk.js": "/health/static/js/439.7a8a28bd.chunk.js",
     "static/js/236.e50e8b36.chunk.js": "/health/static/js/236.e50e8b36.chunk.js",
     "static/js/55.0405157e.chunk.js": "/health/static/js/55.0405157e.chunk.js",
     "static/js/165.7b203fac.chunk.js": "/health/static/js/165.7b203fac.chunk.js",
@@ -26,9 +26,9 @@
     "static/media/calendar-svg.svg": "/health/static/media/calendar-svg.ba503d1014b2f1e6ae15c0d1c126f371.svg",
     "static/media/addProduct.svg": "/health/static/media/addProduct.1af623af381df34865932cccc30d9826.svg",
     "main.cdebdb7d.css.map": "/health/static/css/main.cdebdb7d.css.map",
-    "main.07fc588a.js.map": "/health/static/js/main.07fc588a.js.map",
+    "main.9fa85a17.js.map": "/health/static/js/main.9fa85a17.js.map",
     "844.aafd8a13.chunk.js.map": "/health/static/js/844.aafd8a13.chunk.js.map",
-    "439.68a9c224.chunk.js.map": "/health/static/js/439.68a9c224.chunk.js.map",
+    "439.7a8a28bd.chunk.js.map": "/health/static/js/439.7a8a28bd.chunk.js.map",
     "236.e50e8b36.chunk.js.map": "/health/static/js/236.e50e8b36.chunk.js.map",
     "55.0405157e.chunk.js.map": "/health/static/js/55.0405157e.chunk.js.map",
     "165.7b203fac.chunk.js.map": "/health/static/js/165.7b203fac.chunk.js.map",
@@ -38,6 +38,6 @@
   },
   "entrypoints": [
     "static/css/main.cdebdb7d.css",
-    "static/js/main.07fc588a.js"
+    "static/js/main.9fa85a17.js"
   ]
 }
